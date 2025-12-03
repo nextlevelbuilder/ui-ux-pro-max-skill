@@ -1,11 +1,13 @@
 import { mkdir, rm, access, cp } from 'node:fs/promises';
-import { join } from 'node:path';
+import { join, basename } from 'node:path';
 import { exec } from 'node:child_process';
 import { promisify } from 'node:util';
 import type { AIType } from '../types/index.js';
 import { AI_FOLDERS } from '../types/index.js';
 
 const execAsync = promisify(exec);
+
+const EXCLUDED_FILES = ['settings.local.json'];
 
 export async function extractZip(zipPath: string, destDir: string): Promise<void> {
   try {
@@ -56,9 +58,15 @@ export async function copyFolders(
     // Create target directory if needed
     await mkdir(targetPath, { recursive: true });
 
+    // Filter function to exclude certain files
+    const filterFn = (src: string): boolean => {
+      const fileName = basename(src);
+      return !EXCLUDED_FILES.includes(fileName);
+    };
+
     // Copy recursively
     try {
-      await cp(sourcePath, targetPath, { recursive: true });
+      await cp(sourcePath, targetPath, { recursive: true, filter: filterFn });
       copiedFolders.push(folder);
     } catch {
       // Try shell fallback for older Node versions

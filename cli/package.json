@@ -1,6 +1,6 @@
 {
   "name": "uipro-cli",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "CLI to install UI/UX Pro Max skill for AI coding assistants",
   "type": "module",
   "bin": {

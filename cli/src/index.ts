@@ -12,7 +12,7 @@ const program = new Command();
 program
   .name('uipro')
   .description('CLI to install UI/UX Pro Max skill for AI coding assistants')
-  .version('1.1.0');
+  .version('1.1.1');
 
 program
   .command('init')
