@@ -35,6 +35,7 @@ uipro init --ai claude      # Claude Code
 uipro init --ai cursor      # Cursor
 uipro init --ai windsurf    # Windsurf
 uipro init --ai antigravity # Antigravity (.agent + .shared)
+uipro init --ai copilot     # GitHub Copilot (.github + .shared)
 uipro init --ai all         # All assistants
 ```
 
@@ -50,12 +51,13 @@ uipro init --version v1.0.0 # Install specific version
 
 Copy the appropriate folders to your project:
 
-| AI Assistant | Folders to Copy                                                   |
-| ------------ | ----------------------------------------------------------------- |
-| Claude Code  | `.claude/skills/ui-ux-pro-max/`                                   |
-| Cursor       | `.cursor/commands/ui-ux-pro-max.md` + `.shared/ui-ux-pro-max/`    |
-| Windsurf     | `.windsurf/workflows/ui-ux-pro-max.md` + `.shared/ui-ux-pro-max/` |
-| Antigravity  | `.agent/workflows/ui-ux-pro-max.md` + `.shared/ui-ux-pro-max/`    |
+| AI Assistant   | Folders to Copy                                                   |
+| -------------- | ----------------------------------------------------------------- |
+| Claude Code    | `.claude/skills/ui-ux-pro-max/`                                   |
+| Cursor         | `.cursor/commands/ui-ux-pro-max.md` + `.shared/ui-ux-pro-max/`    |
+| Windsurf       | `.windsurf/workflows/ui-ux-pro-max.md` + `.shared/ui-ux-pro-max/` |
+| Antigravity    | `.agent/workflows/ui-ux-pro-max.md` + `.shared/ui-ux-pro-max/`    |
+| GitHub Copilot | `.github/copilot-instructions.md` + `.github/instructions/` + `.shared/ui-ux-pro-max/` |
 
 ## Prerequisites
 
@@ -92,6 +94,31 @@ Use the slash command to invoke the skill:
 ```
 /ui-ux-pro-max Build a landing page for my SaaS product
 ```
+
+### GitHub Copilot
+
+The instructions are automatically applied when working with UI/UX files. Just chat in Copilot Chat:
+
+```
+Build a landing page for my SaaS product
+```
+
+GitHub Copilot will use:
+- **Repository-wide instructions** from `.github/copilot-instructions.md`
+- **Path-specific instructions** from `.github/instructions/` for HTML, React, Vue, Svelte, SwiftUI, Flutter files
+
+**Slash Commands (Prompt Files):**
+
+Type `/` in Copilot Chat to access reusable prompts:
+
+| Command | Description |
+|---------|-------------|
+| `/ui-ux-pro-max` | Main workflow with design database search |
+| `/build-landing` | Build a landing page with optimized structure |
+| `/build-dashboard` | Build a dashboard with charts and data viz |
+| `/build-component` | Build a UI component with proper styling |
+| `/review-ui` | Review UI code for quality and accessibility |
+| `/get-design-system` | Generate a complete design system |
 
 ### Example Prompts
 

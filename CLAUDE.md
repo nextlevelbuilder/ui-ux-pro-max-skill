@@ -39,6 +39,25 @@ Available stacks: `html-tailwind` (default), `react`, `nextjs`, `vue`, `svelte`,
 └── data/                         # CSV databases (styles, colors, typography, etc.)
     └── stacks/                   # Stack-specific guidelines (8 CSV files)
 
+.github/                          # GitHub Copilot instructions
+├── copilot-instructions.md       # Repository-wide instructions
+├── instructions/                 # Path-specific instructions
+│   ├── html.instructions.md      # For .html files
+│   ├── react.instructions.md     # For .tsx/.jsx files
+│   ├── vue.instructions.md       # For .vue files
+│   ├── svelte.instructions.md    # For .svelte files
+│   ├── swiftui.instructions.md   # For .swift files
+│   ├── flutter.instructions.md   # For .dart files
+│   ├── components.instructions.md # For components/pages/views folders
+│   └── styling.instructions.md   # For .css/.scss files
+└── prompts/                      # Reusable prompt files (slash commands)
+    ├── ui-ux-pro-max.prompt.md   # Main workflow
+    ├── build-landing.prompt.md   # Build landing page
+    ├── build-dashboard.prompt.md # Build dashboard
+    ├── build-component.prompt.md # Build UI component
+    ├── review-ui.prompt.md       # Review UI code
+    └── get-design-system.prompt.md # Generate design system
+
 .windsurf/workflows/              # Windsurf workflow copy
 .agent/workflows/ui-ux-pro-max/   # Generic agent workflow copy
 .shared/ui-ux-pro-max/            # Shared data copy
@@ -52,7 +71,8 @@ When modifying files, keep all agent workflows in sync:
 
 - **Data & Scripts** (`data/`, `scripts/`): Copy changes to `.shared/ui-ux-pro-max/` and `cli/assets/.shared/ui-ux-pro-max/`
 - **SKILL.md**: Update corresponding files in `.agent/`, `.cursor/`, `.windsurf/`
-- **CLI assets**: Copy all skill folders to `cli/assets/` (`.claude/`, `.cursor/`, `.windsurf/`, `.agent/`, `.shared/`)
+- **GitHub Copilot**: Update `.github/copilot-instructions.md` and `.github/instructions/` when changing workflow
+- **CLI assets**: Copy all skill folders to `cli/assets/` (`.claude/`, `.cursor/`, `.windsurf/`, `.agent/`, `.github/`, `.shared/`)
 
 ## Prerequisites
 

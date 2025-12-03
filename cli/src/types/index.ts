@@ -1,4 +1,4 @@
-export type AIType = 'claude' | 'cursor' | 'windsurf' | 'antigravity' | 'all';
+export type AIType = 'claude' | 'cursor' | 'windsurf' | 'antigravity' | 'copilot' | 'all';
 
 export interface Release {
   tag_name: string;
@@ -20,11 +20,12 @@ export interface InstallConfig {
   force?: boolean;
 }
 
-export const AI_TYPES: AIType[] = ['claude', 'cursor', 'windsurf', 'antigravity', 'all'];
+export const AI_TYPES: AIType[] = ['claude', 'cursor', 'windsurf', 'antigravity', 'copilot', 'all'];
 
 export const AI_FOLDERS: Record<Exclude<AIType, 'all'>, string[]> = {
   claude: ['.claude'],
   cursor: ['.cursor', '.shared'],
   windsurf: ['.windsurf', '.shared'],
   antigravity: ['.agent', '.shared'],
+  copilot: ['.github', '.shared'],
 };
