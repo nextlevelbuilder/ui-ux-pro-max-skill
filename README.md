@@ -1,5 +1,8 @@
 # UI UX Pro Max
 
+[![Run in Smithery](https://smithery.ai/badge/skills/nextlevelbuilder)](https://smithery.ai/skills?ns=nextlevelbuilder&utm_source=github&utm_medium=badge)
+
+
 An AI skill that provides design intelligence for building professional UI/UX across multiple platforms and frameworks.
 
 <p align="center">
