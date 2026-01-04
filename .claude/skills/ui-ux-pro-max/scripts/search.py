@@ -9,7 +9,15 @@ Stacks: html-tailwind, react, nextjs
 """
 
 import argparse
+import sys
+import io
 from core import CSV_CONFIG, AVAILABLE_STACKS, MAX_RESULTS, search, search_stack
+
+# Fix Windows encoding issue
+# Windows CMD defaults to GBK encoding which cannot handle Unicode characters
+# This fix ensures proper UTF-8 output on Windows systems
+if sys.platform == "win32":
+    sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8")
 
 
 def format_output(result):
