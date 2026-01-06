@@ -58,7 +58,7 @@ export function getAITypeDescription(aiType: AIType): string {
     case 'kiro':
       return 'Kiro (.kiro/steering/ + .shared/)';
     case 'roocode':
-      return 'RooCOde (.roo/commands/ + .shared/)';
+      return 'RooCode (.roo/commands/ + .shared/)';
     case 'all':
       return 'All AI assistants';
   }
