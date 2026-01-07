@@ -30,6 +30,7 @@ export function detectAIType(cwd: string = process.cwd()): DetectionResult {
   }
   if (existsSync(join(cwd, '.codex'))) {
     detected.push('codex');
+  }
   if (existsSync(join(cwd, '.roo'))) {
     detected.push('roocode');
   }
