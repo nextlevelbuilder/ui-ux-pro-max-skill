@@ -61,7 +61,7 @@ Copy the appropriate folders to your project:
 | Antigravity    | `.agent/workflows/ui-ux-pro-max.md` + `.shared/ui-ux-pro-max/`      |
 | GitHub Copilot | `.github/prompts/ui-ux-pro-max.prompt.md` + `.shared/ui-ux-pro-max/`|
 | Kiro           | `.kiro/steering/ui-ux-pro-max.md` + `.shared/ui-ux-pro-max/`        |
-| Codex          | `.codex/skills/ui-ux-pro-max/` + `.shared/ui-ux-pro-max/`           |
+| Codex          | `.codex/skills/ui-ux-pro-max/`                                     |
 
 ## Prerequisites
 
