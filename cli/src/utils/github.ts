@@ -39,6 +39,24 @@ export async function getLatestRelease(): Promise<Release> {
   return response.json();
 }
 
+export async function getReleaseByTag(tag: string): Promise<Release> {
+  const encodedTag = encodeURIComponent(tag);
+  const url = `${API_BASE}/repos/${REPO_OWNER}/${REPO_NAME}/releases/tags/${encodedTag}`;
+
+  const response = await fetch(url, {
+    headers: {
+      'Accept': 'application/vnd.github.v3+json',
+      'User-Agent': 'uipro-cli',
+    },
+  });
+
+  if (!response.ok) {
+    throw new Error(`Failed to fetch release ${tag}: ${response.statusText}`);
+  }
+
+  return response.json();
+}
+
 export async function downloadRelease(url: string, dest: string): Promise<void> {
   const response = await fetch(url, {
     headers: {

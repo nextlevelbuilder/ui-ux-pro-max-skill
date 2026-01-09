@@ -1,12 +1,15 @@
+import { access, mkdtemp, mkdir, readdir } from 'node:fs/promises';
+import { tmpdir } from 'node:os';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import chalk from 'chalk';
 import ora from 'ora';
 import prompts from 'prompts';
-import type { AIType } from '../types/index.js';
+import type { AIType, Release } from '../types/index.js';
 import { AI_TYPES } from '../types/index.js';
-import { copyFolders } from '../utils/extract.js';
+import { cleanup, copyFolders, extractZip } from '../utils/extract.js';
 import { detectAIType, getAITypeDescription } from '../utils/detect.js';
+import { downloadRelease, getAssetUrl, getReleaseByTag } from '../utils/github.js';
 import { logger } from '../utils/logger.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
@@ -16,6 +19,67 @@ const ASSETS_DIR = join(__dirname, '..', 'assets');
 interface InitOptions {
   ai?: AIType;
   force?: boolean;
+  version?: string;
+  release?: Release;
+}
+
+async function pathExists(path: string): Promise<boolean> {
+  try {
+    await access(path);
+    return true;
+  } catch {
+    return false;
+  }
+}
+
+async function resolveExtractRoot(extractDir: string): Promise<string> {
+  const entries = await readdir(extractDir, { withFileTypes: true });
+  const dirs = entries.filter(entry => entry.isDirectory());
+  const files = entries.filter(entry => !entry.isDirectory());
+
+  if (dirs.length === 1 && files.length === 0) {
+    return join(extractDir, dirs[0].name);
+  }
+
+  return extractDir;
+}
+
+async function findAssetsDir(extractDir: string): Promise<string> {
+  const rootDir = await resolveExtractRoot(extractDir);
+  const candidates = [
+    join(rootDir, 'cli', 'assets'),
+    join(rootDir, 'assets'),
+  ];
+
+  for (const candidate of candidates) {
+    if (await pathExists(candidate)) {
+      return candidate;
+    }
+  }
+
+  throw new Error('Release assets not found. Expected "cli/assets" or "assets" in the release zip.');
+}
+
+async function installFromRelease(release: Release, aiType: AIType): Promise<string[]> {
+  const assetUrl = getAssetUrl(release);
+  if (!assetUrl) {
+    throw new Error(`No .zip asset found for release ${release.tag_name}`);
+  }
+
+  const tempDir = await mkdtemp(join(tmpdir(), 'uipro-'));
+  const safeTag = release.tag_name.replace(/[^a-zA-Z0-9._-]/g, '-');
+  const zipPath = join(tempDir, `${safeTag}.zip`);
+  const extractDir = join(tempDir, 'extract');
+
+  try {
+    await mkdir(extractDir, { recursive: true });
+    await downloadRelease(assetUrl, zipPath);
+    await extractZip(zipPath, extractDir);
+    const assetsDir = await findAssetsDir(extractDir);
+    return copyFolders(assetsDir, process.cwd(), aiType);
+  } finally {
+    await cleanup(tempDir);
+  }
 }
 
 export async function initCommand(options: InitOptions): Promise<void> {
@@ -56,7 +120,15 @@ export async function initCommand(options: InitOptions): Promise<void> {
 
   try {
     const cwd = process.cwd();
-    const copiedFolders = await copyFolders(ASSETS_DIR, cwd, aiType);
+    let copiedFolders: string[];
+
+    if (options.release || options.version) {
+      const release = options.release ?? await getReleaseByTag(options.version ?? '');
+      spinner.text = `Installing ${release.tag_name}...`;
+      copiedFolders = await installFromRelease(release, aiType);
+    } else {
+      copiedFolders = await copyFolders(ASSETS_DIR, cwd, aiType);
+    }
 
     spinner.succeed('Installation complete!');
 

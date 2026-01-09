@@ -19,12 +19,13 @@ export async function updateCommand(options: UpdateOptions): Promise<void> {
     spinner.succeed(`Latest version: ${chalk.cyan(release.tag_name)}`);
 
     console.log();
-    logger.info('Running update (same as init with latest version)...');
+    logger.info('Installing latest release...');
     console.log();
 
     await initCommand({
       ai: options.ai,
       force: true,
+      release,
     });
   } catch (error) {
     spinner.fail('Update check failed');
