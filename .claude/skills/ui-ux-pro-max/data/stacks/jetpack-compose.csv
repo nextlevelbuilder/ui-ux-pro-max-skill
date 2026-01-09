@@ -14,7 +14,7 @@ No,Category,Guideline,Description,Do,Don't,Code Good,Code Bad,Severity,Docs URL
 13,Architecture,No business logic in UI,Logic belongs to VM,Collect state,Call repo,Clean UI,Fat UI,High,
 14,Architecture,Expose immutable state,Expose StateFlow,asStateFlow,Mutable exposed,Safe API,State mutation,High,
 15,Lifecycle,Lifecycle-aware collect,Use collectAsStateWithLifecycle,Lifecycle aware,collectAsState,No leak,Leak,High,https://developer.android.com/jetpack/compose/lifecycle
-16,Navigation,Event-based navigation,VM emits navigation event,SharedFlow,Nav in UI,Decoupled nav,Tight coupling,High,https://developer.android.com/jetpack/compose/navigation
+16,Navigation,Event-based navigation,VM emits navigation event,"VM: Channel + receiveAsFlow(), V: Collect with Dispatchers.Main.immediate",Nav in UI,Decoupled nav,Using State / SharedFlow for navigation -> event is replayed and navigation fires again (StateFlow),High,https://developer.android.com/jetpack/compose/navigation
 17,Navigation,Typed routes,Use sealed routes,sealed class Route,String routes,Type-safe,Runtime crash,Medium,
 18,Performance,Stable parameters,Prefer immutable/stable params,@Immutable,Mutable params,Stable recomposition,Extra recomposition,High,https://developer.android.com/jetpack/compose/performance
 19,Performance,Use key in Lazy,Provide stable keys,key=id,No key,Stable list,Item jump,High,
