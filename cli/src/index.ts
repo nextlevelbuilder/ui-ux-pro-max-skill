@@ -19,6 +19,7 @@ program
   .description('Install UI/UX Pro Max skill to current project')
   .option('-a, --ai <type>', `AI assistant type (${AI_TYPES.join(', ')})`)
   .option('-f, --force', 'Overwrite existing files')
+  .option('--version <tag>', 'Install a specific version')
   .action(async (options) => {
     if (options.ai && !AI_TYPES.includes(options.ai)) {
       console.error(`Invalid AI type: ${options.ai}`);
@@ -28,6 +29,7 @@ program
     await initCommand({
       ai: options.ai as AIType | undefined,
       force: options.force,
+      version: options.version,
     });
   });
 
