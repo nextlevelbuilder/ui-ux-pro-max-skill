@@ -16,7 +16,7 @@ UI UX Pro Max is a searchable database of UI styles, color palettes, font pairin
 - **95 Color Palettes** - Industry-specific palettes for SaaS, E-commerce, Healthcare, Fintech, Beauty, etc.
 - **56 Font Pairings** - Curated typography combinations with Google Fonts imports
 - **24 Chart Types** - Recommendations for dashboards and analytics
-- **10 Tech Stacks** - React, Next.js, Vue, Nuxt.js, Nuxt UI, Svelte, SwiftUI, React Native, Flutter, HTML+Tailwind
+- **11 Tech Stacks** - React, Next.js, Vue, Nuxt.js, Nuxt UI, Svelte, SwiftUI, React Native, Flutter, HTML+Tailwind, shadcn/ui
 - **98 UX Guidelines** - Best practices, anti-patterns, and accessibility rules
 
 ## Installation
@@ -157,7 +157,7 @@ Make a mobile app UI for e-commerce
 The skill provides stack-specific guidelines for:
 
 - **HTML + Tailwind** (default)
-- **React** / **Next.js**
+- **React** / **Next.js** / **shadcn/ui**
 - **Vue** / **Nuxt.js** / **Nuxt UI** / **Svelte**
 - **SwiftUI** / **React Native** / **Flutter**
 

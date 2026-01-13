@@ -8,6 +8,14 @@ Domains: style, prompt, color, chart, landing, product, ux, typography
 Stacks: html-tailwind, react, nextjs
 """
 
+import sys
+import io
+
+# Fix UnicodeEncodeError on Windows (cp1252 doesn't support Unicode symbols)
+# See: https://github.com/nextlevelbuilder/ui-ux-pro-max-skill/issues/22
+if sys.platform == 'win32':
+    sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8', errors='replace')
+
 import argparse
 from core import CSV_CONFIG, AVAILABLE_STACKS, MAX_RESULTS, search, search_stack
 

@@ -26,7 +26,7 @@ python3 .claude/skills/ui-ux-pro-max/scripts/search.py "<query>" --domain <domai
 ```bash
 python3 .claude/skills/ui-ux-pro-max/scripts/search.py "<query>" --stack <stack>
 ```
-Available stacks: `html-tailwind` (default), `react`, `nextjs`, `vue`, `svelte`, `swiftui`, `react-native`, `flutter`
+Available stacks: `html-tailwind` (default), `react`, `nextjs`, `vue`, `svelte`, `swiftui`, `react-native`, `flutter`, `shadcn`
 
 ## Architecture
 

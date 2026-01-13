@@ -54,6 +54,11 @@ CSV_CONFIG = {
         "file": "typography.csv",
         "search_cols": ["Font Pairing Name", "Category", "Mood/Style Keywords", "Best For", "Heading Font", "Body Font"],
         "output_cols": ["Font Pairing Name", "Category", "Heading Font", "Body Font", "Mood/Style Keywords", "Best For", "Google Fonts URL", "CSS Import", "Tailwind Config", "Notes"]
+    },
+    "icons": {
+        "file": "icons.csv",
+        "search_cols": ["Category", "Icon Name", "Keywords", "Best For"],
+        "output_cols": ["Category", "Icon Name", "Keywords", "Library", "Import Code", "Usage", "Best For", "Style"]
     }
 }
 
@@ -67,7 +72,8 @@ STACK_CONFIG = {
     "svelte": {"file": "stacks/svelte.csv"},
     "swiftui": {"file": "stacks/swiftui.csv"},
     "react-native": {"file": "stacks/react-native.csv"},
-    "flutter": {"file": "stacks/flutter.csv"}
+    "flutter": {"file": "stacks/flutter.csv"},
+    "shadcn": {"file": "stacks/shadcn.csv"}
 }
 
 # Common columns for all stacks
@@ -186,7 +192,8 @@ def detect_domain(query):
         "prompt": ["prompt", "css", "implementation", "variable", "checklist", "tailwind"],
         "style": ["style", "design", "ui", "minimalism", "glassmorphism", "neumorphism", "brutalism", "dark mode", "flat", "aurora"],
         "ux": ["ux", "usability", "accessibility", "wcag", "touch", "scroll", "animation", "keyboard", "navigation", "mobile"],
-        "typography": ["font", "typography", "heading", "serif", "sans"]
+        "typography": ["font", "typography", "heading", "serif", "sans"],
+        "icons": ["icon", "icons", "lucide", "heroicons", "symbol", "glyph", "pictogram", "svg icon"]
     }
 
     scores = {domain: sum(1 for kw in keywords if kw in query_lower) for domain, keywords in domain_keywords.items()}
