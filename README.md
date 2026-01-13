@@ -39,6 +39,7 @@ uipro init --ai copilot     # GitHub Copilot
 uipro init --ai kiro        # Kiro
 uipro init --ai codex       # Codex (Skills)
 uipro init --ai gemini      # Gemini CLI
+uipro init --ai trae        # Trae
 uipro init --ai all         # All assistants
 ```
 
@@ -54,16 +55,17 @@ uipro init --version v1.0.0 # Install specific version
 
 Copy the appropriate folders to your project:
 
-| AI Assistant   | Folders to Copy                                                     |
-| -------------- | ------------------------------------------------------------------- |
-| Claude Code    | `.claude/skills/ui-ux-pro-max/`                                     |
-| Cursor         | `.cursor/commands/ui-ux-pro-max.md` + `.shared/ui-ux-pro-max/`      |
-| Windsurf       | `.windsurf/workflows/ui-ux-pro-max.md` + `.shared/ui-ux-pro-max/`   |
-| Antigravity    | `.agent/workflows/ui-ux-pro-max.md` + `.shared/ui-ux-pro-max/`      |
-| GitHub Copilot | `.github/prompts/ui-ux-pro-max.prompt.md` + `.shared/ui-ux-pro-max/`|
-| Kiro           | `.kiro/steering/ui-ux-pro-max.md` + `.shared/ui-ux-pro-max/`        |
-| Codex          | `.codex/skills/ui-ux-pro-max/`                                     |
-| Gemini CLI     | `.gemini/skills/ui-ux-pro-max/` + `.shared/ui-ux-pro-max/`         |
+| AI Assistant   | Folders to Copy                                                      |
+| -------------- | -------------------------------------------------------------------- |
+| Claude Code    | `.claude/skills/ui-ux-pro-max/`                                      |
+| Cursor         | `.cursor/commands/ui-ux-pro-max.md` + `.shared/ui-ux-pro-max/`       |
+| Windsurf       | `.windsurf/workflows/ui-ux-pro-max.md` + `.shared/ui-ux-pro-max/`    |
+| Antigravity    | `.agent/workflows/ui-ux-pro-max.md` + `.shared/ui-ux-pro-max/`       |
+| GitHub Copilot | `.github/prompts/ui-ux-pro-max.prompt.md` + `.shared/ui-ux-pro-max/` |
+| Kiro           | `.kiro/steering/ui-ux-pro-max.md` + `.shared/ui-ux-pro-max/`         |
+| Codex          | `.codex/skills/ui-ux-pro-max/`                                       |
+| Gemini CLI     | `.gemini/skills/ui-ux-pro-max/` + `.shared/ui-ux-pro-max/`           |
+| Trae           | `.trae/skills/ui-ux-pro-max/` + `.shared/ui-ux-pro-max/`             |
 
 ## Prerequisites
 
@@ -128,6 +130,16 @@ $ui-ux-pro-max Build a landing page for my SaaS product
 ### Gemini CLI
 
 The skill activates automatically when you request UI/UX work.
+
+```
+Build a landing page for my SaaS product
+```
+
+### Trae
+
+_Disclaimer: Trae skill is in beta. Please report any issues or feedback._
+
+To use Trae skill, you need to switch to **SOLO** mode. If your request is related to skills, skills will be used:
 
 ```
 Build a landing page for my SaaS product
