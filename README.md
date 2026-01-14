@@ -142,7 +142,7 @@ _Disclaimer: Trae skill is in beta. Please report any issues or feedback._
 To use Trae skill, you need to switch to **SOLO** mode. If your request is related to skills, skills will be used:
 
 ```
-Build a landing page for my SaaS product
+Build a landing page (frontend ONLY) for my SaaS product.
 ```
 
 ### Example Prompts
