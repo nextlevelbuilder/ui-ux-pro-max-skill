@@ -1,6 +1,99 @@
-# ui-ux-pro-max
+---
+name: ui-ux-pro-max
+description: "Advanced UI/UX design intelligence with customization architecture. 50+ styles, 21 palettes, 50+ font pairings, 20+ charts, 47 AI chat patterns, 24 architecture patterns, 11 stacks (React, Next.js, Vue, Svelte, SwiftUI, React Native, Flutter, Tailwind, shadcn/ui, HTMX, Tauri). External config support with brand integration. A2UI cross-platform export. Actions: plan, build, create, design, implement, review, fix, improve, optimize, enhance, refactor, check UI/UX code. Projects: website, landing page, dashboard, admin panel, e-commerce, SaaS, portfolio, blog, mobile app, .html, .tsx, .vue, .svelte. Elements: button, modal, navbar, sidebar, card, table, form, chart, AI chat interface. Styles: glassmorphism, claymorphism, minimalism, brutalism, neumorphism, bento grid, dark mode, responsive, skeuomorphism, flat design. Topics: color palette, accessibility, animation, layout, typography, font pairing, spacing, hover, shadow, gradient, AI interface design, clean architecture."
+---
 
-Comprehensive design guide for web and mobile applications. Contains 50+ styles, 97 color palettes, 57 font pairings, 99 UX guidelines, and 25 chart types across 9 technology stacks. Searchable database with priority-based recommendations.
+# UI/UX Pro Max - Design Intelligence
+
+Advanced design intelligence toolkit for web and mobile applications. Contains 50+ styles, 97 color palettes, 57 font pairings, 99 UX guidelines, 25 chart types, 47 AI chat patterns, and 24 architecture patterns across 11 technology stacks. Features external configuration support with brand integration, A2UI cross-platform export, and advanced state management patterns. Searchable database with priority-based recommendations and customization architecture.
+
+## When to Apply
+
+Reference these guidelines when:
+- Designing new UI components or pages
+- Building AI chat interfaces and conversational UIs
+- Implementing clean architecture patterns
+- Choosing color palettes and typography
+- Reviewing code for UX issues
+- Building landing pages or dashboards
+- Implementing accessibility requirements
+- Setting up brand integration and custom configurations
+- Exporting designs for cross-platform development
+
+## Rule Categories by Priority
+
+| Priority | Category | Impact | Domain |
+|----------|----------|--------|--------|
+| 1 | Accessibility | CRITICAL | `ux` |
+| 2 | Touch & Interaction | CRITICAL | `ux` |
+| 3 | Performance | HIGH | `ux` |
+| 4 | Layout & Responsive | HIGH | `ux` |
+| 5 | Typography & Color | MEDIUM | `typography`, `color` |
+| 6 | Animation | MEDIUM | `ux` |
+| 7 | Style Selection | MEDIUM | `style`, `product` |
+| 8 | Charts & Data | LOW | `chart` |
+
+## Quick Reference
+
+### 1. Accessibility (CRITICAL)
+
+- `color-contrast` - Minimum 4.5:1 ratio for normal text
+- `focus-states` - Visible focus rings on interactive elements
+- `alt-text` - Descriptive alt text for meaningful images
+- `aria-labels` - aria-label for icon-only buttons
+- `keyboard-nav` - Tab order matches visual order
+- `form-labels` - Use label with for attribute
+
+### 2. Touch & Interaction (CRITICAL)
+
+- `touch-target-size` - Minimum 44x44px touch targets
+- `hover-vs-tap` - Use click/tap for primary interactions
+- `loading-buttons` - Disable button during async operations
+- `error-feedback` - Clear error messages near problem
+- `cursor-pointer` - Add cursor-pointer to clickable elements
+
+### 3. Performance (HIGH)
+
+- `image-optimization` - Use WebP, srcset, lazy loading
+- `reduced-motion` - Check prefers-reduced-motion
+- `content-jumping` - Reserve space for async content
+
+### 4. Layout & Responsive (HIGH)
+
+- `viewport-meta` - width=device-width initial-scale=1
+- `readable-font-size` - Minimum 16px body text on mobile
+- `horizontal-scroll` - Ensure content fits viewport width
+- `z-index-management` - Define z-index scale (10, 20, 30, 50)
+
+### 5. Typography & Color (MEDIUM)
+
+- `line-height` - Use 1.5-1.75 for body text
+- `line-length` - Limit to 65-75 characters per line
+- `font-pairing` - Match heading/body font personalities
+
+### 6. Animation (MEDIUM)
+
+- `duration-timing` - Use 150-300ms for micro-interactions
+- `transform-performance` - Use transform/opacity, not width/height
+- `loading-states` - Skeleton screens or spinners
+
+### 7. Style Selection (MEDIUM)
+
+- `style-match` - Match style to product type
+- `consistency` - Use same style across all pages
+- `no-emoji-icons` - Use SVG icons, not emojis
+
+### 8. Charts & Data (LOW)
+
+- `chart-type` - Match chart type to data type
+- `color-guidance` - Use accessible color palettes
+- `data-table` - Provide table alternative for accessibility
+
+## How to Use
+
+Search specific domains using the CLI tool below.
+
+---
 
 ## Prerequisites
 
@@ -29,7 +122,7 @@ winget install Python.Python.3.12
 
 ---
 
-## How to Use This Workflow
+## How to Use This Skill
 
 When user requests UI/UX work (design, build, create, implement, review, fix, improve), follow this workflow:
 
@@ -46,7 +139,7 @@ Extract key information from user request:
 **Always start with `--design-system`** to get comprehensive recommendations with reasoning:
 
 ```bash
-python3 .shared/ui-ux-pro-max/scripts/search.py "<product_type> <industry> <keywords>" --design-system [-p "Project Name"]
+python3 .claude/skills/ui-ux-pro-max/scripts/search.py "<product_type> <industry> <keywords>" --design-system [-p "Project Name"]
 ```
 
 This command:
@@ -57,7 +150,7 @@ This command:
 
 **Example:**
 ```bash
-python3 .shared/ui-ux-pro-max/scripts/search.py "beauty spa wellness service" --design-system -p "Serenity Spa"
+python3 .claude/skills/ui-ux-pro-max/scripts/search.py "beauty spa wellness service" --design-system -p "Serenity Spa"
 ```
 
 ### Step 3: Supplement with Detailed Searches (as needed)
@@ -65,7 +158,7 @@ python3 .shared/ui-ux-pro-max/scripts/search.py "beauty spa wellness service" --
 After getting the design system, use domain searches to get additional details:
 
 ```bash
-python3 .shared/ui-ux-pro-max/scripts/search.py "<keyword>" --domain <domain> [-n <max_results>]
+python3 .claude/skills/ui-ux-pro-max/scripts/search.py "<keyword>" --domain <domain> [-n <max_results>]
 ```
 
 **When to use detailed searches:**
@@ -77,16 +170,18 @@ python3 .shared/ui-ux-pro-max/scripts/search.py "<keyword>" --domain <domain> [-
 | UX best practices | `ux` | `--domain ux "animation accessibility"` |
 | Alternative fonts | `typography` | `--domain typography "elegant luxury"` |
 | Landing structure | `landing` | `--domain landing "hero social-proof"` |
+| AI chat patterns | `ai-chat` | `--domain ai-chat "streaming citations"` |
+| Architecture guidance | `architecture` | `--domain architecture "clean hexagonal"` |
 
 ### Step 4: Stack Guidelines (Default: html-tailwind)
 
 Get implementation-specific best practices. If user doesn't specify a stack, **default to `html-tailwind`**.
 
 ```bash
-python3 .shared/ui-ux-pro-max/scripts/search.py "<keyword>" --stack html-tailwind
+python3 .claude/skills/ui-ux-pro-max/scripts/search.py "<keyword>" --stack html-tailwind
 ```
 
-Available stacks: `html-tailwind`, `react`, `nextjs`, `vue`, `svelte`, `swiftui`, `react-native`, `flutter`, `shadcn`, `jetpack-compose`
+Available stacks: `html-tailwind`, `react`, `nextjs`, `vue`, `svelte`, `swiftui`, `react-native`, `flutter`, `shadcn`, `jetpack-compose`, `htmx-alpine-axum`, `tauri`
 
 ---
 
@@ -106,21 +201,25 @@ Available stacks: `html-tailwind`, `react`, `nextjs`, `vue`, `svelte`, `swiftui`
 | `react` | React/Next.js performance | waterfall, bundle, suspense, memo, rerender, cache |
 | `web` | Web interface guidelines | aria, focus, keyboard, semantic, virtualize |
 | `prompt` | AI prompts, CSS keywords | (style name) |
+| `ai-chat` | AI chat interface patterns | streaming, citations, multi-modal, thinking, confidence |
+| `architecture` | Clean architecture patterns | feature-based, hexagonal, domain-driven, clean, component |
 
 ### Available Stacks
 
 | Stack | Focus |
 |-------|-------|
 | `html-tailwind` | Tailwind utilities, responsive, a11y (DEFAULT) |
-| `react` | State, hooks, performance, patterns |
+| `react` | State, hooks, performance, patterns, advanced state management |
 | `nextjs` | SSR, routing, images, API routes |
 | `vue` | Composition API, Pinia, Vue Router |
 | `svelte` | Runes, stores, SvelteKit |
 | `swiftui` | Views, State, Navigation, Animation |
 | `react-native` | Components, Navigation, Lists |
-| `flutter` | Widgets, State, Layout, Theming |
+| `flutter` | Widgets, State, Layout, Theming, Riverpod, BLoC |
 | `shadcn` | shadcn/ui components, theming, forms, patterns |
 | `jetpack-compose` | Composables, Modifiers, State Hoisting, Recomposition |
+| `htmx-alpine-axum` | HTMX attributes, Alpine.js, Rust Axum backend patterns |
+| `tauri` | Desktop apps, Rust backend, frontend frameworks integration |
 
 ---
 
@@ -137,7 +236,7 @@ Available stacks: `html-tailwind`, `react`, `nextjs`, `vue`, `svelte`, `swiftui`
 ### Step 2: Generate Design System (REQUIRED)
 
 ```bash
-python3 .shared/ui-ux-pro-max/scripts/search.py "beauty spa wellness service elegant" --design-system -p "Serenity Spa"
+python3 .claude/skills/ui-ux-pro-max/scripts/search.py "beauty spa wellness service elegant" --design-system -p "Serenity Spa"
 ```
 
 **Output:** Complete design system with pattern, style, colors, typography, effects, and anti-patterns.
@@ -146,16 +245,29 @@ python3 .shared/ui-ux-pro-max/scripts/search.py "beauty spa wellness service ele
 
 ```bash
 # Get UX guidelines for animation and accessibility
-python3 .shared/ui-ux-pro-max/scripts/search.py "animation accessibility" --domain ux
+python3 .claude/skills/ui-ux-pro-max/scripts/search.py "animation accessibility" --domain ux
 
 # Get alternative typography options if needed
-python3 .shared/ui-ux-pro-max/scripts/search.py "elegant luxury serif" --domain typography
+python3 .claude/skills/ui-ux-pro-max/scripts/search.py "elegant luxury serif" --domain typography
 ```
 
 ### Step 4: Stack Guidelines
 
 ```bash
-python3 .shared/ui-ux-pro-max/scripts/search.py "layout responsive form" --stack html-tailwind
+python3 .claude/skills/ui-ux-pro-max/scripts/search.py "layout responsive form" --stack html-tailwind
+```
+
+**Step 5: Advanced Features (as needed)**
+
+```bash
+# For AI chat interfaces
+python3 .claude/skills/ui-ux-pro-max/scripts/search.py "streaming response citations" --domain ai-chat
+
+# For clean architecture
+python3 .claude/skills/ui-ux-pro-max/scripts/search.py "feature-based structure" --domain architecture
+
+# Export for cross-platform use
+python3 .claude/skills/ui-ux-pro-max/scripts/search.py "beauty spa wellness" --export-a2ui --export-targets react vue
 ```
 
 **Then:** Synthesize design system + detailed searches and implement the design.
@@ -168,10 +280,10 @@ The `--design-system` flag supports two output formats:
 
 ```bash
 # ASCII box (default) - best for terminal display
-python3 .shared/ui-ux-pro-max/scripts/search.py "fintech crypto" --design-system
+python3 .claude/skills/ui-ux-pro-max/scripts/search.py "fintech crypto" --design-system
 
 # Markdown - best for documentation
-python3 .shared/ui-ux-pro-max/scripts/search.py "fintech crypto" --design-system -f markdown
+python3 .claude/skills/ui-ux-pro-max/scripts/search.py "fintech crypto" --design-system -f markdown
 ```
 
 ---
@@ -184,6 +296,122 @@ python3 .shared/ui-ux-pro-max/scripts/search.py "fintech crypto" --design-system
 4. **Always check UX** - Search "animation", "z-index", "accessibility" for common issues
 5. **Use stack flag** - Get implementation-specific best practices
 6. **Iterate** - If first search doesn't match, try different keywords
+
+---
+
+## Advanced Features
+
+### External Configuration Support
+
+Customize the skill with your own brand colors, domain patterns, and stack guidelines using external configuration:
+
+```bash
+# Create external configuration directory
+mkdir .ui-ux-pro-max-config
+
+# Search with brand integration
+python3 .claude/skills/ui-ux-pro-max/scripts/search.py "dashboard design" --apply-brand --config-path .ui-ux-pro-max-config/
+
+# Check configuration status
+python3 .claude/skills/ui-ux-pro-max/scripts/search.py "test" --config-status --config-path .ui-ux-pro-max-config/
+```
+
+**External Configuration Structure:**
+```
+.ui-ux-pro-max-config/
+├── config.json                 # Main configuration
+├── brand/brand.json            # Brand colors and typography
+├── domains/custom-domain.csv   # Custom domain patterns
+├── stacks/custom-stack.csv     # Custom stack patterns
+└── reasoning/custom-rules.json # Custom reasoning weights
+```
+
+**Brand Integration Example:**
+```json
+{
+  "colors": {
+    "primary": "#1a73e8",
+    "secondary": "#34a853"
+  },
+  "typography": {
+    "primary_font": {
+      "name": "Inter",
+      "google_fonts_import": "@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');"
+    }
+  }
+}
+```
+
+### A2UI Cross-Platform Export
+
+Export design recommendations as A2UI protocol for cross-platform code generation:
+
+```bash
+# Export search results as A2UI JSON
+python3 .claude/skills/ui-ux-pro-max/scripts/search.py "button design" --export-a2ui
+
+# Export with specific targets
+python3 .claude/skills/ui-ux-pro-max/scripts/search.py "dashboard layout" --export-a2ui --export-targets react vue flutter
+
+# Save to file
+python3 .claude/skills/ui-ux-pro-max/scripts/search.py "card design" --export-a2ui --export-file design-system.json
+```
+
+**A2UI Export includes:**
+- Complete design system (colors, typography, spacing)
+- Platform-specific code examples
+- Component specifications
+- Responsive breakpoints
+- Accessibility guidelines
+
+**Supported export targets:** `react`, `vue`, `flutter`, `html`, `swiftui`
+
+### AI Chat Interface Patterns
+
+Search specialized patterns for AI chat interfaces and conversational UIs:
+
+```bash
+# Get streaming text patterns
+python3 .claude/skills/ui-ux-pro-max/scripts/search.py "streaming response" --domain ai-chat
+
+# Find citation and reference patterns
+python3 .claude/skills/ui-ux-pro-max/scripts/search.py "citations sources" --domain ai-chat
+
+# Get multi-modal input patterns
+python3 .claude/skills/ui-ux-pro-max/scripts/search.py "voice upload" --domain ai-chat
+```
+
+**Available AI Chat Patterns (47 total):**
+- Streaming text display with typewriter effects
+- Multi-modal input composers (text, voice, files)
+- Citation and source bubbles
+- Thinking process indicators
+- Confidence level displays
+- Tool call visualizations
+- Context-aware suggestions
+- Error recovery patterns
+
+### Clean Architecture Patterns
+
+Search architectural patterns for clean, maintainable codebases:
+
+```bash
+# Get feature-based architecture patterns
+python3 .claude/skills/ui-ux-pro-max/scripts/search.py "feature slice" --domain architecture
+
+# Find domain-driven design patterns
+python3 .claude/skills/ui-ux-pro-max/scripts/search.py "domain entity" --domain architecture
+
+# Get component architecture patterns
+python3 .claude/skills/ui-ux-pro-max/scripts/search.py "component composition" --domain architecture
+```
+
+**Available Architecture Categories:**
+- Feature-Based Architecture (8 patterns)
+- Hexagonal Architecture (6 patterns)
+- Domain-Driven Design (4 patterns)
+- Clean Architecture (4 patterns)
+- Component Architecture (2 patterns)
 
 ---
 

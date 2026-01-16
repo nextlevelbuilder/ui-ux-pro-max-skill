@@ -9,6 +9,20 @@ import re
 from pathlib import Path
 from math import log
 from collections import defaultdict
+from typing import Dict, List, Optional, Any
+
+# Import external configuration modules
+try:
+    from .config_loader import ConfigLoader
+    from .brand_processor import BrandProcessor
+    EXTERNAL_CONFIG_AVAILABLE = True
+except ImportError:
+    try:
+        from config_loader import ConfigLoader
+        from brand_processor import BrandProcessor
+        EXTERNAL_CONFIG_AVAILABLE = True
+    except ImportError:
+        EXTERNAL_CONFIG_AVAILABLE = False
 
 # ============ CONFIGURATION ============
 DATA_DIR = Path(__file__).parent.parent / "data"
@@ -69,6 +83,16 @@ CSV_CONFIG = {
         "file": "web-interface.csv",
         "search_cols": ["Category", "Issue", "Keywords", "Description"],
         "output_cols": ["Category", "Issue", "Platform", "Description", "Do", "Don't", "Code Example Good", "Code Example Bad", "Severity"]
+    },
+    "ai-chat": {
+        "file": "ai-chat-patterns.csv",
+        "search_cols": ["Pattern_Name", "Category", "Description", "UX_Principle", "Use_Cases"],
+        "output_cols": ["Pattern_Name", "Category", "Description", "Visual_Design", "Interaction_Behavior", "Code_Example_Good", "UX_Principle", "Technical_Implementation", "Use_Cases", "Anti_Patterns", "Severity"]
+    },
+    "architecture": {
+        "file": "architecture.csv",
+        "search_cols": ["term", "description", "examples", "reasoning"],
+        "output_cols": ["term", "description", "examples", "code_example", "reasoning", "category", "priority"]
     }
 }
 
@@ -84,7 +108,9 @@ STACK_CONFIG = {
     "react-native": {"file": "stacks/react-native.csv"},
     "flutter": {"file": "stacks/flutter.csv"},
     "shadcn": {"file": "stacks/shadcn.csv"},
-    "jetpack-compose": {"file": "stacks/jetpack-compose.csv"}
+    "jetpack-compose": {"file": "stacks/jetpack-compose.csv"},
+    "htmx-alpine-axum": {"file": "stacks/htmx-alpine-axum.csv"},
+    "tauri": {"file": "stacks/tauri.csv"}
 }
 
 # Common columns for all stacks
@@ -206,7 +232,9 @@ def detect_domain(query):
         "typography": ["font", "typography", "heading", "serif", "sans"],
         "icons": ["icon", "icons", "lucide", "heroicons", "symbol", "glyph", "pictogram", "svg icon"],
         "react": ["react", "next.js", "nextjs", "suspense", "memo", "usecallback", "useeffect", "rerender", "bundle", "waterfall", "barrel", "dynamic import", "rsc", "server component"],
-        "web": ["aria", "focus", "outline", "semantic", "virtualize", "autocomplete", "form", "input type", "preconnect"]
+        "web": ["aria", "focus", "outline", "semantic", "virtualize", "autocomplete", "form", "input type", "preconnect"],
+        "ai-chat": ["ai", "chat", "chatbot", "streaming", "thinking", "reasoning", "tool execution", "citation", "confidence", "uncertainty", "conversation", "branching", "multi-modal", "feedback", "error recovery", "transparency", "trust", "ai interface", "llm", "gpt", "claude"],
+        "architecture": ["architecture", "clean architecture", "hexagonal", "feature", "domain", "ddd", "domain-driven", "layer", "separation", "modular", "structure", "organization", "pattern", "boundary", "aggregate", "entity", "use case", "port", "adapter", "slice"]
     }
 
     scores = {domain: sum(1 for kw in keywords if kw in query_lower) for domain, keywords in domain_keywords.items()}
@@ -256,3 +284,294 @@ def search_stack(query, stack, max_results=MAX_RESULTS):
         "count": len(results),
         "results": results
     }
+
+
+# ============ EXTERNAL CONFIGURATION SUPPORT ============
+
+def search_with_external_config(query: str, domain: Optional[str] = None,
+                               stack: Optional[str] = None,
+                               max_results: int = MAX_RESULTS,
+                               config_path: Optional[str] = None,
+                               apply_brand: bool = True) -> Dict[str, Any]:
+    """
+    Enhanced search function with external configuration support
+
+    Args:
+        query: Search query string
+        domain: Domain filter (optional, auto-detected if None)
+        stack: Stack filter (optional)
+        max_results: Maximum number of results to return
+        config_path: Path to external configuration directory
+        apply_brand: Whether to apply brand configuration to results
+
+    Returns:
+        Search results with external configuration and brand integration applied
+    """
+    if not EXTERNAL_CONFIG_AVAILABLE:
+        # Fall back to standard search if external config is not available
+        if stack:
+            return search_stack(query, stack, max_results)
+        else:
+            return search(query, domain, max_results)
+
+    # Load external configuration
+    config_loader = ConfigLoader(config_path)
+    external_config = config_loader.load_external_config()
+
+    # Get built-in data
+    builtin_data = _get_builtin_data()
+
+    # Merge external and built-in data
+    merged_data = config_loader.merge_with_builtin(external_config, builtin_data)
+
+    # Perform search on merged data
+    if stack:
+        results = _search_with_merged_data_stack(query, stack, merged_data, max_results)
+    else:
+        results = _search_with_merged_data_domain(query, domain, merged_data, max_results)
+
+    # Apply brand configuration if enabled and available
+    if (apply_brand and external_config.get("brand", {}).get("enabled", False)
+        and "config" in external_config.get("brand", {})):
+        brand_processor = BrandProcessor()
+        if "results" in results:
+            results["results"] = brand_processor.apply_brand_config(
+                results["results"],
+                external_config["brand"]["config"]
+            )
+            results["brand_applied"] = True
+
+    # Add external configuration metadata
+    results["external_config"] = {
+        "enabled": external_config["enabled"],
+        "domains_loaded": len(external_config.get("domains", {}).get("files", [])),
+        "stacks_loaded": len(external_config.get("stacks", {}).get("files", [])),
+        "brand_enabled": external_config.get("brand", {}).get("enabled", False),
+        "total_external_entries": external_config.get("performance", {}).get("current_entries", 0)
+    }
+
+    return results
+
+
+def _get_builtin_data() -> Dict[str, List[Dict]]:
+    """Load all built-in CSV data for merging"""
+    builtin_data = {
+        "domains": [],
+        "stacks": []
+    }
+
+    # Load domain data
+    for domain_name, config in CSV_CONFIG.items():
+        filepath = DATA_DIR / config["file"]
+        if filepath.exists():
+            try:
+                domain_data = _load_csv(filepath)
+                # Add metadata to each row
+                for row in domain_data:
+                    row["_domain"] = domain_name
+                    row["_source"] = "builtin"
+                builtin_data["domains"].extend(domain_data)
+            except Exception:
+                # Skip files that can't be loaded
+                continue
+
+    # Load stack data
+    for stack_name, config in STACK_CONFIG.items():
+        filepath = DATA_DIR / config["file"]
+        if filepath.exists():
+            try:
+                stack_data = _load_csv(filepath)
+                # Add metadata to each row
+                for row in stack_data:
+                    row["_stack"] = stack_name
+                    row["_source"] = "builtin"
+                builtin_data["stacks"].extend(stack_data)
+            except Exception:
+                # Skip files that can't be loaded
+                continue
+
+    return builtin_data
+
+
+def _search_with_merged_data_domain(query: str, domain: Optional[str],
+                                  merged_data: Dict, max_results: int) -> Dict[str, Any]:
+    """Search domain data with merged external and built-in data"""
+    if domain is None:
+        domain = detect_domain(query)
+
+    # Get all domain data (built-in + external)
+    all_domain_data = merged_data.get("domains", [])
+
+    # Filter by domain if specified and not searching external data
+    domain_filtered_data = []
+    for row in all_domain_data:
+        if "_domain" in row and row["_domain"] == domain:
+            domain_filtered_data.append(row)
+        elif "_source" in row and row["_source"] != "builtin":
+            # Include external data regardless of domain
+            domain_filtered_data.append(row)
+
+    if not domain_filtered_data:
+        # Fall back to standard search if no merged data
+        return search(query, domain, max_results)
+
+    # Use the search columns from the domain config
+    config = CSV_CONFIG.get(domain, CSV_CONFIG["style"])
+    search_cols = config["search_cols"]
+    output_cols = config["output_cols"]
+
+    # Perform BM25 search on merged data
+    results = _search_data_list(domain_filtered_data, search_cols, output_cols, query, max_results)
+
+    return {
+        "domain": domain,
+        "query": query,
+        "source": "merged_data",
+        "count": len(results),
+        "results": results
+    }
+
+
+def _search_with_merged_data_stack(query: str, stack: str,
+                                 merged_data: Dict, max_results: int) -> Dict[str, Any]:
+    """Search stack data with merged external and built-in data"""
+    if stack not in STACK_CONFIG:
+        return {"error": f"Unknown stack: {stack}. Available: {', '.join(AVAILABLE_STACKS)}"}
+
+    # Get all stack data (built-in + external)
+    all_stack_data = merged_data.get("stacks", [])
+
+    # Filter by stack if specified and not searching external data
+    stack_filtered_data = []
+    for row in all_stack_data:
+        if "_stack" in row and row["_stack"] == stack:
+            stack_filtered_data.append(row)
+        elif "_source" in row and row["_source"] != "builtin":
+            # Include external stack data
+            stack_filtered_data.append(row)
+
+    if not stack_filtered_data:
+        # Fall back to standard search if no merged data
+        return search_stack(query, stack, max_results)
+
+    # Use stack search columns
+    search_cols = _STACK_COLS["search_cols"]
+    output_cols = _STACK_COLS["output_cols"]
+
+    # Perform BM25 search on merged data
+    results = _search_data_list(stack_filtered_data, search_cols, output_cols, query, max_results)
+
+    return {
+        "domain": "stack",
+        "stack": stack,
+        "query": query,
+        "source": "merged_data",
+        "count": len(results),
+        "results": results
+    }
+
+
+def _search_data_list(data_list: List[Dict], search_cols: List[str],
+                     output_cols: List[str], query: str, max_results: int) -> List[Dict]:
+    """Perform BM25 search on a list of data dictionaries"""
+    if not data_list:
+        return []
+
+    # Build documents from search columns
+    documents = []
+    for row in data_list:
+        doc_text = " ".join(str(row.get(col, "")) for col in search_cols)
+        documents.append(doc_text)
+
+    # BM25 search
+    bm25 = BM25()
+    bm25.fit(documents)
+    ranked = bm25.score(query)
+
+    # Get top results with score > 0
+    results = []
+    for idx, score in ranked[:max_results]:
+        if score > 0:
+            row = data_list[idx]
+            result = {col: row.get(col, "") for col in output_cols if col in row}
+            result["score"] = score  # Add BM25 score for debugging
+
+            # Add source metadata
+            if "_source" in row:
+                result["_source"] = row["_source"]
+
+            results.append(result)
+
+    return results
+
+
+def get_external_config_status(config_path: Optional[str] = None) -> Dict[str, Any]:
+    """
+    Get status of external configuration system
+
+    Args:
+        config_path: Path to external configuration directory
+
+    Returns:
+        Status information about external configuration
+    """
+    if not EXTERNAL_CONFIG_AVAILABLE:
+        return {
+            "available": False,
+            "error": "External configuration modules not available"
+        }
+
+    config_loader = ConfigLoader(config_path)
+    status = config_loader.get_config_status()
+    status["available"] = True
+
+    return status
+
+
+def validate_external_config(config_path: Optional[str] = None) -> Dict[str, Any]:
+    """
+    Validate external configuration
+
+    Args:
+        config_path: Path to external configuration directory
+
+    Returns:
+        Validation results
+    """
+    if not EXTERNAL_CONFIG_AVAILABLE:
+        return {
+            "valid": False,
+            "error": "External configuration modules not available"
+        }
+
+    config_loader = ConfigLoader(config_path)
+    external_config = config_loader.load_external_config()
+    validation_result = config_loader.validate_configuration(external_config)
+
+    return validation_result
+
+
+# Backward compatibility aliases
+def search_domains(query: str, domain: Optional[str] = None,
+                  external_config: Optional[Dict] = None,
+                  max_results: int = MAX_RESULTS) -> List[Dict]:
+    """
+    Search domains with optional external configuration (compatibility function)
+
+    Args:
+        query: Search query string
+        domain: Domain filter
+        external_config: External configuration data (deprecated, use search_with_external_config)
+        max_results: Maximum results to return
+
+    Returns:
+        List of search results
+    """
+    if external_config:
+        # Use enhanced search with external config
+        results = search_with_external_config(query, domain, None, max_results)
+        return results.get("results", [])
+    else:
+        # Use standard search
+        results = search(query, domain, max_results)
+        return results.get("results", [])

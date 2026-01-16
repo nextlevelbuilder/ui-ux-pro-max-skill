@@ -1,0 +1,32 @@
+{
+  "version": "1.0.0",
+  "enabled": true,
+  "domains": {
+    "enabled": ["custom-fintech"],
+    "disabled": []
+  },
+  "stacks": {
+    "enabled": ["enterprise-tools"],
+    "disabled": []
+  },
+  "brand": {
+    "enabled": true,
+    "file": "brand/brand.json"
+  },
+  "reasoning": {
+    "enabled": true,
+    "files": ["reasoning/custom-reasoning.json"]
+  },
+  "performance": {
+    "max_entries": 1000,
+    "cache_enabled": true,
+    "warning_threshold": 800
+  },
+  "logging": {
+    "level": "INFO",
+    "conflicts": true,
+    "validation": true,
+    "performance": false,
+    "file_operations": false
+  }
+}

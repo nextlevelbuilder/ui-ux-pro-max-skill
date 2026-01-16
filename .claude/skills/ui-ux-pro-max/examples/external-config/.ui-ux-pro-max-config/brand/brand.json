@@ -1,0 +1,62 @@
+{
+  "name": "TechCorp Design System",
+  "industry": "technology",
+  "style_preferences": {
+    "preferred_styles": ["minimalism", "glassmorphism", "neumorphism"],
+    "avoided_styles": ["brutalism", "claymorphism"],
+    "design_philosophy": "clean"
+  },
+  "colors": {
+    "primary": "#1a73e8",
+    "secondary": "#34a853",
+    "accent": "#fbbc04",
+    "neutral": {
+      "dark": "#202124",
+      "medium": "#5f6368",
+      "light": "#f8f9fa"
+    },
+    "semantic": {
+      "success": "#34a853",
+      "warning": "#fbbc04",
+      "error": "#ea4335",
+      "info": "#1a73e8"
+    }
+  },
+  "typography": {
+    "primary_font": {
+      "name": "Inter",
+      "google_fonts_import": "@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');",
+      "fallback": "system-ui, -apple-system, sans-serif"
+    },
+    "secondary_font": {
+      "name": "JetBrains Mono",
+      "google_fonts_import": "@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap');",
+      "fallback": "Consolas, Monaco, monospace"
+    },
+    "scale": "1.25",
+    "line_height": {
+      "tight": 1.2,
+      "normal": 1.5,
+      "loose": 1.8
+    }
+  },
+  "spacing": {
+    "scale": "geometric",
+    "base_unit": 8,
+    "multipliers": [0.5, 1, 1.5, 2, 3, 4, 6, 8, 12, 16]
+  },
+  "borders": {
+    "radius": {
+      "none": "0",
+      "small": "4px",
+      "medium": "8px",
+      "large": "16px",
+      "full": "9999px"
+    },
+    "width": {
+      "thin": "1px",
+      "medium": "2px",
+      "thick": "4px"
+    }
+  }
+}

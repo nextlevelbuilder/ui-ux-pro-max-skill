@@ -12,6 +12,10 @@ __pycache__/
 .venv/
 venv/
 ENV/
+dist/
+*.egg-info/
+.pytest_cache/
+*.pyc
 
 # IDE
 .idea/

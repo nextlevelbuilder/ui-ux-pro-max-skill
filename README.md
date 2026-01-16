@@ -4,6 +4,8 @@
   <a href="https://github.com/nextlevelbuilder/ui-ux-pro-max-skill/releases"><img src="https://img.shields.io/github/v/release/nextlevelbuilder/ui-ux-pro-max-skill?style=for-the-badge&color=blue" alt="GitHub Release"></a>
   <img src="https://img.shields.io/badge/reasoning_rules-100-green?style=for-the-badge" alt="100 Reasoning Rules">
   <img src="https://img.shields.io/badge/UI_styles-57-purple?style=for-the-badge" alt="57 UI Styles">
+  <img src="https://img.shields.io/badge/AI_chat_patterns-47-blue?style=for-the-badge" alt="47 AI Chat Patterns">
+  <img src="https://img.shields.io/badge/architecture_patterns-24-orange?style=for-the-badge" alt="24 Architecture Patterns">
   <img src="https://img.shields.io/badge/python-3.x-yellow?style=for-the-badge&logo=python&logoColor=white" alt="Python 3.x">
   <a href="https://github.com/nextlevelbuilder/ui-ux-pro-max-skill/blob/main/LICENSE"><img src="https://img.shields.io/github/license/nextlevelbuilder/ui-ux-pro-max-skill?style=for-the-badge&color=green" alt="License"></a>
 </p>
@@ -15,7 +17,7 @@
   <a href="https://paypal.me/uiuxpromax"><img src="https://img.shields.io/badge/PayPal-Support%20Development-00457C?style=flat-square&logo=paypal&logoColor=white" alt="PayPal"></a>
 </p>
 
-An AI skill that provides design intelligence for building professional UI/UX across multiple platforms and frameworks.
+An advanced AI skill with customization architecture that provides design intelligence for building professional UI/UX across multiple platforms and frameworks. Features external configuration support, brand integration, A2UI cross-platform export, AI chat interface patterns, and clean architecture guidance.
 
 <p align="center">
   <img src="screenshots/website.png" alt="UI UX Pro Max" width="800">
@@ -146,9 +148,14 @@ Each rule includes:
 - **95 Color Palettes** - Industry-specific palettes for SaaS, E-commerce, Healthcare, Fintech, Beauty, etc.
 - **56 Font Pairings** - Curated typography combinations with Google Fonts imports
 - **24 Chart Types** - Recommendations for dashboards and analytics
-- **11 Tech Stacks** - React, Next.js, Vue, Nuxt.js, Nuxt UI, Svelte, SwiftUI, React Native, Flutter, HTML+Tailwind, shadcn/ui
+- **13 Tech Stacks** - React, Next.js, Vue, Nuxt.js, Nuxt UI, Svelte, SwiftUI, React Native, Flutter, HTML+Tailwind, shadcn/ui, HTMX+Alpine.js+Axum, Tauri
 - **98 UX Guidelines** - Best practices, anti-patterns, and accessibility rules
-- **100 Reasoning Rules** - Industry-specific design system generation (NEW in v2.0)
+- **100 Reasoning Rules** - Industry-specific design system generation
+- **47 AI Chat Patterns** - Specialized patterns for AI interfaces, streaming responses, citations, multi-modal inputs (NEW)
+- **24 Architecture Patterns** - Clean architecture guidance for feature-based, hexagonal, and domain-driven design (NEW)
+- **External Configuration** - Customize with your brand colors, fonts, and custom domain/stack patterns (NEW)
+- **A2UI Cross-Platform Export** - Export design systems as structured JSON for React, Vue, Flutter, HTML, SwiftUI (NEW)
+- **Advanced State Management** - Enhanced React patterns for Zustand, Jotai, Redux Toolkit, and Context (NEW)
 
 ## Installation
 
@@ -308,6 +315,14 @@ Design a portfolio website with dark mode
 Make a mobile app UI for e-commerce
 
 Build a fintech banking app with dark theme
+
+Create an AI chat interface with streaming responses
+
+Design a clean architecture for my React app
+
+Build a trading dashboard with HTMX and Alpine.js
+
+Make a desktop app UI with Tauri
 ```
 
 ### How It Works
@@ -315,17 +330,22 @@ Build a fintech banking app with dark theme
 1. **You ask** - Request any UI/UX task (build, design, create, implement, review, fix, improve)
 2. **Design System Generated** - The AI automatically generates a complete design system using the reasoning engine
 3. **Smart recommendations** - Based on your product type and requirements, it finds the best matching styles, colors, and typography
-4. **Code generation** - Implements the UI with proper colors, fonts, spacing, and best practices
-5. **Pre-delivery checks** - Validates against common UI/UX anti-patterns
+4. **Advanced patterns** - Access specialized AI chat patterns, clean architecture guidance, and advanced state management
+5. **Brand integration** - Apply your custom brand colors and typography (if external config is set up)
+6. **Code generation** - Implements the UI with proper colors, fonts, spacing, and best practices
+7. **Cross-platform export** - Export as A2UI protocol for React, Vue, Flutter, HTML, SwiftUI
+8. **Pre-delivery checks** - Validates against common UI/UX anti-patterns
 
 ### Supported Stacks
 
 The skill provides stack-specific guidelines for:
 
 - **HTML + Tailwind** (default)
-- **React** / **Next.js** / **shadcn/ui**
+- **React** / **Next.js** / **shadcn/ui** (with advanced state management patterns)
 - **Vue** / **Nuxt.js** / **Nuxt UI** / **Svelte**
-- **SwiftUI** / **React Native** / **Flutter**
+- **SwiftUI** / **React Native** / **Flutter** (with Riverpod, Provider, BLoC)
+- **HTMX + Alpine.js + Axum** (modern web apps with Rust backend)
+- **Tauri** (cross-platform desktop apps with web frontend)
 
 Just mention your preferred stack in the prompt, or let it default to HTML + Tailwind.
 
@@ -349,6 +369,104 @@ python3 .claude/skills/ui-ux-pro-max/scripts/search.py "dashboard" --domain char
 python3 .claude/skills/ui-ux-pro-max/scripts/search.py "form validation" --stack react
 python3 .claude/skills/ui-ux-pro-max/scripts/search.py "responsive layout" --stack html-tailwind
 ```
+
+## Advanced Features (NEW in v2.0)
+
+### External Configuration Support
+
+Customize the skill with your own brand colors, domain patterns, and stack guidelines:
+
+```bash
+# Create external configuration directory
+mkdir .ui-ux-pro-max-config
+
+# Search with brand integration
+python3 .claude/skills/ui-ux-pro-max/scripts/search.py "dashboard design" --apply-brand --config-path .ui-ux-pro-max-config/
+
+# Check configuration status
+python3 .claude/skills/ui-ux-pro-max/scripts/search.py "test" --config-status --config-path .ui-ux-pro-max-config/
+```
+
+**External Configuration Structure:**
+```
+.ui-ux-pro-max-config/
+├── config.json                 # Main configuration
+├── brand/brand.json            # Brand colors and typography
+├── domains/custom-domain.csv   # Custom domain patterns
+├── stacks/custom-stack.csv     # Custom stack patterns
+└── reasoning/custom-rules.json # Custom reasoning weights
+```
+
+### A2UI Cross-Platform Export
+
+Export design recommendations as A2UI protocol for cross-platform code generation:
+
+```bash
+# Export search results as A2UI JSON
+python3 .claude/skills/ui-ux-pro-max/scripts/search.py "button design" --export-a2ui
+
+# Export with specific targets
+python3 .claude/skills/ui-ux-pro-max/scripts/search.py "dashboard layout" --export-a2ui --export-targets react vue flutter
+
+# Save to file
+python3 .claude/skills/ui-ux-pro-max/scripts/search.py "card design" --export-a2ui --export-file design-system.json
+```
+
+**A2UI Export includes:**
+- Complete design system (colors, typography, spacing)
+- Platform-specific code examples
+- Component specifications
+- Responsive breakpoints
+- Accessibility guidelines
+
+**Supported export targets:** `react`, `vue`, `flutter`, `html`, `swiftui`
+
+### AI Chat Interface Patterns
+
+Search specialized patterns for AI chat interfaces and conversational UIs:
+
+```bash
+# Get streaming text patterns
+python3 .claude/skills/ui-ux-pro-max/scripts/search.py "streaming response" --domain ai-chat
+
+# Find citation and reference patterns
+python3 .claude/skills/ui-ux-pro-max/scripts/search.py "citations sources" --domain ai-chat
+
+# Get multi-modal input patterns
+python3 .claude/skills/ui-ux-pro-max/scripts/search.py "voice upload" --domain ai-chat
+```
+
+**Available AI Chat Patterns (47 total):**
+- Streaming text display with typewriter effects
+- Multi-modal input composers (text, voice, files)
+- Citation and source bubbles
+- Thinking process indicators
+- Confidence level displays
+- Tool call visualizations
+- Context-aware suggestions
+- Error recovery patterns
+
+### Clean Architecture Patterns
+
+Search architectural patterns for clean, maintainable codebases:
+
+```bash
+# Get feature-based architecture patterns
+python3 .claude/skills/ui-ux-pro-max/scripts/search.py "feature slice" --domain architecture
+
+# Find domain-driven design patterns
+python3 .claude/skills/ui-ux-pro-max/scripts/search.py "domain entity" --domain architecture
+
+# Get component architecture patterns
+python3 .claude/skills/ui-ux-pro-max/scripts/search.py "component composition" --domain architecture
+```
+
+**Available Architecture Categories:**
+- Feature-Based Architecture (8 patterns)
+- Hexagonal Architecture (6 patterns)
+- Domain-Driven Design (4 patterns)
+- Clean Architecture (4 patterns)
+- Component Architecture (2 patterns)
 
 ## Star History
 
