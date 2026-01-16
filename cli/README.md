@@ -23,6 +23,7 @@ uipro init --ai roocode     # Roo Code
 uipro init --ai qoder       # Qoder
 uipro init --ai gemini      # Gemini CLI
 uipro init --ai trae        # Trae
+uipro init --ai opencode    # OpenCode
 uipro init --ai all         # All assistants
 
 # Options
