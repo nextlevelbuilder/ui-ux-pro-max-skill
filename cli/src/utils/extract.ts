@@ -1,7 +1,8 @@
-import { mkdir, rm, access, cp } from 'node:fs/promises';
+import { mkdir, rm, access, cp, mkdtemp, readdir } from 'node:fs/promises';
 import { join, basename } from 'node:path';
 import { exec } from 'node:child_process';
 import { promisify } from 'node:util';
+import { tmpdir } from 'node:os';
 import type { AIType } from '../types/index.js';
 import { AI_FOLDERS } from '../types/index.js';
 
@@ -91,5 +92,58 @@ export async function cleanup(tempDir: string): Promise<void> {
     await rm(tempDir, { recursive: true, force: true });
   } catch {
     // Ignore cleanup errors
+  }
+}
+
+/**
+ * Create a temporary directory for extracting ZIP files
+ */
+export async function createTempDir(): Promise<string> {
+  return mkdtemp(join(tmpdir(), 'uipro-'));
+}
+
+/**
+ * Find the extracted folder inside temp directory
+ * GitHub release ZIPs often contain a single root folder
+ */
+async function findExtractedRoot(tempDir: string): Promise<string> {
+  const entries = await readdir(tempDir, { withFileTypes: true });
+  const dirs = entries.filter(e => e.isDirectory());
+
+  // If there's exactly one directory, it's likely the extracted root
+  if (dirs.length === 1) {
+    return join(tempDir, dirs[0].name);
+  }
+
+  // Otherwise, assume tempDir itself is the root
+  return tempDir;
+}
+
+/**
+ * Install from a downloaded and extracted ZIP file
+ */
+export async function installFromZip(
+  zipPath: string,
+  targetDir: string,
+  aiType: AIType
+): Promise<{ copiedFolders: string[]; tempDir: string }> {
+  // Create temp directory
+  const tempDir = await createTempDir();
+
+  try {
+    // Extract ZIP to temp directory
+    await extractZip(zipPath, tempDir);
+
+    // Find the actual root of the extracted content
+    const extractedRoot = await findExtractedRoot(tempDir);
+
+    // Copy folders from extracted content to target
+    const copiedFolders = await copyFolders(extractedRoot, targetDir, aiType);
+
+    return { copiedFolders, tempDir };
+  } catch (error) {
+    // Cleanup on error
+    await cleanup(tempDir);
+    throw error;
   }
 }

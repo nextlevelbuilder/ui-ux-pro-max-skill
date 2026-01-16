@@ -49,7 +49,7 @@ uipro init --ai all         # All assistants
 ```bash
 uipro versions              # List available versions
 uipro update                # Update to latest version
-uipro init --version v1.0.0 # Install specific version
+uipro init --offline        # Skip GitHub download, use bundled assets
 ```
 
 ### Manual Installation

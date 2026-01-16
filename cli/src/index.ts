@@ -12,13 +12,14 @@ const program = new Command();
 program
   .name('uipro')
   .description('CLI to install UI/UX Pro Max skill for AI coding assistants')
-  .version('1.5.0');
+  .version('1.9.0');
 
 program
   .command('init')
   .description('Install UI/UX Pro Max skill to current project')
   .option('-a, --ai <type>', `AI assistant type (${AI_TYPES.join(', ')})`)
   .option('-f, --force', 'Overwrite existing files')
+  .option('-o, --offline', 'Skip GitHub download, use bundled assets only')
   .action(async (options) => {
     if (options.ai && !AI_TYPES.includes(options.ai)) {
       console.error(`Invalid AI type: ${options.ai}`);
@@ -28,6 +29,7 @@ program
     await initCommand({
       ai: options.ai as AIType | undefined,
       force: options.force,
+      offline: options.offline,
     });
   });
 
