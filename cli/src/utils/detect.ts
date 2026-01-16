@@ -60,6 +60,8 @@ export function getAITypeDescription(aiType: AIType): string {
   switch (aiType) {
     case 'claude':
       return 'Claude Code (.claude/skills/)';
+    case 'amp':
+      return 'Amp (.agents/skills/)';
     case 'cursor':
       return 'Cursor (.cursor/commands/ + .shared/)';
     case 'windsurf':
