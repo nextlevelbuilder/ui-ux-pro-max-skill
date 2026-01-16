@@ -163,6 +163,7 @@ cd /path/to/your/project
 
 # Install for your AI assistant
 uipro init --ai claude      # Claude Code
+uipro init --ai amp         # Amp
 uipro init --ai cursor      # Cursor
 uipro init --ai windsurf    # Windsurf
 uipro init --ai antigravity # Antigravity (.agent + .shared)
@@ -191,6 +192,7 @@ Copy the appropriate folders to your project:
 | AI Assistant   | Folders to Copy                                                      |
 | -------------- | -------------------------------------------------------------------- |
 | Claude Code    | `.claude/skills/ui-ux-pro-max/`                                      |
+| Amp            | `.claude/skills/ui-ux-pro-max/`                                      |
 | Cursor         | `.cursor/commands/ui-ux-pro-max.md` + `.shared/ui-ux-pro-max/`       |
 | Windsurf       | `.windsurf/workflows/ui-ux-pro-max.md` + `.shared/ui-ux-pro-max/`    |
 | Antigravity    | `.agent/workflows/ui-ux-pro-max.md` + `.shared/ui-ux-pro-max/`       |
@@ -229,6 +231,16 @@ The skill activates automatically when you request UI/UX work. Just chat natural
 ```
 Build a landing page for my SaaS product
 ```
+
+### Amp
+
+The skill activates automatically when you request UI/UX work:
+
+```
+Build a landing page for my SaaS product
+```
+
+> **Note:** Amp loads skills from `.claude/skills/`. If already installed for Claude Code, Amp works automatically.
 
 ### Cursor / Windsurf / Antigravity
 
