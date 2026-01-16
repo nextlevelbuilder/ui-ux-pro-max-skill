@@ -152,6 +152,15 @@ Each rule includes:
 
 ## Installation
 
+### Using Claude Marketplace (Claude Code)
+
+Install directly in Claude Code with two commands:
+
+```
+/plugin marketplace add nextlevelbuilder/ui-ux-pro-max-skill
+/plugin install ui-ux-pro-max@ui-ux-pro-max-skill
+```
+
 ### Using CLI (Recommended)
 
 ```bash

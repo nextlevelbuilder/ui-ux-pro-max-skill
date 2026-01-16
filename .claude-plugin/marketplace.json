@@ -1,0 +1,35 @@
+{
+  "name": "ui-ux-pro-max-skill",
+  "id": "ui-ux-pro-max-skill",
+  "owner": {
+    "name": "nextlevelbuilder"
+  },
+  "metadata": {
+    "description": "UI/UX design intelligence skill with 50 styles, 21 palettes, 50 font pairings, 20 charts, and 9 stack guidelines",
+    "version": "2.0.0"
+  },
+  "plugins": [
+    {
+      "name": "ui-ux-pro-max",
+      "source": "./.claude/skills/ui-ux-pro-max",
+      "description": "Professional UI/UX design intelligence for AI coding assistants. Includes searchable databases of styles, colors, typography, charts, and UX guidelines for React, Next.js, Vue, Svelte, SwiftUI, React Native, Flutter, Tailwind, and shadcn/ui.",
+      "version": "2.0.0",
+      "author": {
+        "name": "nextlevelbuilder"
+      },
+      "keywords": [
+        "ui",
+        "ux",
+        "design",
+        "styles",
+        "typography",
+        "color-palette",
+        "accessibility",
+        "charts",
+        "components"
+      ],
+      "category": "design",
+      "strict": false
+    }
+  ]
+}
