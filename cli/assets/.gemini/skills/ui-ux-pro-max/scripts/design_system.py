@@ -911,267 +911,144 @@ def format_page_override_md(design_system: dict, page_name: str, page_query: str
 
 
 def _generate_intelligent_overrides(page_name: str, page_query: str, design_system: dict) -> dict:
-    """Generate intelligent overrides based on page type and query keywords."""
+    """
+    Generate intelligent overrides based on page type using layered search.
+    
+    Uses the existing search infrastructure to find relevant style, UX, and layout
+    data instead of hardcoded page types.
+    """
+    from core import search
     
     page_lower = page_name.lower()
     query_lower = (page_query or "").lower()
-    # Combine page name AND query for keyword detection
     combined_context = f"{page_lower} {query_lower}"
     
-    # Detect page type
-    page_type = "General"
+    # Search across multiple domains for page-specific guidance
+    style_search = search(combined_context, "style", max_results=1)
+    ux_search = search(combined_context, "ux", max_results=3)
+    landing_search = search(combined_context, "landing", max_results=1)
     
-    # Dashboard / Admin / Analytics pages
-    if any(kw in combined_context for kw in ["dashboard", "admin", "analytics", "data", "metrics", "stats"]):
-        page_type = "Dashboard / Data View"
-        return {
-            "page_type": page_type,
-            "layout": {
-                "Max Width": "1400px or full-width (wider than landing pages)",
-                "Grid": "12-column grid for data flexibility",
-                "Sidebar": "Fixed 240px sidebar for navigation"
-            },
-            "spacing": {
-                "Section Padding": "24px (reduced from 48px for density)",
-                "Card Padding": "16px (reduced from 24px)",
-                "Gap Between Cards": "16px (reduced from 24px)",
-                "Content Density": "High — optimize for information display"
-            },
-            "typography": {
-                "H1 (Page Title)": "24px (reduced from 48-64px)",
-                "H2 (Section Header)": "18px (reduced from 32px)",
-                "H3 (Card Title)": "16px (reduced from 24px)",
-                "Body": "14px (reduced from 16px for data tables)",
-                "Monospace": "Use for numbers, IDs, timestamps"
-            },
-            "colors": {
-                "Background": "Neutral gray (#F8FAFC or #F1F5F9) for reduced eye strain",
-                "Primary Color Usage": "Actions only (buttons, links) — not for backgrounds",
-                "Status Colors": "Green (#22C55E) success, Yellow (#EAB308) warning, Red (#EF4444) error"
-            },
-            "components": [
-                "Cards: Compact padding (16px), subtle border, minimal shadow",
-                "Tables: Alternating row colors, sticky headers, sortable columns",
-                "Sidebar: Collapsible, icon + text navigation items",
-                "Stat Cards: Number prominent, label secondary, trend indicator"
-            ],
-            "unique_components": [
-                "Data Tables with pagination and sorting",
-                "Stat/Metric Cards with trends",
-                "Charts (line, bar, pie) — use consistent chart library",
-                "Filters and search bar",
-                "Breadcrumb navigation"
-            ],
-            "recommendations": [
-                "Prioritize data readability over visual impact",
-                "Use consistent icon set for all actions",
-                "Implement loading skeletons for async data",
-                "Add keyboard shortcuts for power users"
-            ]
-        }
+    # Extract results from search response
+    style_results = style_search.get("results", [])
+    ux_results = ux_search.get("results", [])
+    landing_results = landing_search.get("results", [])
     
-    # Checkout / Payment pages
-    elif any(kw in combined_context for kw in ["checkout", "payment", "cart", "purchase", "order"]):
-        page_type = "Checkout / Payment"
-        return {
-            "page_type": page_type,
-            "layout": {
-                "Max Width": "800px (narrow, focused flow)",
-                "Layout": "Single column, centered",
-                "Progress": "Step indicator at top"
-            },
-            "spacing": {
-                "Section Padding": "32px (generous for clarity)",
-                "Form Field Gap": "24px between fields",
-                "Step Separation": "48px between checkout steps"
-            },
-            "typography": {
-                "H1 (Checkout Title)": "28px",
-                "Form Labels": "14px, semi-bold",
-                "Price/Total": "24px, bold, prominent"
-            },
-            "colors": {
-                "Background": "Clean white (#FFFFFF)",
-                "CTA Button": "High contrast, full-width on mobile",
-                "Trust Indicators": "Green for security, muted for secondary info"
-            },
-            "components": [
-                "Form inputs: Large touch targets (48px height minimum)",
-                "CTA Button: Full-width, prominent, sticky on mobile",
-                "Order summary: Collapsible on mobile, visible on desktop",
-                "Trust badges: Payment icons, security seals"
-            ],
-            "unique_components": [
-                "Step progress indicator",
-                "Order summary sidebar/panel",
-                "Payment method selector",
-                "Shipping address form",
-                "Promo code input"
-            ],
-            "recommendations": [
-                "Minimize distractions — no sidebar, minimal navigation",
-                "Show trust signals (SSL, payment icons)",
-                "Enable autofill for address fields",
-                "Show clear error messages inline"
-            ]
-        }
+    # Detect page type from search results or context
+    page_type = _detect_page_type(combined_context, style_results)
     
-    # Settings / Profile pages
-    elif any(kw in combined_context for kw in ["settings", "profile", "account", "preferences"]):
-        page_type = "Settings / Profile"
-        return {
-            "page_type": page_type,
-            "layout": {
-                "Max Width": "800px (narrow for readability)",
-                "Layout": "Left nav + content area, or tabbed sections",
-                "Sections": "Group related settings together"
-            },
-            "spacing": {
-                "Section Padding": "32px between setting groups",
-                "Form Field Gap": "20px between fields",
-                "Setting Item": "16px padding"
-            },
-            "typography": {
-                "H1 (Settings Title)": "24px",
-                "Section Headers": "18px, semi-bold",
-                "Setting Labels": "14px",
-                "Helper Text": "12px, muted color"
-            },
-            "colors": {
-                "Background": "White or very light gray",
-                "Danger Actions": "Red for destructive actions (delete account)",
-                "Success Feedback": "Green for saved/updated confirmations"
-            },
-            "components": [
-                "Toggle switches for on/off settings",
-                "Form inputs with clear labels",
-                "Save button: Fixed at bottom or per-section",
-                "Danger zone: Separated, red-accented section for destructive actions"
-            ],
-            "unique_components": [
-                "Avatar upload with preview",
-                "Password change form",
-                "Notification preferences toggles",
-                "Connected accounts/integrations",
-                "Danger zone (delete account)"
-            ],
-            "recommendations": [
-                "Auto-save where possible, or clear save indicators",
-                "Confirm destructive actions with modal",
-                "Group related settings logically",
-                "Show success feedback after saving"
-            ]
-        }
+    # Build overrides from search results
+    layout = {}
+    spacing = {}
+    typography = {}
+    colors = {}
+    components = []
+    unique_components = []
+    recommendations = []
     
-    # Landing / Marketing pages
-    elif any(kw in combined_context for kw in ["landing", "marketing", "homepage", "hero"]):
-        page_type = "Landing / Marketing"
-        return {
-            "page_type": page_type,
-            "layout": {
-                "Max Width": "1200px (standard marketing width)",
-                "Layout": "Full-width sections, centered content",
-                "Sections": "Hero → Features → Social Proof → CTA"
-            },
-            "spacing": {
-                "Section Padding": "80-120px vertical padding",
-                "Content Gap": "48px between elements",
-                "Hero Padding": "120px+ for impact"
-            },
-            "typography": {
-                "H1 (Hero)": "48-72px, bold, impactful",
-                "H2 (Section Titles)": "36-48px",
-                "Body": "18px for readability",
-                "CTA Button Text": "16-18px, bold"
-            },
-            "colors": {
-                "Hero Background": "Gradient or bold brand color",
-                "CTA": "High contrast, stands out from page",
-                "Text": "High contrast for readability"
-            },
-            "components": [
-                "Hero: Full-width, prominent headline, clear CTA",
-                "Feature cards: Icon + title + description",
-                "Testimonials: Photo + quote + name",
-                "CTA sections: Repeated at key points"
-            ],
-            "unique_components": [
-                "Hero section with headline and CTA",
-                "Feature grid (3-4 columns)",
-                "Testimonial carousel or grid",
-                "Pricing table (if applicable)",
-                "FAQ accordion",
-                "Footer with links and social"
-            ],
-            "recommendations": [
-                "CTA above the fold",
-                "Use social proof (logos, testimonials, stats)",
-                "Optimize for emotional impact",
-                "Mobile-first responsive design"
-            ]
-        }
+    # Extract style-based overrides
+    if style_results:
+        style = style_results[0]
+        style_name = style.get("Style Category", "")
+        keywords = style.get("Keywords", "")
+        best_for = style.get("Best For", "")
+        effects = style.get("Effects & Animation", "")
+        
+        # Infer layout from style keywords
+        if any(kw in keywords.lower() for kw in ["data", "dense", "dashboard", "grid"]):
+            layout["Max Width"] = "1400px or full-width"
+            layout["Grid"] = "12-column grid for data flexibility"
+            spacing["Content Density"] = "High — optimize for information display"
+        elif any(kw in keywords.lower() for kw in ["minimal", "simple", "clean", "single"]):
+            layout["Max Width"] = "800px (narrow, focused)"
+            layout["Layout"] = "Single column, centered"
+            spacing["Content Density"] = "Low — focus on clarity"
+        else:
+            layout["Max Width"] = "1200px (standard)"
+            layout["Layout"] = "Full-width sections, centered content"
+        
+        if effects:
+            recommendations.append(f"Effects: {effects}")
     
-    # Auth / Login pages
-    elif any(kw in combined_context for kw in ["login", "signin", "signup", "register", "auth"]):
-        page_type = "Authentication"
-        return {
-            "page_type": page_type,
-            "layout": {
-                "Max Width": "400px (narrow, focused)",
-                "Layout": "Centered card on page",
-                "Background": "Subtle pattern or gradient"
-            },
-            "spacing": {
-                "Form Padding": "32-48px",
-                "Field Gap": "20px",
-                "Button Margin": "24px top margin"
-            },
-            "typography": {
-                "Title": "24-28px",
-                "Labels": "14px",
-                "Links": "14px, underlined or colored"
-            },
-            "colors": {
-                "Card Background": "White",
-                "Page Background": "Light gray or brand gradient",
-                "CTA": "Primary brand color, high contrast"
-            },
-            "components": [
-                "Input fields: Large (48px height), clear labels",
-                "Submit button: Full-width, prominent",
-                "Social login buttons: Below main form",
-                "Links: Forgot password, sign up/in toggle"
-            ],
-            "unique_components": [
-                "Email/password form",
-                "Social login options (Google, GitHub, etc.)",
-                "Remember me checkbox",
-                "Forgot password link",
-                "Sign up / Sign in toggle"
-            ],
-            "recommendations": [
-                "Keep form minimal — only required fields",
-                "Clear error messages",
-                "Password visibility toggle",
-                "Auto-focus first field"
-            ]
-        }
+    # Extract UX guidelines as recommendations
+    for ux in ux_results:
+        category = ux.get("Category", "")
+        do_text = ux.get("Do", "")
+        dont_text = ux.get("Don't", "")
+        if do_text:
+            recommendations.append(f"{category}: {do_text}")
+        if dont_text:
+            components.append(f"Avoid: {dont_text}")
     
-    # Default / General pages
-    else:
-        return {
-            "page_type": "General",
-            "layout": {},
-            "spacing": {},
-            "typography": {},
-            "colors": {},
-            "components": [],
-            "unique_components": [],
-            "recommendations": [
-                "Refer to MASTER.md for all design rules",
-                "Add specific overrides as needed for this page"
-            ]
-        }
+    # Extract landing pattern info for section structure
+    if landing_results:
+        landing = landing_results[0]
+        sections = landing.get("Section Order", "")
+        cta_placement = landing.get("Primary CTA Placement", "")
+        color_strategy = landing.get("Color Strategy", "")
+        
+        if sections:
+            layout["Sections"] = sections
+        if cta_placement:
+            recommendations.append(f"CTA Placement: {cta_placement}")
+        if color_strategy:
+            colors["Strategy"] = color_strategy
+    
+    # Add page-type specific defaults if no search results
+    if not layout:
+        layout["Max Width"] = "1200px"
+        layout["Layout"] = "Responsive grid"
+    
+    if not recommendations:
+        recommendations = [
+            "Refer to MASTER.md for all design rules",
+            "Add specific overrides as needed for this page"
+        ]
+    
+    return {
+        "page_type": page_type,
+        "layout": layout,
+        "spacing": spacing,
+        "typography": typography,
+        "colors": colors,
+        "components": components,
+        "unique_components": unique_components,
+        "recommendations": recommendations
+    }
+
+
+def _detect_page_type(context: str, style_results: list) -> str:
+    """Detect page type from context and search results."""
+    context_lower = context.lower()
+    
+    # Check for common page type patterns
+    page_patterns = [
+        (["dashboard", "admin", "analytics", "data", "metrics", "stats", "monitor", "overview"], "Dashboard / Data View"),
+        (["checkout", "payment", "cart", "purchase", "order", "billing"], "Checkout / Payment"),
+        (["settings", "profile", "account", "preferences", "config"], "Settings / Profile"),
+        (["landing", "marketing", "homepage", "hero", "home", "promo"], "Landing / Marketing"),
+        (["login", "signin", "signup", "register", "auth", "password"], "Authentication"),
+        (["pricing", "plans", "subscription", "tiers", "packages"], "Pricing / Plans"),
+        (["blog", "article", "post", "news", "content", "story"], "Blog / Article"),
+        (["product", "item", "detail", "pdp", "shop", "store"], "Product Detail"),
+        (["search", "results", "browse", "filter", "catalog", "list"], "Search Results"),
+        (["empty", "404", "error", "not found", "zero"], "Empty State"),
+    ]
+    
+    for keywords, page_type in page_patterns:
+        if any(kw in context_lower for kw in keywords):
+            return page_type
+    
+    # Fallback: try to infer from style results
+    if style_results:
+        style_name = style_results[0].get("Style Category", "").lower()
+        best_for = style_results[0].get("Best For", "").lower()
+        
+        if "dashboard" in best_for or "data" in best_for:
+            return "Dashboard / Data View"
+        elif "landing" in best_for or "marketing" in best_for:
+            return "Landing / Marketing"
+    
+    return "General"
 
 
 # ============ CLI SUPPORT ============
