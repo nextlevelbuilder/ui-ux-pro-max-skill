@@ -1,7 +1,3 @@
----
-description: Plan and implement UI
----
-
 # ui-ux-pro-max
 
 Comprehensive design guide for web and mobile applications. Contains 50+ styles, 97 color palettes, 57 font pairings, 99 UX guidelines, and 25 chart types across 9 technology stacks. Searchable database with priority-based recommendations.
@@ -64,6 +60,31 @@ This command:
 python3 .shared/ui-ux-pro-max/scripts/search.py "beauty spa wellness service" --design-system -p "Serenity Spa"
 ```
 
+### Step 2b: Persist Design System (Master + Overrides Pattern)
+
+To save the design system for hierarchical retrieval across sessions, add `--persist`:
+
+```bash
+python3 .shared/ui-ux-pro-max/scripts/search.py "<query>" --design-system --persist -p "Project Name"
+```
+
+This creates:
+- `design-system/MASTER.md` — Global Source of Truth with all design rules
+- `design-system/pages/` — Folder for page-specific overrides
+
+**With page-specific override:**
+```bash
+python3 .shared/ui-ux-pro-max/scripts/search.py "<query>" --design-system --persist -p "Project Name" --page "dashboard"
+```
+
+This also creates:
+- `design-system/pages/dashboard.md` — Page-specific deviations from Master
+
+**How hierarchical retrieval works:**
+1. When building a specific page (e.g., "Checkout"), first check `design-system/pages/checkout.md`
+2. If the page file exists, its rules **override** the Master file
+3. If not, use `design-system/MASTER.md` exclusively
+
 ### Step 3: Supplement with Detailed Searches (as needed)
 
 After getting the design system, use domain searches to get additional details:
@@ -89,8 +110,9 @@ Get implementation-specific best practices. If user doesn't specify a stack, **d
 ```bash
 python3 .shared/ui-ux-pro-max/scripts/search.py "<keyword>" --stack html-tailwind
 ```
-Available stacks: `html-tailwind`, `react`, `nextjs`, `vue`, `svelte`, `swiftui`, `react-native`, `flutter`, `shadcn`, `jetpack-compose`
 
+Available stacks: `html-tailwind`, `react`, `nextjs`, `vue`, `svelte`, `swiftui`, `react-native`, `flutter`, `shadcn`, `jetpack-compose`
+, `jetpack-compose`
 ---
 
 ## Search Reference

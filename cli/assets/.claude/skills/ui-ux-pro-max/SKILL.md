@@ -149,6 +149,40 @@ This command:
 python3 .claude/skills/ui-ux-pro-max/scripts/search.py "beauty spa wellness service" --design-system -p "Serenity Spa"
 ```
 
+### Step 2b: Persist Design System (Master + Overrides Pattern)
+
+To save the design system for **hierarchical retrieval across sessions**, add `--persist`:
+
+```bash
+python3 .claude/skills/ui-ux-pro-max/scripts/search.py "<query>" --design-system --persist -p "Project Name"
+```
+
+This creates:
+- `design-system/MASTER.md` — Global Source of Truth with all design rules
+- `design-system/pages/` — Folder for page-specific overrides
+
+**With page-specific override:**
+```bash
+python3 .claude/skills/ui-ux-pro-max/scripts/search.py "<query>" --design-system --persist -p "Project Name" --page "dashboard"
+```
+
+This also creates:
+- `design-system/pages/dashboard.md` — Page-specific deviations from Master
+
+**How hierarchical retrieval works:**
+1. When building a specific page (e.g., "Checkout"), first check `design-system/pages/checkout.md`
+2. If the page file exists, its rules **override** the Master file
+3. If not, use `design-system/MASTER.md` exclusively
+
+**Context-aware retrieval prompt:**
+```
+I am building the [Page Name] page. Please read design-system/MASTER.md.
+Also check if design-system/pages/[page-name].md exists.
+If the page file exists, prioritize its rules.
+If not, use the Master rules exclusively.
+Now, generate the code...
+```
+
 ### Step 3: Supplement with Detailed Searches (as needed)
 
 After getting the design system, use domain searches to get additional details:
@@ -208,8 +242,8 @@ Available stacks: `html-tailwind`, `react`, `nextjs`, `vue`, `svelte`, `swiftui`
 | `swiftui` | Views, State, Navigation, Animation |
 | `react-native` | Components, Navigation, Lists |
 | `flutter` | Widgets, State, Layout, Theming |
-| `jetpack-compose` | Composables, Modifiers, State Hoisting, Recomposition |
 | `shadcn` | shadcn/ui components, theming, forms, patterns |
+| `jetpack-compose` | Composables, Modifiers, State Hoisting, Recomposition |
 
 ---
 
