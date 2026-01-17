@@ -77,15 +77,16 @@ if __name__ == "__main__":
         
         # Print persistence confirmation
         if args.persist:
+            project_slug = args.project_name.lower().replace(' ', '-') if args.project_name else "default"
             print("\n" + "=" * 60)
-            print("✅ Design system persisted to design-system/ folder")
-            print("   📄 design-system/MASTER.md (Global Source of Truth)")
+            print(f"✅ Design system persisted to design-system/{project_slug}/")
+            print(f"   📄 design-system/{project_slug}/MASTER.md (Global Source of Truth)")
             if args.page:
                 page_filename = args.page.lower().replace(' ', '-')
-                print(f"   📄 design-system/pages/{page_filename}.md (Page Overrides)")
+                print(f"   📄 design-system/{project_slug}/pages/{page_filename}.md (Page Overrides)")
             print("")
-            print("📖 Usage: When building a page, check design-system/pages/[page].md first.")
-            print("   If exists, its rules override MASTER.md. Otherwise, use MASTER.md.")
+            print(f"📖 Usage: When building a page, check design-system/{project_slug}/pages/[page].md first.")
+            print(f"   If exists, its rules override MASTER.md. Otherwise, use MASTER.md.")
             print("=" * 60)
     # Stack search
     elif args.stack:

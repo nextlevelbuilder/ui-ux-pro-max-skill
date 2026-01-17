@@ -4,14 +4,19 @@
 UI/UX Pro Max Search - BM25 search engine for UI/UX style guides
 Usage: python search.py "<query>" [--domain <domain>] [--stack <stack>] [--max-results 3]
        python search.py "<query>" --design-system [-p "Project Name"]
+       python search.py "<query>" --design-system --persist [-p "Project Name"] [--page "dashboard"]
 
 Domains: style, prompt, color, chart, landing, product, ux, typography
 Stacks: html-tailwind, react, nextjs
+
+Persistence (Master + Overrides pattern):
+  --persist    Save design system to design-system/MASTER.md
+  --page       Also create a page-specific override file in design-system/pages/
 """
 
 import argparse
 from core import CSV_CONFIG, AVAILABLE_STACKS, MAX_RESULTS, search, search_stack
-from design_system import generate_design_system
+from design_system import generate_design_system, persist_design_system
 
 
 def format_output(result):
@@ -51,13 +56,38 @@ if __name__ == "__main__":
     parser.add_argument("--design-system", "-ds", action="store_true", help="Generate complete design system recommendation")
     parser.add_argument("--project-name", "-p", type=str, default=None, help="Project name for design system output")
     parser.add_argument("--format", "-f", choices=["ascii", "markdown"], default="ascii", help="Output format for design system")
+    # Persistence (Master + Overrides pattern)
+    parser.add_argument("--persist", action="store_true", help="Save design system to design-system/MASTER.md (creates hierarchical structure)")
+    parser.add_argument("--page", type=str, default=None, help="Create page-specific override file in design-system/pages/")
+    parser.add_argument("--output-dir", "-o", type=str, default=None, help="Output directory for persisted files (default: current directory)")
 
     args = parser.parse_args()
 
     # Design system takes priority
     if args.design_system:
-        result = generate_design_system(args.query, args.project_name, args.format)
+        result = generate_design_system(
+            args.query, 
+            args.project_name, 
+            args.format,
+            persist=args.persist,
+            page=args.page,
+            output_dir=args.output_dir
+        )
         print(result)
+        
+        # Print persistence confirmation
+        if args.persist:
+            project_slug = args.project_name.lower().replace(' ', '-') if args.project_name else "default"
+            print("\n" + "=" * 60)
+            print(f"✅ Design system persisted to design-system/{project_slug}/")
+            print(f"   📄 design-system/{project_slug}/MASTER.md (Global Source of Truth)")
+            if args.page:
+                page_filename = args.page.lower().replace(' ', '-')
+                print(f"   📄 design-system/{project_slug}/pages/{page_filename}.md (Page Overrides)")
+            print("")
+            print(f"📖 Usage: When building a page, check design-system/{project_slug}/pages/[page].md first.")
+            print(f"   If exists, its rules override MASTER.md. Otherwise, use MASTER.md.")
+            print("=" * 60)
     # Stack search
     elif args.stack:
         result = search_stack(args.query, args.stack, args.max_results)

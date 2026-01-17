@@ -32,6 +32,20 @@ Added `_generate_intelligent_overrides()` function that:
 
 ```bash
 python3 search.py "e-commerce" --design-system --persist -p "Shop" --page "checkout"
+python3 search.py "SaaS analytics" --design-system --persist -p "DataApp" --page "dashboard"
+```
+
+**Output Structure (project-based):**
+```
+design-system/
+├── shop/
+│   ├── MASTER.md
+│   └── pages/
+│       └── checkout.md
+└── dataapp/
+    ├── MASTER.md
+    └── pages/
+        └── dashboard.md
 ```
 
 **Before (Template):**

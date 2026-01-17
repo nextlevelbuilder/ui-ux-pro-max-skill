@@ -489,7 +489,7 @@ def generate_design_system(query: str, project_name: str = None, output_format: 
 # ============ PERSISTENCE FUNCTIONS ============
 def persist_design_system(design_system: dict, page: str = None, output_dir: str = None, page_query: str = None) -> dict:
     """
-    Persist design system to design-system/ folder using Master + Overrides pattern.
+    Persist design system to design-system/<project>/ folder using Master + Overrides pattern.
     
     Args:
         design_system: The generated design system dictionary
@@ -501,7 +501,12 @@ def persist_design_system(design_system: dict, page: str = None, output_dir: str
         dict with created file paths and status
     """
     base_dir = Path(output_dir) if output_dir else Path.cwd()
-    design_system_dir = base_dir / "design-system"
+    
+    # Use project name for project-specific folder
+    project_name = design_system.get("project_name", "default")
+    project_slug = project_name.lower().replace(' ', '-')
+    
+    design_system_dir = base_dir / "design-system" / project_slug
     pages_dir = design_system_dir / "pages"
     
     created_files = []
