@@ -115,6 +115,10 @@ python3 search.py "marketing website" --design-system --persist -p "Marketing We
 - Without `--persist`, behavior is identical to original
 - Core generation logic completely unchanged
 
+## Note on Design Quality
+
+I'm not a UI/UX designer by trade, so the `_generate_intelligent_overrides()` function likely needs more attention to become a truly comprehensive master and extension system. The current implementation extracts data from search results, but the logic for what constitutes meaningful overrides per page type could benefit from expert UI/UX review. Would appreciate your guidance on making this more robust!
+
 ---
 
 **@nextlevelbuilder** — Ready for review! This uses the existing layered search (no hardcoded rules) to generate intelligent page overrides. Would appreciate an expedited merge. Thank you!
