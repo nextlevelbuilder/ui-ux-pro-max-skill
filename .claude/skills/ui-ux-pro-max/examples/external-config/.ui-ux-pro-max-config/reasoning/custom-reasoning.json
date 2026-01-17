@@ -1,0 +1,59 @@
+{
+  "search_preferences": {
+    "accessibility_weight": 1.8,
+    "performance_weight": 1.4,
+    "brand_consistency_weight": 2.2,
+    "security_weight": 1.6,
+    "compliance_weight": 2.0
+  },
+  "style_priorities": {
+    "mobile_first": true,
+    "semantic_html": true,
+    "progressive_enhancement": true,
+    "dark_mode_support": true,
+    "high_contrast_mode": true
+  },
+  "industry_adjustments": {
+    "fintech": {
+      "security_weight": 3.0,
+      "compliance_weight": 3.0,
+      "trust_indicators": true,
+      "audit_trail_required": true,
+      "data_accuracy_critical": true
+    },
+    "healthcare": {
+      "accessibility_weight": 3.0,
+      "privacy_weight": 3.0,
+      "trust_indicators": true,
+      "clear_consent_mechanisms": true
+    },
+    "enterprise": {
+      "scalability_weight": 2.5,
+      "integration_weight": 2.0,
+      "customization_weight": 2.0,
+      "audit_logging_required": true
+    }
+  },
+  "framework_preferences": {
+    "react": {
+      "prefer_hooks": true,
+      "prefer_functional_components": true,
+      "state_management": "zustand"
+    },
+    "vue": {
+      "prefer_composition_api": true,
+      "prefer_script_setup": true
+    },
+    "angular": {
+      "prefer_standalone_components": true,
+      "prefer_signals": true
+    }
+  },
+  "design_principles": {
+    "consistency_over_creativity": true,
+    "usability_over_aesthetics": true,
+    "accessibility_first": true,
+    "performance_conscious": true,
+    "security_by_design": true
+  }
+}

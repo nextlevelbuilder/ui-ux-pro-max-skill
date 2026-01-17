@@ -1,7 +1,7 @@
 {
   "name": "uipro-cli",
   "version": "2.0.0",
-  "description": "CLI to install UI/UX Pro Max skill for AI coding assistants",
+  "description": "CLI to install UI/UX Pro Max skill for AI coding assistants. Advanced design intelligence with 47 AI chat patterns, 24 architecture patterns, external configuration support, brand integration, and A2UI cross-platform export.",
   "type": "module",
   "bin": {
     "uipro": "./dist/index.js"
@@ -29,7 +29,13 @@
     "codex",
     "qoder",
     "ai",
-    "skill"
+    "skill",
+    "architecture",
+    "chat-patterns",
+    "a2ui",
+    "brand-integration",
+    "design-system",
+    "cross-platform"
   ],
   "author": "",
   "license": "MIT",

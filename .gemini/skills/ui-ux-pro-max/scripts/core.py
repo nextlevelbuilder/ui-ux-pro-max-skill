@@ -69,6 +69,11 @@ CSV_CONFIG = {
         "file": "web-interface.csv",
         "search_cols": ["Category", "Issue", "Keywords", "Description"],
         "output_cols": ["Category", "Issue", "Platform", "Description", "Do", "Don't", "Code Example Good", "Code Example Bad", "Severity"]
+    },
+    "ai-chat": {
+        "file": "ai-chat-patterns.csv",
+        "search_cols": ["Pattern_Name", "Category", "Description", "UX_Principle", "Use_Cases"],
+        "output_cols": ["Pattern_Name", "Category", "Description", "Visual_Design", "Interaction_Behavior", "Code_Example_Good", "UX_Principle", "Technical_Implementation", "Use_Cases", "Anti_Patterns", "Severity"]
     }
 }
 
@@ -83,7 +88,10 @@ STACK_CONFIG = {
     "swiftui": {"file": "stacks/swiftui.csv"},
     "react-native": {"file": "stacks/react-native.csv"},
     "flutter": {"file": "stacks/flutter.csv"},
-    "shadcn": {"file": "stacks/shadcn.csv"}
+    "shadcn": {"file": "stacks/shadcn.csv"},
+    "jetpack-compose": {"file": "stacks/jetpack-compose.csv"},
+    "htmx-alpine-axum": {"file": "stacks/htmx-alpine-axum.csv"},
+    "tauri": {"file": "stacks/tauri.csv"}
 }
 
 # Common columns for all stacks
@@ -205,7 +213,8 @@ def detect_domain(query):
         "typography": ["font", "typography", "heading", "serif", "sans"],
         "icons": ["icon", "icons", "lucide", "heroicons", "symbol", "glyph", "pictogram", "svg icon"],
         "react": ["react", "next.js", "nextjs", "suspense", "memo", "usecallback", "useeffect", "rerender", "bundle", "waterfall", "barrel", "dynamic import", "rsc", "server component"],
-        "web": ["aria", "focus", "outline", "semantic", "virtualize", "autocomplete", "form", "input type", "preconnect"]
+        "web": ["aria", "focus", "outline", "semantic", "virtualize", "autocomplete", "form", "input type", "preconnect"],
+        "ai-chat": ["ai", "chat", "chatbot", "streaming", "thinking", "reasoning", "tool execution", "citation", "confidence", "uncertainty", "conversation", "branching", "multi-modal", "feedback", "error recovery", "transparency", "trust", "ai interface", "llm", "gpt", "claude"]
     }
 
     scores = {domain: sum(1 for kw in keywords if kw in query_lower) for domain, keywords in domain_keywords.items()}

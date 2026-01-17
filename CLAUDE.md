@@ -70,3 +70,10 @@ Never push directly to `main`. Always:
 2. Commit changes
 3. Push branch: `git push -u origin <branch>`
 4. Create PR: `gh pr create`
+
+## Active Technologies
+- Python 3.7+ (existing codebase compatibility) + csv (standard library), pathlib (standard library), re (standard library), math (standard library) (001-advanced-customization)
+- CSV files for data, JSON for brand configuration, file system for external config directories (001-advanced-customization)
+
+## Recent Changes
+- 001-advanced-customization: Added Python 3.7+ (existing codebase compatibility) + csv (standard library), pathlib (standard library), re (standard library), math (standard library)
