@@ -31,18 +31,18 @@ Added `_generate_intelligent_overrides()` function that:
 ## Example Output
 
 ```bash
-python3 search.py "e-commerce" --design-system --persist -p "Shop" --page "checkout"
-python3 search.py "SaaS analytics" --design-system --persist -p "DataApp" --page "dashboard"
+python3 search.py "e-commerce landing" --design-system --persist -p "Marketing Website" --page "homepage"
+python3 search.py "SaaS analytics" --design-system --persist -p "SaaS App" --page "dashboard"
 ```
 
 **Output Structure (project-based):**
 ```
 design-system/
-├── shop/
+├── marketing-website/
 │   ├── MASTER.md
 │   └── pages/
-│       └── checkout.md
-└── dataapp/
+│       └── homepage.md
+└── saas-app/
     ├── MASTER.md
     └── pages/
         └── dashboard.md
@@ -74,15 +74,15 @@ design-system/
 ## Testing
 ```bash
 # Dashboard detection
-python3 search.py "SaaS app" --design-system --persist -p "Test" --page "dashboard"
+python3 search.py "SaaS analytics" --design-system --persist -p "SaaS App" --page "dashboard"
 # → Page Type: Dashboard / Data View ✅
 
-# Checkout detection  
-python3 search.py "store" --design-system --persist -p "Shop" --page "checkout"
-# → Page Type: Checkout / Payment ✅
+# Landing page detection  
+python3 search.py "marketing website" --design-system --persist -p "Marketing Website" --page "homepage"
+# → Page Type: Landing / Marketing ✅
 
 # Settings detection
-python3 search.py "app" --design-system --persist -p "App" --page "user settings"
+python3 search.py "web app" --design-system --persist -p "SaaS App" --page "user settings"
 # → Page Type: Settings / Profile ✅
 ```
 
