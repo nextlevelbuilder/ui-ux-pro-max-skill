@@ -1955,25 +1955,25 @@
           "Guideline": "Use useState for local state"
         },
         {
-          "Category": "State",
-          "Guideline": "Initialize state lazily"
-        },
-        {
           "Category": "Hooks",
           "Guideline": "Follow rules of hooks"
+        },
+        {
+          "Category": "State",
+          "Guideline": "Initialize state lazily"
         }
       ],
       "diagnostics": {
         "abstained": false,
         "calibration_version": "2026-08-12-v1",
-        "margin": 6.437424023576185,
+        "margin": 6.620812025571922,
         "normalized_query": "React useState for component local state",
         "query_rewrites": [],
         "reason": "matched",
-        "runner_up_score": 6.055591405394695,
+        "runner_up_score": 6.214454784565012,
         "search_query": "React useState for component local state",
         "token_coverage": 1.0,
-        "top_score": 12.49301542897088
+        "top_score": 12.835266810136934
       },
       "expectedRoute": null,
       "grades": [
@@ -2008,14 +2008,14 @@
       "diagnostics": {
         "abstained": false,
         "calibration_version": "2026-08-12-v1",
-        "margin": 1.6932484336579066,
+        "margin": 1.858850894384167,
         "normalized_query": "remove subscriptions and timers when a React effect unmounts",
         "query_rewrites": [],
         "reason": "matched",
-        "runner_up_score": 7.784357771546359,
+        "runner_up_score": 7.931414442853006,
         "search_query": "remove subscriptions and timers when a React effect unmounts",
         "token_coverage": 0.7142857142857143,
-        "top_score": 9.477606205204266
+        "top_score": 9.790265337237173
       },
       "expectedRoute": null,
       "grades": [
@@ -3277,7 +3277,7 @@
     "typoRecoveryAt3": 1.0
   },
   "oracleFingerprint": "02e7226428c64a995ec24ae104ce4d186f5f91bf0f062556e90ef9b0fcb6d67a",
-  "runtimeFingerprint": "0d096d52499c2dd84ef80b2e45a1793bc4ed7c9be8fe5948b08151790959b376",
+  "runtimeFingerprint": "8ba69ee0070e055363e089a3a9338d0d2f79196ed4f8509c3a8a0aec379d40df",
   "samples": {
     "cases": 90,
     "designSystem": 8,
