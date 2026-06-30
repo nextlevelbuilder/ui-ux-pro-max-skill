@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GSAP vanilla — canonical patterns</title>
+  <style>
+    body { font-family: system-ui, sans-serif; padding: 2rem; }
+    .box { width: 80px; height: 80px; background: #0fa; border-radius: 8px; margin: 1rem 0; }
+    .item { margin: 0.5rem 0; opacity: 0; }
+    .section { min-height: 120vh; padding: 2rem 0; }
+    .panel { width: 100px; height: 60px; background: #9cf; border-radius: 8px; }
+  </style>
+</head>
+<body>
+  <h1>GSAP vanilla — transforms, autoAlpha, timeline, ScrollTrigger</h1>
+
+  <h2>1. Single tween (transform + autoAlpha)</h2>
+  <div class="box" id="single" style="opacity: 0;"></div>
+
+  <h2>2. Timeline (sequencing)</h2>
+  <div class="box a">A</div>
+  <div class="box b">B</div>
+  <div class="box c">C</div>
+
+  <h2>3. ScrollTrigger (timeline + scrub)</h2>
+  <section class="section" id="scroll-section">
+    <div class="panel">Panel</div>
+  </section>
+
+  <script type="module" src="main.js"></script>
+</body>
+</html>

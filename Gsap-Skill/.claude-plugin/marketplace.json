@@ -1,0 +1,20 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "gsap-skills",
+  "description": "Official GSAP skills for Cursor, Claude and other AI agents — core animations, timelines, ScrollTrigger, plugins, utilities, React integration, and performance best practices",
+  "owner": {
+    "name": "GreenSock",
+    "email": "info@greensock.com"
+  },
+  "plugins": [
+    {
+      "name": "gsap-skills",
+      "description": "Official GSAP skills for Cursor, Claude and other AI agents, covering tweens, timelines, ScrollTrigger, plugins, utilities, React hooks, and performance optimization",
+      "author": {
+        "name": "GreenSock"
+      },
+      "source": "./",
+      "category": "productivity"
+    }
+  ]
+}
