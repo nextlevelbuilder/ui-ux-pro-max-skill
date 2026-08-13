@@ -78,7 +78,7 @@ v2.0 的旗舰特性是**设计系统生成器**——一个 AI 驱动的推理�
 |     Google Fonts: https://fonts.google.com/share?selection.family=...                   |
 |                                                                                        |
 |  关键效果：                                                                            |
-|     柔和阴影 + 平滑过渡 (200-300ms) + 细腻悬停状态                                      |
+|     柔和阴影 + 符合平台与组件语境的过渡 + 细腻悬停状态                                  |
 |                                                                                        |
 |  避免 (反模式)：                                                                       |
 |     亮霓虹色 + 生硬动画 + 深色模式 + AI 紫/粉渐变 (银行业)                              |
@@ -86,10 +86,11 @@ v2.0 的旗舰特性是**设计系统生成器**——一个 AI 驱动的推理�
 |  交付前检查清单：                                                                      |
 |     [ ] 不使用表情符号作为图标 (使用 SVG: Heroicons/Lucide)                            |
 |     [ ] 所有可点击元素有 cursor-pointer                                                 |
-|     [ ] 悬停状态带平滑过渡 (150-300ms)                                                 |
+|     [ ] 交互时长符合平台、组件和用户偏好                                               |
 |     [ ] 浅色模式：文字对比度至少 4.5:1                                                |
 |     [ ] Focus 状态对键盘导航可见                                                       |
 |     [ ] 尊重 prefers-reduced-motion 偏好                                             |
+|     [ ] 文字、chip 与 badge 能重排，不裁切或破坏标签                                  |
 |     [ ] 响应式：375px、768px、1024px、1440px                                          |
 |                                                                                        |
 +----------------------------------------------------------------------------------------+
@@ -160,8 +161,23 @@ v2.0 的旗舰特性是**设计系统生成器**——一个 AI 驱动的推理�
 - **74 种字体配对** - 精选字体组合，含 Google Fonts 导入
 - **25 种图表类型** - 适用于仪表板和分析场景的推荐
 - **22 种技术栈** - React、Next.js、Astro、Vue、Nuxt.js、Nuxt UI、Svelte、SwiftUI、React Native、Flutter、HTML+Tailwind、shadcn/ui、Jetpack Compose、Angular、Laravel、Three.js、JavaFX、WPF、WinUI 3、UWP、Avalonia、Uno Platform
-- **119 条 UX 指南** - 最佳实践、反模式与无障碍规则
+- **119 条 UX 指南** - 最佳实践、反模式、无障碍规则、弹性文字布局、紧凑标签与可取消交互
 - **192 条推理规则** - 行业特定的设计系统生成（v2.0 新增）
+
+### 弹性文字与紧凑型 UI
+
+指南现在覆盖标题、长 token、chip、badge 以及微交互被中断时常见的生产问题：
+
+- 标题平衡换行属于 progressive enhancement，不能保证某个单词一定留在最后一行。
+  设计仍须在不同宽度、字体和 locale 下支持自然换行。
+- 关键文字在窄屏、浏览器缩放、文字缩放和用户文字间距覆盖下必须完整 reflow，
+  不得裁切；长 URL 和 identifier 应能安全换行。
+- Chip 与 tag 集合应换行，或提供可操作的 `+n` 展开入口。紧凑标签应尽量保持
+  单行；不可避免的截断必须让键盘、pointer 和 touch 用户都能查看完整值。
+- Badge 的含义不能只依赖颜色。交互式 chip 需要原生 semantics、可见 Focus 和
+  programmatic state；动态计数需要有意义的上下文。
+- 快速交互可以取消 animation，但最终 semantic state、Focus 与内容必须正确。
+  Timing 应按平台和组件选择，并尊重 reduced-motion 偏好。
 
 ### 风格分类
 
@@ -358,10 +374,14 @@ python3 .claude/skills/ui-ux-pro-max/scripts/search.py "dashboard" --domain char
 python3 .claude/skills/ui-ux-pro-max/scripts/search.py "error summary validation" --domain ux
 python3 .claude/skills/ui-ux-pro-max/scripts/search.py "decorative icon aria hidden" --domain icons
 python3 .claude/skills/ui-ux-pro-max/scripts/search.py "icon button accessible label" --domain icons
+python3 .claude/skills/ui-ux-pro-max/scripts/search.py "orphan heading line balance" --domain ux
+python3 .claude/skills/ui-ux-pro-max/scripts/search.py "badge chip label wraps to second line" --domain ux
+python3 .claude/skills/ui-ux-pro-max/scripts/search.py "rapid chip animation interrupted" --domain ux
 
 # 特定技术栈指南
 python3 .claude/skills/ui-ux-pro-max/scripts/search.py "form validation" --stack react
 python3 .claude/skills/ui-ux-pro-max/scripts/search.py "responsive layout" --stack html-tailwind
+python3 .claude/skills/ui-ux-pro-max/scripts/search.py "chip badge overflow nowrap" --stack html-tailwind
 python3 .claude/skills/ui-ux-pro-max/scripts/search.py "tableview binding" --stack javafx
 python3 .claude/skills/ui-ux-pro-max/scripts/search.py "atlantafx primer enterprise theme" --stack javafx
 python3 .claude/skills/ui-ux-pro-max/scripts/search.py "enterprise tableview density permission" --stack javafx

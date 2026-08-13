@@ -78,7 +78,7 @@ The flagship feature of v2.0 is the **Design System Generator** - an AI-powered 
 |     Google Fonts: https://fonts.google.com/share?selection.family=...                  |
 |                                                                                        |
 |  KEY EFFECTS:                                                                          |
-|     Soft shadows + Smooth transitions (200-300ms) + Gentle hover states                |
+|     Soft shadows + Context-appropriate transitions + Gentle hover states               |
 |                                                                                        |
 |  AVOID (Anti-patterns):                                                                |
 |     Bright neon colors + Harsh animations + Dark mode + AI purple/pink gradients       |
@@ -86,10 +86,11 @@ The flagship feature of v2.0 is the **Design System Generator** - an AI-powered 
 |  PRE-DELIVERY CHECKLIST:                                                               |
 |     [ ] No emojis as icons (use SVG: Heroicons/Lucide)                                 |
 |     [ ] cursor-pointer on all clickable elements                                       |
-|     [ ] Hover states with smooth transitions (150-300ms)                               |
+|     [ ] Interaction timing follows the platform, component, and user preference        |
 |     [ ] Light mode: text contrast 4.5:1 minimum                                        |
 |     [ ] Focus states visible for keyboard nav                                          |
 |     [ ] prefers-reduced-motion respected                                               |
+|     [ ] Text, chips, and badges reflow without clipping or broken labels               |
 |     [ ] Responsive: 375px, 768px, 1024px, 1440px                                       |
 |                                                                                        |
 +----------------------------------------------------------------------------------------+
@@ -160,8 +161,27 @@ Each rule includes:
 - **74 Font Pairings** - Curated typography combinations with Google Fonts imports
 - **25 Chart Types** - Recommendations for dashboards and analytics
 - **22 Tech Stacks** - React, Next.js, Astro, Vue, Nuxt.js, Nuxt UI, Svelte, SwiftUI, React Native, Flutter, HTML+Tailwind, shadcn/ui, Jetpack Compose, Angular, Laravel, Three.js, JavaFX, WPF, WinUI 3, UWP, Avalonia, Uno Platform
-- **119 UX Guidelines** - Best practices, anti-patterns, and accessibility rules
+- **119 UX Guidelines** - Best practices, anti-patterns, accessibility rules, resilient text layout, compact labels, and cancellable interactions
 - **192 Reasoning Rules** - Industry-specific design system generation (NEW in v2.0)
+
+### Resilient Text and Compact UI
+
+The guidance now covers common production failures around headings, long tokens,
+chips, badges, and interrupted micro-interactions:
+
+- Balanced heading wrapping is a progressive enhancement, not a guarantee that a
+  specific word will remain on the last line. Designs must still work with natural
+  wrapping across widths, fonts, and locales.
+- Essential text must reflow without clipping at narrow widths, browser zoom, text
+  scaling, and user spacing overrides. Long URLs and identifiers may wrap safely.
+- Chip and tag collections should wrap or use an operable `+n` disclosure. A compact
+  label should remain whole when practical; unavoidable truncation needs an accessible
+  full-value path for keyboard, pointer, and touch users.
+- Badge meaning cannot rely on color alone. Interactive chips need native semantics,
+  visible focus, and programmatic state; live counts need meaningful context.
+- Rapid interactions may cancel animation, but the final semantic state, focus, and
+  content must remain correct. Timing is selected for the platform and component,
+  with reduced-motion preferences respected.
 
 ### Style Taxonomy
 
@@ -359,10 +379,14 @@ python3 .claude/skills/ui-ux-pro-max/scripts/search.py "dashboard" --domain char
 python3 .claude/skills/ui-ux-pro-max/scripts/search.py "error summary validation" --domain ux
 python3 .claude/skills/ui-ux-pro-max/scripts/search.py "decorative icon aria hidden" --domain icons
 python3 .claude/skills/ui-ux-pro-max/scripts/search.py "icon button accessible label" --domain icons
+python3 .claude/skills/ui-ux-pro-max/scripts/search.py "orphan heading line balance" --domain ux
+python3 .claude/skills/ui-ux-pro-max/scripts/search.py "badge chip label wraps to second line" --domain ux
+python3 .claude/skills/ui-ux-pro-max/scripts/search.py "rapid chip animation interrupted" --domain ux
 
 # Stack-specific guidelines
 python3 .claude/skills/ui-ux-pro-max/scripts/search.py "form validation" --stack react
 python3 .claude/skills/ui-ux-pro-max/scripts/search.py "responsive layout" --stack html-tailwind
+python3 .claude/skills/ui-ux-pro-max/scripts/search.py "chip badge overflow nowrap" --stack html-tailwind
 python3 .claude/skills/ui-ux-pro-max/scripts/search.py "tableview binding" --stack javafx
 python3 .claude/skills/ui-ux-pro-max/scripts/search.py "atlantafx primer enterprise theme" --stack javafx
 python3 .claude/skills/ui-ux-pro-max/scripts/search.py "enterprise tableview density permission" --stack javafx
