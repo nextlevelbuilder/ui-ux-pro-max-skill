@@ -1,0 +1,218 @@
+name: Refresh upstream catalogs
+
+on:
+  schedule:
+    - cron: '17 3 * * 1'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: refresh-upstream-catalogs
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    name: Build review-only catalog candidates
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      CORE_VERSION: '2.1.1'
+      REACT_VERSION: '2.1.10'
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: '3.x'
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Prepare isolated candidate workspace
+        run: |
+          mkdir -p "${RUNNER_TEMP}/catalog-work/npm" \
+            "${RUNNER_TEMP}/catalog-review/candidates" \
+            "${RUNNER_TEMP}/catalog-review/raw" \
+            "${RUNNER_TEMP}/catalog-review/reports"
+          echo "Catalog refresh has not reached candidate generation." \
+            >"${RUNNER_TEMP}/catalog-review/reports/refresh-status.txt"
+
+      - name: Fetch Google Fonts Developer API snapshot
+        env:
+          GOOGLE_FONTS_API_KEY: ${{ secrets.GOOGLE_FONTS_API_KEY }}
+        run: |
+          set +e
+          python3 - <<'PY' \
+            >"${RUNNER_TEMP}/catalog-review/reports/google-fonts-fetch.log" 2>&1
+          import json
+          import os
+          import sys
+          import urllib.parse
+          import urllib.request
+          from pathlib import Path
+
+          key = os.environ.get("GOOGLE_FONTS_API_KEY")
+          if not key:
+              print("GOOGLE_FONTS_API_KEY is not configured", file=sys.stderr)
+              raise SystemExit(2)
+          url = "https://www.googleapis.com/webfonts/v1/webfonts?" + urllib.parse.urlencode(
+              {"key": key, "capability": "VF"}
+          )
+          try:
+              with urllib.request.urlopen(url, timeout=30) as response:
+                  raw = response.read(25_000_001)
+          except Exception:
+              print("Google Fonts API request failed; credentials were not logged", file=sys.stderr)
+              raise SystemExit(2)
+          if len(raw) > 25_000_000:
+              print("Google Fonts response exceeds 25000000 bytes", file=sys.stderr)
+              raise SystemExit(2)
+          payload = json.loads(raw)
+          target = Path(os.environ["RUNNER_TEMP"]) / "catalog-review/raw/google-fonts-api.json"
+          target.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+          PY
+          fetch_status=$?
+          printf 'google_fonts_fetch=%s\n' "${fetch_status}" \
+            >"${RUNNER_TEMP}/catalog-review/reports/fetch-status.txt"
+          exit 0
+
+      - name: Fetch official Google Fonts license metadata
+        run: |
+          set +e
+          metadata_root="${RUNNER_TEMP}/catalog-work/google-fonts"
+          git clone --depth 1 --filter=blob:none --no-checkout \
+            https://github.com/google/fonts.git "${metadata_root}" \
+            >"${RUNNER_TEMP}/catalog-review/reports/google-fonts-repository.log" 2>&1
+          clone_status=$?
+          metadata_status=${clone_status}
+          if [ "${clone_status}" -eq 0 ]; then
+            git -C "${metadata_root}" sparse-checkout init --no-cone
+            git -C "${metadata_root}" ls-tree -r --name-only HEAD \
+              | grep 'METADATA.pb$' \
+              >"${RUNNER_TEMP}/catalog-work/google-font-metadata-paths.txt"
+            git -C "${metadata_root}" sparse-checkout set --stdin \
+              <"${RUNNER_TEMP}/catalog-work/google-font-metadata-paths.txt"
+            git -C "${metadata_root}" checkout \
+              >>"${RUNNER_TEMP}/catalog-review/reports/google-fonts-repository.log" 2>&1
+            metadata_status=$?
+            if [ "${metadata_status}" -eq 0 ]; then
+              git -C "${metadata_root}" rev-parse HEAD \
+                >"${RUNNER_TEMP}/catalog-review/raw/google-fonts-revision.txt"
+              metadata_status=$?
+            fi
+          fi
+          printf 'google_fonts_repository=%s\ngoogle_fonts_metadata=%s\n' \
+            "${clone_status}" "${metadata_status}" \
+            >>"${RUNNER_TEMP}/catalog-review/reports/fetch-status.txt"
+          exit 0
+
+      - name: Fetch pinned Phosphor packages and extract official inputs
+        working-directory: ${{ runner.temp }}/catalog-work/npm
+        run: |
+          set +e
+          npm init --yes >/dev/null
+          npm install --ignore-scripts --no-audit --no-fund \
+            "@phosphor-icons/core@${CORE_VERSION}" \
+            "@phosphor-icons/react@${REACT_VERSION}" \
+            react@19 \
+            >"${RUNNER_TEMP}/catalog-review/reports/phosphor-packages.log" 2>&1
+          package_status=$?
+          if [ "${package_status}" -eq 0 ]; then
+            node --input-type=module <<'JS' \
+              >>"${RUNNER_TEMP}/catalog-review/reports/phosphor-packages.log" 2>&1
+          import { writeFile } from "node:fs/promises";
+          import { icons } from "@phosphor-icons/core";
+          import * as client from "@phosphor-icons/react";
+          import * as ssr from "@phosphor-icons/react/ssr";
+
+          const root = `${process.env.RUNNER_TEMP}/catalog-review/raw`;
+          const names = (exports) => Object.keys(exports).sort();
+          await writeFile(`${root}/phosphor-core.json`, JSON.stringify(icons, null, 2) + "\n");
+          await writeFile(
+            `${root}/phosphor-react-exports.json`,
+            JSON.stringify({ client: names(client), ssr: names(ssr) }, null, 2) + "\n",
+          );
+          JS
+            extract_status=$?
+            if [ "${extract_status}" -eq 0 ]; then
+              cp node_modules/@phosphor-icons/core/package.json \
+                "${RUNNER_TEMP}/catalog-review/raw/phosphor-core-package.json"
+              cp node_modules/@phosphor-icons/react/package.json \
+                "${RUNNER_TEMP}/catalog-review/raw/phosphor-react-package.json"
+              extract_status=$?
+            fi
+          else
+            extract_status=${package_status}
+          fi
+          printf 'phosphor_packages=%s\nphosphor_extract=%s\n' \
+            "${package_status}" "${extract_status}" \
+            >>"${RUNNER_TEMP}/catalog-review/reports/fetch-status.txt"
+          exit 0
+
+      - name: Generate candidates and review diffs
+        id: generate
+        env:
+          REVIEW_ROOT: ${{ runner.temp }}/catalog-review
+        run: |
+          set +e
+          review_date="$(date -u +%F)"
+          python3 scripts/refresh-google-fonts.py \
+            --api-input "${REVIEW_ROOT}/raw/google-fonts-api.json" \
+            --metadata-root "${RUNNER_TEMP}/catalog-work/google-fonts" \
+            --existing-csv src/ui-ux-pro-max/data/google-fonts.csv \
+            --output-csv "${REVIEW_ROOT}/candidates/google-fonts.csv" \
+            --license-output "${REVIEW_ROOT}/candidates/google-font-licenses.json" \
+            --metadata-revision "$(cat "${REVIEW_ROOT}/raw/google-fonts-revision.txt")" \
+            --verified-at "${review_date}" \
+            --approve-changes \
+            >"${REVIEW_ROOT}/reports/google-fonts-change-report.json" \
+            2>"${REVIEW_ROOT}/reports/google-fonts-error.log"
+          font_status=$?
+          python3 scripts/refresh-icon-catalog.py \
+            --input "${REVIEW_ROOT}/raw/phosphor-core.json" \
+            --package-json "${REVIEW_ROOT}/raw/phosphor-core-package.json" \
+            --react-package-json "${REVIEW_ROOT}/raw/phosphor-react-package.json" \
+            --react-exports-input "${REVIEW_ROOT}/raw/phosphor-react-exports.json" \
+            --curated-csv src/ui-ux-pro-max/data/icons.csv \
+            --output "${REVIEW_ROOT}/candidates/phosphor-icons-upstream.json" \
+            --verified-at "${review_date}" \
+            >"${REVIEW_ROOT}/reports/phosphor-refresh.log" \
+            2>"${REVIEW_ROOT}/reports/phosphor-error.log"
+          icon_status=$?
+          diff -u src/ui-ux-pro-max/data/google-fonts.csv \
+            "${REVIEW_ROOT}/candidates/google-fonts.csv" \
+            >"${REVIEW_ROOT}/reports/google-fonts.diff" 2>&1 || true
+          diff -u src/ui-ux-pro-max/data/google-font-licenses.json \
+            "${REVIEW_ROOT}/candidates/google-font-licenses.json" \
+            >"${REVIEW_ROOT}/reports/google-font-licenses.diff" 2>&1 || true
+          diff -u src/ui-ux-pro-max/data/phosphor-icons-upstream.json \
+            "${REVIEW_ROOT}/candidates/phosphor-icons-upstream.json" \
+            >"${REVIEW_ROOT}/reports/phosphor-icons-upstream.diff" 2>&1 || true
+          printf 'google_fonts=%s\nphosphor=%s\n' "${font_status}" "${icon_status}" \
+            >"${REVIEW_ROOT}/reports/refresh-status.txt"
+          git status --porcelain >"${REVIEW_ROOT}/reports/checkout-status.txt"
+          echo "font_status=${font_status}" >>"${GITHUB_OUTPUT}"
+          echo "icon_status=${icon_status}" >>"${GITHUB_OUTPUT}"
+          exit 0
+
+      - name: Upload review candidates and diffs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: catalog-refresh-review-${{ github.run_id }}
+          path: ${{ runner.temp }}/catalog-review/
+          if-no-files-found: error
+          retention-days: 14
+
+      - name: Report refresh validation failure
+        if: steps.generate.outputs.font_status != '0' || steps.generate.outputs.icon_status != '0'
+        run: |
+          echo "A catalog candidate failed validation; inspect the uploaded review artifact."
+          exit 1

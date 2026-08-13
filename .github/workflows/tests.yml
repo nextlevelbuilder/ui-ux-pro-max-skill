@@ -3,13 +3,26 @@ name: Tests
 on:
   pull_request:
     paths:
+      - 'README.md'
+      - 'README.zh.md'
       - '.claude/skills/**'
       - 'cli/assets/skills/**'
       - 'cli/assets/templates/**'
       - 'cli/src/**'
       - 'cli/tests/**'
+      - 'cli/package.json'
+      - 'gallery/**'
+      - 'scripts/evaluate-relevance.py'
+      - 'scripts/generate-catalog-summary.py'
+      - 'scripts/refresh-google-fonts.py'
+      - 'scripts/refresh-icon-catalog.py'
+      - 'scripts/relevance_metrics.py'
+      - 'scripts/validate-agent-guide.py'
+      - 'src/ui-ux-pro-max/data/**'
+      - 'src/ui-ux-pro-max/scripts/**'
       - 'src/ui-ux-pro-max/templates/**'
       - '.github/workflows/tests.yml'
+      - '.github/workflows/refresh-catalogs.yml'
   push:
     branches: [main]
   workflow_dispatch:
@@ -33,6 +46,9 @@ jobs:
       - name: Install pytest
         run: pip install pytest
 
+      - name: Run aggregate offline data gate
+        run: npm --prefix cli run verify:data
+
       - name: Run skill regression tests
         run: python3 -m pytest .claude/skills -v
 
@@ -45,6 +61,16 @@ jobs:
       - name: Run preview e2e smoke tests
         working-directory: cli
         run: npx playwright test
+
+      - name: Install gallery dependencies
+        working-directory: gallery
+        run: npm ci
+
+      - name: Test and build gallery
+        working-directory: gallery
+        run: |
+          npm test
+          npm run build
 
       - name: Upload Playwright report
         if: always()

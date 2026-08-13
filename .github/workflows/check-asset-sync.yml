@@ -8,12 +8,16 @@ on:
       - ".claude/skills/ui-ux-pro-max/data/**"
       - ".claude/skills/ui-ux-pro-max/scripts/**"
       - "cli/scripts/sync-assets.mjs"
+      - "cli/package.json"
+      - "scripts/evaluate-relevance.py"
+      - "scripts/relevance_metrics.py"
       - ".github/workflows/check-asset-sync.yml"
   push:
     branches: [main]
     paths:
       - "src/ui-ux-pro-max/**"
       - "cli/assets/**"
+      - "cli/package.json"
       - ".claude/skills/ui-ux-pro-max/data/**"
       - ".claude/skills/ui-ux-pro-max/scripts/**"
 

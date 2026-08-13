@@ -41,13 +41,39 @@ jobs:
           cache: npm
           cache-dependency-path: cli/package-lock.json
 
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: '3.x'
+
       - name: Install CLI dependencies
         working-directory: cli
         run: npm ci
 
+      - name: Install Playwright Chromium
+        working-directory: cli
+        run: npx playwright install --with-deps chromium
+
+      - name: Run aggregate offline data gate
+        run: npm --prefix cli run verify:data
+
       - name: Build CLI
         working-directory: cli
         run: npm run build
+
+      - name: Run CLI end-to-end regression tests
+        working-directory: cli
+        run: npx playwright test
+
+      - name: Install gallery dependencies
+        working-directory: gallery
+        run: npm ci
+
+      - name: Test and build gallery
+        working-directory: gallery
+        run: |
+          npm test
+          npm run build
 
       - name: Run semantic-release
         env:
