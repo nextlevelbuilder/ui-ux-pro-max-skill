@@ -10,12 +10,12 @@
   "scriptPath": "steering/ui-ux-pro-max/scripts/search.py",
   "frontmatter": {
     "name": "ui-ux-pro-max",
-    "description": "Comprehensive design guide for web, mobile, and desktop applications. Contains 67 styles, 161 color palettes, 57 font pairings, 99 UX guidelines, and 25 chart types across 22 technology stacks."
+    "description": "UI/UX design intelligence for web, mobile, and desktop. This skill should be used when designing, building, reviewing, or fixing interfaces, including pages, components, design systems, accessibility, interaction, responsive layout, typography, color, charts, and stack-specific UI implementation. Searchable local data: 79 searchable styles (50 active), 192 product palettes and reasoning profiles, 74 font pairings, 109 UX guidelines, 105 icons, 17 GSAP presets, 25 chart types, and 22 stacks."
   },
   "sections": {
     "quickReference": false
   },
   "title": "ui-ux-pro-max",
-  "description": "Comprehensive design guide for web, mobile, and desktop applications. Contains 67 styles, 161 color palettes, 57 font pairings, 99 UX guidelines, and 25 chart types across 22 technology stacks. Searchable database with priority-based recommendations.",
+  "description": "UI/UX design intelligence for web, mobile, and desktop. This skill should be used when designing, building, reviewing, or fixing interfaces, including pages, components, design systems, accessibility, interaction, responsive layout, typography, color, charts, and stack-specific UI implementation. Searchable local data: 79 searchable styles (50 active), 192 product palettes and reasoning profiles, 74 font pairings, 109 UX guidelines, 105 icons, 17 GSAP presets, 25 chart types, and 22 stacks.",
   "skillOrWorkflow": "Workflow"
 }

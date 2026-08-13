@@ -1,6 +1,13 @@
 export interface StyleData {
   no: number;
+  styleId: string;
   styleCategory: string;
+  aliases: string[];
+  status: "active" | "supplemental" | "deprecated";
+  parentStyleId: string;
+  replacementDomain: string;
+  replacementId: string;
+  preferredMode: "auto" | "light" | "dark";
   type: string;
   keywords: string;
   primaryColors: string;

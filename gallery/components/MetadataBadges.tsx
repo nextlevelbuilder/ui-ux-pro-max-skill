@@ -1,15 +1,19 @@
-import { StyleData } from "@/lib/types";
+import type { StyleData } from "@/lib/types";
 
 interface MetadataBadgesProps {
   style: StyleData;
 }
 
+type BadgeVariant = "green" | "yellow" | "red" | "blue" | "gray";
+
 function Badge({
   label,
+  accessibleLabel = label,
   variant,
 }: {
   label: string;
-  variant: "green" | "yellow" | "red" | "blue" | "gray";
+  accessibleLabel?: string;
+  variant: BadgeVariant;
 }) {
   const colors = {
     green: "bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400",
@@ -21,7 +25,8 @@ function Badge({
 
   return (
     <span className={`inline-flex items-center px-2 py-0.5 text-[10px] font-medium rounded-full ${colors[variant]}`}>
-      {label}
+      <span className="sr-only">{accessibleLabel}</span>
+      <span aria-hidden="true">{label}</span>
     </span>
   );
 }
@@ -32,26 +37,74 @@ function getComplexityVariant(c: string): "green" | "yellow" | "red" {
   return "red";
 }
 
-function getPerfVariant(p: string): "green" | "yellow" | "red" {
-  if (p.includes("Excellent")) return "green";
-  if (p.includes("Good")) return "yellow";
-  return "red";
+export function getTaxonomyValue(metadata: string, key: string): string {
+  const prefix = `${key}:`;
+  const entry = metadata.split("|").find((part) => part.startsWith(prefix));
+  return entry?.slice(prefix.length) ?? "unknown";
 }
 
-function getA11yVariant(a: string): "green" | "yellow" | "red" {
-  if (a.includes("AAA")) return "green";
-  if (a.includes("AA") || a.includes("Good")) return "yellow";
-  return "red";
+function formatTaxonomyValue(value: string): string {
+  return value
+    .split("-")
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(" ");
+}
+
+export function getLevelVariant(value: string): BadgeVariant {
+  if (value === "low" || value === "supported") return "green";
+  if (value === "moderate" || value === "conditional") return "yellow";
+  if (value === "high" || value === "not-recommended") return "red";
+  return "gray";
+}
+
+function TaxonomyBadge({
+  accessibleLabel,
+  label,
+  value,
+}: {
+  accessibleLabel: string;
+  label: string;
+  value: string;
+}) {
+  const displayValue = formatTaxonomyValue(value);
+
+  return (
+    <Badge
+      accessibleLabel={`${accessibleLabel}: ${displayValue}`}
+      label={`${label}: ${displayValue}`}
+      variant={getLevelVariant(value)}
+    />
+  );
 }
 
 export function MetadataBadges({ style }: MetadataBadgesProps) {
+  const performanceCost = getTaxonomyValue(style.performance, "cost");
+  const accessibilityRisk = getTaxonomyValue(style.accessibility, "risk");
+
   return (
-    <div className="flex flex-wrap gap-1.5">
-      <Badge label={style.complexity} variant={getComplexityVariant(style.complexity)} />
-      <Badge label={style.performance.replace(/[⚡❌⚠]/g, "").trim()} variant={getPerfVariant(style.performance)} />
-      <Badge label={style.accessibility.replace(/[✓⚠✗]/g, "").trim()} variant={getA11yVariant(style.accessibility)} />
-      {style.lightMode.includes("Full") && <Badge label="Light" variant="blue" />}
-      {style.darkMode.includes("Full") && <Badge label="Dark" variant="gray" />}
+    <div aria-label="Style metadata" className="flex flex-wrap gap-1.5" role="group">
+      {style.status !== "active" && (
+        <Badge
+          label={`Status: ${formatTaxonomyValue(style.status)}`}
+          variant={style.status === "deprecated" ? "red" : "blue"}
+        />
+      )}
+      <Badge
+        label={`Complexity: ${style.complexity}`}
+        variant={getComplexityVariant(style.complexity)}
+      />
+      <TaxonomyBadge
+        accessibleLabel="Performance cost"
+        label="Cost"
+        value={performanceCost}
+      />
+      <TaxonomyBadge
+        accessibleLabel="Accessibility risk"
+        label="A11y risk"
+        value={accessibilityRisk}
+      />
+      <TaxonomyBadge accessibleLabel="Light mode support" label="Light" value={style.lightMode} />
+      <TaxonomyBadge accessibleLabel="Dark mode support" label="Dark" value={style.darkMode} />
     </div>
   );
 }

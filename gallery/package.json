@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "test": "tsc -p tsconfig.test.json && node --test .test-dist/lib/parseStyles.test.js .test-dist/components/metadata-badges.test.js",
     "start": "next start"
   },
   "dependencies": {

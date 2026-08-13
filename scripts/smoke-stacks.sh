@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Smoke test: every stack registered in STACK_CONFIG must return at least one
-# search result for a neutral query. Catches registry/CSV regressions early
+# search result for a focused query. Catches registry/CSV regressions early
 # (e.g. a stack added to STACK_CONFIG but missing its CSV, or a CSV emptied
 # by a botched merge).
 #
@@ -19,8 +19,36 @@ REPO_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 SCRIPTS_DIR="$REPO_ROOT/src/ui-ux-pro-max/scripts"
 SEARCH="$SCRIPTS_DIR/search.py"
 
-QUERY="${1:-performance}"
+QUERY_OVERRIDE="${1:-}"
 EXPECTED_COUNT="${EXPECTED_STACK_COUNT:-22}"
+
+smoke_query() {
+  case "$1" in
+    react) echo "React useState for component local state" ;;
+    nextjs) echo "Next.js App Router for a new project" ;;
+    vue) echo "Vue Composition API for a new project" ;;
+    svelte) echo "Svelte 5 \$state rune for reactive state" ;;
+    astro) echo "Astro islands architecture interactive components" ;;
+    swiftui) echo "SwiftUI @State for view-local value state" ;;
+    react-native) echo "functional React Native components" ;;
+    flutter) echo "prefer StatelessWidget when Flutter UI has no mutable state" ;;
+    nuxtjs) echo "Nuxt file-based page routing" ;;
+    nuxt-ui) echo "install the Nuxt UI module" ;;
+    html-tailwind) echo "Tailwind z-index utility scale for layered UI" ;;
+    shadcn) echo "install shadcn components with the CLI" ;;
+    jetpack-compose) echo "pure Jetpack Compose UI composables" ;;
+    threejs) echo "Three.js OrbitControls must be imported separately" ;;
+    angular) echo "standalone Angular components for a new project" ;;
+    laravel) echo "reusable Laravel Blade UI components" ;;
+    javafx) echo "launch JavaFX UI from an Application subclass" ;;
+    wpf) echo "WPF INotifyPropertyChanged data binding updates" ;;
+    winui) echo "WinUI InfoBar for status messages" ;;
+    avalonia) echo "Avalonia XAML namespace declaration" ;;
+    uno) echo "Uno Platform WinUI XAML API surface" ;;
+    uwp) echo "UWP compiled x:Bind data binding" ;;
+    *) return 1 ;;
+  esac
+}
 
 if [ ! -f "$SEARCH" ]; then
   echo "FAIL: search.py not found at $SEARCH" >&2
@@ -45,15 +73,31 @@ if [ "${#STACKS[@]}" -ne "$EXPECTED_COUNT" ]; then
   exit 2
 fi
 
-echo "Smoke-testing ${#STACKS[@]} stacks with query '$QUERY':"
+if [ -n "$QUERY_OVERRIDE" ]; then
+  echo "Smoke-testing ${#STACKS[@]} stacks with override query '$QUERY_OVERRIDE':"
+else
+  echo "Smoke-testing ${#STACKS[@]} stacks with focused probes:"
+fi
 fail=0
 for s in "${STACKS[@]}"; do
-  count=$(python3 "$SEARCH" "$QUERY" --stack "$s" -n 1 --json 2>/dev/null \
-    | python3 -c "import json,sys; print(json.load(sys.stdin).get('count',0))")
+  query="$QUERY_OVERRIDE"
+  if [ -z "$query" ]; then
+    query=$(smoke_query "$s" || true)
+  fi
+
+  if [ -z "$query" ]; then
+    printf '  FAIL  %-18s missing smoke probe\n' "$s"
+    fail=$((fail + 1))
+    continue
+  fi
+
+  payload=$(python3 "$SEARCH" "$query" --stack "$s" -n 1 --json 2>/dev/null || true)
+  count=$(printf '%s' "$payload" | python3 -c "import json,sys; data=json.load(sys.stdin); print(data.get('count',0) if not data.get('error') else 0)" 2>/dev/null || echo 0)
   if [ "${count:-0}" -gt 0 ]; then
     printf '  PASS  %-18s %d\n' "$s" "$count"
   else
-    printf '  FAIL  %-18s 0\n' "$s"
+    diagnostics=$(PYTHONPATH="$SCRIPTS_DIR" python3 -c 'import json,sys; from core import search_stack; print(json.dumps(search_stack(sys.argv[2], sys.argv[1], max_results=1, diagnostics=True).get("diagnostics", {}), sort_keys=True))' "$s" "$query" 2>/dev/null || true)
+    printf '  FAIL  %-18s 0 query=%q diagnostics=%s\n' "$s" "$query" "${diagnostics:-unavailable}"
     fail=$((fail + 1))
   fi
 done
@@ -61,7 +105,7 @@ done
 total=${#STACKS[@]}
 echo
 if [ "$fail" -gt 0 ]; then
-  echo "FAIL: $fail/$total stacks returned 0 results for '$QUERY'" >&2
+  echo "FAIL: $fail/$total stacks returned 0 results" >&2
   exit 1
 fi
 echo "OK: $total/$total stacks returned ≥1 result"

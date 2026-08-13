@@ -22,16 +22,33 @@ export function GalleryGrid({ styles }: GalleryGridProps) {
   const [filters, setFilters] = useState<Filters>(DEFAULT_FILTERS);
   const [selectedStyle, setSelectedStyle] = useState<StyleData | null>(null);
 
-  const types = useMemo(() => getUniqueValues(styles, "type"), [styles]);
-  const complexities = useMemo(
-    () => getUniqueValues(styles, "complexity"),
-    [styles]
+  const statusScoped = useMemo(
+    () =>
+      styles.filter(
+        (style) => !filters.status || style.status === filters.status
+      ),
+    [styles, filters.status]
   );
-  const eras = useMemo(() => getUniqueValues(styles, "eraOrigin"), [styles]);
+  const types = useMemo(
+    () => getUniqueValues(statusScoped, "type"),
+    [statusScoped]
+  );
+  const complexities = useMemo(
+    () => getUniqueValues(statusScoped, "complexity"),
+    [statusScoped]
+  );
+  const eras = useMemo(
+    () => getUniqueValues(statusScoped, "eraOrigin"),
+    [statusScoped]
+  );
 
   const filtered = useMemo(
     () => filterStyles(styles, filters),
     [styles, filters]
+  );
+  const activeCount = useMemo(
+    () => filterStyles(styles, DEFAULT_FILTERS).length,
+    [styles]
   );
 
   return (
@@ -43,7 +60,7 @@ export function GalleryGrid({ styles }: GalleryGridProps) {
             Style Gallery
           </h1>
           <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">
-            Browse {styles.length} UI styles from Antigravity Kit
+            Browse {activeCount} active UI styles from Antigravity Kit
           </p>
         </div>
         <DarkModeToggle />
@@ -66,7 +83,7 @@ export function GalleryGrid({ styles }: GalleryGridProps) {
           complexities={complexities}
           eras={eras}
           resultCount={filtered.length}
-          totalCount={styles.length}
+          totalCount={statusScoped.length}
         />
       </div>
 
@@ -74,7 +91,11 @@ export function GalleryGrid({ styles }: GalleryGridProps) {
       {filtered.length > 0 ? (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {filtered.map((style) => (
-            <StyleCard key={style.no} style={style} onSelect={setSelectedStyle} />
+            <StyleCard
+              key={style.styleId}
+              style={style}
+              onSelect={setSelectedStyle}
+            />
           ))}
         </div>
       ) : (

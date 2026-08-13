@@ -1,0 +1,33 @@
+{
+  "axisRegistry": [],
+  "familyMetadataList": [
+    {
+      "family": "Zeta Serif", "displayName": null, "category": "Serif", "stroke": "Serif",
+      "classifications": ["Display"], "size": 1000, "subsets": ["menu", "latin-ext", "latin"],
+      "fonts": {
+        "400": {"thickness": 5, "slant": 1, "width": 7, "lineHeight": 1.2},
+        "700": {"thickness": 7, "slant": 1, "width": 7, "lineHeight": 1.2},
+        "700i": {"thickness": 7, "slant": 4, "width": 7, "lineHeight": 1.2}
+      }, "axes": [], "designers": ["Zeta Studio"],
+      "lastModified": "2025-06-02", "dateAdded": "2018-04-09", "popularity": 90,
+      "trending": 11, "defaultSort": 9, "androidFragment": null, "isNoto": false,
+      "colorCapabilities": [], "primaryScript": "", "primaryLanguage": "", "isOpenSource": true,
+      "isBrandFont": false, "languages": []
+    },
+    {
+      "family": "Alpha Sans", "displayName": null, "category": "Sans Serif", "stroke": "Sans Serif",
+      "classifications": ["Geometric"], "size": 2000, "subsets": ["menu", "vietnamese", "latin"],
+      "fonts": {
+        "400": {"thickness": 5, "slant": 1, "width": 7, "lineHeight": 1.2},
+        "400i": {"thickness": 5, "slant": 4, "width": 7, "lineHeight": 1.2},
+        "500": {"thickness": 6, "slant": 1, "width": 7, "lineHeight": 1.2}
+      },
+      "axes": [{"tag": "wght", "min": 100.0, "max": 900.0, "defaultValue": 400.0}],
+      "designers": ["Ada Type", "Binh Fonts"], "lastModified": "2025-01-03",
+      "dateAdded": "2020-02-20", "popularity": 42, "trending": 7, "defaultSort": 4,
+      "androidFragment": null, "isNoto": false, "colorCapabilities": [], "primaryScript": "",
+      "primaryLanguage": "", "isOpenSource": true, "isBrandFont": false, "languages": []
+    }
+  ],
+  "promotedScript": []
+}

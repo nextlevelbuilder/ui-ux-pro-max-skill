@@ -12,14 +12,15 @@ These are frequently overlooked issues that make UI look unprofessional.
 |------|----------|--------|----------------|
 | **No Emoji as Structural Icons** | Use vector-based icons (e.g., Lucide, react-native-vector-icons, @expo/vector-icons). | Using emojis (🎨 🚀 ⚙️) for navigation, settings, or system controls. | Emojis are font-dependent, inconsistent across platforms, and cannot be controlled via design tokens. |
 | **Vector-Only Assets** | Use SVG or platform vector icons that scale cleanly and support theming. | Raster PNG icons that blur or pixelate. | Ensures scalability, crisp rendering, and dark/light mode adaptability. |
+| **Contextual Semantics** | Choose semantics from use, not glyph: hide decorative icons beside visible text from the accessibility tree; give meaningful standalone icons a text alternative; give icon controls an accessible name and expose selected/pressed/expanded state when applicable. | Treating one icon name as permanently decorative, meaningful, or interactive. | The same glyph can serve different purposes in different components. |
 | **Stable Interaction States** | Use color, opacity, or elevation transitions for press states without changing layout bounds. | Layout-shifting transforms that move surrounding content or trigger visual jitter. | Prevents unstable interactions and preserves smooth motion/perceived quality on mobile. |
 | **Correct Brand Logos** | Use official brand assets and follow their usage guidelines (spacing, color, clear space). | Guessing logo paths, recoloring unofficially, or modifying proportions. | Prevents brand misuse and ensures legal/platform compliance. |
 | **Consistent Icon Sizing** | Define icon sizes as design tokens (e.g., icon-sm, icon-md = 24pt, icon-lg). | Mixing arbitrary values like 20pt / 24pt / 28pt randomly. | Maintains rhythm and visual hierarchy across the interface. |
 | **Stroke Consistency** | Use a consistent stroke width within the same visual layer (e.g., 1.5px or 2px). | Mixing thick and thin stroke styles arbitrarily. | Inconsistent strokes reduce perceived polish and cohesion. |
 | **Filled vs Outline Discipline** | Use one icon style per hierarchy level. | Mixing filled and outline icons at the same hierarchy level. | Maintains semantic clarity and stylistic coherence. |
-| **Touch Target Minimum** | Minimum 44×44pt interactive area (use hitSlop if icon is smaller). | Small icons without expanded tap area. | Meets accessibility and platform usability standards. |
+| **Touch Target Minimum** | Use at least 44pt on iOS and 48dp on Android; expand the hit area when the visual icon is smaller. | Small icons without expanded tap area, or one unit reused across platforms. | Matches platform-specific target guidance. |
 | **Icon Alignment** | Align icons to text baseline and maintain consistent padding. | Misaligned icons or inconsistent spacing around them. | Prevents subtle visual imbalance that reduces perceived quality. |
-| **Icon Contrast** | Follow WCAG contrast standards: 4.5:1 for small elements, 3:1 minimum for larger UI glyphs. | Low-contrast icons that blend into the background. | Ensures accessibility in both light and dark modes. |
+| **Icon Contrast** | Meaningful icons and control boundaries need at least 3:1 against adjacent colors; decorative icons must not carry information. | Low-contrast icons that carry meaning or state. | Applies the non-text contrast role instead of a text-size rule. |
 
 ## Interaction (App)
 
@@ -39,11 +40,11 @@ These are frequently overlooked issues that make UI look unprofessional.
 |------|----|----- |
 | **Surface readability (light)** | Keep cards/surfaces clearly separated from background with sufficient opacity/elevation | Overly transparent surfaces that blur hierarchy |
 | **Text contrast (light)** | Maintain body text contrast >=4.5:1 against light surfaces | Low-contrast gray body text |
-| **Text contrast (dark)** | Maintain primary text contrast >=4.5:1 and secondary text >=3:1 on dark surfaces | Dark mode text that blends into background |
+| **Text contrast (dark)** | Maintain normal text contrast >=4.5:1 on dark surfaces; 3:1 is only for large text or non-text UI | Muted normal text that falls below the text threshold |
 | **Border and divider visibility** | Ensure separators are visible in both themes (not just light mode) | Theme-specific borders disappearing in one mode |
 | **State contrast parity** | Keep pressed/focused/disabled states equally distinguishable in light and dark themes | Defining interaction states for one theme only |
 | **Token-driven theming** | Use semantic color tokens mapped per theme across app surfaces/text/icons | Hardcoded per-screen hex values |
-| **Scrim and modal legibility** | Use a modal scrim strong enough to isolate foreground content (typically 40-60% black) | Weak scrim that leaves background visually competing |
+| **Scrim and modal legibility** | Measure the composed result and use a scrim strong enough to isolate foreground content | Reusing one opacity without checking the actual background |
 
 ## Layout & Spacing
 
@@ -65,7 +66,7 @@ These are frequently overlooked issues that make UI look unprofessional.
 Before delivering app UI code, verify every item below. Start with the process steps, then the per-area checkboxes.
 
 ### Process
-- [ ] Ran `--domain ux "animation accessibility z-index loading"` as a validation pass before implementation
+- [ ] Ran only searches relevant to the interface, such as `"keyboard focus modal" --domain ux` for modal keyboard behavior
 - [ ] Reviewed `quick-reference.md` §1–§3 (CRITICAL + HIGH) as a final pass
 - [ ] Tested on 375px (small phone) and in landscape orientation
 - [ ] Verified behavior with **reduced-motion** enabled and **Dynamic Type**/largest system text size
@@ -89,9 +90,9 @@ Before delivering app UI code, verify every item below. Start with the process s
 
 ### Light/Dark Mode
 - [ ] Primary text contrast >=4.5:1 in both light and dark mode
-- [ ] Secondary text contrast >=3:1 in both light and dark mode
+- [ ] Normal primary and secondary text contrast >=4.5:1 in both light and dark mode
 - [ ] Dividers/borders and interaction states are distinguishable in both modes
-- [ ] Modal/drawer scrim opacity is strong enough to preserve foreground legibility (typically 40-60% black)
+- [ ] Modal/drawer scrim is measured against the real background and preserves foreground legibility
 - [ ] Both themes are tested before delivery (not inferred from a single theme)
 
 ### Layout
@@ -103,7 +104,14 @@ Before delivering app UI code, verify every item below. Start with the process s
 - [ ] Long-form text measure remains readable on larger devices (no edge-to-edge paragraphs)
 
 ### Accessibility
-- [ ] All meaningful images/icons have accessibility labels
+- [ ] Decorative icons beside visible text are hidden from the accessibility tree (`aria-hidden="true"` on web or the native equivalent)
+- [ ] Meaningful images/icons without equivalent visible text have a text alternative
+- [ ] Icon controls have an accessible name and announce applicable selected/pressed/expanded state
 - [ ] Form fields have labels, hints, and clear error messages
 - [ ] Color is not the only indicator
 - [ ] Reduced motion and dynamic text size are supported without layout breakage
+- [ ] Sticky UI and overlays do not obscure keyboard focus
+- [ ] Dragging and swipe-only interactions have button/keyboard alternatives
+- [ ] Authentication allows password managers and paste, with a non-cognitive alternative
+- [ ] Auto-rotating content has pause/stop controls and stops on focus or reduced motion
+- [ ] Failed forms retain inline field errors; multi-error forms also focus a linked error summary after submit

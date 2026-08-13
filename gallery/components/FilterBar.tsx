@@ -1,6 +1,8 @@
 "use client";
 
-import { Filters } from "@/lib/filterStyles";
+import { DEFAULT_FILTERS, type Filters } from "../lib/filterStyles";
+
+const STATUS_OPTIONS = ["active", "supplemental", "deprecated"];
 
 interface FilterBarProps {
   filters: Filters;
@@ -24,12 +26,18 @@ function FilterGroup({
   onChange: (v: string) => void;
 }) {
   return (
-    <div className="flex flex-wrap items-center gap-1.5">
-      <span className="text-xs font-medium text-gray-500 dark:text-gray-400 mr-1">
+    <div
+      aria-label={`${label} filter`}
+      className="flex flex-wrap items-center gap-1.5"
+      role="group"
+    >
+      <span aria-hidden="true" className="text-xs font-medium text-gray-500 dark:text-gray-400 mr-1">
         {label}:
       </span>
       <button
+        aria-pressed={value === ""}
         onClick={() => onChange("")}
+        type="button"
         className={`px-2.5 py-1 text-xs rounded-full transition-colors ${
           value === ""
             ? "bg-blue-500 text-white"
@@ -40,8 +48,10 @@ function FilterGroup({
       </button>
       {options.map((opt) => (
         <button
+          aria-pressed={value === opt}
           key={opt}
           onClick={() => onChange(value === opt ? "" : opt)}
+          type="button"
           className={`px-2.5 py-1 text-xs rounded-full transition-colors ${
             value === opt
               ? "bg-blue-500 text-white"
@@ -64,12 +74,23 @@ export function FilterBar({
   resultCount,
   totalCount,
 }: FilterBarProps) {
-  const hasFilters =
-    filters.search || filters.type || filters.complexity || filters.era;
+  const hasFilters = Boolean(
+    filters.search ||
+      filters.status !== DEFAULT_FILTERS.status ||
+      filters.type ||
+      filters.complexity ||
+      filters.era
+  );
 
   return (
     <div className="space-y-3">
       <div className="flex flex-wrap gap-4">
+        <FilterGroup
+          label="Status"
+          options={STATUS_OPTIONS}
+          value={filters.status}
+          onChange={(status) => onChange({ ...filters, status })}
+        />
         <FilterGroup
           label="Type"
           options={types}
@@ -97,9 +118,8 @@ export function FilterBar({
         </p>
         {hasFilters && (
           <button
-            onClick={() =>
-              onChange({ search: "", type: "", complexity: "", era: "" })
-            }
+            onClick={() => onChange(DEFAULT_FILTERS)}
+            type="button"
             className="text-xs text-blue-500 hover:text-blue-600 transition-colors"
           >
             Clear all filters

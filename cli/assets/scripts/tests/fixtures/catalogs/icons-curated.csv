@@ -1,0 +1,4 @@
+No,Category,Icon Name,Keywords,Library,Import Code,Usage,Best For,Style,Semantic Role,Allowed Contexts
+1,Navigation,arrow-left,back,Phosphor,import { ArrowLeft } from '@phosphor-icons/react',Example,Back,Outline,interactive,interactive
+2,Nature,acorn,nut,Phosphor,import { Acorn } from '@phosphor-icons/react',Example,Acorn,Outline,meaningful,meaningful
+3,Guideline,example,guidance,Heroicons,import { BeakerIcon } from '@heroicons/react/24/outline',Example,Example,Outline,guideline,meaningful

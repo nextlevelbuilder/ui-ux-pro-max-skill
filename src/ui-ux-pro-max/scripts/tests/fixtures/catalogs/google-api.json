@@ -1,0 +1,36 @@
+{
+  "kind": "webfonts#webfontList",
+  "items": [
+    {
+      "family": "Zeta Serif",
+      "variants": ["700italic", "regular", "700"],
+      "subsets": ["latin-ext", "latin"],
+      "version": "v2",
+      "lastModified": "2025-06-02",
+      "files": {
+        "regular": "https://fonts.gstatic.com/zeta-regular.ttf",
+        "700": "https://fonts.gstatic.com/zeta-700.ttf",
+        "700italic": "https://fonts.gstatic.com/zeta-700-italic.ttf"
+      },
+      "category": "serif",
+      "kind": "webfonts#webfont"
+    },
+    {
+      "family": "Alpha Sans",
+      "variants": ["regular", "italic", "500"],
+      "subsets": ["vietnamese", "latin", "latin"],
+      "version": "v4",
+      "lastModified": "2025-01-03",
+      "files": {
+        "regular": "https://fonts.gstatic.com/alpha-regular.ttf",
+        "italic": "https://fonts.gstatic.com/alpha-italic.ttf",
+        "500": "https://fonts.gstatic.com/alpha-500.ttf"
+      },
+      "category": "sans-serif",
+      "kind": "webfonts#webfont",
+      "axes": [
+        {"tag": "wght", "start": 100, "end": 900}
+      ]
+    }
+  ]
+}

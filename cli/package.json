@@ -16,10 +16,18 @@
     "sync:assets": "node scripts/sync-assets.mjs",
     "check:assets": "node scripts/sync-assets.mjs --check",
     "validate:csv": "cd .. && python3 scripts/validate-csv.py",
+    "validate:semantic": "cd .. && python3 src/ui-ux-pro-max/scripts/validate_data.py",
+    "validate:agent-guide": "cd .. && python3 scripts/validate-agent-guide.py",
+    "validate:catalog-summary": "cd .. && python3 scripts/generate-catalog-summary.py --check",
+    "test:python": "cd .. && python3 -m unittest discover -s src/ui-ux-pro-max/scripts/tests -p 'test_*.py'",
+    "evaluate:relevance": "cd .. && python3 scripts/evaluate-relevance.py",
+    "evaluate:relevance:calibration": "cd .. && python3 scripts/evaluate-relevance.py --split calibration",
+    "evaluate:relevance:held-out": "cd .. && python3 scripts/evaluate-relevance.py --split held_out",
     "smoke:domains": "cd .. && bash scripts/smoke-domains.sh",
     "smoke:stacks": "cd .. && bash scripts/smoke-stacks.sh",
+    "verify:data": "npm run validate:csv && npm run validate:semantic && npm run validate:agent-guide && npm run validate:catalog-summary && npm run test:python && npm run evaluate:relevance && npm run smoke:domains && npm run smoke:stacks && npm run check:assets",
     "typecheck": "tsc --noEmit",
-    "prepublishOnly": "npm run sync:assets && npm run validate:csv && npm run smoke:domains && npm run smoke:stacks && npm run typecheck && npm run build"
+    "prepublishOnly": "npm run sync:assets && npm run verify:data && npm run typecheck && npm run build"
   },
   "keywords": [
     "ui",

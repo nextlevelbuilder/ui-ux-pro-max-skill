@@ -2,6 +2,7 @@ import { StyleData } from "./types";
 
 export interface Filters {
   search: string;
+  status: string;
   type: string;
   complexity: string;
   era: string;
@@ -9,6 +10,7 @@ export interface Filters {
 
 export const DEFAULT_FILTERS: Filters = {
   search: "",
+  status: "active",
   type: "",
   complexity: "",
   era: "",
@@ -30,15 +32,19 @@ export function filterStyles(
   styles: StyleData[],
   filters: Filters
 ): StyleData[] {
+  const query = filters.search.toLowerCase();
+
   return styles.filter((s) => {
+    if (filters.status && s.status !== filters.status) return false;
     if (filters.type && s.type !== filters.type) return false;
     if (filters.complexity && s.complexity !== filters.complexity) return false;
     if (filters.era && s.eraOrigin !== filters.era) return false;
 
-    if (filters.search) {
-      const q = filters.search.toLowerCase();
+    if (query) {
       const searchable = [
+        s.styleId,
         s.styleCategory,
+        ...s.aliases,
         s.keywords,
         s.bestFor,
         s.eraOrigin,
@@ -47,7 +53,7 @@ export function filterStyles(
       ]
         .join(" ")
         .toLowerCase();
-      if (!searchable.includes(q)) return false;
+      if (!searchable.includes(query)) return false;
     }
 
     return true;

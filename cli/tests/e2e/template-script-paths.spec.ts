@@ -7,7 +7,7 @@ const cases = [
   ['copilot', '.github/prompts/ui-ux-pro-max/scripts/search.py'],
   ['kiro', '.kiro/steering/ui-ux-pro-max/scripts/search.py'],
 ] as const;
-const SEARCH_COMMAND_COUNT = 16;
+const SEARCH_COMMAND_COUNT = 17;
 
 function extractSearchScriptPaths(content: string): string[] {
   return [...content.matchAll(/^python3\s+(\S*search\.py)\b/gm)].map(match => match[1]);

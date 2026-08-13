@@ -10,6 +10,7 @@ Load this file when doing a UI review/audit pass, or when you need the full chec
 - `focus-states` - Visible focus rings on interactive elements (2–4px; Apple HIG, MD)
 - `alt-text` - Descriptive alt text for meaningful images
 - `aria-labels` - aria-label for icon-only buttons; accessibilityLabel in native (Apple HIG)
+- `icon-context` - Semantics depend on use: decorative icons beside visible text are hidden from the accessibility tree; meaningful icons need a text alternative; icon controls need an accessible name and applicable state
 - `keyboard-nav` - Tab order matches visual order; full keyboard support (Apple HIG)
 - `form-labels` - Use label with for attribute
 - `skip-links` - Skip to main content for keyboard users
@@ -20,6 +21,15 @@ Load this file when doing a UI review/audit pass, or when you need the full chec
 - `voiceover-sr` - Meaningful accessibilityLabel/accessibilityHint; logical reading order for VoiceOver/screen readers (Apple HIG, MD)
 - `escape-routes` - Provide cancel/back in modals and multi-step flows (Apple HIG)
 - `keyboard-shortcuts` - Preserve system and a11y shortcuts; offer keyboard alternatives for drag-and-drop (Apple HIG)
+- `focus-not-obscured` - Sticky UI, overlays, and banners must not hide the keyboard-focused control (WCAG 2.2 AA)
+- `focus-not-obscured-enhanced` - Keep the entire focused component visible (WCAG 2.2 AAA)
+- `focus-appearance` - Verify focus indicator area and 3:1 state contrast; visible focus alone is not enough (WCAG 2.2 AAA)
+- `dragging-alternative` - Every author-controlled drag action needs a single-pointer and keyboard alternative (WCAG 2.2 AA)
+- `web-target-size` - Web pointer targets need 24×24 CSS px or a documented exception; do not substitute native units (WCAG 2.2 AA)
+- `consistent-help` - Repeated help mechanisms stay in the same relative order across a page set (WCAG 2.2 A)
+- `redundant-entry` - Reuse information already supplied in the same process unless re-entry is essential (WCAG 2.2 A)
+- `accessible-authentication` - Allow password managers and paste; provide a non-cognitive authentication path (WCAG 2.2 Minimum, AA). The Enhanced AAA criterion is not represented in the dataset
+- `auto-rotation-controls` - Carousels and moving content need pause/stop controls and must stop on focus or reduced motion (WAI)
 
 ### 2. Touch & Interaction (CRITICAL)
 
@@ -146,7 +156,7 @@ Load this file when doing a UI review/audit pass, or when you need the full chec
 ### 8. Forms & Feedback (MEDIUM)
 
 - `input-labels` - Visible label per input (not placeholder-only)
-- `error-placement` - Show error below the related field
+- `error-placement` - Show a specific error below the related field and connect it with aria-describedby
 - `submit-feedback` - Loading then success/error state on submit
 - `required-indicators` - Mark required fields (e.g. asterisk)
 - `empty-states` - Helpful message and action when no content
@@ -168,8 +178,8 @@ Load this file when doing a UI review/audit pass, or when you need the full chec
 - `error-clarity` - Error messages must state cause + how to fix (not just "Invalid input") (HIG, MD)
 - `field-grouping` - Group related fields logically (fieldset/legend or visual grouping) (MD)
 - `read-only-distinction` - Read-only state should be visually and semantically different from disabled (MD)
-- `focus-management` - After submit error, auto-focus the first invalid field (WCAG, MD)
-- `error-summary` - For multiple errors, show summary at top with anchor links to each field (WCAG)
+- `focus-management` - After failed submission with multiple errors, focus the error summary; without a summary, focus the first invalid field
+- `error-summary` - Put a focusable summary at the top after failed submit, link each item to its invalid field, and retain inline field errors
 - `touch-friendly-input` - Mobile input height ≥44px to meet touch target requirements (Apple HIG)
 - `destructive-emphasis` - Destructive actions use semantic danger color (red) and are visually separated from primary actions (HIG, MD)
 - `toast-accessibility` - Toasts must not steal focus; use aria-live="polite" for screen reader announcement (WCAG)

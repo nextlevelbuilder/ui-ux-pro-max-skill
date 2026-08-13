@@ -62,6 +62,14 @@ def format_output(result, full=False):
     output.append(f"**Source:** {result['file']} | **Found:** {result['count']} results\n")
 
     if result['count'] == 0:
+        redirect = result.get("redirect")
+        if redirect:
+            output.append(
+                "This legacy style label is now modeled in the "
+                f"`{redirect['domain']}` domain as `{redirect['id']}`. "
+                "Search that domain instead of treating a page composition as a visual style."
+            )
+            return "\n".join(output)
         output.append(
             "No matches. This is not a match with an empty value -- the query "
             "did not hit the database. Retry with broader/different keywords "
@@ -90,7 +98,8 @@ if __name__ == "__main__":
     parser.add_argument("query", help="Search query")
     parser.add_argument("--domain", "-d", choices=list(CSV_CONFIG.keys()), help="Search domain")
     parser.add_argument("--stack", "-s", choices=AVAILABLE_STACKS, help=f"Stack-specific search. Available: {', '.join(AVAILABLE_STACKS)}")
-    parser.add_argument("--max-results", "-n", type=int, default=MAX_RESULTS, help="Max results (default: 3)")
+    parser.add_argument("--max-results", "-n", type=int, choices=range(1, 21), default=MAX_RESULTS,
+                        metavar="1-20", help="Max results (default: 3)")
     parser.add_argument("--json", action="store_true", help="Output as JSON")
     parser.add_argument("--full", action="store_true", help="Do not truncate long field values in text output")
     # Design system generation

@@ -25,6 +25,7 @@ sys.path.insert(0, str(SCRIPTS_DIR))
 
 from design_system import (  # noqa: E402
     _filter_anti_patterns_for_mode,
+    _contrast_ratio,
     _palette_is_dark,
     _query_wants_dark,
     _relative_luminance,
@@ -106,6 +107,15 @@ class TestPaletteSelection(unittest.TestCase):
     def test_empty_results(self):
         self.assertEqual(_select_palette_for_mode([], "dark"), {})
 
+    def test_category_identity_wins_over_unrelated_dark_palette(self):
+        chosen = _select_palette_for_mode(
+            [LIGHT_PALETTE, DARK_PALETTE], "dark", "SaaS")
+        self.assertEqual("SaaS", chosen["Product Type"])
+        self.assertEqual("derived-dark", chosen["_mode_derivation"])
+        self.assertTrue(_palette_is_dark(chosen))
+        self.assertGreaterEqual(
+            _contrast_ratio(chosen["Ring"], chosen["Background"]), 3.0)
+
 
 class TestAntiPatternGating(unittest.TestCase):
     def test_dark_clause_dropped_others_kept(self):
@@ -137,6 +147,26 @@ class TestEndToEndCoherence(unittest.TestCase):
             _palette_is_dark({"Background": background}),
             "dark-mode query returned a light background: {}".format(background),
         )
+
+    def test_generator_exports_every_semantic_foreground_pair(self):
+        colors = DesignSystemGenerator().generate("SaaS dashboard")["colors"]
+        pairs = (
+            ("on_primary", "primary"),
+            ("on_secondary", "secondary"),
+            ("on_accent", "accent"),
+            ("foreground", "background"),
+            ("card_foreground", "card"),
+            ("muted_foreground", "muted"),
+            ("on_destructive", "destructive"),
+        )
+        for foreground, background in pairs:
+            with self.subTest(pair=foreground):
+                self.assertTrue(colors[foreground])
+                self.assertTrue(colors[background])
+                self.assertGreaterEqual(
+                    _contrast_ratio(colors[foreground], colors[background]), 4.5
+                )
+        self.assertEqual(colors["on_cta"], colors["on_accent"])
 
     def test_dark_query_foreground_is_lighter_than_background(self):
         ds = DesignSystemGenerator().generate(self.QUERY)
