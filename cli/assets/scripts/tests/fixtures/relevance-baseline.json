@@ -390,14 +390,14 @@
       "diagnostics": {
         "abstained": false,
         "calibration_version": "2026-08-12-v1",
-        "margin": 7.51509831837026,
+        "margin": 7.712612997594313,
         "normalized_query": "visible focus and complete keyboard navigation for web users",
         "query_rewrites": [],
         "reason": "matched",
-        "runner_up_score": 9.290924435576699,
+        "runner_up_score": 9.166328360401398,
         "search_query": "visible focus and complete keyboard navigation for web users",
         "token_coverage": 1.0,
-        "top_score": 16.80602275394696
+        "top_score": 16.87894135799571
       },
       "expectedRoute": null,
       "grades": [
@@ -432,14 +432,14 @@
       "diagnostics": {
         "abstained": false,
         "calibration_version": "2026-08-12-v1",
-        "margin": 2.8254218471250114,
+        "margin": 3.342400772580876,
         "normalized_query": "stop animations making people sick and honor their motion preference",
         "query_rewrites": [],
         "reason": "matched",
-        "runner_up_score": 4.539539318371527,
+        "runner_up_score": 4.7581916385107546,
         "search_query": "stop animations making people sick and honor their motion preference",
         "token_coverage": 0.2222222222222222,
-        "top_score": 7.364961165496538
+        "top_score": 8.10059241109163
       },
       "expectedRoute": null,
       "grades": [
@@ -1294,14 +1294,14 @@
       "diagnostics": {
         "abstained": false,
         "calibration_version": "2026-08-12-v1",
-        "margin": 3.5036561368817756,
+        "margin": 3.634601707496982,
         "normalized_query": "Tailwind z-index utility scale for layered UI",
         "query_rewrites": [],
         "reason": "matched",
-        "runner_up_score": 6.975714103396943,
+        "runner_up_score": 7.208515535060073,
         "search_query": "Tailwind z-index utility scale for layered UI",
         "token_coverage": 0.8333333333333334,
-        "top_score": 10.479370240278719
+        "top_score": 10.843117242557055
       },
       "expectedRoute": null,
       "grades": [
@@ -1336,14 +1336,14 @@
       "diagnostics": {
         "abstained": false,
         "calibration_version": "2026-08-12-v1",
-        "margin": 2.863347090486238,
+        "margin": 2.919055718924226,
         "normalized_query": "smooth transition when a Tailwind element is hovered",
         "query_rewrites": [],
         "reason": "matched",
-        "runner_up_score": 4.74166549456665,
+        "runner_up_score": 4.947978221881804,
         "search_query": "smooth transition when a Tailwind element is hovered",
         "token_coverage": 0.6666666666666666,
-        "top_score": 7.605012585052888
+        "top_score": 7.86703394080603
       },
       "expectedRoute": null,
       "grades": [
@@ -2796,14 +2796,14 @@
       "diagnostics": {
         "abstained": false,
         "calibration_version": "2026-08-12-v1",
-        "margin": 0.41518706789857873,
+        "margin": 0.40507227614749475,
         "normalized_query": "WCAG keyboard accessibility and visible focus",
         "query_rewrites": [],
         "reason": "matched",
-        "runner_up_score": 11.665120201946085,
+        "runner_up_score": 11.718159532722154,
         "search_query": "WCAG keyboard accessibility and visible focus",
         "token_coverage": 1.0,
-        "top_score": 12.080307269844663
+        "top_score": 12.12323180886965
       },
       "expectedRoute": "ux",
       "grades": [
@@ -3277,7 +3277,7 @@
     "typoRecoveryAt3": 1.0
   },
   "oracleFingerprint": "02e7226428c64a995ec24ae104ce4d186f5f91bf0f062556e90ef9b0fcb6d67a",
-  "runtimeFingerprint": "b2c49a8a8edcc75a8e1724ea822c9e9baf9e046819457e8060ed724d2cce5a55",
+  "runtimeFingerprint": "0d096d52499c2dd84ef80b2e45a1793bc4ed7c9be8fe5948b08151790959b376",
   "samples": {
     "cases": 90,
     "designSystem": 8,

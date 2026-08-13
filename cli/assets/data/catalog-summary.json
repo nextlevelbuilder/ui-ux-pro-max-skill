@@ -16,11 +16,11 @@
     "googleFonts": 1934,
     "curatedIcons": 105,
     "upstreamPhosphorIcons": 1512,
-    "uxGuidelines": 109,
+    "uxGuidelines": 119,
     "motionPresets": 17,
     "chartTypes": 25,
     "stacks": 22,
-    "stackGuidelines": 1257
+    "stackGuidelines": 1260
   },
   "snapshots": {
     "google-fonts.csv": {

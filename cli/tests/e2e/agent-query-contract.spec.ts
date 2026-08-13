@@ -2,7 +2,7 @@ import { expect, test } from '@playwright/test';
 import { loadAllPlatformConfigs, renderSkillFile } from '../../src/utils/template.js';
 
 const DESCRIPTION =
-  'UI/UX design intelligence for web, mobile, and desktop. This skill should be used when designing, building, reviewing, or fixing interfaces, including pages, components, design systems, accessibility, interaction, responsive layout, typography, color, charts, and stack-specific UI implementation. Searchable local data: 79 searchable styles (50 active), 192 product palettes and reasoning profiles, 74 font pairings, 109 UX guidelines, 105 icons, 17 GSAP presets, 25 chart types, and 22 stacks.';
+  'UI/UX design intelligence for web, mobile, and desktop. This skill should be used when designing, building, reviewing, or fixing interfaces, including pages, components, design systems, accessibility, interaction, responsive layout, typography, color, charts, and stack-specific UI implementation. Searchable local data: 79 searchable styles (50 active), 192 product palettes and reasoning profiles, 74 font pairings, 119 UX guidelines, 105 icons, 17 GSAP presets, 25 chart types, and 22 stacks.';
 
 test('all platform metadata uses one accurate activation description', async () => {
   const configs = await loadAllPlatformConfigs();
@@ -25,6 +25,12 @@ test('rendered guides expose the deterministic query contract', async () => {
     expect(content, platform).toContain('Retry once');
     expect(content, platform).toContain('Do not persist unverified output');
     expect(content, platform).toContain('explicit accessibility outcome terms');
+    expect(content, platform).toContain('semantic UX outcome first, then the detected stack');
+    expect(content, platform).toContain('orphan heading line balance' + '" --domain ux');
+    expect(content, platform).toContain('badge chip label wraps' + '" --domain ux');
+    expect(content, platform).toContain('live badge count screen reader' + '" --domain ux');
+    expect(content, platform).toContain('rapid chip animation interrupted' + '" --domain ux');
+    expect(content, platform).toContain('chip badge overflow nowrap' + '" --stack html-tailwind');
     expect(content, platform).toContain('React/Next.js performance');
     expect(content, platform).toContain('Native/app interface guidance');
     expect(content, platform).not.toContain('React Native perf | `react`');

@@ -92,7 +92,7 @@ PROVENANCE_APPLIES_TO = {
 CORE_PROVENANCE_FILES = {
     "colors.csv", "charts.csv", "ux-guidelines.csv", "landing.csv",
     "typography.csv", "icons.csv", "motion.csv", "app-interface.csv",
-    "react-performance.csv",
+    "react-performance.csv", "stacks/html-tailwind.csv",
 }
 CATALOG_PROVENANCE_FILES = {"google-fonts.csv", "phosphor-icons-upstream.json"}
 CATALOG_PROVENANCE_IDS = {
@@ -106,7 +106,7 @@ OFFICIAL_SOURCE_HOSTS = {
     "developers.google.com", "fluent2.microsoft.design", "github.com",
     "greensock.com", "gsap.com", "m3.material.io", "opensource.adobe.com",
     "react.dev", "s2.spectrum.adobe.com", "shopify.dev",
-    "design-system.service.gov.uk", "www.w3.org",
+    "design-system.service.gov.uk", "tailwindcss.com", "www.w3.org",
 }
 STACK_OFFICIAL_HOSTS = {
     "react": {"react.dev"},

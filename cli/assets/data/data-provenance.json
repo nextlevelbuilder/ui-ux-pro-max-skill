@@ -1193,6 +1193,106 @@
       ]
     },
     {
+      "entityKind": "dataset-contract",
+      "entityId": "core-text-layout-resilience",
+      "sourceFile": "ux-guidelines.csv",
+      "sourceKey": {
+        "Scope": "No 8, 14, 19, 78, and 110-119; Issue, Platform, Description, Do, Don't, code-example, and Severity fields",
+        "Boundary": "Heading balance is a progressive browser-controlled heuristic and does not guarantee an orphan-free or exact line break; timing and loading choices remain platform- and component-specific; compact-label guidance does not authorize blanket nonbreaking spaces, hardcoded line breaks, inaccessible truncation, or status announced by color alone"
+      },
+      "status": "active",
+      "verifiedAt": "2026-08-13",
+      "sla": "manual-verified",
+      "appliesTo": [
+        "search",
+        "design-guidance"
+      ],
+      "sources": [
+        {
+          "type": "official",
+          "ref": "https://www.w3.org/TR/css-text-4/"
+        },
+        {
+          "type": "official",
+          "ref": "https://www.w3.org/WAI/WCAG22/Understanding/reflow.html"
+        },
+        {
+          "type": "official",
+          "ref": "https://www.w3.org/WAI/WCAG22/Understanding/text-spacing.html"
+        },
+        {
+          "type": "official",
+          "ref": "https://www.w3.org/WAI/WCAG22/Understanding/status-messages.html"
+        },
+        {
+          "type": "official",
+          "ref": "https://fluent2.microsoft.design/components/web/react/core/tag/usage"
+        },
+        {
+          "type": "official",
+          "ref": "https://fluent2.microsoft.design/components/web/react/core/skeleton/usage"
+        },
+        {
+          "type": "official",
+          "ref": "https://fluent2.microsoft.design/motion"
+        },
+        {
+          "type": "official",
+          "ref": "https://fluent2.microsoft.design/wait-ux"
+        },
+        {
+          "type": "official",
+          "ref": "https://m3.material.io/foundations/interaction/states/overview"
+        },
+        {
+          "type": "official",
+          "ref": "https://www.w3.org/TR/web-animations-1/"
+        },
+        {
+          "type": "official",
+          "ref": "https://www.w3.org/TR/css-animations-1/"
+        }
+      ]
+    },
+    {
+      "entityKind": "dataset-contract",
+      "entityId": "html-tailwind-text-layout-resilience",
+      "sourceFile": "stacks/html-tailwind.csv",
+      "sourceKey": {
+        "Scope": "No 57-59; Guideline, Description, Do, Don't, Code Good, Code Bad, Docs URL, Applies To, Status, and Verified At fields",
+        "Boundary": "Balanced wrapping is progressive enhancement; wrap-anywhere is limited to unpredictable long tokens; compact-label truncation is a last resort after collection reflow and requires a bounded shrink path"
+      },
+      "status": "active",
+      "verifiedAt": "2026-08-13",
+      "sla": "manual-verified",
+      "appliesTo": [
+        "search",
+        "design-guidance"
+      ],
+      "sources": [
+        {
+          "type": "official",
+          "ref": "https://tailwindcss.com/docs/text-wrap"
+        },
+        {
+          "type": "official",
+          "ref": "https://tailwindcss.com/docs/overflow-wrap"
+        },
+        {
+          "type": "official",
+          "ref": "https://tailwindcss.com/docs/flex-wrap"
+        },
+        {
+          "type": "official",
+          "ref": "https://tailwindcss.com/docs/min-width"
+        },
+        {
+          "type": "official",
+          "ref": "https://tailwindcss.com/docs/white-space"
+        }
+      ]
+    },
+    {
       "entityKind": "catalog-snapshot",
       "entityId": "google-fonts-catalog-2026-08-13",
       "sourceFile": "google-fonts.csv",

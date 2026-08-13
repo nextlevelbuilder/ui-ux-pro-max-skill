@@ -52,6 +52,8 @@ out/
 .claude/session-state/
 ui-ux-pro-max-website/*
 /plans/
+/repomix-output.xml
+/test-results/
 
 cli/playwright-report/
 cli/test-results/

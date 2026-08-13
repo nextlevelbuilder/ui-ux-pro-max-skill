@@ -27,7 +27,7 @@ These are frequently overlooked issues that make UI look unprofessional.
 | Rule | Do | Don't |
 |------|----|----- |
 | **Tap feedback** | Provide clear pressed feedback (ripple/opacity/elevation) within 80-150ms | No visual response on tap |
-| **Animation timing** | Keep micro-interactions around 150-300ms with platform-native easing | Instant transitions or slow animations (>500ms) |
+| **Animation timing** | Use shared tokens chosen for distance, complexity, platform, and user context | One duration/easing copied to every transition |
 | **Accessibility focus** | Ensure screen reader focus order matches visual order and labels are descriptive | Unlabeled controls or confusing focus traversal |
 | **Disabled state clarity** | Use disabled semantics (`disabled`/native disabled props), reduced emphasis, and no tap action | Controls that look tappable but do nothing |
 | **Touch target minimum** | Keep tap areas >=44x44pt (iOS) or >=48x48dp (Android), expand hit area when icon is smaller | Tiny tap targets or icon-only hit areas without padding |
@@ -83,7 +83,7 @@ Before delivering app UI code, verify every item below. Start with the process s
 ### Interaction
 - [ ] All tappable elements provide clear pressed feedback (ripple/opacity/elevation)
 - [ ] Touch targets meet minimum size (>=44x44pt iOS, >=48x48dp Android)
-- [ ] Micro-interaction timing stays in the 150-300ms range with native-feeling easing
+- [ ] Micro-interaction timing uses shared, platform-appropriate tokens and remains responsive in context
 - [ ] Disabled states are visually clear and non-interactive
 - [ ] Screen reader focus order matches visual order, and interactive labels are descriptive
 - [ ] Gesture regions avoid nested/conflicting interactions (tap/drag/back-swipe conflicts)

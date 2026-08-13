@@ -30,6 +30,7 @@ Load this file when doing a UI review/audit pass, or when you need the full chec
 - `redundant-entry` - Reuse information already supplied in the same process unless re-entry is essential (WCAG 2.2 A)
 - `accessible-authentication` - Allow password managers and paste; provide a non-cognitive authentication path (WCAG 2.2 Minimum, AA). The Enhanced AAA criterion is not represented in the dataset
 - `auto-rotation-controls` - Carousels and moving content need pause/stop controls and must stop on focus or reduced motion (WAI)
+- `contextual-live-badge-updates` - Announce a changed count/status as a complete contextual phrase without moving focus; use one appropriate live/status region and atomic updates only when needed
 
 ### 2. Touch & Interaction (CRITICAL)
 
@@ -107,6 +108,8 @@ Load this file when doing a UI review/audit pass, or when you need the full chec
 - `orientation-support` - Keep layout readable and operable in landscape mode
 - `content-priority` - Show core content first on mobile; fold or hide secondary content
 - `visual-hierarchy` - Establish hierarchy via size, spacing, contrast — not color alone
+- `compact-label-overflow` - Choose badge, status tag, filter chip, or removable value from its semantics; keep essential labels available and disclose unavoidable truncation to pointer and keyboard users
+- `chip-collection-reflow` - Wrap the collection before shrinking labels; make a `+n` overflow summary an operable disclosure instead of hiding values
 
 ### 6. Typography & Color (MEDIUM)
 
@@ -125,14 +128,16 @@ Load this file when doing a UI review/audit pass, or when you need the full chec
 - `letter-spacing` - Respect default letter-spacing per platform; avoid tight tracking on body text (HIG, MD)
 - `number-tabular` - Use tabular/monospaced figures for data columns, prices, and timers to prevent layout shift
 - `whitespace-balance` - Use whitespace intentionally to group related items and separate sections; avoid visual clutter (Apple HIG)
+- `heading-line-balance` - Use balanced wrapping on short headings as a progressive, user-agent-controlled heuristic; keep natural wrapping readable and never force final words together with blanket nonbreaking spaces
+- `long-token-wrapping` - Let URLs, IDs, and user content reflow with `overflow-wrap: anywhere` and a shrinkable flex/grid text child; do not apply `word-break: break-all` to normal prose
 
 ### 7. Animation (MEDIUM)
 
-- `duration-timing` - Use 150–300ms for micro-interactions; complex transitions ≤400ms; avoid >500ms (MD)
+- `duration-timing` - Choose shared motion tokens by distance, complexity, platform, and user context; test that feedback remains responsive instead of treating one duration range as universal
 - `transform-performance` - Use transform/opacity only; avoid animating width/height/top/left
-- `loading-states` - Show skeleton or progress indicator when loading exceeds 300ms
+- `loading-states` - Match feedback to the expected wait and platform/component guidance; avoid both flashing indicators for near-instant work and unexplained long waits
 - `excessive-motion` - Animate 1-2 key elements per view max
-- `easing` - Use ease-out for entering, ease-in for exiting; avoid linear for UI transitions
+- `easing` - Use deceleration when arriving, acceleration when leaving, and linear motion for genuinely constant-rate progress or rotation
 - `motion-meaning` - Every animation must express a cause-effect relationship, not just be decorative (Apple HIG)
 - `state-transition` - State changes (hover / active / expanded / collapsed / modal) should animate smoothly, not snap
 - `continuity` - Page/screen transitions should maintain spatial continuity (shared element, directional slide) (Apple HIG)
@@ -152,6 +157,7 @@ Load this file when doing a UI review/audit pass, or when you need the full chec
 - `modal-motion` - Modals/sheets should animate from their trigger source (scale+fade or slide-in) for spatial context (HIG, MD)
 - `navigation-direction` - Forward navigation animates left/up; backward animates right/down — keep direction logically consistent (HIG)
 - `layout-shift-avoid` - Animations must not cause layout reflow or CLS; use transform for position changes
+- `cancellable-state-transitions` - Rapid state changes must cancel/replace prior micro-interactions safely, set the new final state explicitly, and never depend on an animation-end event for correctness
 
 ### 8. Forms & Feedback (MEDIUM)
 

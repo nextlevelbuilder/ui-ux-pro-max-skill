@@ -160,7 +160,7 @@ Each rule includes:
 - **74 Font Pairings** - Curated typography combinations with Google Fonts imports
 - **25 Chart Types** - Recommendations for dashboards and analytics
 - **22 Tech Stacks** - React, Next.js, Astro, Vue, Nuxt.js, Nuxt UI, Svelte, SwiftUI, React Native, Flutter, HTML+Tailwind, shadcn/ui, Jetpack Compose, Angular, Laravel, Three.js, JavaFX, WPF, WinUI 3, UWP, Avalonia, Uno Platform
-- **109 UX Guidelines** - Best practices, anti-patterns, and accessibility rules
+- **119 UX Guidelines** - Best practices, anti-patterns, and accessibility rules
 - **192 Reasoning Rules** - Industry-specific design system generation (NEW in v2.0)
 
 ### Style Taxonomy

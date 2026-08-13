@@ -333,6 +333,12 @@ class TestLandingAndStackContract(unittest.TestCase):
         )
         self.assertTrue(valid)
         self.assertEqual([], problems)
+        stack_problems = []
+        self.assertTrue(validate_data._valid_dataset_source_key(
+            "stacks/html-tailwind.csv", {"Scope": "No 57-59; Guideline field"},
+            ("dataset-contract", "valid-stack"), stack_problems,
+        ))
+        self.assertEqual([], stack_problems)
         for source_file, source_key in (
             ("unknown.csv", {"Scope": "No 1; Notes field"}),
             ("colors.csv", {"Scope": "No 999; Notes field"}),

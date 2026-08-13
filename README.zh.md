@@ -160,7 +160,7 @@ v2.0 的旗舰特性是**设计系统生成器**——一个 AI 驱动的推理�
 - **74 种字体配对** - 精选字体组合，含 Google Fonts 导入
 - **25 种图表类型** - 适用于仪表板和分析场景的推荐
 - **22 种技术栈** - React、Next.js、Astro、Vue、Nuxt.js、Nuxt UI、Svelte、SwiftUI、React Native、Flutter、HTML+Tailwind、shadcn/ui、Jetpack Compose、Angular、Laravel、Three.js、JavaFX、WPF、WinUI 3、UWP、Avalonia、Uno Platform
-- **109 条 UX 指南** - 最佳实践、反模式与无障碍规则
+- **119 条 UX 指南** - 最佳实践、反模式与无障碍规则
 - **192 条推理规则** - 行业特定的设计系统生成（v2.0 新增）
 
 ### 风格分类
