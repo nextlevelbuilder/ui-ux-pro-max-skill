@@ -1,13 +1,13 @@
 # Logo Design Reference
 
-AI-powered logo design with 55+ styles, 30 color palettes, 25 industry guides. Uses Gemini Nano Banana models.
+AI-powered logo design with 55+ styles, 30 color palettes, 25 industry guides. Gemini Nano Banana is the default provider; Atlas Cloud is also available as an explicit opt-in.
 
 ## Scripts
 
 | Script | Purpose |
 |--------|---------|
 | `scripts/logo/search.py` | Search styles, colors, industries; generate design briefs |
-| `scripts/logo/generate.py` | Generate logos with Gemini Nano Banana |
+| `scripts/logo/generate.py` | Generate logos with Gemini Nano Banana or Atlas Cloud |
 | `scripts/logo/core.py` | BM25 search engine for logo data |
 
 ## Commands
@@ -38,9 +38,10 @@ python3 ~/.claude/skills/design/scripts/logo/search.py "healthcare medical" --do
 ```bash
 python3 ~/.claude/skills/design/scripts/logo/generate.py --brand "TechFlow" --style minimalist --industry tech
 python3 ~/.claude/skills/design/scripts/logo/generate.py --prompt "coffee shop vintage badge" --style vintage
+python3 ~/.claude/skills/design/scripts/logo/generate.py --brand "TechFlow" --provider atlas
 ```
 
-Options: `--style`, `--industry`, `--prompt`
+Options: `--style`, `--industry`, `--prompt`, `--provider`, `--atlas-model`
 
 ## Available Styles
 
@@ -89,4 +90,7 @@ Options: `--style`, `--industry`, `--prompt`
 ```bash
 export GEMINI_API_KEY="your-key"
 pip install google-genai
+
+# Optional Atlas Cloud provider (no extra Python package required)
+export ATLASCLOUD_API_KEY="your-key"
 ```
