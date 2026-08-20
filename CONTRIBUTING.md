@@ -99,10 +99,8 @@ git checkout -b feat/your-feature-name
 
 # 2. Make your changes in src/ui-ux-pro-max/
 
-# 3. Sync changes to CLI assets
-cp -r src/ui-ux-pro-max/data/* cli/assets/data/
-cp -r src/ui-ux-pro-max/scripts/* cli/assets/scripts/
-cp -r src/ui-ux-pro-max/templates/* cli/assets/templates/
+# 3. Sync changes to CLI assets and the Claude Code skill
+cd cli && npm run sync:assets && cd ..
 
 # 4. Build and test the CLI locally
 cd cli && bun run build
