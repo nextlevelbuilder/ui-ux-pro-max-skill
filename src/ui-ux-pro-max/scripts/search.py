@@ -115,6 +115,7 @@ if __name__ == "__main__":
     parser.add_argument("--variance", type=int, choices=range(1, 11), metavar="1-10", help="DESIGN_VARIANCE dial: 1=centered/minimal, 10=bold/asymmetric (only with --design-system)")
     parser.add_argument("--motion", type=int, choices=range(1, 11), metavar="1-10", help="MOTION_INTENSITY dial: 1=subtle, 10=complex; pulls a matching GSAP snippet from motion.csv (only with --design-system)")
     parser.add_argument("--density", type=int, choices=range(1, 11), metavar="1-10", help="VISUAL_DENSITY dial: 1=spacious, 10=dense/dashboard; overrides the spacing scale (only with --design-system)")
+    parser.add_argument("--rtl", action="store_true", help="Enable Right-to-Left (RTL) layout and mirroring guidelines (only with --design-system)")
 
     args = parser.parse_args()
 
@@ -131,6 +132,7 @@ if __name__ == "__main__":
             motion=args.motion,
             density=args.density,
             force=args.force,
+            rtl=args.rtl,
         )
 
         if args.json:
