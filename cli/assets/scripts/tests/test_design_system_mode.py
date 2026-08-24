@@ -185,5 +185,42 @@ class TestEndToEndCoherence(unittest.TestCase):
         self.assertFalse(_palette_is_dark({"Background": ds["colors"]["background"]}))
 
 
+class TestRTLSupport(unittest.TestCase):
+    def test_design_system_generator_rtl_flag(self):
+        generator = DesignSystemGenerator()
+        ds_rtl = generator.generate("Fintech dashboard", rtl=True)
+        self.assertTrue(ds_rtl["rtl"])
+
+        ds_ltr = generator.generate("Fintech dashboard", rtl=False)
+        self.assertFalse(ds_ltr["rtl"])
+
+    def test_format_ascii_and_markdown_with_rtl(self):
+        from design_system import format_ascii_box, format_markdown
+
+        generator = DesignSystemGenerator()
+        ds_rtl = generator.generate("Fintech dashboard", rtl=True)
+
+        ascii_out = format_ascii_box(ds_rtl)
+        self.assertIn("RTL GUIDELINES", ascii_out)
+        self.assertIn("direction: rtl", ascii_out)
+
+        md_out = format_markdown(ds_rtl)
+        self.assertIn("### RTL (Right-to-Left) Guidelines", md_out)
+        self.assertIn("direction: rtl", md_out)
+
+    def test_format_without_rtl_omits_rtl_sections(self):
+        from design_system import format_ascii_box, format_markdown
+
+        generator = DesignSystemGenerator()
+        ds_ltr = generator.generate("Fintech dashboard", rtl=False)
+
+        ascii_out = format_ascii_box(ds_ltr)
+        self.assertNotIn("RTL GUIDELINES", ascii_out)
+
+        md_out = format_markdown(ds_ltr)
+        self.assertNotIn("### RTL (Right-to-Left) Guidelines", md_out)
+
+
 if __name__ == "__main__":
     unittest.main(verbosity=2)
+

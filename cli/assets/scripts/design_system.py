@@ -447,12 +447,14 @@ class DesignSystemGenerator:
         return search_result.get("results", [])
 
     def generate(self, query: str, project_name: str = None,
-                 variance: int = None, motion: int = None, density: int = None) -> dict:
+                 variance: int = None, motion: int = None, density: int = None,
+                 rtl: bool = False) -> dict:
         """Generate complete design system recommendation.
 
         variance/motion/density are optional 1-10 dials (see DIAL_TIERS) that bias
         style selection, pull in a matching motion.csv snippet, and override the
         spacing scale, without changing behavior when left unset.
+        rtl enables Right-to-Left layout, typography, and icon mirroring guidance.
         """
         variance_info = _resolve_dial("variance", variance)
         motion_info = _resolve_dial("motion", motion)
@@ -601,6 +603,7 @@ class DesignSystemGenerator:
             },
             "motion_snippet": motion_snippet,
             "spacing_scale": density_info["spacing"] if density_info else None,
+            "rtl": rtl,
         }
 
 
@@ -769,6 +772,19 @@ def format_ascii_box(design_system: dict) -> str:
         for line in wrap_text(anti_patterns, "│     ", BOX_WIDTH):
             lines.append(line.ljust(BOX_WIDTH) + "│")
 
+    # RTL section
+    if design_system.get("rtl"):
+        lines.append(section_header("RTL GUIDELINES", BOX_WIDTH + 1))
+        rtl_items = [
+            "• Direction: direction: rtl / dir=\"rtl\"",
+            "• Text Alignment: text-align: right (start-aligned)",
+            "• Logical Properties: margin-inline / padding-inline instead of left/right",
+            "• Icon Mirroring: Mirror directional navigation icons, keep media/search as-is",
+            "• Layout: Sidebars, navigation drawers, and timelines anchored to the right",
+        ]
+        for item in rtl_items:
+            lines.append(f"│     {item}".ljust(BOX_WIDTH) + "│")
+
     # Pre-Delivery Checklist section
     lines.append(section_header("PRE-DELIVERY CHECKLIST", BOX_WIDTH + 1))
     checklist_items = [
@@ -901,6 +917,16 @@ def format_markdown(design_system: dict) -> str:
         lines.append(f"- {anti_patterns.replace(' + ', newline_bullet)}")
         lines.append("")
 
+    # RTL Guidelines section
+    if design_system.get("rtl"):
+        lines.append("### RTL (Right-to-Left) Guidelines")
+        lines.append("- **Direction:** `direction: rtl` / `dir=\"rtl\"` on root container")
+        lines.append("- **Text Alignment:** `text-align: right` (start-aligned)")
+        lines.append("- **Logical Properties:** Use `margin-inline-start`, `margin-inline-end`, `padding-inline-start`, `padding-inline-end` instead of left/right")
+        lines.append("- **Icon Mirroring:** Mirror directional icons (back/forward arrows, chevrons, pagination); keep non-directional icons unchanged (search, settings, media player)")
+        lines.append("- **Layout & Motion:** Reverse horizontal slide/stagger animations; anchor sidebars, navigation drawers, and timelines to the right")
+        lines.append("")
+
     # Pre-Delivery Checklist section
     lines.append("### Pre-Delivery Checklist")
     lines.append("- [ ] No emojis as icons (use SVG: Heroicons/Lucide)")
@@ -919,7 +945,7 @@ def format_markdown(design_system: dict) -> str:
 def generate_design_system(query: str, project_name: str = None, output_format: str = "ascii",
                            persist: bool = False, page: str = None, output_dir: str = None,
                            variance: int = None, motion: int = None, density: int = None,
-                           force: bool = False) -> dict:
+                           force: bool = False, rtl: bool = False) -> dict:
     """
     Main entry point for design system generation.
 
@@ -935,6 +961,7 @@ def generate_design_system(query: str, project_name: str = None, output_format: 
         density: Optional 1-10 VISUAL_DENSITY dial, overrides the spacing scale (1=spacious, 10=dense)
         force: If True, overwrite an existing MASTER.md; otherwise persistence
                is skipped (with a status message) when one already exists
+        rtl: If True, include Right-to-Left layout and mirroring guidelines
 
     Returns:
         dict with keys: "text" (formatted design system string), "design_system"
@@ -942,7 +969,7 @@ def generate_design_system(query: str, project_name: str = None, output_format: 
         persist_design_system(), or None if persist=False)
     """
     generator = DesignSystemGenerator()
-    design_system = generator.generate(query, project_name, variance=variance, motion=motion, density=density)
+    design_system = generator.generate(query, project_name, variance=variance, motion=motion, density=density, rtl=rtl)
 
     persistence_result = None
     if persist:
