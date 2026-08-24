@@ -252,6 +252,7 @@ uipro init --ai kilocode    # KiloCode
 uipro init --ai warp        # Warp
 uipro init --ai augment     # Augment
 uipro init --ai codewhale   # CodeWhale
+uipro init --ai openclaw    # OpenClaw
 uipro init --ai universal   # Universal / Agent Standard (.agents/skills/)
 uipro init --ai all         # 所有助手
 ```
