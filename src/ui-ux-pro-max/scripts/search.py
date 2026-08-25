@@ -41,7 +41,7 @@ if sys.stderr.encoding and sys.stderr.encoding.lower() != 'utf-8':
 TRUNCATE_AT = 300
 
 
-def format_output(result, full=False):
+def format_output(result: dict, full: bool = False) -> str:
     """Format results for Claude consumption (token-optimized)"""
     if "error" in result:
         return f"Error: {result['error']}"

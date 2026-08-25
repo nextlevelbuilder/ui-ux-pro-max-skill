@@ -1,0 +1,24 @@
+name: Lint
+
+on:
+  pull_request:
+    paths:
+      - '**.ts'
+      - '**.js'
+      - '**.mjs'
+  push:
+    branches: [main]
+
+jobs:
+  js-lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Install Prettier
+        run: npm install -g prettier
+      - name: Run Prettier check
+        run: prettier --check "cli/**/*.{ts,js,mjs}" "gallery/**/*.{ts,js}"

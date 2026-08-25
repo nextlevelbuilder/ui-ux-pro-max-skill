@@ -752,7 +752,7 @@ def _style_search_destination(rows, matched):
     return None, None
 
 
-def search(query, domain=None, max_results=MAX_RESULTS, diagnostics=False):
+def search(query: str, domain: str = None, max_results: int = MAX_RESULTS, diagnostics: bool = False) -> dict:
     """Main search function with auto-domain detection"""
     if not _valid_max_results(max_results):
         return {"error": "max_results must be an integer from 1 to 20", "domain": domain}
@@ -948,7 +948,7 @@ def _legacy_successor_guidance(rows, query, stack, row_filter):
     return matches[0] if len(matches) == 1 else None
 
 
-def search_stack(query, stack, max_results=MAX_RESULTS, diagnostics=False):
+def search_stack(query: str, stack: str, max_results: int = MAX_RESULTS, diagnostics: bool = False) -> dict:
     """Search stack-specific guidelines"""
     if not _valid_max_results(max_results):
         return {"error": "max_results must be an integer from 1 to 20", "stack": stack}

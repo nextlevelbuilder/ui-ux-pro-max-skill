@@ -26,9 +26,7 @@ const CSS_PROPERTY_MAP: Record<string, string> = {
   "text-transform": "textTransform",
 };
 
-export function parseCssKeywords(
-  cssTechnical: string
-): Record<string, string> {
+export function parseCssKeywords(cssTechnical: string): Record<string, string> {
   const result: Record<string, string> = {};
   if (!cssTechnical) return result;
 
@@ -49,7 +47,7 @@ export function parseCssKeywords(
 
 export function generatePreviewStyle(
   style: { extractedColors: string[]; cssProperties: Record<string, string> },
-  isDark: boolean
+  isDark: boolean,
 ): React.CSSProperties {
   const colors = style.extractedColors;
   const props = style.cssProperties;
@@ -112,7 +110,7 @@ export function generatePreviewStyle(
 
 export function generateBackgroundGradient(
   colors: string[],
-  isDark: boolean
+  isDark: boolean,
 ): string {
   if (colors.length === 0) {
     return isDark
