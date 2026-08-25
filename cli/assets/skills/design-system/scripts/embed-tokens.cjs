@@ -15,12 +15,16 @@ const path = require('path');
 
 // Find project root (look for assets/design-tokens.css)
 function findProjectRoot(startDir) {
+  // Walk up until dirname stops changing: on Windows the root is 'C:\', so a
+  // `dir !== '/'` guard never terminates.
   let dir = startDir;
-  while (dir !== '/') {
+  for (;;) {
     if (fs.existsSync(path.join(dir, 'assets', 'design-tokens.css'))) {
       return dir;
     }
-    dir = path.dirname(dir);
+    const parent = path.dirname(dir);
+    if (parent === dir) break;
+    dir = parent;
   }
   return null;
 }
