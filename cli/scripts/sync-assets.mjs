@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-import { createHash } from 'node:crypto';
+import { createHash } from "node:crypto";
 import {
   access,
   mkdir,
@@ -8,24 +8,31 @@ import {
   readFile,
   rm,
   writeFile,
-} from 'node:fs/promises';
-import { dirname, join, relative, resolve } from 'node:path';
-import { fileURLToPath } from 'node:url';
+} from "node:fs/promises";
+import { dirname, join, relative, resolve } from "node:path";
+import { fileURLToPath } from "node:url";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
-const repoRoot = resolve(__dirname, '..', '..');
-const sourceRoot = join(repoRoot, 'src', 'ui-ux-pro-max');
-const assetRoot = join(repoRoot, 'cli', 'assets');
-const dirsToSync = ['data', 'scripts', 'templates'];
-const checkOnly = process.argv.includes('--check');
+const repoRoot = resolve(__dirname, "..", "..");
+const sourceRoot = join(repoRoot, "src", "ui-ux-pro-max");
+const assetRoot = join(repoRoot, "cli", "assets");
+const dirsToSync = ["data", "scripts", "templates"];
+const checkOnly = process.argv.includes("--check");
 
 // The 6 sibling sub-skills are bundled (as static copies) so `uipro init`
 // installs all 7 skills, not just the template-rendered orchestrator. Source
 // of truth is .claude/skills/ (the orchestrator ui-ux-pro-max is rendered from
 // templates at install time, so it is not mirrored here).
-const skillsSourceRoot = join(repoRoot, '.claude', 'skills');
-const skillsAssetRoot = join(assetRoot, 'skills');
-const subSkills = ['banner-design', 'brand', 'design', 'design-system', 'slides', 'ui-styling'];
+const skillsSourceRoot = join(repoRoot, ".claude", "skills");
+const skillsAssetRoot = join(assetRoot, "skills");
+const subSkills = [
+  "banner-design",
+  "brand",
+  "design",
+  "design-system",
+  "slides",
+  "ui-styling",
+];
 
 // The repo's own .claude/skills/ui-ux-pro-max/{data,scripts} is a second,
 // independent copy of src/ui-ux-pro-max/{data,scripts} -- it's what Claude
@@ -34,20 +41,22 @@ const subSkills = ['banner-design', 'brand', 'design', 'design-system', 'slides'
 // CSVs, stale content in several data files). SKILL.md there is hand-authored
 // (not template-rendered like the CLI's copy), so only data/ and scripts/
 // are mirrored -- never templates/ or SKILL.md itself.
-const orchestratorSkillTargetRoot = join(skillsSourceRoot, 'ui-ux-pro-max');
-const orchestratorDirsToSync = ['data', 'scripts'];
+const orchestratorSkillTargetRoot = join(skillsSourceRoot, "ui-ux-pro-max");
+const orchestratorDirsToSync = ["data", "scripts"];
 
 // ponytail: only text is bundled. Excludes (a) heavy binary assets — the
 // canvas fonts are ~5.8MB and a skill registers from its SKILL.md, not its
 // fonts — and (b) Python build cruft (__pycache__/*.pyc, .coverage) that would
 // otherwise be picked up from a local run.
 const isExcludedAssetFile = (rel) =>
-  rel.split('/').some((seg) => seg === 'canvas-fonts' || seg === '__pycache__') ||
+  rel
+    .split("/")
+    .some((seg) => seg === "canvas-fonts" || seg === "__pycache__") ||
   /\.(ttf|otf|woff2?|png|jpe?g|gif|ico|coverage|pyc)$/i.test(rel);
 
 // ponytail: all synced assets are text (csv/json/md/py); normalize CRLF->LF so
 // the byte hash and the on-disk copy don't drift with git autocrlf across platforms.
-const toLF = (text) => text.replace(/\r\n/g, '\n');
+const toLF = (text) => text.replace(/\r\n/g, "\n");
 
 async function exists(path) {
   try {
@@ -61,7 +70,9 @@ async function exists(path) {
 function assertInsideRepo(path) {
   const resolvedPath = resolve(path);
   if (!resolvedPath.startsWith(repoRoot)) {
-    throw new Error(`Refusing to modify path outside repository: ${resolvedPath}`);
+    throw new Error(
+      `Refusing to modify path outside repository: ${resolvedPath}`,
+    );
   }
   return resolvedPath;
 }
@@ -75,7 +86,7 @@ async function listFiles(root) {
       if (entry.isDirectory()) {
         await walk(fullPath);
       } else if (entry.isFile()) {
-        files.push(relative(root, fullPath).replaceAll('\\', '/'));
+        files.push(relative(root, fullPath).replaceAll("\\", "/"));
       }
     }
   }
@@ -85,8 +96,8 @@ async function listFiles(root) {
 }
 
 async function fileHash(path) {
-  const content = toLF(await readFile(path, 'utf8'));
-  return createHash('sha256').update(content).digest('hex');
+  const content = toLF(await readFile(path, "utf8"));
+  return createHash("sha256").update(content).digest("hex");
 }
 
 // Compares one source dir against one target dir; pushes human-readable
@@ -101,8 +112,12 @@ async function diffDir(sourceDir, targetDir, label, drift) {
     return;
   }
 
-  const sourceFiles = (await listFiles(sourceDir)).filter((f) => !isExcludedAssetFile(f));
-  const targetFiles = (await listFiles(targetDir)).filter((f) => !isExcludedAssetFile(f));
+  const sourceFiles = (await listFiles(sourceDir)).filter(
+    (f) => !isExcludedAssetFile(f),
+  );
+  const targetFiles = (await listFiles(targetDir)).filter(
+    (f) => !isExcludedAssetFile(f),
+  );
   const allFiles = [...new Set([...sourceFiles, ...targetFiles])].sort();
 
   for (const file of allFiles) {
@@ -135,7 +150,10 @@ async function syncDir(sourceDir, targetDir) {
     if (isExcludedAssetFile(file)) continue;
     const targetPath = assertInsideRepo(join(resolvedTarget, file));
     await mkdir(dirname(targetPath), { recursive: true });
-    await writeFile(targetPath, toLF(await readFile(join(sourceDir, file), 'utf8')));
+    await writeFile(
+      targetPath,
+      toLF(await readFile(join(sourceDir, file), "utf8")),
+    );
   }
 }
 
@@ -148,7 +166,12 @@ async function checkAssets() {
 
   // Sub-skills (text content only; fonts/binaries intentionally excluded)
   for (const name of subSkills) {
-    await diffDir(join(skillsSourceRoot, name), join(skillsAssetRoot, name), `skills/${name}`, drift);
+    await diffDir(
+      join(skillsSourceRoot, name),
+      join(skillsAssetRoot, name),
+      `skills/${name}`,
+      drift,
+    );
   }
 
   // Orchestrator skill's own data/scripts copy under .claude/skills/ui-ux-pro-max/
@@ -163,15 +186,15 @@ async function checkAssets() {
   }
 
   if (drift.length > 0) {
-    console.error('Assets are out of sync with src/ui-ux-pro-max:');
+    console.error("Assets are out of sync with src/ui-ux-pro-max:");
     for (const item of drift) {
       console.error(`  - ${item}`);
     }
-    console.error('\nRun: npm run sync:assets');
+    console.error("\nRun: npm run sync:assets");
     process.exit(1);
   }
 
-  console.log('Assets are in sync.');
+  console.log("Assets are in sync.");
 }
 
 async function syncAssets() {
@@ -194,10 +217,15 @@ async function syncAssets() {
 
   // Orchestrator skill's own data/scripts copy under .claude/skills/ui-ux-pro-max/.
   for (const dir of orchestratorDirsToSync) {
-    await syncDir(join(sourceRoot, dir), join(orchestratorSkillTargetRoot, dir));
+    await syncDir(
+      join(sourceRoot, dir),
+      join(orchestratorSkillTargetRoot, dir),
+    );
   }
 
-  console.log('Synced CLI assets + .claude/skills/ui-ux-pro-max data/scripts from src/ui-ux-pro-max, and 6 sub-skills (normalized to LF).');
+  console.log(
+    "Synced CLI assets + .claude/skills/ui-ux-pro-max data/scripts from src/ui-ux-pro-max, and 6 sub-skills (normalized to LF).",
+  );
 }
 
 if (checkOnly) {

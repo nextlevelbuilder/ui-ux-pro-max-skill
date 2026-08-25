@@ -18,7 +18,7 @@ export const DEFAULT_FILTERS: Filters = {
 
 export function getUniqueValues(
   styles: StyleData[],
-  key: keyof StyleData
+  key: keyof StyleData,
 ): string[] {
   const set = new Set<string>();
   for (const s of styles) {
@@ -30,7 +30,7 @@ export function getUniqueValues(
 
 export function filterStyles(
   styles: StyleData[],
-  filters: Filters
+  filters: Filters,
 ): StyleData[] {
   const query = filters.search.toLowerCase();
 

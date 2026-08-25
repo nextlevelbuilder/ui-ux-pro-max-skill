@@ -80,20 +80,28 @@ export function parseStylesCSV(csvContent: string): StyleData[] {
     const secondaryColors = value(f, "Secondary Colors");
     const cssTechnicalKeywords = value(f, "CSS/Technical Keywords");
     const status = value(f, "Status");
-    if (!(["active", "supplemental", "deprecated"] as string[]).includes(status)) {
-      throw new Error(`Unknown or missing style status: ${status || "<empty>"}`);
+    if (
+      !(["active", "supplemental", "deprecated"] as string[]).includes(status)
+    ) {
+      throw new Error(
+        `Unknown or missing style status: ${status || "<empty>"}`,
+      );
     }
 
     return {
       no: parseInt(value(f, "No")) || 0,
       styleId: value(f, "Style ID"),
       styleCategory: value(f, "Style Category"),
-      aliases: value(f, "Aliases").split("|").map((alias) => alias.trim()).filter(Boolean),
+      aliases: value(f, "Aliases")
+        .split("|")
+        .map((alias) => alias.trim())
+        .filter(Boolean),
       status: status as StyleData["status"],
       parentStyleId: value(f, "Parent Style ID"),
       replacementDomain: value(f, "Replacement Domain"),
       replacementId: value(f, "Replacement ID"),
-      preferredMode: (value(f, "Preferred Mode") || "auto") as StyleData["preferredMode"],
+      preferredMode: (value(f, "Preferred Mode") ||
+        "auto") as StyleData["preferredMode"],
       type: value(f, "Type"),
       keywords: value(f, "Keywords"),
       primaryColors,

@@ -1,20 +1,25 @@
-import { mkdir, rm, access, cp, mkdtemp, readdir } from 'node:fs/promises';
-import { join, basename } from 'node:path';
-import { exec } from 'node:child_process';
-import { promisify } from 'node:util';
-import { tmpdir } from 'node:os';
-import type { AIType } from '../types/index.js';
-import { AI_FOLDERS } from '../types/index.js';
+import { mkdir, rm, access, cp, mkdtemp, readdir } from "node:fs/promises";
+import { join, basename } from "node:path";
+import { exec } from "node:child_process";
+import { promisify } from "node:util";
+import { tmpdir } from "node:os";
+import type { AIType } from "../types/index.js";
+import { AI_FOLDERS } from "../types/index.js";
 
 const execAsync = promisify(exec);
 
-const EXCLUDED_FILES = ['settings.local.json'];
+const EXCLUDED_FILES = ["settings.local.json"];
 
-export async function extractZip(zipPath: string, destDir: string): Promise<void> {
+export async function extractZip(
+  zipPath: string,
+  destDir: string,
+): Promise<void> {
   try {
-    const isWindows = process.platform === 'win32';
+    const isWindows = process.platform === "win32";
     if (isWindows) {
-      await execAsync(`powershell -Command "Expand-Archive -Path '${zipPath}' -DestinationPath '${destDir}' -Force"`);
+      await execAsync(
+        `powershell -Command "Expand-Archive -Path '${zipPath}' -DestinationPath '${destDir}' -Force"`,
+      );
     } else {
       await execAsync(`unzip -o "${zipPath}" -d "${destDir}"`);
     }
@@ -35,13 +40,12 @@ async function exists(path: string): Promise<boolean> {
 export async function copyFolders(
   sourceDir: string,
   targetDir: string,
-  aiType: AIType
+  aiType: AIType,
 ): Promise<string[]> {
   const copiedFolders: string[] = [];
 
-  const foldersToCopy = aiType === 'all'
-    ? Object.values(AI_FOLDERS).flat()
-    : AI_FOLDERS[aiType];
+  const foldersToCopy =
+    aiType === "all" ? Object.values(AI_FOLDERS).flat() : AI_FOLDERS[aiType];
 
   // Deduplicate folders (e.g., .shared might be listed multiple times)
   const uniqueFolders = [...new Set(foldersToCopy)];
@@ -72,7 +76,7 @@ export async function copyFolders(
     } catch {
       // Try shell fallback for older Node versions
       try {
-        if (process.platform === 'win32') {
+        if (process.platform === "win32") {
           await execAsync(`xcopy "${sourcePath}" "${targetPath}" /E /I /Y`);
         } else {
           await execAsync(`cp -r "${sourcePath}/." "${targetPath}"`);
@@ -99,7 +103,7 @@ export async function cleanup(tempDir: string): Promise<void> {
  * Create a temporary directory for extracting ZIP files
  */
 export async function createTempDir(): Promise<string> {
-  return mkdtemp(join(tmpdir(), 'uipro-'));
+  return mkdtemp(join(tmpdir(), "uipro-"));
 }
 
 /**
@@ -108,7 +112,7 @@ export async function createTempDir(): Promise<string> {
  */
 async function findExtractedRoot(tempDir: string): Promise<string> {
   const entries = await readdir(tempDir, { withFileTypes: true });
-  const dirs = entries.filter(e => e.isDirectory());
+  const dirs = entries.filter((e) => e.isDirectory());
 
   // If there's exactly one directory, it's likely the extracted root
   if (dirs.length === 1) {
@@ -125,7 +129,7 @@ async function findExtractedRoot(tempDir: string): Promise<string> {
 export async function installFromZip(
   zipPath: string,
   targetDir: string,
-  aiType: AIType
+  aiType: AIType,
 ): Promise<{ copiedFolders: string[]; tempDir: string }> {
   // Create temp directory
   const tempDir = await createTempDir();

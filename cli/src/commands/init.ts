@@ -1,15 +1,23 @@
-import { existsSync } from 'node:fs';
-import { join, dirname } from 'node:path';
-import { fileURLToPath } from 'node:url';
-import chalk from 'chalk';
-import ora from 'ora';
-import prompts from 'prompts';
-import type { AIType } from '../types/index.js';
-import { AI_TYPES } from '../types/index.js';
-import { copyFolders, installFromZip, createTempDir, cleanup } from '../utils/extract.js';
-import { generatePlatformFiles, generateAllPlatformFiles } from '../utils/template.js';
-import { detectAIType, getAITypeDescription } from '../utils/detect.js';
-import { logger } from '../utils/logger.js';
+import { existsSync } from "node:fs";
+import { join, dirname } from "node:path";
+import { fileURLToPath } from "node:url";
+import chalk from "chalk";
+import ora from "ora";
+import prompts from "prompts";
+import type { AIType } from "../types/index.js";
+import { AI_TYPES } from "../types/index.js";
+import {
+  copyFolders,
+  installFromZip,
+  createTempDir,
+  cleanup,
+} from "../utils/extract.js";
+import {
+  generatePlatformFiles,
+  generateAllPlatformFiles,
+} from "../utils/template.js";
+import { detectAIType, getAITypeDescription } from "../utils/detect.js";
+import { logger } from "../utils/logger.js";
 import {
   getLatestRelease,
   getAssetUrl,
@@ -17,16 +25,17 @@ import {
   getGitHubTokenGuidance,
   GitHubRateLimitError,
   GitHubDownloadError,
-} from '../utils/github.js';
+} from "../utils/github.js";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ASSETS_CANDIDATES = [
   // Bun bundle: dist/index.js
-  join(__dirname, '..', 'assets'),
+  join(__dirname, "..", "assets"),
   // TypeScript fallback: dist/commands/init.js
-  join(__dirname, '..', '..', 'assets'),
+  join(__dirname, "..", "..", "assets"),
 ];
-const ASSETS_DIR = ASSETS_CANDIDATES.find(path => existsSync(path)) ?? ASSETS_CANDIDATES[0];
+const ASSETS_DIR =
+  ASSETS_CANDIDATES.find((path) => existsSync(path)) ?? ASSETS_CANDIDATES[0];
 
 interface InitOptions {
   ai?: AIType;
@@ -45,30 +54,30 @@ async function tryGitHubInstall(
   targetDir: string,
   aiType: AIType,
   spinner: ReturnType<typeof ora>,
-  token?: string
+  token?: string,
 ): Promise<string[] | null> {
   let tempDir: string | null = null;
 
   try {
-    spinner.text = 'Fetching latest release from GitHub...';
+    spinner.text = "Fetching latest release from GitHub...";
     const release = await getLatestRelease(token);
     const assetUrl = getAssetUrl(release);
 
     if (!assetUrl) {
-      throw new GitHubDownloadError('No ZIP asset found in latest release');
+      throw new GitHubDownloadError("No ZIP asset found in latest release");
     }
 
     spinner.text = `Downloading ${release.tag_name}...`;
     tempDir = await createTempDir();
-    const zipPath = join(tempDir, 'release.zip');
+    const zipPath = join(tempDir, "release.zip");
 
     await downloadRelease(assetUrl, zipPath, token);
 
-    spinner.text = 'Extracting and installing files...';
+    spinner.text = "Extracting and installing files...";
     const { copiedFolders, tempDir: extractedTempDir } = await installFromZip(
       zipPath,
       targetDir,
-      aiType
+      aiType,
     );
 
     // Cleanup temp directory
@@ -82,23 +91,25 @@ async function tryGitHubInstall(
     }
 
     if (error instanceof GitHubRateLimitError) {
-      spinner.warn(`GitHub rate limit reached, falling back to bundled assets.\n${getGitHubTokenGuidance()}`);
+      spinner.warn(
+        `GitHub rate limit reached, falling back to bundled assets.\n${getGitHubTokenGuidance()}`,
+      );
       return null;
     }
 
     if (error instanceof GitHubDownloadError) {
-      spinner.warn('GitHub download failed, using template generation...');
+      spinner.warn("GitHub download failed, using template generation...");
       return null;
     }
 
     // Network errors or other fetch failures
-    if (error instanceof TypeError && error.message.includes('fetch')) {
-      spinner.warn('Network error, using template generation...');
+    if (error instanceof TypeError && error.message.includes("fetch")) {
+      spinner.warn("Network error, using template generation...");
       return null;
     }
 
     // Unknown errors - still fall back
-    spinner.warn('Download failed, using template generation...');
+    spinner.warn("Download failed, using template generation...");
     return null;
   }
 }
@@ -111,13 +122,13 @@ async function templateInstall(
   aiType: AIType,
   spinner: ReturnType<typeof ora>,
   isGlobal = false,
-  force = false
+  force = false,
 ): Promise<string[]> {
   spinner.text = isGlobal
-    ? 'Generating skill files globally...'
-    : 'Generating skill files from templates...';
+    ? "Generating skill files globally..."
+    : "Generating skill files from templates...";
 
-  if (aiType === 'all') {
+  if (aiType === "all") {
     return generateAllPlatformFiles(targetDir, isGlobal, force);
   }
 
@@ -125,7 +136,7 @@ async function templateInstall(
 }
 
 export async function initCommand(options: InitOptions): Promise<void> {
-  logger.title('UI/UX Pro Max Installer');
+  logger.title("UI/UX Pro Max Installer");
 
   let aiType = options.ai;
 
@@ -134,14 +145,14 @@ export async function initCommand(options: InitOptions): Promise<void> {
     const { detected, suggested } = detectAIType();
 
     if (detected.length > 0) {
-      logger.info(`Detected: ${detected.map(t => chalk.cyan(t)).join(', ')}`);
+      logger.info(`Detected: ${detected.map((t) => chalk.cyan(t)).join(", ")}`);
     }
 
     const response = await prompts({
-      type: 'select',
-      name: 'aiType',
-      message: 'Select AI assistant to install for:',
-      choices: AI_TYPES.map(type => ({
+      type: "select",
+      name: "aiType",
+      message: "Select AI assistant to install for:",
+      choices: AI_TYPES.map((type) => ({
         title: getAITypeDescription(type),
         value: type,
       })),
@@ -149,7 +160,7 @@ export async function initCommand(options: InitOptions): Promise<void> {
     });
 
     if (!response.aiType) {
-      logger.warn('Installation cancelled');
+      logger.warn("Installation cancelled");
       return;
     }
 
@@ -157,67 +168,84 @@ export async function initCommand(options: InitOptions): Promise<void> {
   }
 
   const isGlobal = !!options.global;
-  const modeLabel = isGlobal ? ' (global)' : '';
-  logger.info(`Installing for: ${chalk.cyan(getAITypeDescription(aiType))}${modeLabel}`);
+  const modeLabel = isGlobal ? " (global)" : "";
+  logger.info(
+    `Installing for: ${chalk.cyan(getAITypeDescription(aiType))}${modeLabel}`,
+  );
 
-  const spinner = ora('Installing files...').start();
+  const spinner = ora("Installing files...").start();
   const cwd = process.cwd();
   let copiedFolders: string[] = [];
-  let installMethod = 'template';
+  let installMethod = "template";
 
   try {
     // Use legacy ZIP-based install if --legacy flag is set
     if (options.legacy) {
       if (isGlobal) {
-        spinner.warn('--global is not supported with --legacy mode, installing locally instead');
+        spinner.warn(
+          "--global is not supported with --legacy mode, installing locally instead",
+        );
       }
       // Try GitHub download first (unless offline mode)
       if (!options.offline) {
-        const githubResult = await tryGitHubInstall(cwd, aiType, spinner, options.token);
+        const githubResult = await tryGitHubInstall(
+          cwd,
+          aiType,
+          spinner,
+          options.token,
+        );
         if (githubResult) {
           copiedFolders = githubResult;
-          installMethod = 'github';
+          installMethod = "github";
         }
       }
 
       // Fall back to bundled assets if GitHub failed or offline mode
-      if (installMethod !== 'github') {
-        spinner.text = 'Installing from bundled assets...';
+      if (installMethod !== "github") {
+        spinner.text = "Installing from bundled assets...";
         copiedFolders = await copyFolders(ASSETS_DIR, cwd, aiType);
-        installMethod = 'bundled';
+        installMethod = "bundled";
       }
     } else {
       // Use new template-based generation (default)
-      copiedFolders = await templateInstall(cwd, aiType, spinner, isGlobal, options.force);
-      installMethod = 'template';
+      copiedFolders = await templateInstall(
+        cwd,
+        aiType,
+        spinner,
+        isGlobal,
+        options.force,
+      );
+      installMethod = "template";
     }
 
     const methodMessage = {
-      github: 'Installed from GitHub release!',
-      bundled: 'Installed from bundled assets!',
-      template: 'Generated from templates!',
+      github: "Installed from GitHub release!",
+      bundled: "Installed from bundled assets!",
+      template: "Generated from templates!",
     }[installMethod];
 
     spinner.succeed(methodMessage);
 
     // Summary
     console.log();
-    logger.info('Installed folders:');
-    copiedFolders.forEach(folder => {
-      console.log(`  ${chalk.green('+')} ${folder}`);
+    logger.info("Installed folders:");
+    copiedFolders.forEach((folder) => {
+      console.log(`  ${chalk.green("+")} ${folder}`);
     });
 
     console.log();
-    logger.success('UI/UX Pro Max installed successfully!');
+    logger.success("UI/UX Pro Max installed successfully!");
 
     // Next steps
     console.log();
-    console.log(chalk.bold('Next steps:'));
-    console.log(chalk.dim('  1. Restart your AI coding assistant'));
-    console.log(chalk.dim('  2. Try: "Build a landing page for a SaaS product"'));
+    console.log(chalk.bold("Next steps:"));
+    console.log(chalk.dim("  1. Restart your AI coding assistant"));
+    console.log(
+      chalk.dim('  2. Try: "Build a landing page for a SaaS product"'),
+    );
     console.log();
   } catch (error) {
-    spinner.fail('Installation failed');
+    spinner.fail("Installation failed");
     if (error instanceof Error) {
       logger.error(error.message);
     }
