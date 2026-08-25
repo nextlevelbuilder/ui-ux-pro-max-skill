@@ -42,6 +42,16 @@ def _find_project_root():
 
 
 PROJECT_ROOT = _find_project_root()
+
+# Force UTF-8 on stdout/stderr: this script prints emoji, which raises
+# UnicodeEncodeError on a Windows console (cp1252). Same guard as
+# src/ui-ux-pro-max/scripts/search.py.
+import io
+
+if sys.stdout.encoding and sys.stdout.encoding.lower() != 'utf-8':
+    sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
+if sys.stderr.encoding and sys.stderr.encoding.lower() != 'utf-8':
+    sys.stderr = io.TextIOWrapper(sys.stderr.buffer, encoding='utf-8')
 TOKENS_JSON_PATH = PROJECT_ROOT / 'assets' / 'design-tokens.json'
 TOKENS_CSS_PATH = PROJECT_ROOT / 'assets' / 'design-tokens.css'
 
