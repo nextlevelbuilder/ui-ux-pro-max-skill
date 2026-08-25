@@ -20,11 +20,15 @@ def _run(tmp_path: Path, css: str) -> subprocess.CompletedProcess:
     node = shutil.which("node")
     if not node:
         pytest.skip("node not available")
-    (tmp_path / "sample.css").write_text(css)
+    (tmp_path / "sample.css").write_text(css, encoding="utf-8")
     return subprocess.run(
         [node, str(SCRIPT), "--dir", str(tmp_path)],
         capture_output=True,
         text=True,
+        # validate-tokens.cjs prints emoji; without an explicit encoding Python
+        # decodes the pipe with the locale codec (cp1252 on Windows), which
+        # raises in the reader thread and leaves result.stdout set to None.
+        encoding="utf-8",
     )
 
 
