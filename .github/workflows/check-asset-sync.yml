@@ -5,8 +5,7 @@ on:
     paths:
       - "src/ui-ux-pro-max/**"
       - "cli/assets/**"
-      - ".claude/skills/ui-ux-pro-max/data/**"
-      - ".claude/skills/ui-ux-pro-max/scripts/**"
+      - ".claude/skills/**"
       - "cli/scripts/sync-assets.mjs"
       - "cli/package.json"
       - "scripts/evaluate-relevance.py"
@@ -18,8 +17,7 @@ on:
       - "src/ui-ux-pro-max/**"
       - "cli/assets/**"
       - "cli/package.json"
-      - ".claude/skills/ui-ux-pro-max/data/**"
-      - ".claude/skills/ui-ux-pro-max/scripts/**"
+      - ".claude/skills/**"
 
 jobs:
   check-assets:
@@ -38,3 +36,15 @@ jobs:
       # installed as a plugin, and previously had no sync check at all.
       - name: Check assets are in sync with source of truth
         run: npm --prefix cli run check:assets
+      # Path contract (#474): skill instructions must invoke their scripts via
+      # skill-relative paths (like the brand/design-system sub-skills do). A
+      # user-level "~/.claude/skills/..." path only works in one install
+      # context: it breaks under a marketplace/plugin install (skills live in
+      # the plugin cache) and under project-level CLI installs.
+      - name: Path contract - no hard-coded user-level skill paths
+        run: |
+          if grep -rn '~/\.claude/skills/' .claude/skills/*/SKILL.md cli/assets/skills/*/SKILL.md; then
+            echo "::error::SKILL.md files must use skill-relative script paths, not ~/.claude/skills/... (see #474)"
+            exit 1
+          fi
+          echo "OK: no hard-coded user-level skill paths"
