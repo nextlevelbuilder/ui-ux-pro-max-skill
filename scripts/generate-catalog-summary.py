@@ -20,7 +20,9 @@ def rows(name):
 
 
 def digest(path):
-    return hashlib.sha256(path.read_bytes()).hexdigest()
+    # Normalize line endings so the snapshot does not depend on whether the
+    # working tree was checked out with LF or CRLF.
+    return hashlib.sha256(path.read_bytes().replace(b"\r\n", b"\n")).hexdigest()
 
 
 def load_json(name):

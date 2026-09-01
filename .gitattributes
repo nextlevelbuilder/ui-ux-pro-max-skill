@@ -1,0 +1,6 @@
+# catalog-summary.json records sha256 hashes of the files below, computed over
+# their bytes. A CRLF checkout therefore produces different hashes than an LF
+# one, which makes `verify:data` fail on every other platform (see #462/#478).
+# Pin these files to LF so the snapshot is reproducible everywhere.
+src/ui-ux-pro-max/data/*.csv    text eol=lf
+src/ui-ux-pro-max/data/*.json   text eol=lf

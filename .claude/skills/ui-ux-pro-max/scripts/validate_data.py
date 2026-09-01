@@ -663,7 +663,11 @@ def _check_catalog_summary(summary, licenses, phosphor, problems):
             problems.append(f"[catalog:summary] stale count for {key}")
     snapshots = summary.get("snapshots") if isinstance(summary.get("snapshots"), dict) else {}
     for name in ("google-fonts.csv", "google-font-licenses.json", "icons.csv", "phosphor-icons-upstream.json"):
-        digest = hashlib.sha256((DATA_DIR / name).read_bytes()).hexdigest()
+        # Line endings are normalized so the check matches
+        # generate-catalog-summary.py on CRLF checkouts too.
+        digest = hashlib.sha256(
+            (DATA_DIR / name).read_bytes().replace(b"\r\n", b"\n")
+        ).hexdigest()
         if snapshots.get(name) != {"sha256": digest}:
             problems.append(f"[catalog:summary] stale snapshot for {name}")
     policy = summary.get("promotionPolicy")
