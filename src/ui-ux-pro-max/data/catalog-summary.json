@@ -24,16 +24,16 @@
   },
   "snapshots": {
     "google-fonts.csv": {
-      "sha256": "d03194d2c35a2cdc4c6846ddde9beb54fdd1f81a3ddc80fead3c0ba2842b75fb"
+      "sha256": "1c8c3b2ea1faf6a1012da463756def8b3889db33f2226f0343bb4daa80307d03"
     },
     "google-font-licenses.json": {
-      "sha256": "7c35e410dd8b5853ca86c3e0e3d3cfb73db1ffa3d9a2fa688c182bc44cd9a8d7"
+      "sha256": "35688523f2955795caa1a47c53b83099e60c1708461476f9cc3a050cf3b0148a"
     },
     "icons.csv": {
-      "sha256": "272ccf0eb60e50ba7af55de3ef5c195d92e1862d411b6cb80d81dec4fe56deee"
+      "sha256": "50816c6012030178195a16ee481ebf58b47bd985d70e8ec58886cc83f6eddafc"
     },
     "phosphor-icons-upstream.json": {
-      "sha256": "81c37fb3583eb43a91e93f1a62c4da3b4ff089624c06bfe53950b8205b54974d"
+      "sha256": "2399325233b277b5c97a80e6a5e8941154f5d057beee4e7613db87c87d700236"
     }
   },
   "promotionPolicy": {
