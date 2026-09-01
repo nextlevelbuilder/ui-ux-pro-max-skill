@@ -400,7 +400,7 @@ legacy 条目，并通过 `Status` 和 `Applies To` 标识。若没有对应的 
 将设计系统保存到文件，实现**跨会话的层级检索**：
 
 ```bash
-# 生成并持久化到 design-system/MASTER.md
+# 生成并持久化到 design-system/myapp/MASTER.md
 python3 .claude/skills/ui-ux-pro-max/scripts/search.py "SaaS dashboard" --design-system --persist -p "MyApp"
 
 # 同时创建页面特定的覆盖文件
@@ -411,20 +411,21 @@ python3 .claude/skills/ui-ux-pro-max/scripts/search.py "SaaS dashboard" --design
 
 ```
 design-system/
-├── MASTER.md           # 全局唯一真相源 (颜色、字体、间距、组件)
-└── pages/
-    └── dashboard.md    # 页面特定覆盖 (仅与主配置的偏差)
+└── myapp/                  # 每个项目一个文件夹 (-p "MyApp" 的 slug)
+    ├── MASTER.md           # 全局唯一真相源 (颜色、字体、间距、组件)
+    └── pages/
+        └── dashboard.md    # 页面特定覆盖 (仅与主配置的偏差)
 ```
 
 **层级检索工作原理：**
-1. 构建特定页面 (如"结账页") 时，先检查 `design-system/pages/checkout.md`
+1. 构建特定页面 (如"结账页") 时，先检查 `design-system/[project-slug]/pages/checkout.md`
 2. 如果页面文件存在，其规则**覆盖**主配置文件
-3. 如果不存在，仅使用 `design-system/MASTER.md`
+3. 如果不存在，仅使用 `design-system/[project-slug]/MASTER.md`
 
 **上下文感知检索提示词：**
 ```
-我正在构建 [页面名称] 页面。请阅读 design-system/MASTER.md。
-同时检查 design-system/pages/[page-name].md 是否存在。
+我正在构建 [页面名称] 页面。请阅读 design-system/[project-slug]/MASTER.md。
+同时检查 design-system/[project-slug]/pages/[page-name].md 是否存在。
 如果页面文件存在，优先使用其规则。
 如果不存在，仅使用主配置规则。
 现在，生成代码...

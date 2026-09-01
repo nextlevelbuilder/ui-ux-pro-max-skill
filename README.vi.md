@@ -395,7 +395,7 @@ Tìm kiếm cho web stack có nhận biết phiên bản. Truy vấn không nêu
 Lưu hệ thống thiết kế vào tệp để **truy xuất phân cấp giữa các phiên làm việc**:
 
 ```bash
-# Tạo và lưu vào design-system/MASTER.md
+# Tạo và lưu vào design-system/myapp/MASTER.md
 python3 .claude/skills/ui-ux-pro-max/scripts/search.py "SaaS dashboard" --design-system --persist -p "MyApp"
 
 # Đồng thời tạo tệp ghi đè riêng cho một trang
@@ -406,22 +406,23 @@ Lệnh trên tạo cấu trúc thư mục `design-system/`:
 
 ```
 design-system/
-├── MASTER.md           # Nguồn tham chiếu chung (màu sắc, kiểu chữ, khoảng cách, thành phần)
-└── pages/
-    └── dashboard.md    # Ghi đè riêng cho trang (chỉ những điểm khác với Master)
+└── myapp/                  # Mỗi dự án một thư mục (slug của -p "MyApp")
+    ├── MASTER.md           # Nguồn tham chiếu chung (màu sắc, kiểu chữ, khoảng cách, thành phần)
+    └── pages/
+        └── dashboard.md    # Ghi đè riêng cho trang (chỉ những điểm khác với Master)
 ```
 
 **Cách truy xuất phân cấp hoạt động:**
 
-1. Khi xây dựng một trang cụ thể (ví dụ: "Checkout"), trước tiên kiểm tra `design-system/pages/checkout.md`
+1. Khi xây dựng một trang cụ thể (ví dụ: "Checkout"), trước tiên kiểm tra `design-system/[project-slug]/pages/checkout.md`
 2. Nếu tệp của trang tồn tại, các quy tắc trong đó sẽ **ghi đè** tệp Master
-3. Nếu không, chỉ sử dụng `design-system/MASTER.md`
+3. Nếu không, chỉ sử dụng `design-system/[project-slug]/MASTER.md`
 
 **Prompt truy xuất theo ngữ cảnh:**
 
 ```
-Tôi đang xây dựng trang [Tên trang]. Hãy đọc design-system/MASTER.md.
-Đồng thời kiểm tra xem design-system/pages/[page-name].md có tồn tại hay không.
+Tôi đang xây dựng trang [Tên trang]. Hãy đọc design-system/[project-slug]/MASTER.md.
+Đồng thời kiểm tra xem design-system/[project-slug]/pages/[page-name].md có tồn tại hay không.
 Nếu tệp của trang tồn tại, hãy ưu tiên các quy tắc trong đó.
 Nếu không, chỉ sử dụng các quy tắc trong tệp Master.
 Bây giờ, hãy tạo mã nguồn...

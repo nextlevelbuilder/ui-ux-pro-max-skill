@@ -384,7 +384,7 @@ python3 .claude/skills/ui-ux-pro-max/scripts/search.py "enterprise tableview den
 세션 간 **계층적 검색**을 위해 디자인 시스템을 파일로 저장하세요.
 
 ```bash
-# 디자인 시스템을 생성하여 design-system/MASTER.md에 저장
+# 디자인 시스템을 생성하여 design-system/myapp/MASTER.md에 저장
 python3 .claude/skills/ui-ux-pro-max/scripts/search.py "SaaS dashboard" --design-system --persist -p "MyApp"
 
 # 페이지별 오버라이드 파일도 생성
@@ -395,20 +395,21 @@ python3 .claude/skills/ui-ux-pro-max/scripts/search.py "SaaS dashboard" --design
 
 ```
 design-system/
-├── MASTER.md           # 전역 단일 정보 출처(색상, 타이포그래피, 간격, 컴포넌트)
-└── pages/
-    └── dashboard.md    # 페이지별 오버라이드(마스터와 다른 내용만 기록)
+└── myapp/                  # 프로젝트마다 폴더 하나(-p "MyApp"의 슬러그)
+    ├── MASTER.md           # 전역 단일 정보 출처(색상, 타이포그래피, 간격, 컴포넌트)
+    └── pages/
+        └── dashboard.md    # 페이지별 오버라이드(마스터와 다른 내용만 기록)
 ```
 
 **계층적 검색 방식:**
-1. 특정 페이지(예: "결제")를 만들 때 먼저 `design-system/pages/checkout.md`를 확인합니다.
+1. 특정 페이지(예: "결제")를 만들 때 먼저 `design-system/[project-slug]/pages/checkout.md`를 확인합니다.
 2. 페이지 파일이 있으면 해당 규칙이 마스터 파일을 **재정의**합니다.
-3. 없으면 `design-system/MASTER.md`만 사용합니다.
+3. 없으면 `design-system/[project-slug]/MASTER.md`만 사용합니다.
 
 **컨텍스트 인식 검색 프롬프트:**
 ```
-[페이지 이름] 페이지를 만들고 있습니다. design-system/MASTER.md를 읽어 주세요.
-design-system/pages/[page-name].md 파일이 있는지도 확인해 주세요.
+[페이지 이름] 페이지를 만들고 있습니다. design-system/[project-slug]/MASTER.md를 읽어 주세요.
+design-system/[project-slug]/pages/[page-name].md 파일이 있는지도 확인해 주세요.
 페이지 파일이 있으면 해당 규칙을 우선 적용하세요.
 없으면 마스터 규칙만 사용하세요.
 이제 코드를 생성해 주세요...

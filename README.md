@@ -406,7 +406,7 @@ results instead of mixing framework generations.
 Save your design system to files for **hierarchical retrieval across sessions**:
 
 ```bash
-# Generate and persist to design-system/MASTER.md
+# Generate and persist to design-system/myapp/MASTER.md
 python3 .claude/skills/ui-ux-pro-max/scripts/search.py "SaaS dashboard" --design-system --persist -p "MyApp"
 
 # Also create a page-specific override file
@@ -417,20 +417,21 @@ This creates a `design-system/` folder structure:
 
 ```
 design-system/
-├── MASTER.md           # Global Source of Truth (colors, typography, spacing, components)
-└── pages/
-    └── dashboard.md    # Page-specific overrides (only deviations from Master)
+└── myapp/                  # One folder per project (slug of -p "MyApp")
+    ├── MASTER.md           # Global Source of Truth (colors, typography, spacing, components)
+    └── pages/
+        └── dashboard.md    # Page-specific overrides (only deviations from Master)
 ```
 
 **How hierarchical retrieval works:**
-1. When building a specific page (e.g., "Checkout"), first check `design-system/pages/checkout.md`
+1. When building a specific page (e.g., "Checkout"), first check `design-system/[project-slug]/pages/checkout.md`
 2. If the page file exists, its rules **override** the Master file
-3. If not, use `design-system/MASTER.md` exclusively
+3. If not, use `design-system/[project-slug]/MASTER.md` exclusively
 
 **Context-aware retrieval prompt:**
 ```
-I am building the [Page Name] page. Please read design-system/MASTER.md.
-Also check if design-system/pages/[page-name].md exists.
+I am building the [Page Name] page. Please read design-system/[project-slug]/MASTER.md.
+Also check if design-system/[project-slug]/pages/[page-name].md exists.
 If the page file exists, prioritize its rules.
 If not, use the Master rules exclusively.
 Now, generate the code...
