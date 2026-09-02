@@ -62,6 +62,14 @@ def test_sync_parses_bundled_starter_template(tmp_path):
     assert primitive["secondary"]["500"]["$value"] == "#8B5CF6"
     assert primitive["accent"]["500"]["$value"] == "#10B981"
 
+    # #474: the sibling design-system script is resolved from this skill's own
+    # location, so the CSS regeneration must run even though tmp_path has no
+    # .claude/skills/ tree. Before the fix it was resolved from the working
+    # directory and silently skipped in every layout but a project install.
+    assert "Regenerated" in result.stdout, result.stdout
+    css = tmp_path / "assets" / "design-tokens.css"
+    assert css.exists() and css.stat().st_size > 0
+
 
 def test_reports_missing_guidelines_without_breaking_the_harness(tmp_path):
     """The missing-guidelines path is the one that breaks a locale-decoded pipe.

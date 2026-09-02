@@ -17,7 +17,10 @@ const { execFileSync } = require('child_process');
 const BRAND_GUIDELINES = 'docs/brand-guidelines.md';
 const DESIGN_TOKENS_JSON = 'assets/design-tokens.json';
 const DESIGN_TOKENS_CSS = 'assets/design-tokens.css';
-const GENERATE_TOKENS_SCRIPT = '.claude/skills/design-system/scripts/generate-tokens.cjs';
+// Sibling sub-skill, resolved from this file's location so it works in every
+// install context (plugin cache, project or --global CLI install), not only
+// when the process runs from a project root that contains .claude/skills/.
+const GENERATE_TOKENS_SCRIPT = path.resolve(__dirname, '..', '..', 'design-system', 'scripts', 'generate-tokens.cjs');
 
 /**
  * Extract color info from brand guidelines markdown
@@ -229,7 +232,7 @@ function main() {
   console.log(`✅ Updated: ${DESIGN_TOKENS_JSON}`);
 
   // Regenerate CSS
-  const generateScript = path.resolve(process.cwd(), GENERATE_TOKENS_SCRIPT);
+  const generateScript = GENERATE_TOKENS_SCRIPT;
   if (fs.existsSync(generateScript)) {
     try {
       execFileSync('node', [generateScript, '--config', DESIGN_TOKENS_JSON, '-o', DESIGN_TOKENS_CSS], {
@@ -240,6 +243,8 @@ function main() {
     } catch (e) {
       console.error('⚠️  Failed to regenerate CSS:', e.message);
     }
+  } else {
+    console.warn(`⚠️  design-system sub-skill not found at ${generateScript}; ${DESIGN_TOKENS_CSS} not regenerated`);
   }
 
   console.log('\n✨ Brand sync complete!');
