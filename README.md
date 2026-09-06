@@ -221,6 +221,15 @@ Many users ask about the differences between the open-source and premium version
 
 ## Installation
 
+### Manual Setup for GitHub Copilot (VS Code)
+
+If you want to use this repository directly in GitHub Copilot Chat (VS Code), use the Copilot-compatible structure in this repo:
+
+- Skills: `.github/skills/`
+- Workspace instructions: `.github/copilot-instructions.md`
+
+Open this folder in VS Code and use Copilot Chat normally. The skills are discoverable from `.github/skills/*/SKILL.md`.
+
 ### Using Claude Marketplace (Claude Code)
 
 Install directly in Claude Code with two commands:
