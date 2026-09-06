@@ -7,7 +7,12 @@ import prompts from 'prompts';
 import type { AIType } from '../types/index.js';
 import { AI_TYPES } from '../types/index.js';
 import { copyFolders, installFromZip, createTempDir, cleanup } from '../utils/extract.js';
-import { generatePlatformFiles, generateAllPlatformFiles } from '../utils/template.js';
+import {
+  generatePlatformFiles,
+  generateAllPlatformFiles,
+  planPlatformInstallActions,
+  planAllPlatformInstallActions,
+} from '../utils/template.js';
 import { detectAIType, getAITypeDescription } from '../utils/detect.js';
 import { logger } from '../utils/logger.js';
 import {
@@ -34,6 +39,7 @@ interface InitOptions {
   offline?: boolean;
   legacy?: boolean; // Use old ZIP-based install
   global?: boolean; // Install to home directory (global mode)
+  dryRun?: boolean; // Preview install actions without writing files
   token?: string; // GitHub PAT for higher API rate limits
 }
 
@@ -159,6 +165,29 @@ export async function initCommand(options: InitOptions): Promise<void> {
   const isGlobal = !!options.global;
   const modeLabel = isGlobal ? ' (global)' : '';
   logger.info(`Installing for: ${chalk.cyan(getAITypeDescription(aiType))}${modeLabel}`);
+
+  // Dry run: print what the install would do, write nothing, exit 0
+  if (options.dryRun) {
+    const cwd = process.cwd();
+    console.log();
+    logger.info('Planned install actions (nothing will be written):');
+
+    if (aiType === 'all') {
+      const planned = await planAllPlatformInstallActions(cwd, isGlobal, options.force);
+      planned.forEach((actions, type) => {
+        console.log();
+        console.log(chalk.bold(getAITypeDescription(type as AIType)));
+        actions.forEach(action => console.log(`  ${chalk.cyan('·')} ${action}`));
+      });
+    } else {
+      const actions = await planPlatformInstallActions(cwd, aiType, isGlobal, options.force);
+      actions.forEach(action => console.log(`  ${chalk.cyan('·')} ${action}`));
+    }
+
+    console.log();
+    logger.success('Dry run complete — no files were written.');
+    return;
+  }
 
   const spinner = ora('Installing files...').start();
   const cwd = process.cwd();

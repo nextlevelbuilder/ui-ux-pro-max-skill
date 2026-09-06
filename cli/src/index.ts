@@ -30,6 +30,7 @@ program
   .option('-o, --offline', 'Compatibility flag; template installs use bundled assets')
   .option('-g, --global', 'Install globally to home directory (~/) instead of current project')
   .option('-t, --token <token>', 'GitHub Personal Access Token for higher API rate limits')
+  .option('--dry-run', 'Preview install actions without writing files')
   .action(async (options) => {
     if (options.ai && !AI_TYPES.includes(options.ai)) {
       console.error(`Invalid AI type: ${options.ai}`);
@@ -41,6 +42,7 @@ program
       force: options.force,
       offline: options.offline,
       global: options.global,
+      dryRun: options.dryRun,
       token: options.token,
     });
   });
