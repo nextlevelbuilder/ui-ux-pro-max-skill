@@ -1,0 +1,5 @@
+node_modules/
+.next/
+out/
+.test-dist/
+*.tsbuildinfo

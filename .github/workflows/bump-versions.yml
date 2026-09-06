@@ -1,0 +1,61 @@
+name: Bump JSON versions after release
+
+on:
+  release:
+    types: [published]
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  bump-versions:
+    name: Bump skill.json versions
+    runs-on: ubuntu-latest
+    if: |
+      github.repository == 'nextlevelbuilder/ui-ux-pro-max-skill' &&
+      !contains(github.ref_name, 'beta')
+
+    steps:
+      - name: Checkout main
+        uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - name: Extract version
+        id: version
+        run: echo "version=${GITHUB_REF_NAME#v}" >> "$GITHUB_OUTPUT"
+
+      - name: Update skill.json
+        run: |
+          jq --arg v "${{ steps.version.outputs.version }}" '.version = $v' \
+            skill.json > skill.json.tmp && mv skill.json.tmp skill.json
+
+      - name: Update .claude-plugin/marketplace.json
+        run: |
+          jq --arg v "${{ steps.version.outputs.version }}" '
+            .metadata.version = $v | .plugins[0].version = $v
+          ' .claude-plugin/marketplace.json > marketplace.json.tmp \
+            && mv marketplace.json.tmp .claude-plugin/marketplace.json
+
+      - name: Update .claude-plugin/plugin.json
+        run: |
+          jq --arg v "${{ steps.version.outputs.version }}" '.version = $v' \
+            .claude-plugin/plugin.json > plugin.json.tmp \
+            && mv plugin.json.tmp .claude-plugin/plugin.json
+
+      - name: Create pull request
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          VERSION: ${{ steps.version.outputs.version }}
+        run: |
+          BRANCH="fix/bump-json-version-${VERSION}"
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git checkout -b "$BRANCH"
+          git add skill.json .claude-plugin/marketplace.json .claude-plugin/plugin.json
+          git commit -m "fix: bump skill.json version to ${VERSION}"
+          git push origin "$BRANCH"
+          gh pr create \
+            --title "fix: bump skill.json version to ${VERSION}" \
+            --body "Bumps \`skill.json\`, \`marketplace.json\`, and \`plugin.json\` version to \`${VERSION}\` to match the latest GitHub release."

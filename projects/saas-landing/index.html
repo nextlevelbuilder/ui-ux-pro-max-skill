@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SaaSify - Streamline Your Workflow</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#3B82F6',
+            secondary: '#60A5FA',
+            cta: '#F97316',
+            background: '#F8FAFC',
+            text: '#1E293B',
+          },
+          fontFamily: {
+            heading: ['Poppins', 'sans-serif'],
+            body: ['Open Sans', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+  </style>
+</head>
+<body class="bg-background font-body text-text antialiased">
+  <!-- Floating Navbar -->
+  <nav class="fixed top-4 left-4 right-4 z-50 bg-white/90 backdrop-blur-md rounded-2xl shadow-lg border border-gray-100">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+      <a href="#" class="font-heading font-bold text-2xl text-primary cursor-pointer">SaaSify</a>
+      <div class="hidden md:flex items-center gap-8">
+        <a href="#features" class="text-text/80 hover:text-primary transition-colors duration-200 cursor-pointer">Features</a>
+        <a href="#testimonials" class="text-text/80 hover:text-primary transition-colors duration-200 cursor-pointer">Testimonials</a>
+        <a href="#pricing" class="text-text/80 hover:text-primary transition-colors duration-200 cursor-pointer">Pricing</a>
+      </div>
+      <a href="#cta" class="bg-cta hover:bg-orange-600 text-white font-semibold px-6 py-2.5 rounded-lg transition-colors duration-200 cursor-pointer">
+        Get Started
+      </a>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="pt-32 pb-20 px-4">
+    <div class="max-w-7xl mx-auto text-center">
+      <h1 class="font-heading text-4xl md:text-6xl font-bold text-text mb-6 leading-tight">
+        Streamline Your Workflow<br>
+        <span class="text-primary">Like Never Before</span>
+      </h1>
+      <p class="text-lg md:text-xl text-text/70 max-w-2xl mx-auto mb-10 leading-relaxed">
+        Join 10,000+ teams who trust SaaSify to automate tasks, boost productivity, and scale their operations effortlessly.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center mb-16">
+        <a href="#cta" class="bg-cta hover:bg-orange-600 text-white font-semibold px-8 py-4 rounded-xl text-lg transition-colors duration-200 cursor-pointer shadow-lg shadow-cta/30">
+          Start Free Trial
+        </a>
+        <a href="#demo" class="bg-white hover:bg-gray-50 text-text font-semibold px-8 py-4 rounded-xl text-lg transition-colors duration-200 cursor-pointer border border-gray-200">
+          Watch Demo
+        </a>
+      </div>
+
+      <!-- Social Proof Stats -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto">
+        <div class="text-center">
+          <div class="font-heading text-3xl md:text-4xl font-bold text-primary mb-2">10K+</div>
+          <div class="text-text/60 text-sm">Active Teams</div>
+        </div>
+        <div class="text-center">
+          <div class="font-heading text-3xl md:text-4xl font-bold text-primary mb-2">99.9%</div>
+          <div class="text-text/60 text-sm">Uptime SLA</div>
+        </div>
+        <div class="text-center">
+          <div class="font-heading text-3xl md:text-4xl font-bold text-primary mb-2">50M+</div>
+          <div class="text-text/60 text-sm">Tasks Automated</div>
+        </div>
+        <div class="text-center">
+          <div class="font-heading text-3xl md:text-4xl font-bold text-primary mb-2">4.9</div>
+          <div class="text-text/60 text-sm">Star Rating</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Logo Cloud -->
+  <section class="py-16 bg-white border-y border-gray-100">
+    <div class="max-w-7xl mx-auto px-4">
+      <p class="text-center text-text/50 text-sm font-medium mb-8 uppercase tracking-wider">Trusted by industry leaders</p>
+      <div class="flex flex-wrap justify-center items-center gap-12 opacity-60">
+        <svg class="h-8 w-auto" viewBox="0 0 124 24" fill="currentColor"><text x="0" y="20" font-family="Arial" font-size="20" font-weight="bold">Stripe</text></svg>
+        <svg class="h-8 w-auto" viewBox="0 0 124 24" fill="currentColor"><text x="0" y="20" font-family="Arial" font-size="20" font-weight="bold">Notion</text></svg>
+        <svg class="h-8 w-auto" viewBox="0 0 124 24" fill="currentColor"><text x="0" y="20" font-family="Arial" font-size="20" font-weight="bold">Linear</text></svg>
+        <svg class="h-8 w-auto" viewBox="0 0 124 24" fill="currentColor"><text x="0" y="20" font-family="Arial" font-size="20" font-weight="bold">Vercel</text></svg>
+        <svg class="h-8 w-auto" viewBox="0 0 124 24" fill="currentColor"><text x="0" y="20" font-family="Arial" font-size="20" font-weight="bold">Figma</text></svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section id="features" class="py-24 px-4">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-16">
+        <h2 class="font-heading text-3xl md:text-4xl font-bold text-text mb-4">Everything You Need to Scale</h2>
+        <p class="text-text/60 text-lg max-w-2xl mx-auto">Powerful features designed to help your team work smarter, not harder.</p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8">
+        <!-- Feature 1 -->
+        <div class="bg-white p-8 rounded-2xl border border-gray-100 hover:shadow-xl hover:border-primary/20 transition-all duration-300 cursor-pointer group">
+          <div class="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-colors duration-200">
+            <svg class="w-6 h-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+            </svg>
+          </div>
+          <h3 class="font-heading font-semibold text-xl text-text mb-3">Instant Automation</h3>
+          <p class="text-text/60 leading-relaxed">Set up workflows in minutes with our no-code builder. Automate repetitive tasks and focus on what matters.</p>
+        </div>
+
+        <!-- Feature 2 -->
+        <div class="bg-white p-8 rounded-2xl border border-gray-100 hover:shadow-xl hover:border-primary/20 transition-all duration-300 cursor-pointer group">
+          <div class="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-colors duration-200">
+            <svg class="w-6 h-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
+            </svg>
+          </div>
+          <h3 class="font-heading font-semibold text-xl text-text mb-3">Real-time Analytics</h3>
+          <p class="text-text/60 leading-relaxed">Track performance metrics, identify bottlenecks, and make data-driven decisions with powerful dashboards.</p>
+        </div>
+
+        <!-- Feature 3 -->
+        <div class="bg-white p-8 rounded-2xl border border-gray-100 hover:shadow-xl hover:border-primary/20 transition-all duration-300 cursor-pointer group">
+          <div class="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-colors duration-200">
+            <svg class="w-6 h-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
+            </svg>
+          </div>
+          <h3 class="font-heading font-semibold text-xl text-text mb-3">Enterprise Security</h3>
+          <p class="text-text/60 leading-relaxed">Bank-level encryption, SOC 2 compliance, and granular permissions keep your data safe and secure.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section id="testimonials" class="py-24 px-4 bg-white">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-16">
+        <h2 class="font-heading text-3xl md:text-4xl font-bold text-text mb-4">Loved by Teams Worldwide</h2>
+        <p class="text-text/60 text-lg">See what our customers have to say about SaaSify.</p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8">
+        <!-- Testimonial 1 -->
+        <div class="bg-background p-8 rounded-2xl border border-gray-100 cursor-pointer hover:shadow-lg transition-shadow duration-300">
+          <div class="flex gap-1 mb-4">
+            <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+          </div>
+          <p class="text-text/80 mb-6 leading-relaxed">"SaaSify reduced our manual work by 80%. We can now focus on strategic initiatives instead of repetitive tasks."</p>
+          <div class="flex items-center gap-4">
+            <div class="w-12 h-12 bg-primary/20 rounded-full flex items-center justify-center text-primary font-semibold">SM</div>
+            <div>
+              <div class="font-semibold text-text">Sarah Mitchell</div>
+              <div class="text-sm text-text/50">VP Operations, TechCorp</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Testimonial 2 -->
+        <div class="bg-background p-8 rounded-2xl border border-gray-100 cursor-pointer hover:shadow-lg transition-shadow duration-300">
+          <div class="flex gap-1 mb-4">
+            <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+          </div>
+          <p class="text-text/80 mb-6 leading-relaxed">"The analytics dashboard gives us insights we never had before. ROI was visible within the first month."</p>
+          <div class="flex items-center gap-4">
+            <div class="w-12 h-12 bg-secondary/20 rounded-full flex items-center justify-center text-secondary font-semibold">JC</div>
+            <div>
+              <div class="font-semibold text-text">James Chen</div>
+              <div class="text-sm text-text/50">CTO, ScaleUp Inc</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Testimonial 3 -->
+        <div class="bg-background p-8 rounded-2xl border border-gray-100 cursor-pointer hover:shadow-lg transition-shadow duration-300">
+          <div class="flex gap-1 mb-4">
+            <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+          </div>
+          <p class="text-text/80 mb-6 leading-relaxed">"Best investment we've made. The integrations work flawlessly and support team is incredibly responsive."</p>
+          <div class="flex items-center gap-4">
+            <div class="w-12 h-12 bg-cta/20 rounded-full flex items-center justify-center text-cta font-semibold">AR</div>
+            <div>
+              <div class="font-semibold text-text">Amanda Rodriguez</div>
+              <div class="text-sm text-text/50">Founder, GrowthLab</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing Section -->
+  <section id="pricing" class="py-24 px-4">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-16">
+        <h2 class="font-heading text-3xl md:text-4xl font-bold text-text mb-4">Simple, Transparent Pricing</h2>
+        <p class="text-text/60 text-lg">Start free. Scale as you grow.</p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+        <!-- Starter -->
+        <div class="bg-white p-8 rounded-2xl border border-gray-200 cursor-pointer hover:shadow-lg transition-shadow duration-300">
+          <h3 class="font-heading font-semibold text-xl text-text mb-2">Starter</h3>
+          <p class="text-text/50 text-sm mb-6">For small teams getting started</p>
+          <div class="mb-6">
+            <span class="font-heading text-4xl font-bold text-text">$0</span>
+            <span class="text-text/50">/month</span>
+          </div>
+          <ul class="space-y-3 mb-8">
+            <li class="flex items-center gap-3 text-text/70"><svg class="w-5 h-5 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>Up to 5 users</li>
+            <li class="flex items-center gap-3 text-text/70"><svg class="w-5 h-5 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>100 automations/mo</li>
+            <li class="flex items-center gap-3 text-text/70"><svg class="w-5 h-5 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>Basic analytics</li>
+          </ul>
+          <button class="w-full py-3 px-6 rounded-xl border-2 border-gray-200 text-text font-semibold hover:border-primary hover:text-primary transition-colors duration-200 cursor-pointer">Get Started</button>
+        </div>
+
+        <!-- Pro (Popular) -->
+        <div class="bg-primary p-8 rounded-2xl border-2 border-primary relative cursor-pointer hover:shadow-xl transition-shadow duration-300 scale-105">
+          <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-cta text-white text-sm font-semibold px-4 py-1 rounded-full">Most Popular</div>
+          <h3 class="font-heading font-semibold text-xl text-white mb-2">Pro</h3>
+          <p class="text-white/70 text-sm mb-6">For growing teams</p>
+          <div class="mb-6">
+            <span class="font-heading text-4xl font-bold text-white">$49</span>
+            <span class="text-white/70">/month</span>
+          </div>
+          <ul class="space-y-3 mb-8">
+            <li class="flex items-center gap-3 text-white/90"><svg class="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>Up to 25 users</li>
+            <li class="flex items-center gap-3 text-white/90"><svg class="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>Unlimited automations</li>
+            <li class="flex items-center gap-3 text-white/90"><svg class="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>Advanced analytics</li>
+            <li class="flex items-center gap-3 text-white/90"><svg class="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>Priority support</li>
+          </ul>
+          <button class="w-full py-3 px-6 rounded-xl bg-white text-primary font-semibold hover:bg-gray-100 transition-colors duration-200 cursor-pointer">Start Free Trial</button>
+        </div>
+
+        <!-- Enterprise -->
+        <div class="bg-white p-8 rounded-2xl border border-gray-200 cursor-pointer hover:shadow-lg transition-shadow duration-300">
+          <h3 class="font-heading font-semibold text-xl text-text mb-2">Enterprise</h3>
+          <p class="text-text/50 text-sm mb-6">For large organizations</p>
+          <div class="mb-6">
+            <span class="font-heading text-4xl font-bold text-text">Custom</span>
+          </div>
+          <ul class="space-y-3 mb-8">
+            <li class="flex items-center gap-3 text-text/70"><svg class="w-5 h-5 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>Unlimited users</li>
+            <li class="flex items-center gap-3 text-text/70"><svg class="w-5 h-5 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>Custom integrations</li>
+            <li class="flex items-center gap-3 text-text/70"><svg class="w-5 h-5 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>Dedicated support</li>
+            <li class="flex items-center gap-3 text-text/70"><svg class="w-5 h-5 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>SLA guarantee</li>
+          </ul>
+          <button class="w-full py-3 px-6 rounded-xl border-2 border-gray-200 text-text font-semibold hover:border-primary hover:text-primary transition-colors duration-200 cursor-pointer">Contact Sales</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section id="cta" class="py-24 px-4 bg-gradient-to-br from-primary to-secondary">
+    <div class="max-w-4xl mx-auto text-center">
+      <h2 class="font-heading text-3xl md:text-5xl font-bold text-white mb-6">Ready to Transform Your Workflow?</h2>
+      <p class="text-white/80 text-lg md:text-xl mb-10 max-w-2xl mx-auto">Join thousands of teams already using SaaSify. Start your free trial today.</p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <button class="bg-white text-primary font-semibold px-8 py-4 rounded-xl text-lg hover:bg-gray-100 transition-colors duration-200 cursor-pointer shadow-lg">
+          Start Free Trial
+        </button>
+        <button class="bg-transparent border-2 border-white text-white font-semibold px-8 py-4 rounded-xl text-lg hover:bg-white/10 transition-colors duration-200 cursor-pointer">
+          Schedule Demo
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-text py-16 px-4">
+    <div class="max-w-7xl mx-auto">
+      <div class="grid md:grid-cols-4 gap-12 mb-12">
+        <div>
+          <a href="#" class="font-heading font-bold text-2xl text-white mb-4 block cursor-pointer">SaaSify</a>
+          <p class="text-white/60 leading-relaxed">Streamline your workflow and scale your operations with powerful automation.</p>
+        </div>
+        <div>
+          <h4 class="font-semibold text-white mb-4">Product</h4>
+          <ul class="space-y-3">
+            <li><a href="#" class="text-white/60 hover:text-white transition-colors duration-200 cursor-pointer">Features</a></li>
+            <li><a href="#" class="text-white/60 hover:text-white transition-colors duration-200 cursor-pointer">Pricing</a></li>
+            <li><a href="#" class="text-white/60 hover:text-white transition-colors duration-200 cursor-pointer">Integrations</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-semibold text-white mb-4">Company</h4>
+          <ul class="space-y-3">
+            <li><a href="#" class="text-white/60 hover:text-white transition-colors duration-200 cursor-pointer">About</a></li>
+            <li><a href="#" class="text-white/60 hover:text-white transition-colors duration-200 cursor-pointer">Blog</a></li>
+            <li><a href="#" class="text-white/60 hover:text-white transition-colors duration-200 cursor-pointer">Careers</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-semibold text-white mb-4">Support</h4>
+          <ul class="space-y-3">
+            <li><a href="#" class="text-white/60 hover:text-white transition-colors duration-200 cursor-pointer">Help Center</a></li>
+            <li><a href="#" class="text-white/60 hover:text-white transition-colors duration-200 cursor-pointer">Contact</a></li>
+            <li><a href="#" class="text-white/60 hover:text-white transition-colors duration-200 cursor-pointer">Status</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+        <p class="text-white/40 text-sm">&copy; 2026 SaaSify. All rights reserved.</p>
+        <div class="flex gap-6">
+          <a href="#" class="text-white/40 hover:text-white transition-colors duration-200 cursor-pointer text-sm">Privacy</a>
+          <a href="#" class="text-white/40 hover:text-white transition-colors duration-200 cursor-pointer text-sm">Terms</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

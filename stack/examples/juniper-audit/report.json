@@ -1,0 +1,50 @@
+{
+  "target": "http://localhost:8099/",
+  "consoleErrors": [
+    "[mobile-360] Failed to load resource: the server responded with a status of 404 (File not found)"
+  ],
+  "findings": [
+    {
+      "severity": "high",
+      "check": "focus-visible",
+      "message": "2/25 sampled interactive elements show no visible focus indicator.",
+      "viewports": [
+        "mobile-360",
+        "mobile-390",
+        "tablet-768"
+      ]
+    },
+    {
+      "severity": "high",
+      "check": "focus-visible",
+      "message": "3/25 sampled interactive elements show no visible focus indicator.",
+      "viewports": [
+        "laptop-1024",
+        "desktop-1440",
+        "wide-1920"
+      ]
+    },
+    {
+      "severity": "medium",
+      "check": "tap-target",
+      "message": "14 interactive targets < 44×44px on mobile.",
+      "viewports": [
+        "mobile-360",
+        "mobile-390"
+      ]
+    },
+    {
+      "severity": "medium",
+      "check": "contrast",
+      "message": "~1/82 sampled text nodes below WCAG AA contrast (approximate).",
+      "viewports": [
+        "mobile-360",
+        "mobile-390",
+        "tablet-768",
+        "laptop-1024",
+        "desktop-1440",
+        "wide-1920"
+      ]
+    }
+  ]
+}
