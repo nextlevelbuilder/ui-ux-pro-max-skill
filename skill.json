@@ -1,13 +1,18 @@
 {
   "name": "ui-ux-pro-max",
-  "displayName": "UI/UX Pro Max",
-  "description": "AI-powered design intelligence with 67 UI styles, 161 color palettes, 57 font pairings, 99 UX guidelines, and 25 chart types across 15+ tech stacks.",
-  "version": "2.5.0",
+  "displayName": "Legal UI/UX Pro Max",
+  "description": "Design intelligence for law firms, attorneys, and legal-tech products. Searchable databases of 82 legal product types, 82 color palettes, 42 font pairings, 99 UX guidelines, and 25 chart types across 16 technology stacks — tuned for trust, authority, accessibility, and conversion (free consultation / case evaluation).",
+  "version": "3.0.0",
   "author": "NextLevelBuilder",
   "license": "MIT",
   "homepage": "https://uupm.cc",
   "repository": "https://github.com/nextlevelbuilder/ui-ux-pro-max-skill",
   "keywords": [
+    "law-firm",
+    "legal",
+    "attorney",
+    "lawyer",
+    "legal-tech",
     "ui",
     "ux",
     "design",
@@ -15,7 +20,8 @@
     "color-palette",
     "typography",
     "accessibility",
-    "ai-skill"
+    "charts",
+    "conversion"
   ],
   "platforms": [
     "claude",

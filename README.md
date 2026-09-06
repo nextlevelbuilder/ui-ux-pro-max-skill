@@ -1,9 +1,9 @@
-# [UI UX Pro Max](https://uupm.cc)
+# [Legal UI/UX Pro Max](https://uupm.cc)
  
 <p align="center">
   <a href="https://github.com/nextlevelbuilder/ui-ux-pro-max-skill/releases"><img src="https://img.shields.io/github/v/release/nextlevelbuilder/ui-ux-pro-max-skill?style=for-the-badge&color=blue" alt="GitHub Release"></a>
-  <img src="https://img.shields.io/badge/reasoning_rules-161-green?style=for-the-badge" alt="161 Reasoning Rules">
-  <img src="https://img.shields.io/badge/UI_styles-67-purple?style=for-the-badge" alt="67 UI Styles">
+  <img src="https://img.shields.io/badge/legal_reasoning_rules-82-green?style=for-the-badge" alt="82 Legal Reasoning Rules">
+  <img src="https://img.shields.io/badge/UI_styles-80+-purple?style=for-the-badge" alt="80+ UI Styles">
   <img src="https://img.shields.io/badge/python-3.x-yellow?style=for-the-badge&logo=python&logoColor=white" alt="Python 3.x">
   <a href="https://github.com/nextlevelbuilder/ui-ux-pro-max-skill/blob/main/LICENSE"><img src="https://img.shields.io/github/license/nextlevelbuilder/ui-ux-pro-max-skill?style=for-the-badge&color=green" alt="License"></a>
 </p>
@@ -15,11 +15,11 @@
   <a href="https://paypal.me/uiuxpromax"><img src="https://img.shields.io/badge/PayPal-Support%20Development-00457C?style=flat-square&logo=paypal&logoColor=white" alt="PayPal"></a>
 </p>
 
-An AI skill that provides design intelligence for building professional UI/UX across multiple platforms and frameworks.
+AI-powered design intelligence for law firms & legal-tech. A law-industry design intelligence toolkit that helps you build professional, trustworthy, and conversion-focused UI/UX for attorneys, law firms, and legal-tech products across multiple platforms and frameworks.
 
 <p align="center">
   <a href="https://uupm.cc">
-    <img src="screenshots/website.png" alt="UI UX Pro Max" width="800">
+    <img src="screenshots/website.png" alt="Legal UI/UX Pro Max" width="800">
   </a>
 </p>
 
@@ -37,46 +37,46 @@ An AI skill that provides design intelligence for building professional UI/UX ac
 
 ### Intelligent Design System Generation
 
-The flagship feature of v2.0 is the **Design System Generator** - an AI-powered reasoning engine that analyzes your project requirements and generates a complete, tailored design system in seconds.
+The flagship feature of v2.0 is the **Design System Generator** - an AI-powered reasoning engine that analyzes your legal project requirements and generates a complete, tailored design system in seconds.
 
 ```
 +----------------------------------------------------------------------------------------+
-|  TARGET: Serenity Spa - RECOMMENDED DESIGN SYSTEM                                      |
+|  TARGET: Sterling & Cole Law - RECOMMENDED DESIGN SYSTEM                               |
 +----------------------------------------------------------------------------------------+
 |                                                                                        |
 |  PATTERN: Hero-Centric + Social Proof                                                  |
-|     Conversion: Emotion-driven with trust elements                                     |
-|     CTA: Above fold, repeated after testimonials                                       |
+|     Conversion: Trust-driven with credibility elements                                 |
+|     CTA: Free case evaluation above fold, repeated after case results                  |
 |     Sections:                                                                          |
 |       1. Hero                                                                          |
-|       2. Services                                                                      |
-|       3. Testimonials                                                                  |
-|       4. Booking                                                                       |
+|       2. Practice Areas                                                                |
+|       3. Case Results                                                                  |
+|       4. Free Case Evaluation                                                          |
 |       5. Contact                                                                       |
 |                                                                                        |
-|  STYLE: Soft UI Evolution                                                              |
-|     Keywords: Soft shadows, subtle depth, calming, premium feel, organic shapes        |
-|     Best For: Wellness, beauty, lifestyle brands, premium services                     |
+|  STYLE: Trust & Authority                                                              |
+|     Keywords: Deep navy, gold accents, refined depth, authoritative, credible          |
+|     Best For: Law firms, attorneys, legal-tech, professional services                  |
 |     Performance: Excellent | Accessibility: WCAG AA                                    |
 |                                                                                        |
 |  COLORS:                                                                               |
-|     Primary:    #E8B4B8 (Soft Pink)                                                    |
-|     Secondary:  #A8D5BA (Sage Green)                                                   |
-|     CTA:        #D4AF37 (Gold)                                                         |
-|     Background: #FFF5F5 (Warm White)                                                   |
-|     Text:       #2D3436 (Charcoal)                                                     |
-|     Notes: Calming palette with gold accents for luxury feel                           |
+|     Primary:    #1A2A4F (Oxford Navy)                                                  |
+|     Secondary:  #6B7280 (Slate Gray)                                                   |
+|     CTA:        #C5A253 (Legal Gold)                                                   |
+|     Background: #F8F9FB (Cool White)                                                   |
+|     Text:       #1F2933 (Charcoal)                                                     |
+|     Notes: Navy/gold palette conveys authority, trust, and credibility                 |
 |                                                                                        |
-|  TYPOGRAPHY: Cormorant Garamond / Montserrat                                           |
-|     Mood: Elegant, calming, sophisticated                                              |
-|     Best For: Luxury brands, wellness, beauty, editorial                               |
+|  TYPOGRAPHY: Cormorant Garamond / Source Sans Pro                                      |
+|     Mood: Authoritative, credible, professional                                        |
+|     Best For: Law firms, attorneys, legal editorial, professional services             |
 |     Google Fonts: https://fonts.google.com/share?selection.family=...                  |
 |                                                                                        |
 |  KEY EFFECTS:                                                                          |
-|     Soft shadows + Smooth transitions (200-300ms) + Gentle hover states                |
+|     Soft shadows + Smooth transitions (200-300ms) + Restrained hover states            |
 |                                                                                        |
 |  AVOID (Anti-patterns):                                                                |
-|     Bright neon colors + Harsh animations + Dark mode + AI purple/pink gradients       |
+|     Bright neon colors + Harsh animations + Playful gradients + AI purple/pink         |
 |                                                                                        |
 |  PRE-DELIVERY CHECKLIST:                                                               |
 |     [ ] No emojis as icons (use SVG: Heroicons/Lucide)                                 |
@@ -95,25 +95,25 @@ The flagship feature of v2.0 is the **Design System Generator** - an AI-powered 
 ```
 ┌─────────────────────────────────────────────────────────────────┐
 │  1. USER REQUEST                                                │
-│     "Build a landing page for my beauty spa"                    │
+│     "Build a landing page for my personal injury law firm"      │
 └─────────────────────────────────────────────────────────────────┘
                               │
                               ▼
 ┌─────────────────────────────────────────────────────────────────┐
 │  2. MULTI-DOMAIN SEARCH (5 parallel searches)                   │
-│     • Product type matching (161 categories)                    │
-│     • Style recommendations (67 styles)                         │
-│     • Color palette selection (161 palettes)                    │
-│     • Landing page patterns (24 patterns)                       │
-│     • Typography pairing (57 font combinations)                 │
+│     • Legal product type matching (82 categories)               │
+│     • Style recommendations (80+ styles)                        │
+│     • Color palette selection (82 legal palettes)               │
+│     • Landing page patterns (22 patterns)                       │
+│     • Typography pairing (42 font combinations)                 │
 └─────────────────────────────────────────────────────────────────┘
                               │
                               ▼
 ┌─────────────────────────────────────────────────────────────────┐
 │  3. REASONING ENGINE                                            │
-│     • Match product → UI category rules                         │
+│     • Match legal product → UI category rules                   │
 │     • Apply style priorities (BM25 ranking)                     │
-│     • Filter anti-patterns for industry                         │
+│     • Filter anti-patterns for the legal industry              │
 │     • Process decision rules (JSON conditions)                  │
 └─────────────────────────────────────────────────────────────────┘
                               │
@@ -125,40 +125,45 @@ The flagship feature of v2.0 is the **Design System Generator** - an AI-powered 
 └─────────────────────────────────────────────────────────────────┘
 ```
 
-### 161 Industry-Specific Reasoning Rules
+### 82 Legal Industry-Specific Reasoning Rules
 
-The reasoning engine includes specialized rules for:
+The reasoning engine includes specialized rules for law-industry product types:
 
 | Category | Examples |
 |----------|----------|
-| **Tech & SaaS** | SaaS, Micro SaaS, B2B Service, Developer Tool / IDE, AI/Chatbot Platform, Cybersecurity Platform |
-| **Finance** | Fintech/Crypto, Banking, Insurance, Personal Finance Tracker, Invoice & Billing Tool |
-| **Healthcare** | Medical Clinic, Pharmacy, Dental, Veterinary, Mental Health, Medication Reminder |
-| **E-commerce** | General, Luxury, Marketplace (P2P), Subscription Box, Food Delivery |
-| **Services** | Beauty/Spa, Restaurant, Hotel, Legal, Home Services, Booking & Appointment |
-| **Creative** | Portfolio, Agency, Photography, Gaming, Music Streaming, Photo/Video Editor |
-| **Lifestyle** | Habit Tracker, Recipe & Cooking, Meditation, Weather, Diary, Mood Tracker |
-| **Emerging Tech** | Web3/NFT, Spatial Computing, Quantum Computing, Autonomous Drone Fleet |
+| **Practice Areas** | Personal Injury, Criminal Defense, Family Law, Estate Planning, Immigration, Bankruptcy |
+| **Corporate & Litigation** | Corporate Law, M&A, Employment Law, Intellectual Property, Civil Litigation, Class Action |
+| **Firm Types** | Solo Practitioner, Boutique Firm, Regional Firm, Big Law, Legal Aid / Pro Bono |
+| **Legal-Tech / SaaS** | Case Management, Practice Management, E-Discovery, Contract Lifecycle, Legal Billing, Client Intake |
+| **Legal Marketplaces** | Attorney Directory, Lawyer Matching, Online Legal Services, Document Automation |
+| **Legal Content** | Law Blog, Legal News, Bar Association, Law School, Legal Research Portal |
+| **Specialized Counsel** | Tax Law, Real Estate Law, Patent Attorney, Workers' Compensation, Medical Malpractice |
+| **Compliance & Advisory** | Regulatory Compliance, Data Privacy Counsel, Notary / E-Signature, Court Reporting |
 
 Each rule includes:
-- **Recommended Pattern** - Landing page structure
+- **Recommended Pattern** - Landing page structure (free case evaluation, practice areas, attorney bio, case results)
 - **Style Priority** - Best matching UI styles
-- **Color Mood** - Industry-appropriate palettes
-- **Typography Mood** - Font personality matching
+- **Color Mood** - Legal-appropriate palettes (navy/gold, charcoal/burgundy, oxford/silver)
+- **Typography Mood** - Professional font personality matching
 - **Key Effects** - Animations and interactions
-- **Anti-Patterns** - What NOT to do (e.g., "AI purple/pink gradients" for banking)
+- **Anti-Patterns** - What NOT to do (e.g., "playful gradients" or "AI purple/pink" for a law firm)
 
 ## Features
 
-- **67 UI Styles** - Glassmorphism, Claymorphism, Minimalism, Brutalism, Neumorphism, Bento Grid, Dark Mode, AI-Native UI, and more
-- **161 Color Palettes** - Industry-specific palettes aligned 1:1 with the 161 product types
-- **57 Font Pairings** - Curated typography combinations with Google Fonts imports
-- **25 Chart Types** - Recommendations for dashboards and analytics
+- **82 Legal Product Types** - Practice areas, firm types, legal-tech/SaaS, and legal content sites with reasoning rules
+- **80+ UI Styles** - Minimalism, Glassmorphism, Swiss Modernism, Editorial Grid, Dark Mode, and more, framed for professional legal sites
+- **82 Legal Color Palettes** - Law-appropriate palettes (navy/gold, charcoal/burgundy, oxford/silver, forest/camel, emerald/gold)
+- **42 Font Pairings** - Professional, legal-appropriate typography (including multilingual pairings for immigration and legal-aid) with Google Fonts imports
+- **22 Legal Landing Patterns** - Free case evaluation, practice areas, attorney bio, case results, client intake, immigration multilingual, legal-tech demo, and more
+- **25 Chart Types** - Legal analytics framing (billable hours, caseload, matter status, settlement amounts, docket deadlines, e-discovery progress)
+- **99 UX Guidelines** - Best practices, anti-patterns, and accessibility rules framed for legal sites and apps
+- **Legal Iconography** - Justice scales, gavel, courthouse, shield, contract, e-signature, and bar credential icons
 - **15 Tech Stacks** - React, Next.js, Astro, Vue, Nuxt.js, Nuxt UI, Svelte, SwiftUI, React Native, Flutter, HTML+Tailwind, shadcn/ui, Jetpack Compose, Angular, Laravel
-- **99 UX Guidelines** - Best practices, anti-patterns, and accessibility rules
-- **161 Reasoning Rules** - Industry-specific design system generation (NEW in v2.0)
+- **82 Legal Reasoning Rules** - Law-industry design system generation (NEW in v2.0)
 
-### Available Styles (67)
+### Available Styles (80+)
+
+The catalog below is the underlying design-style library. For legal projects the reasoning engine prioritizes the authoritative, trustworthy styles (Minimalism & Swiss Style, Trust & Authority, Swiss Modernism, Editorial Grid, Dark Mode) and steers away from playful or novelty aesthetics; the "Best For" notes describe each style's general character.
 
 <details>
 <summary><b>General Styles (49)</b></summary>
@@ -338,7 +343,7 @@ winget install Python.Python.3.12
 The skill activates automatically when you request UI/UX work. Just chat naturally:
 
 ```
-Build a landing page for my SaaS product
+Build a landing page for my personal injury law firm
 ```
 
 > **Trae**: Switch to **SOLO** mode first. The skill will activate for UI/UX requests.
@@ -350,21 +355,21 @@ Build a landing page for my SaaS product
 Use the slash command to invoke the skill:
 
 ```
-/ui-ux-pro-max Build a landing page for my SaaS product
+/ui-ux-pro-max Build a landing page for my personal injury law firm
 ```
 
 ### Example Prompts
 
 ```
-Build a landing page for my SaaS product
+Build a landing page for my personal injury law firm
 
-Create a dashboard for healthcare analytics
+Create a dashboard for legal-tech case management analytics
 
-Design a portfolio website with dark mode
+Design an attorney bio and practice-areas website with a navy/gold palette
 
-Make a mobile app UI for e-commerce
+Make a mobile app UI for a client intake and legal document workflow
 
-Build a fintech banking app with dark theme
+Build a criminal defense landing page with a free case evaluation CTA
 ```
 
 ### How It Works
@@ -401,18 +406,18 @@ For direct access to the design system generator:
 
 ```bash
 # Generate design system with ASCII output
-python3 .claude/skills/ui-ux-pro-max/scripts/search.py "beauty spa wellness" --design-system -p "Serenity Spa"
+python3 .claude/skills/ui-ux-pro-max/scripts/search.py "personal injury law firm" --design-system -p "Sterling & Cole Law"
 
 # Generate with Markdown output
-python3 .claude/skills/ui-ux-pro-max/scripts/search.py "fintech banking" --design-system -f markdown
+python3 .claude/skills/ui-ux-pro-max/scripts/search.py "legal-tech case management" --design-system -f markdown
 
 # Domain-specific search
-python3 .claude/skills/ui-ux-pro-max/scripts/search.py "glassmorphism" --domain style
-python3 .claude/skills/ui-ux-pro-max/scripts/search.py "elegant serif" --domain typography
-python3 .claude/skills/ui-ux-pro-max/scripts/search.py "dashboard" --domain chart
+python3 .claude/skills/ui-ux-pro-max/scripts/search.py "estate planning color palette" --domain color
+python3 .claude/skills/ui-ux-pro-max/scripts/search.py "immigration attorney typography" --domain typography
+python3 .claude/skills/ui-ux-pro-max/scripts/search.py "caseload matter status" --domain chart
 
 # Stack-specific guidelines
-python3 .claude/skills/ui-ux-pro-max/scripts/search.py "form validation" --stack react
+python3 .claude/skills/ui-ux-pro-max/scripts/search.py "client intake form validation" --stack react
 python3 .claude/skills/ui-ux-pro-max/scripts/search.py "responsive layout" --stack html-tailwind
 ```
 
@@ -422,10 +427,10 @@ Save your design system to files for **hierarchical retrieval across sessions**:
 
 ```bash
 # Generate and persist to design-system/MASTER.md
-python3 .claude/skills/ui-ux-pro-max/scripts/search.py "SaaS dashboard" --design-system --persist -p "MyApp"
+python3 .claude/skills/ui-ux-pro-max/scripts/search.py "legal-tech case management dashboard" --design-system --persist -p "MyFirm"
 
 # Also create a page-specific override file
-python3 .claude/skills/ui-ux-pro-max/scripts/search.py "SaaS dashboard" --design-system --persist -p "MyApp" --page "dashboard"
+python3 .claude/skills/ui-ux-pro-max/scripts/search.py "legal-tech case management dashboard" --design-system --persist -p "MyFirm" --page "dashboard"
 ```
 
 This creates a `design-system/` folder structure:

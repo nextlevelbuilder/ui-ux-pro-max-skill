@@ -35,10 +35,10 @@ Use this skill when the user requests any of the following:
 
 | Scenario | Trigger Examples | Start From |
 |----------|-----------------|------------|
-| **New project / page** | "做一个 landing page"、"Build a dashboard" | Step 1 → Step 2 (design system) |
-| **New component** | "Create a pricing card"、"Add a modal" | Step 3 (domain search: style, ux) |
-| **Choose style / color / font** | "What style fits a fintech app?"、"推荐配色" | Step 2 (design system) |
-| **Review existing UI** | "Review this page for UX issues"、"检查无障碍" | Quick Reference checklist above |
+| **New project / page** | "做一个 law firm landing page"、"Build a legal-tech dashboard" | Step 1 → Step 2 (design system) |
+| **New component** | "Create a free case evaluation card"、"Add an attorney bio modal" | Step 3 (domain search: style, ux) |
+| **Choose style / color / font** | "What style fits a criminal defense firm?"、"推荐 estate planning 配色" | Step 2 (design system) |
+| **Review existing UI** | "Review this practice-areas page for UX issues"、"检查无障碍" | Quick Reference checklist above |
 | **Fix a UI bug** | "Button hover is broken"、"Layout shifts on load" | Quick Reference → relevant section |
 | **Improve / optimize** | "Make this faster"、"Improve mobile experience" | Step 3 (domain search: ux, react) |
 | **Implement dark mode** | "Add dark mode support" | Step 3 (domain: style "dark mode") |
@@ -50,9 +50,9 @@ Follow this workflow:
 ### Step 1: Analyze User Requirements
 
 Extract key information from user request:
-- **Product type**: Entertainment (social, video, music, gaming), Tool (scanner, editor, converter), Productivity (task manager, notes, calendar), or hybrid
-- **Target audience**: C-end consumer users; consider age group, usage context (commute, leisure, work)
-- **Style keywords**: playful, vibrant, minimal, dark mode, content-first, immersive, etc.
+- **Product type**: Practice area (personal injury, criminal defense, family law, estate planning, immigration), Firm type (solo, boutique, big law, legal aid), or Legal-tech / SaaS (case management, e-discovery, contract lifecycle, client intake)
+- **Target audience**: Prospective clients seeking counsel; consider practice area, urgency (accident, arrest, deadline), and trust concerns
+- **Style keywords**: authoritative, trustworthy, professional, credible, minimal, navy/gold, dark mode, etc.
 - **Stack**: React Native (this project's only tech stack)
 
 ### Step 2: Generate Design System (REQUIRED)
@@ -71,7 +71,7 @@ This command:
 
 **Example:**
 ```bash
-python3 skills/ui-ux-pro-max/scripts/search.py "beauty spa wellness service" --design-system -p "Serenity Spa"
+python3 skills/ui-ux-pro-max/scripts/search.py "personal injury law firm" --design-system -p "Sterling & Cole Law"
 ```
 
 ### Step 2b: Persist Design System (Master + Overrides Pattern)
@@ -120,13 +120,13 @@ python3 skills/ui-ux-pro-max/scripts/search.py "<keyword>" --domain <domain> [-n
 
 | Need | Domain | Example |
 |------|--------|---------|
-| Product type patterns | `product` | `--domain product "entertainment social"` |
-| More style options | `style` | `--domain style "glassmorphism dark"` |
-| Color palettes | `color` | `--domain color "entertainment vibrant"` |
-| Font pairings | `typography` | `--domain typography "playful modern"` |
-| Chart recommendations | `chart` | `--domain chart "real-time dashboard"` |
+| Product type patterns | `product` | `--domain product "criminal defense attorney"` |
+| More style options | `style` | `--domain style "minimalism authoritative"` |
+| Color palettes | `color` | `--domain color "estate planning navy gold"` |
+| Font pairings | `typography` | `--domain typography "professional serif"` |
+| Chart recommendations | `chart` | `--domain chart "billable hours caseload"` |
 | UX best practices | `ux` | `--domain ux "animation accessibility"` |
-| Landing structure | `landing` | `--domain landing "hero social-proof"` |
+| Landing structure | `landing` | `--domain landing "free case evaluation attorney bio"` |
 | React Native perf | `react` | `--domain react "rerender memo list"` |
 | App interface a11y | `web` | `--domain web "accessibilityLabel touch safe-areas"` |
 | AI prompt / CSS keywords | `prompt` | `--domain prompt "minimalism"` |
@@ -147,12 +147,12 @@ python3 skills/ui-ux-pro-max/scripts/search.py "<keyword>" --stack react-native
 
 | Domain | Use For | Example Keywords |
 |--------|---------|------------------|
-| `product` | Product type recommendations | SaaS, e-commerce, portfolio, healthcare, beauty, service |
-| `style` | UI styles, colors, effects | glassmorphism, minimalism, dark mode, brutalism |
-| `typography` | Font pairings, Google Fonts | elegant, playful, professional, modern |
-| `color` | Color palettes by product type | saas, ecommerce, healthcare, beauty, fintech, service |
-| `landing` | Page structure, CTA strategies | hero, hero-centric, testimonial, pricing, social-proof |
-| `chart` | Chart types, library recommendations | trend, comparison, timeline, funnel, pie |
+| `product` | Legal product type recommendations | personal injury, criminal defense, family law, estate planning, immigration, legal-tech |
+| `style` | UI styles, colors, effects | minimalism, glassmorphism, dark mode, editorial grid |
+| `typography` | Font pairings, Google Fonts | professional, authoritative, serif, modern |
+| `color` | Legal color palettes by product type | law firm, personal injury, estate planning, immigration, legal-tech, navy gold |
+| `landing` | Page structure, CTA strategies | free case evaluation, practice areas, attorney bio, case results, client intake |
+| `chart` | Chart types, library recommendations | billable hours, caseload, matter status, settlement, docket deadlines |
 | `ux` | Best practices, anti-patterns | animation, accessibility, z-index, loading |
 | `react` | React/Next.js performance | waterfall, bundle, suspense, memo, rerender, cache |
 | `web` | App interface guidelines (iOS/Android/React Native) | accessibilityLabel, touch targets, safe areas, Dynamic Type |
@@ -168,18 +168,18 @@ python3 skills/ui-ux-pro-max/scripts/search.py "<keyword>" --stack react-native
 
 ## Example Workflow
 
-**User request:** "Make an AI search homepage。"
+**User request:** "Make a personal injury law firm homepage。"
 
 ### Step 1: Analyze Requirements
-- Product type: Tool (AI search engine)
-- Target audience: C-end users looking for fast, intelligent search
-- Style keywords: modern, minimal, content-first, dark mode
+- Product type: Practice area (personal injury law firm)
+- Target audience: Accident victims seeking trustworthy counsel and a free case evaluation
+- Style keywords: authoritative, trustworthy, professional, navy/gold
 - Stack: React Native
 
 ### Step 2: Generate Design System (REQUIRED)
 
 ```bash
-python3 skills/ui-ux-pro-max/scripts/search.py "AI search tool modern minimal" --design-system -p "AI Search"
+python3 skills/ui-ux-pro-max/scripts/search.py "personal injury law firm authoritative" --design-system -p "Personal Injury Firm"
 ```
 
 **Output:** Complete design system with pattern, style, colors, typography, effects, and anti-patterns.
@@ -187,11 +187,11 @@ python3 skills/ui-ux-pro-max/scripts/search.py "AI search tool modern minimal" -
 ### Step 3: Supplement with Detailed Searches (as needed)
 
 ```bash
-# Get style options for a modern tool product
-python3 skills/ui-ux-pro-max/scripts/search.py "minimalism dark mode" --domain style
+# Get style options for an authoritative legal product
+python3 skills/ui-ux-pro-max/scripts/search.py "minimalism authoritative" --domain style
 
-# Get UX best practices for search interaction and loading
-python3 skills/ui-ux-pro-max/scripts/search.py "search loading animation" --domain ux
+# Get UX best practices for the free case evaluation CTA and loading
+python3 skills/ui-ux-pro-max/scripts/search.py "free case evaluation loading animation" --domain ux
 ```
 
 ### Step 4: Stack Guidelines
@@ -210,10 +210,10 @@ The `--design-system` flag supports two output formats:
 
 ```bash
 # ASCII box (default) - best for terminal display
-python3 skills/ui-ux-pro-max/scripts/search.py "fintech crypto" --design-system
+python3 skills/ui-ux-pro-max/scripts/search.py "estate planning law firm" --design-system
 
 # Markdown - best for documentation
-python3 skills/ui-ux-pro-max/scripts/search.py "fintech crypto" --design-system -f markdown
+python3 skills/ui-ux-pro-max/scripts/search.py "estate planning law firm" --design-system -f markdown
 ```
 
 ---
@@ -222,8 +222,8 @@ python3 skills/ui-ux-pro-max/scripts/search.py "fintech crypto" --design-system 
 
 ### Query Strategy
 
-- Use **multi-dimensional keywords** — combine product + industry + tone + density: `"entertainment social vibrant content-dense"` not just `"app"`
-- Try different keywords for the same need: `"playful neon"` → `"vibrant dark"` → `"content-first minimal"`
+- Use **multi-dimensional keywords** — combine product + practice area + tone + density: `"personal injury law firm authoritative trust-focused"` not just `"website"`
+- Try different keywords for the same need: `"navy gold authoritative"` → `"charcoal burgundy refined"` → `"minimal professional"`
 - Use `--design-system` first for full recommendations, then `--domain` to deep-dive any dimension you're unsure about
 - Always add `--stack react-native` for implementation-specific guidance
 
@@ -257,9 +257,14 @@ Scope notice: The rules below are for App UI (iOS/Android/React Native/Flutter),
 
 ### Icons & Visual Elements
 
+- 默认图标库使用 **Phosphor (`@phosphor-icons/react`)**。`src/ui-ux-pro-max/data/icons.csv` 中列出的只是常用推荐图标，不是完整集合。
+- 当推荐表中找不到合适的图标时：
+  - **优先继续从 Phosphor 的完整图标集中选择任何语义更贴切的图标**；
+  - 如果 Phosphor 也没有理想选项，可以使用 **Heroicons (`@heroicons/react`)** 作为备选，注意保持风格一致（线性/填充、笔画粗细、圆角风格）。
+
 | Rule | Standard | Avoid | Why It Matters |
 |------|----------|--------|----------------|
-| **No Emoji as Structural Icons** | Use vector-based icons (e.g., Lucide, react-native-vector-icons, @expo/vector-icons). | Using emojis (🎨 🚀 ⚙️) for navigation, settings, or system controls. | Emojis are font-dependent, inconsistent across platforms, and cannot be controlled via design tokens. |
+| **No Emoji as Structural Icons** | Use vector-based icons (e.g., Phosphor `@phosphor-icons/react`, Heroicons `@heroicons/react`, react-native-vector-icons, @expo/vector-icons). | Using emojis (🎨 🚀 ⚙️) for navigation, settings, or system controls. | Emojis are font-dependent, inconsistent across platforms, and cannot be controlled via design tokens. |
 | **Vector-Only Assets** | Use SVG or platform vector icons that scale cleanly and support theming. | Raster PNG icons that blur or pixelate. | Ensures scalability, crisp rendering, and dark/light mode adaptability. |
 | **Stable Interaction States** | Use color, opacity, or elevation transitions for press states without changing layout bounds. | Layout-shifting transforms that move surrounding content or trigger visual jitter. | Prevents unstable interactions and preserves smooth motion/perceived quality on mobile. |
 | **Correct Brand Logos** | Use official brand assets and follow their usage guidelines (spacing, color, clear space). | Guessing logo paths, recoloring unofficially, or modifying proportions. | Prevents brand misuse and ensures legal/platform compliance. |

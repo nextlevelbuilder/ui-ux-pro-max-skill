@@ -1,11 +1,11 @@
 ---
 name: ui-ux-pro-max
-description: "UI/UX design intelligence for web and mobile. Includes 50+ styles, 161 color palettes, 57 font pairings, 161 product types, 99 UX guidelines, and 25 chart types across 10 stacks (React, Next.js, Vue, Svelte, SwiftUI, React Native, Flutter, Tailwind, shadcn/ui, and HTML/CSS). Actions: plan, build, create, design, implement, review, fix, improve, optimize, enhance, refactor, and check UI/UX code. Projects: website, landing page, dashboard, admin panel, e-commerce, SaaS, portfolio, blog, and mobile app. Elements: button, modal, navbar, sidebar, card, table, form, and chart. Styles: glassmorphism, claymorphism, minimalism, brutalism, neumorphism, bento grid, dark mode, responsive, skeuomorphism, and flat design. Topics: color systems, accessibility, animation, layout, typography, font pairing, spacing, interaction states, shadow, and gradient. Integrations: shadcn/ui MCP for component search and examples."
+description: "Legal UI/UX Pro Max - law-industry design intelligence for law firms, attorneys, and legal-tech. Includes 80+ styles, 82 legal color palettes, 42 font pairings, 82 legal product types, 99 UX guidelines, and 25 chart types across 16 stacks (React, Next.js, Vue, Svelte, Astro, SwiftUI, React Native, Flutter, Tailwind, shadcn/ui, and more). Actions: plan, build, create, design, implement, review, fix, improve, optimize, enhance, refactor, and check UI/UX code. Projects: law firm website, practice-area landing page, attorney bio, case results, client intake, legal-tech dashboard, and legal mobile app. Elements: button, modal, navbar, sidebar, card, table, form, and chart. Styles: minimalism, glassmorphism, Swiss modernism, editorial grid, dark mode, responsive, and flat design. Topics: color systems, accessibility, animation, layout, typography, font pairing, spacing, interaction states, shadow, and gradient. Integrations: shadcn/ui MCP for component search and examples."
 ---
 
-# UI/UX Pro Max - Design Intelligence
+# Legal UI/UX Pro Max - Design Intelligence
 
-Comprehensive design guide for web and mobile applications. Contains 50+ styles, 161 color palettes, 57 font pairings, 161 product types with reasoning rules, 99 UX guidelines, and 25 chart types across 10 technology stacks. Searchable database with priority-based recommendations.
+AI-powered design intelligence for law firms & legal-tech. Comprehensive design guide for building trustworthy, authoritative, and conversion-focused legal websites and apps. Contains 80+ styles, 82 legal color palettes, 42 font pairings, 82 legal product types with reasoning rules, 99 UX guidelines, and 25 chart types across 16 technology stacks. Searchable database with priority-based recommendations.
 
 ## When to Apply
 
@@ -338,14 +338,14 @@ Use this skill when the user requests any of the following:
 
 | Scenario | Trigger Examples | Start From |
 |----------|-----------------|------------|
-| **New project / page** | "Build a landing page", "Build a dashboard" | Step 1 → Step 2 (design system) |
-| **New component** | "Create a pricing card", "Add a modal" | Step 3 (domain search: style, ux) |
-| **Choose style / color / font** | "What style fits a fintech app?", "Recommend a color palette" | Step 2 (design system) |
-| **Review existing UI** | "Review this page for UX issues", "Check accessibility" | Quick Reference checklist above |
+| **New project / page** | "Build a law firm landing page", "Build a legal-tech dashboard" | Step 1 → Step 2 (design system) |
+| **New component** | "Create a free case evaluation card", "Add an attorney bio modal" | Step 3 (domain search: style, ux) |
+| **Choose style / color / font** | "What style fits a criminal defense firm?", "Recommend an estate planning color palette" | Step 2 (design system) |
+| **Review existing UI** | "Review this practice-areas page for UX issues", "Check accessibility" | Quick Reference checklist above |
 | **Fix a UI bug** | "Button hover is broken", "Layout shifts on load" | Quick Reference → relevant section |
 | **Improve / optimize** | "Make this faster", "Improve mobile experience" | Step 3 (domain search: ux, react) |
 | **Implement dark mode** | "Add dark mode support" | Step 3 (domain: style "dark mode") |
-| **Add charts / data viz** | "Add an analytics dashboard chart" | Step 3 (domain: chart) |
+| **Add charts / data viz** | "Add a caseload analytics chart" | Step 3 (domain: chart) |
 | **Stack best practices** | "React performance tips"、"SwiftUI navigation" | Step 4 (stack search) |
 
 Follow this workflow:
@@ -353,9 +353,9 @@ Follow this workflow:
 ### Step 1: Analyze User Requirements
 
 Extract key information from user request:
-- **Product type**: Entertainment (social, video, music, gaming), Tool (scanner, editor, converter), Productivity (task manager, notes, calendar), or hybrid
-- **Target audience**: C-end consumer users; consider age group, usage context (commute, leisure, work)
-- **Style keywords**: playful, vibrant, minimal, dark mode, content-first, immersive, etc.
+- **Product type**: Practice area (personal injury, criminal defense, family law, estate planning, immigration), Firm type (solo, boutique, big law, legal aid), or Legal-tech / SaaS (case management, e-discovery, contract lifecycle, client intake)
+- **Target audience**: Prospective clients seeking counsel; consider practice area, urgency (accident, arrest, deadline), and trust concerns
+- **Style keywords**: authoritative, trustworthy, professional, credible, minimal, navy/gold, dark mode, etc.
 - **Stack**: React Native (this project's only tech stack)
 
 ### Step 2: Generate Design System (REQUIRED)
@@ -374,7 +374,7 @@ This command:
 
 **Example:**
 ```bash
-python3 skills/ui-ux-pro-max/scripts/search.py "beauty spa wellness service" --design-system -p "Serenity Spa"
+python3 skills/ui-ux-pro-max/scripts/search.py "personal injury law firm" --design-system -p "Sterling & Cole Law"
 ```
 
 ### Step 2b: Persist Design System (Master + Overrides Pattern)
@@ -423,15 +423,15 @@ python3 skills/ui-ux-pro-max/scripts/search.py "<keyword>" --domain <domain> [-n
 
 | Need | Domain | Example |
 |------|--------|---------|
-| Product type patterns | `product` | `--domain product "entertainment social"` |
-| More style options | `style` | `--domain style "glassmorphism dark"` |
-| Color palettes | `color` | `--domain color "entertainment vibrant"` |
-| Font pairings | `typography` | `--domain typography "playful modern"` |
-| Chart recommendations | `chart` | `--domain chart "real-time dashboard"` |
+| Product type patterns | `product` | `--domain product "criminal defense attorney"` |
+| More style options | `style` | `--domain style "minimalism authoritative"` |
+| Color palettes | `color` | `--domain color "estate planning navy gold"` |
+| Font pairings | `typography` | `--domain typography "professional serif"` |
+| Chart recommendations | `chart` | `--domain chart "billable hours caseload"` |
 | UX best practices | `ux` | `--domain ux "animation accessibility"` |
-| Alternative fonts | `typography` | `--domain typography "elegant luxury"` |
+| Alternative fonts | `typography` | `--domain typography "immigration multilingual"` |
 | Individual Google Fonts | `google-fonts` | `--domain google-fonts "sans serif popular variable"` |
-| Landing structure | `landing` | `--domain landing "hero social-proof"` |
+| Landing structure | `landing` | `--domain landing "free case evaluation attorney bio"` |
 | React Native perf | `react` | `--domain react "rerender memo list"` |
 | App interface a11y | `web` | `--domain web "accessibilityLabel touch safe-areas"` |
 | AI prompt / CSS keywords | `prompt` | `--domain prompt "minimalism"` |
@@ -452,12 +452,12 @@ python3 skills/ui-ux-pro-max/scripts/search.py "<keyword>" --stack react-native
 
 | Domain | Use For | Example Keywords |
 |--------|---------|------------------|
-| `product` | Product type recommendations | SaaS, e-commerce, portfolio, healthcare, beauty, service |
-| `style` | UI styles, colors, effects | glassmorphism, minimalism, dark mode, brutalism |
-| `typography` | Font pairings, Google Fonts | elegant, playful, professional, modern |
-| `color` | Color palettes by product type | saas, ecommerce, healthcare, beauty, fintech, service |
-| `landing` | Page structure, CTA strategies | hero, hero-centric, testimonial, pricing, social-proof |
-| `chart` | Chart types, library recommendations | trend, comparison, timeline, funnel, pie |
+| `product` | Legal product type recommendations | personal injury, criminal defense, family law, estate planning, immigration, legal-tech |
+| `style` | UI styles, colors, effects | minimalism, glassmorphism, dark mode, editorial grid |
+| `typography` | Font pairings, Google Fonts | professional, authoritative, serif, modern |
+| `color` | Legal color palettes by product type | law firm, personal injury, estate planning, immigration, legal-tech, navy gold |
+| `landing` | Page structure, CTA strategies | free case evaluation, practice areas, attorney bio, case results, client intake |
+| `chart` | Chart types, library recommendations | billable hours, caseload, matter status, settlement, docket deadlines |
 | `ux` | Best practices, anti-patterns | animation, accessibility, z-index, loading |
 | `google-fonts` | Individual Google Fonts lookup | sans serif, monospace, japanese, variable font, popular |
 | `react` | React/Next.js performance | waterfall, bundle, suspense, memo, rerender, cache |
@@ -474,18 +474,18 @@ python3 skills/ui-ux-pro-max/scripts/search.py "<keyword>" --stack react-native
 
 ## Example Workflow
 
-**User request:** "Make an AI search homepage."
+**User request:** "Make a personal injury law firm homepage."
 
 ### Step 1: Analyze Requirements
-- Product type: Tool (AI search engine)
-- Target audience: C-end users looking for fast, intelligent search
-- Style keywords: modern, minimal, content-first, dark mode
+- Product type: Practice area (personal injury law firm)
+- Target audience: Accident victims seeking trustworthy counsel and a free case evaluation
+- Style keywords: authoritative, trustworthy, professional, navy/gold
 - Stack: React Native
 
 ### Step 2: Generate Design System (REQUIRED)
 
 ```bash
-python3 skills/ui-ux-pro-max/scripts/search.py "AI search tool modern minimal" --design-system -p "AI Search"
+python3 skills/ui-ux-pro-max/scripts/search.py "personal injury law firm authoritative" --design-system -p "Personal Injury Firm"
 ```
 
 **Output:** Complete design system with pattern, style, colors, typography, effects, and anti-patterns.
@@ -493,11 +493,11 @@ python3 skills/ui-ux-pro-max/scripts/search.py "AI search tool modern minimal" -
 ### Step 3: Supplement with Detailed Searches (as needed)
 
 ```bash
-# Get style options for a modern tool product
-python3 skills/ui-ux-pro-max/scripts/search.py "minimalism dark mode" --domain style
+# Get style options for an authoritative legal product
+python3 skills/ui-ux-pro-max/scripts/search.py "minimalism authoritative" --domain style
 
-# Get UX best practices for search interaction and loading
-python3 skills/ui-ux-pro-max/scripts/search.py "search loading animation" --domain ux
+# Get UX best practices for the free case evaluation CTA and loading
+python3 skills/ui-ux-pro-max/scripts/search.py "free case evaluation loading animation" --domain ux
 ```
 
 ### Step 4: Stack Guidelines
@@ -516,10 +516,10 @@ The `--design-system` flag supports two output formats:
 
 ```bash
 # ASCII box (default) - best for terminal display
-python3 skills/ui-ux-pro-max/scripts/search.py "fintech crypto" --design-system
+python3 skills/ui-ux-pro-max/scripts/search.py "estate planning law firm" --design-system
 
 # Markdown - best for documentation
-python3 skills/ui-ux-pro-max/scripts/search.py "fintech crypto" --design-system -f markdown
+python3 skills/ui-ux-pro-max/scripts/search.py "estate planning law firm" --design-system -f markdown
 ```
 
 ---
@@ -528,8 +528,8 @@ python3 skills/ui-ux-pro-max/scripts/search.py "fintech crypto" --design-system 
 
 ### Query Strategy
 
-- Use **multi-dimensional keywords** — combine product + industry + tone + density: `"entertainment social vibrant content-dense"` not just `"app"`
-- Try different keywords for the same need: `"playful neon"` → `"vibrant dark"` → `"content-first minimal"`
+- Use **multi-dimensional keywords** — combine product + practice area + tone + density: `"personal injury law firm authoritative trust-focused"` not just `"website"`
+- Try different keywords for the same need: `"navy gold authoritative"` → `"charcoal burgundy refined"` → `"minimal professional"`
 - Use `--design-system` first for full recommendations, then `--domain` to deep-dive any dimension you're unsure about
 - Always add `--stack react-native` for implementation-specific guidance
 

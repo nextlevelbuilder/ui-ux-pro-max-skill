@@ -4,7 +4,9 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-Antigravity Kit is an AI-powered design intelligence toolkit providing searchable databases of UI styles, color palettes, font pairings, chart types, and UX guidelines. It works as a skill/workflow for AI coding assistants (Claude Code, Windsurf, Cursor, etc.).
+Legal UI/UX Pro Max is an AI-powered design intelligence toolkit **specialized for the law industry** — law firms, attorneys, and legal-tech products. It provides searchable databases of legal product types, color palettes, font pairings, landing-page patterns, chart types, and UX guidelines, all tuned for trust, authority, accessibility, and conversion (free consultation / case evaluation). It works as a skill/workflow for AI coding assistants (Claude Code, Windsurf, Cursor, etc.).
+
+The dataset is law-only: 82 legal product types (practice areas such as personal injury, criminal defense, family, immigration, estate planning, corporate, IP, tax, and litigation firms; firm types from solo to BigLaw; plus legal-tech/SaaS like case management, e-discovery, CLM, and client intake), 82 matching color palettes, 42 professional font pairings (including multilingual pairings for immigration/legal-aid), 22 legal landing-page patterns, 25 chart types framed for legal analytics, and 99 UX guidelines — across 16 technology stacks. The internal skill id and all paths remain `ui-ux-pro-max`.
 
 ## Search Command
 
@@ -13,13 +15,13 @@ python3 src/ui-ux-pro-max/scripts/search.py "<query>" --domain <domain> [-n <max
 ```
 
 **Domain search:**
-- `product` - Product type recommendations (SaaS, e-commerce, portfolio)
-- `style` - UI styles (glassmorphism, minimalism, brutalism) + AI prompts and CSS keywords
-- `typography` - Font pairings with Google Fonts imports
-- `color` - Color palettes by product type
-- `landing` - Page structure and CTA strategies
-- `chart` - Chart types and library recommendations
-- `ux` - Best practices and anti-patterns
+- `product` - Legal product type recommendations (personal injury firm, criminal defense, family law, immigration, estate planning, corporate/IP/tax law, legal-tech SaaS, attorney directory)
+- `style` - UI styles (trust & authority, minimalism, editorial, glassmorphism, swiss modernism) + AI prompts and CSS keywords
+- `typography` - Legal-appropriate font pairings with Google Fonts imports
+- `color` - Legal color palettes by product type (navy/gold, charcoal/burgundy, forest/camel, emerald/gold)
+- `landing` - Legal landing patterns (free case evaluation, practice areas, attorney bio, client intake) and CTA strategies
+- `chart` - Chart types for legal analytics (billable hours, caseload, matter status, settlements) and library recommendations
+- `ux` - Best practices and anti-patterns for legal sites & apps
 
 **Stack search:**
 ```bash
