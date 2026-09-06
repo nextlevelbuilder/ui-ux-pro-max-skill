@@ -2,9 +2,9 @@
 
 当任务涉及 **UI 结构、视觉设计决策、交互模式或用户体验质量控制** 时，应使用此 Skill。
 
-### Must Use
+### Primary Use Cases
 
-在以下情况必须调用此 Skill：
+在以下情况此 Skill 最为有用：
 
 - 设计新的页面（Landing Page、Dashboard、Admin、SaaS、Mobile App）
 - 创建或重构 UI 组件（按钮、弹窗、表单、表格、图表等）
@@ -48,7 +48,7 @@
 | 4 | Style Selection | HIGH | `style`, `product` | Match product type, Consistency, SVG icons (no emoji) | Mixing flat & skeuomorphic randomly, Emoji as icons |
 | 5 | Layout & Responsive | HIGH | `ux` | Mobile-first breakpoints, Viewport meta, No horizontal scroll | Horizontal scroll, Fixed px container widths, Disable zoom |
 | 6 | Typography & Color | MEDIUM | `typography`, `color` | Base 16px, Line-height 1.5, Semantic color tokens | Text &lt; 12px body, Gray-on-gray, Raw hex in components |
-| 7 | Animation | MEDIUM | `ux` | Duration 150–300ms, Motion conveys meaning, Spatial continuity | Decorative-only animation, Animating width/height, No reduced-motion |
+| 7 | Animation | MEDIUM | `ux` | Context-aware timing, Motion conveys meaning, Spatial continuity | One duration for every transition, Animating width/height, No reduced-motion |
 | 8 | Forms & Feedback | MEDIUM | `ux` | Visible labels, Error near field, Helper text, Progressive disclosure | Placeholder-only label, Errors only at top, Overwhelm upfront |
 | 9 | Navigation Patterns | HIGH | `ux` | Predictable back, Bottom nav ≤5, Deep linking | Overloaded nav, Broken back behavior, No deep links |
 | 10 | Charts & Data | LOW | `chart` | Legends, Tooltips, Accessible colors | Relying on color alone to convey meaning |
@@ -61,6 +61,7 @@
 - `focus-states` - Visible focus rings on interactive elements (2–4px; Apple HIG, MD)
 - `alt-text` - Descriptive alt text for meaningful images
 - `aria-labels` - aria-label for icon-only buttons; accessibilityLabel in native (Apple HIG)
+- `icon-context` - Semantics depend on use: decorative icons beside visible text are hidden from the accessibility tree; meaningful icons need a text alternative; icon controls need an accessible name and applicable state
 - `keyboard-nav` - Tab order matches visual order; full keyboard support (Apple HIG)
 - `form-labels` - Use label with for attribute
 - `skip-links` - Skip to main content for keyboard users
@@ -71,6 +72,16 @@
 - `voiceover-sr` - Meaningful accessibilityLabel/accessibilityHint; logical reading order for VoiceOver/screen readers (Apple HIG, MD)
 - `escape-routes` - Provide cancel/back in modals and multi-step flows (Apple HIG)
 - `keyboard-shortcuts` - Preserve system and a11y shortcuts; offer keyboard alternatives for drag-and-drop (Apple HIG)
+- `focus-not-obscured` - Sticky UI, overlays, and banners must not hide the keyboard-focused control (WCAG 2.2 AA)
+- `focus-not-obscured-enhanced` - Keep the entire focused component visible (WCAG 2.2 AAA)
+- `focus-appearance` - Verify focus indicator area and 3:1 state contrast; visible focus alone is not enough (WCAG 2.2 AAA)
+- `dragging-alternative` - Every author-controlled drag action needs a single-pointer and keyboard alternative (WCAG 2.2 AA)
+- `web-target-size` - Web pointer targets need 24×24 CSS px or a documented exception; do not substitute native units (WCAG 2.2 AA)
+- `consistent-help` - Repeated help mechanisms stay in the same relative order across a page set (WCAG 2.2 A)
+- `redundant-entry` - Reuse information already supplied in the same process unless re-entry is essential (WCAG 2.2 A)
+- `accessible-authentication` - Allow password managers and paste; provide a non-cognitive authentication path (WCAG 2.2 Minimum, AA). The Enhanced AAA criterion is not represented in the dataset
+- `auto-rotation-controls` - Carousels and moving content need pause/stop controls and must stop on focus or reduced motion (WAI)
+- `contextual-live-badge-updates` - Announce a changed count/status as a complete contextual phrase without moving focus; use one appropriate live/status region and atomic updates only when needed
 
 ### 2. Touch & Interaction (CRITICAL)
 
@@ -148,6 +159,8 @@
 - `orientation-support` - Keep layout readable and operable in landscape mode
 - `content-priority` - Show core content first on mobile; fold or hide secondary content
 - `visual-hierarchy` - Establish hierarchy via size, spacing, contrast — not color alone
+- `compact-label-overflow` - Choose badge, status tag, filter chip, or removable value from its semantics; keep essential labels available and disclose unavoidable truncation to pointer and keyboard users
+- `chip-collection-reflow` - Wrap the collection before shrinking labels; make a `+n` overflow summary an operable disclosure instead of hiding values
 
 ### 6. Typography & Color (MEDIUM)
 
@@ -166,14 +179,16 @@
 - `letter-spacing` - Respect default letter-spacing per platform; avoid tight tracking on body text (HIG, MD)
 - `number-tabular` - Use tabular/monospaced figures for data columns, prices, and timers to prevent layout shift
 - `whitespace-balance` - Use whitespace intentionally to group related items and separate sections; avoid visual clutter (Apple HIG)
+- `heading-line-balance` - Use balanced wrapping on short headings as a progressive, user-agent-controlled heuristic; keep natural wrapping readable and never force final words together with blanket nonbreaking spaces
+- `long-token-wrapping` - Let URLs, IDs, and user content reflow with `overflow-wrap: anywhere` and a shrinkable flex/grid text child; do not apply `word-break: break-all` to normal prose
 
 ### 7. Animation (MEDIUM)
 
-- `duration-timing` - Use 150–300ms for micro-interactions; complex transitions ≤400ms; avoid >500ms (MD)
+- `duration-timing` - Choose shared motion tokens by distance, complexity, platform, and user context; test that feedback remains responsive instead of treating one duration range as universal
 - `transform-performance` - Use transform/opacity only; avoid animating width/height/top/left
-- `loading-states` - Show skeleton or progress indicator when loading exceeds 300ms
+- `loading-states` - Match feedback to the expected wait and platform/component guidance; avoid both flashing indicators for near-instant work and unexplained long waits
 - `excessive-motion` - Animate 1-2 key elements per view max
-- `easing` - Use ease-out for entering, ease-in for exiting; avoid linear for UI transitions
+- `easing` - Use deceleration when arriving, acceleration when leaving, and linear motion for genuinely constant-rate progress or rotation
 - `motion-meaning` - Every animation must express a cause-effect relationship, not just be decorative (Apple HIG)
 - `state-transition` - State changes (hover / active / expanded / collapsed / modal) should animate smoothly, not snap
 - `continuity` - Page/screen transitions should maintain spatial continuity (shared element, directional slide) (Apple HIG)
@@ -193,11 +208,12 @@
 - `modal-motion` - Modals/sheets should animate from their trigger source (scale+fade or slide-in) for spatial context (HIG, MD)
 - `navigation-direction` - Forward navigation animates left/up; backward animates right/down — keep direction logically consistent (HIG)
 - `layout-shift-avoid` - Animations must not cause layout reflow or CLS; use transform for position changes
+- `cancellable-state-transitions` - Rapid state changes must cancel/replace prior micro-interactions safely, set the new final state explicitly, and never depend on an animation-end event for correctness
 
 ### 8. Forms & Feedback (MEDIUM)
 
 - `input-labels` - Visible label per input (not placeholder-only)
-- `error-placement` - Show error below the related field
+- `error-placement` - Show a specific error below the related field and connect it with aria-describedby
 - `submit-feedback` - Loading then success/error state on submit
 - `required-indicators` - Mark required fields (e.g. asterisk)
 - `empty-states` - Helpful message and action when no content
@@ -219,8 +235,8 @@
 - `error-clarity` - Error messages must state cause + how to fix (not just "Invalid input") (HIG, MD)
 - `field-grouping` - Group related fields logically (fieldset/legend or visual grouping) (MD)
 - `read-only-distinction` - Read-only state should be visually and semantically different from disabled (MD)
-- `focus-management` - After submit error, auto-focus the first invalid field (WCAG, MD)
-- `error-summary` - For multiple errors, show summary at top with anchor links to each field (WCAG)
+- `focus-management` - After failed submission with multiple errors, focus the error summary; without a summary, focus the first invalid field
+- `error-summary` - Put a focusable summary at the top after failed submit, link each item to its invalid field, and retain inline field errors
 - `touch-friendly-input` - Mobile input height ≥44px to meet touch target requirements (Apple HIG)
 - `destructive-emphasis` - Destructive actions use semantic danger color (red) and are visually separated from primary actions (HIG, MD)
 - `toast-accessibility` - Toasts must not steal focus; use aria-live="polite" for screen reader announcement (WCAG)

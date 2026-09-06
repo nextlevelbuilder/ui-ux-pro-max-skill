@@ -3,11 +3,15 @@ import ora from 'ora';
 import { fetchReleases } from '../utils/github.js';
 import { logger } from '../utils/logger.js';
 
-export async function versionsCommand(): Promise<void> {
+interface VersionsOptions {
+  token?: string;
+}
+
+export async function versionsCommand(options: VersionsOptions = {}): Promise<void> {
   const spinner = ora('Fetching available versions...').start();
 
   try {
-    const releases = await fetchReleases();
+    const releases = await fetchReleases(options.token);
 
     if (releases.length === 0) {
       spinner.warn('No releases found');
@@ -31,7 +35,7 @@ export async function versionsCommand(): Promise<void> {
     });
 
     console.log();
-    logger.dim('Use: uipro init --version <tag> to install a specific version');
+    logger.dim('Update the CLI package first, then run: uipro init --ai <platform>');
   } catch (error) {
     spinner.fail('Failed to fetch versions');
     if (error instanceof Error) {

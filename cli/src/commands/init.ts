@@ -1,3 +1,4 @@
+import { existsSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import chalk from 'chalk';
@@ -6,20 +7,31 @@ import prompts from 'prompts';
 import type { AIType } from '../types/index.js';
 import { AI_TYPES } from '../types/index.js';
 import { copyFolders, installFromZip, createTempDir, cleanup } from '../utils/extract.js';
-import { generatePlatformFiles, generateAllPlatformFiles } from '../utils/template.js';
+import {
+  generatePlatformFiles,
+  generateAllPlatformFiles,
+  planPlatformInstallActions,
+  planAllPlatformInstallActions,
+} from '../utils/template.js';
 import { detectAIType, getAITypeDescription } from '../utils/detect.js';
 import { logger } from '../utils/logger.js';
 import {
   getLatestRelease,
   getAssetUrl,
   downloadRelease,
+  getGitHubTokenGuidance,
   GitHubRateLimitError,
   GitHubDownloadError,
 } from '../utils/github.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
-// From dist/index.js -> ../assets (one level up to cli/, then assets/)
-const ASSETS_DIR = join(__dirname, '..', 'assets');
+const ASSETS_CANDIDATES = [
+  // Bun bundle: dist/index.js
+  join(__dirname, '..', 'assets'),
+  // TypeScript fallback: dist/commands/init.js
+  join(__dirname, '..', '..', 'assets'),
+];
+const ASSETS_DIR = ASSETS_CANDIDATES.find(path => existsSync(path)) ?? ASSETS_CANDIDATES[0];
 
 interface InitOptions {
   ai?: AIType;
@@ -27,6 +39,8 @@ interface InitOptions {
   offline?: boolean;
   legacy?: boolean; // Use old ZIP-based install
   global?: boolean; // Install to home directory (global mode)
+  dryRun?: boolean; // Preview install actions without writing files
+  token?: string; // GitHub PAT for higher API rate limits
 }
 
 /**
@@ -36,13 +50,14 @@ interface InitOptions {
 async function tryGitHubInstall(
   targetDir: string,
   aiType: AIType,
-  spinner: ReturnType<typeof ora>
+  spinner: ReturnType<typeof ora>,
+  token?: string
 ): Promise<string[] | null> {
   let tempDir: string | null = null;
 
   try {
     spinner.text = 'Fetching latest release from GitHub...';
-    const release = await getLatestRelease();
+    const release = await getLatestRelease(token);
     const assetUrl = getAssetUrl(release);
 
     if (!assetUrl) {
@@ -53,7 +68,7 @@ async function tryGitHubInstall(
     tempDir = await createTempDir();
     const zipPath = join(tempDir, 'release.zip');
 
-    await downloadRelease(assetUrl, zipPath);
+    await downloadRelease(assetUrl, zipPath, token);
 
     spinner.text = 'Extracting and installing files...';
     const { copiedFolders, tempDir: extractedTempDir } = await installFromZip(
@@ -73,7 +88,7 @@ async function tryGitHubInstall(
     }
 
     if (error instanceof GitHubRateLimitError) {
-      spinner.warn('GitHub rate limit reached, using template generation...');
+      spinner.warn(`GitHub rate limit reached, falling back to bundled assets.\n${getGitHubTokenGuidance()}`);
       return null;
     }
 
@@ -101,17 +116,18 @@ async function templateInstall(
   targetDir: string,
   aiType: AIType,
   spinner: ReturnType<typeof ora>,
-  isGlobal = false
+  isGlobal = false,
+  force = false
 ): Promise<string[]> {
   spinner.text = isGlobal
     ? 'Generating skill files globally...'
     : 'Generating skill files from templates...';
 
   if (aiType === 'all') {
-    return generateAllPlatformFiles(targetDir, isGlobal);
+    return generateAllPlatformFiles(targetDir, isGlobal, force);
   }
 
-  return generatePlatformFiles(targetDir, aiType, isGlobal);
+  return generatePlatformFiles(targetDir, aiType, isGlobal, force);
 }
 
 export async function initCommand(options: InitOptions): Promise<void> {
@@ -150,6 +166,29 @@ export async function initCommand(options: InitOptions): Promise<void> {
   const modeLabel = isGlobal ? ' (global)' : '';
   logger.info(`Installing for: ${chalk.cyan(getAITypeDescription(aiType))}${modeLabel}`);
 
+  // Dry run: print what the install would do, write nothing, exit 0
+  if (options.dryRun) {
+    const cwd = process.cwd();
+    console.log();
+    logger.info('Planned install actions (nothing will be written):');
+
+    if (aiType === 'all') {
+      const planned = await planAllPlatformInstallActions(cwd, isGlobal, options.force);
+      planned.forEach((actions, type) => {
+        console.log();
+        console.log(chalk.bold(getAITypeDescription(type as AIType)));
+        actions.forEach(action => console.log(`  ${chalk.cyan('·')} ${action}`));
+      });
+    } else {
+      const actions = await planPlatformInstallActions(cwd, aiType, isGlobal, options.force);
+      actions.forEach(action => console.log(`  ${chalk.cyan('·')} ${action}`));
+    }
+
+    console.log();
+    logger.success('Dry run complete — no files were written.');
+    return;
+  }
+
   const spinner = ora('Installing files...').start();
   const cwd = process.cwd();
   let copiedFolders: string[] = [];
@@ -163,7 +202,7 @@ export async function initCommand(options: InitOptions): Promise<void> {
       }
       // Try GitHub download first (unless offline mode)
       if (!options.offline) {
-        const githubResult = await tryGitHubInstall(cwd, aiType, spinner);
+        const githubResult = await tryGitHubInstall(cwd, aiType, spinner, options.token);
         if (githubResult) {
           copiedFolders = githubResult;
           installMethod = 'github';
@@ -178,7 +217,7 @@ export async function initCommand(options: InitOptions): Promise<void> {
       }
     } else {
       // Use new template-based generation (default)
-      copiedFolders = await templateInstall(cwd, aiType, spinner, isGlobal);
+      copiedFolders = await templateInstall(cwd, aiType, spinner, isGlobal, options.force);
       installMethod = 'template';
     }
 

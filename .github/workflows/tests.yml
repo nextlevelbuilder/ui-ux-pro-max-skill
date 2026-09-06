@@ -1,0 +1,81 @@
+name: Tests
+
+on:
+  pull_request:
+    paths:
+      - 'README.md'
+      - 'README.zh.md'
+      - '.claude/skills/**'
+      - 'cli/assets/skills/**'
+      - 'cli/assets/templates/**'
+      - 'cli/src/**'
+      - 'cli/tests/**'
+      - 'cli/package.json'
+      - 'gallery/**'
+      - 'scripts/evaluate-relevance.py'
+      - 'scripts/generate-catalog-summary.py'
+      - 'scripts/refresh-google-fonts.py'
+      - 'scripts/refresh-icon-catalog.py'
+      - 'scripts/relevance_metrics.py'
+      - 'scripts/validate-agent-guide.py'
+      - 'src/ui-ux-pro-max/data/**'
+      - 'src/ui-ux-pro-max/scripts/**'
+      - 'src/ui-ux-pro-max/templates/**'
+      - '.github/workflows/tests.yml'
+      - '.github/workflows/refresh-catalogs.yml'
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  pytest:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: '3.x'
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install pytest
+        run: pip install pytest
+
+      - name: Run aggregate offline data gate
+        run: npm --prefix cli run verify:data
+
+      - name: Run skill regression tests
+        run: python3 -m pytest .claude/skills -v
+
+      - name: Install Playwright deps
+        working-directory: cli
+        run: |
+          npm ci
+          npx playwright install --with-deps chromium
+
+      - name: Run preview e2e smoke tests
+        working-directory: cli
+        run: npx playwright test
+
+      - name: Install gallery dependencies
+        working-directory: gallery
+        run: npm ci
+
+      - name: Test and build gallery
+        working-directory: gallery
+        run: |
+          npm test
+          npm run build
+
+      - name: Upload Playwright report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-report
+          path: cli/playwright-report/
+          retention-days: 7

@@ -1,0 +1,95 @@
+name: Check asset sync
+
+on:
+  pull_request:
+    paths:
+      - "src/ui-ux-pro-max/**"
+      - "cli/assets/**"
+      - ".claude/skills/**"
+      - "cli/scripts/sync-assets.mjs"
+      - "cli/package.json"
+      - "scripts/evaluate-relevance.py"
+      - "scripts/relevance_metrics.py"
+      - ".github/workflows/check-asset-sync.yml"
+  push:
+    branches: [main]
+    paths:
+      - "src/ui-ux-pro-max/**"
+      - "cli/assets/**"
+      - "cli/package.json"
+      - ".claude/skills/**"
+      - "cli/scripts/sync-assets.mjs"
+      - ".github/workflows/check-asset-sync.yml"
+
+jobs:
+  check-assets:
+    name: cli/assets and .claude/skills/ui-ux-pro-max must match src/ui-ux-pro-max
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      # check:assets runs `node scripts/sync-assets.mjs --check`, which uses only
+      # node builtins (no npm install needed) and normalizes CRLF/LF before
+      # hashing, so it compares content rather than line endings. It checks
+      # both cli/assets/ AND .claude/skills/ui-ux-pro-max/{data,scripts} --
+      # the latter is what Claude Code actually loads when this repo is
+      # installed as a plugin, and previously had no sync check at all.
+      - name: Check assets are in sync with source of truth
+        run: npm --prefix cli run check:assets
+      # Path contract (#474): skill instructions and scripts reach their scripts
+      # via skill-relative paths ("scripts/<file>" for the skill's own, "../<skill>/scripts/<file>"
+      # for a sibling sub-skill) so they resolve in every install context: marketplace/
+      # plugin cache, project-level CLI install, CLI --global install, manual copy.
+      # Home-rooted ("~/.claude/skills/<skill>"), project-rooted (".claude/skills/<skill>")
+      # and variable-rooted ("$HOME/...", "${PWD}/...") forms each work in only one of them.
+      # Every file under both skill trees is checked, not just SKILL.md - the first
+      # version of this step looked only at SKILL.md and missed 27 home-rooted paths
+      # one directory down in references/. The one allowed absolute form is
+      # "${CLAUDE_PLUGIN_ROOT}/.claude/skills/ui-ux-pro-max/..." (braced or bare variable,
+      # directly followed by "/"): the core skill's SKILL.md is hand-authored for the
+      # plugin install only and that variable anchors it there. The same variable into a
+      # sub-skill is flagged, because sub-skills are also installed by the CLI where it is
+      # unset - and a third check pins the token itself to that one file (plus the checker
+      # that names it), so a sub-skill cannot borrow the core form either: sub-skills ship
+      # through the CLI too, where the variable does not exist. Both patterns require a path INTO a named skill ("skills/<name>"), so a bare
+      # mention of the directory in prose or a code comment ("~/.claude/skills/, or ...")
+      # is not a hit - naming a skill after "skills/" in prose is.
+      # LC_ALL=C so that only NUL-containing files count as binary and an offending line
+      # with a stray non-UTF-8 byte is printed instead of suppressed as improperly encoded
+      # (the verdict is the same in both locales; the diagnostic is not); -I then skips
+      # .claude/skills/ui-styling/scripts/.coverage, a tracked SQLite database whose
+      # recorded absolute paths contain "/.claude/skills/ui-styling/".
+      # Not covered: backslash-separated Windows spellings and the platform-root-relative
+      # "skills/<skill>/..." form - the docs are bash-fenced and skill-relative, so neither
+      # appears; the positive side (every documented invocation names a file that ships)
+      # is src/ui-ux-pro-max/scripts/tests/test_skill_script_paths.py.
+      # grep exit codes: 0 = hits (violation), 1 = clean, 2 = error - only 1 passes, so an
+      # unreadable file can never turn into a green run (a missing tree is caught above).
+      - name: Path contract - no install-specific skill paths
+        run: |
+          for d in .claude/skills cli/assets/skills; do
+            [ -d "$d" ] || { echo "::error::$d is missing - the path contract has nothing to scan"; exit 1; }
+          done
+          status=0
+          rc=0; LC_ALL=C grep -rnIP '~/\.claude/skills/[A-Za-z0-9_-]+\b' .claude/skills cli/assets/skills || rc=$?
+          if [ "$rc" -ne 1 ]; then
+            echo "::error::home-rooted skill paths (~/.claude/skills/<skill>) only resolve for one install layout - use skill-relative paths (see #474); grep rc=$rc"
+            status=1
+          fi
+          rc=0; LC_ALL=C grep -rnIP '(?<![/\w])\.claude/skills/[A-Za-z0-9_-]+\b|(?<!~)(?<!\$CLAUDE_PLUGIN_ROOT)(?<!\$\{CLAUDE_PLUGIN_ROOT\})/\.claude/skills/[A-Za-z0-9_-]+\b|\$\{?CLAUDE_PLUGIN_ROOT\}?/\.claude/skills/(?!ui-ux-pro-max\b)[A-Za-z0-9_-]+\b' .claude/skills cli/assets/skills || rc=$?
+          if [ "$rc" -ne 1 ]; then
+            echo "::error::project- or variable-rooted skill paths (.claude/skills/<skill>, \$HOME/..., \${CLAUDE_PLUGIN_ROOT}/... outside the core skill) only resolve for one install layout - use skill-relative paths (see #474); grep rc=$rc"
+            status=1
+          fi
+          rc=0; found=$(LC_ALL=C grep -rlIF 'CLAUDE_PLUGIN_ROOT' .claude/skills cli/assets/skills) || rc=$?
+          if [ "$rc" -eq 2 ]; then echo "::error::grep failed while scanning for CLAUDE_PLUGIN_ROOT (rc=2)"; status=1; fi
+          offenders=$(printf '%s\n' "$found" | grep -vxF -e '.claude/skills/ui-ux-pro-max/SKILL.md' -e '.claude/skills/ui-ux-pro-max/scripts/tests/test_skill_script_paths.py' | grep -v '^$' || true)
+          if [ -n "$offenders" ]; then
+            printf '%s\n' "$offenders"
+            echo "::error::CLAUDE_PLUGIN_ROOT is only defined under a plugin install; only the plugin-only core SKILL.md may use it - sub-skills ship through the CLI too (see #474)"
+            status=1
+          fi
+          if [ "$status" -eq 0 ]; then echo "OK: all skill paths are skill-relative"; fi
+          exit "$status"

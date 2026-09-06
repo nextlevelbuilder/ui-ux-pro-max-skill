@@ -1,0 +1,13 @@
+{
+  "name": "@phosphor-icons/core",
+  "version": "2.1.1",
+  "license": "MIT",
+  "exports": {
+    "./thin/*.svg": "./assets/thin/*.svg",
+    "./light/*.svg": "./assets/light/*.svg",
+    "./regular/*.svg": "./assets/regular/*.svg",
+    "./bold/*.svg": "./assets/bold/*.svg",
+    "./fill/*.svg": "./assets/fill/*.svg",
+    "./duotone/*.svg": "./assets/duotone/*.svg"
+  }
+}

@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alex Chen - Full Stack Developer</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#3B82F6',
+            secondary: '#1E293B',
+            cta: '#2563EB',
+            background: '#0F172A',
+            surface: '#1E293B',
+            text: '#F1F5F9',
+            muted: '#94A3B8',
+          },
+          fontFamily: {
+            heading: ['Space Grotesk', 'sans-serif'],
+            body: ['Archivo', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+    .gradient-text {
+      background: linear-gradient(135deg, #3B82F6, #8B5CF6);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .card-glow:hover {
+      box-shadow: 0 0 40px rgba(59, 130, 246, 0.15);
+    }
+  </style>
+</head>
+<body class="bg-background font-body text-text antialiased">
+  <!-- Floating Navbar -->
+  <nav class="fixed top-6 left-6 right-6 z-50 bg-surface/80 backdrop-blur-xl rounded-2xl border border-white/5">
+    <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+      <a href="#" class="font-heading font-bold text-xl text-text cursor-pointer">
+        <span class="gradient-text">AC</span>
+      </a>
+      <div class="hidden md:flex items-center gap-8">
+        <a href="#work" class="text-muted hover:text-text transition-colors duration-200 cursor-pointer">Work</a>
+        <a href="#about" class="text-muted hover:text-text transition-colors duration-200 cursor-pointer">About</a>
+        <a href="#skills" class="text-muted hover:text-text transition-colors duration-200 cursor-pointer">Skills</a>
+        <a href="#contact" class="text-muted hover:text-text transition-colors duration-200 cursor-pointer">Contact</a>
+      </div>
+      <a href="#contact" class="bg-primary hover:bg-cta text-white font-medium px-5 py-2.5 rounded-xl transition-colors duration-200 cursor-pointer">
+        Let's Talk
+      </a>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="min-h-screen flex items-center px-6 pt-32 pb-20">
+    <div class="max-w-6xl mx-auto w-full">
+      <div class="grid lg:grid-cols-2 gap-16 items-center">
+        <div>
+          <p class="text-primary font-medium mb-4 tracking-wide">Full Stack Developer</p>
+          <h1 class="font-heading text-5xl md:text-7xl font-bold text-text mb-6 leading-tight">
+            Hi, I'm<br>
+            <span class="gradient-text">Alex Chen</span>
+          </h1>
+          <p class="text-muted text-lg md:text-xl leading-relaxed mb-10 max-w-lg">
+            I craft digital experiences that blend beautiful design with powerful functionality. Specializing in React, Node.js, and modern web technologies.
+          </p>
+          <div class="flex flex-wrap gap-4">
+            <a href="#work" class="bg-primary hover:bg-cta text-white font-semibold px-8 py-4 rounded-xl transition-colors duration-200 cursor-pointer inline-flex items-center gap-2">
+              View My Work
+              <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+              </svg>
+            </a>
+            <a href="#contact" class="border border-white/10 hover:border-white/20 text-text font-semibold px-8 py-4 rounded-xl transition-colors duration-200 cursor-pointer">
+              Download CV
+            </a>
+          </div>
+
+          <!-- Social Links -->
+          <div class="flex gap-4 mt-12">
+            <a href="#" class="w-12 h-12 rounded-xl bg-surface border border-white/5 flex items-center justify-center text-muted hover:text-primary hover:border-primary/30 transition-all duration-200 cursor-pointer" aria-label="GitHub">
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+            </a>
+            <a href="#" class="w-12 h-12 rounded-xl bg-surface border border-white/5 flex items-center justify-center text-muted hover:text-primary hover:border-primary/30 transition-all duration-200 cursor-pointer" aria-label="LinkedIn">
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            </a>
+            <a href="#" class="w-12 h-12 rounded-xl bg-surface border border-white/5 flex items-center justify-center text-muted hover:text-primary hover:border-primary/30 transition-all duration-200 cursor-pointer" aria-label="Twitter">
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Hero Image -->
+        <div class="relative">
+          <div class="aspect-square rounded-3xl bg-gradient-to-br from-primary/20 to-purple-600/20 border border-white/5 overflow-hidden">
+            <div class="absolute inset-0 flex items-center justify-center">
+              <div class="w-64 h-64 rounded-full bg-gradient-to-br from-primary to-purple-600 opacity-80 blur-3xl"></div>
+            </div>
+            <div class="relative z-10 h-full flex items-center justify-center">
+              <div class="w-48 h-48 rounded-full bg-surface border-4 border-primary/30 flex items-center justify-center">
+                <span class="font-heading text-6xl font-bold gradient-text">AC</span>
+              </div>
+            </div>
+          </div>
+          <!-- Floating Elements -->
+          <div class="absolute -top-4 -right-4 w-20 h-20 rounded-2xl bg-primary/10 border border-primary/20 flex items-center justify-center">
+            <svg class="w-8 h-8 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/>
+            </svg>
+          </div>
+          <div class="absolute -bottom-4 -left-4 w-16 h-16 rounded-2xl bg-purple-600/10 border border-purple-600/20 flex items-center justify-center">
+            <svg class="w-6 h-6 text-purple-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Work Section -->
+  <section id="work" class="py-24 px-6">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-16">
+        <p class="text-primary font-medium mb-3">Portfolio</p>
+        <h2 class="font-heading text-4xl md:text-5xl font-bold text-text">Featured Projects</h2>
+      </div>
+
+      <!-- Project Grid (Masonry-style) -->
+      <div class="grid md:grid-cols-2 gap-8">
+        <!-- Project 1 -->
+        <div class="group bg-surface rounded-3xl border border-white/5 overflow-hidden card-glow transition-all duration-300 cursor-pointer">
+          <div class="aspect-video bg-gradient-to-br from-blue-600/20 to-cyan-600/20 relative overflow-hidden">
+            <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-background/80 backdrop-blur-sm">
+              <span class="text-text font-medium flex items-center gap-2">
+                View Project
+                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+                </svg>
+              </span>
+            </div>
+          </div>
+          <div class="p-8">
+            <div class="flex gap-2 mb-4">
+              <span class="px-3 py-1 rounded-full bg-primary/10 text-primary text-sm">React</span>
+              <span class="px-3 py-1 rounded-full bg-cyan-500/10 text-cyan-400 text-sm">TypeScript</span>
+              <span class="px-3 py-1 rounded-full bg-green-500/10 text-green-400 text-sm">Node.js</span>
+            </div>
+            <h3 class="font-heading text-2xl font-bold text-text mb-3">E-Commerce Platform</h3>
+            <p class="text-muted leading-relaxed">Full-featured online store with real-time inventory, Stripe payments, and admin dashboard.</p>
+          </div>
+        </div>
+
+        <!-- Project 2 -->
+        <div class="group bg-surface rounded-3xl border border-white/5 overflow-hidden card-glow transition-all duration-300 cursor-pointer">
+          <div class="aspect-video bg-gradient-to-br from-purple-600/20 to-pink-600/20 relative overflow-hidden">
+            <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-background/80 backdrop-blur-sm">
+              <span class="text-text font-medium flex items-center gap-2">
+                View Project
+                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+                </svg>
+              </span>
+            </div>
+          </div>
+          <div class="p-8">
+            <div class="flex gap-2 mb-4">
+              <span class="px-3 py-1 rounded-full bg-purple-500/10 text-purple-400 text-sm">Next.js</span>
+              <span class="px-3 py-1 rounded-full bg-orange-500/10 text-orange-400 text-sm">Prisma</span>
+              <span class="px-3 py-1 rounded-full bg-blue-500/10 text-blue-400 text-sm">PostgreSQL</span>
+            </div>
+            <h3 class="font-heading text-2xl font-bold text-text mb-3">SaaS Dashboard</h3>
+            <p class="text-muted leading-relaxed">Analytics platform with real-time data visualization, team collaboration, and custom reports.</p>
+          </div>
+        </div>
+
+        <!-- Project 3 -->
+        <div class="group bg-surface rounded-3xl border border-white/5 overflow-hidden card-glow transition-all duration-300 cursor-pointer">
+          <div class="aspect-video bg-gradient-to-br from-green-600/20 to-emerald-600/20 relative overflow-hidden">
+            <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-background/80 backdrop-blur-sm">
+              <span class="text-text font-medium flex items-center gap-2">
+                View Project
+                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+                </svg>
+              </span>
+            </div>
+          </div>
+          <div class="p-8">
+            <div class="flex gap-2 mb-4">
+              <span class="px-3 py-1 rounded-full bg-green-500/10 text-green-400 text-sm">Vue.js</span>
+              <span class="px-3 py-1 rounded-full bg-yellow-500/10 text-yellow-400 text-sm">Firebase</span>
+              <span class="px-3 py-1 rounded-full bg-pink-500/10 text-pink-400 text-sm">Tailwind</span>
+            </div>
+            <h3 class="font-heading text-2xl font-bold text-text mb-3">Task Management App</h3>
+            <p class="text-muted leading-relaxed">Collaborative project management tool with kanban boards, time tracking, and integrations.</p>
+          </div>
+        </div>
+
+        <!-- Project 4 -->
+        <div class="group bg-surface rounded-3xl border border-white/5 overflow-hidden card-glow transition-all duration-300 cursor-pointer">
+          <div class="aspect-video bg-gradient-to-br from-orange-600/20 to-red-600/20 relative overflow-hidden">
+            <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-background/80 backdrop-blur-sm">
+              <span class="text-text font-medium flex items-center gap-2">
+                View Project
+                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+                </svg>
+              </span>
+            </div>
+          </div>
+          <div class="p-8">
+            <div class="flex gap-2 mb-4">
+              <span class="px-3 py-1 rounded-full bg-red-500/10 text-red-400 text-sm">React Native</span>
+              <span class="px-3 py-1 rounded-full bg-indigo-500/10 text-indigo-400 text-sm">GraphQL</span>
+              <span class="px-3 py-1 rounded-full bg-teal-500/10 text-teal-400 text-sm">AWS</span>
+            </div>
+            <h3 class="font-heading text-2xl font-bold text-text mb-3">Fitness Tracker</h3>
+            <p class="text-muted leading-relaxed">Cross-platform mobile app with workout tracking, nutrition logging, and social features.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills Section -->
+  <section id="skills" class="py-24 px-6 bg-surface/50">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-16">
+        <p class="text-primary font-medium mb-3">Expertise</p>
+        <h2 class="font-heading text-4xl md:text-5xl font-bold text-text">Skills & Technologies</h2>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8">
+        <!-- Frontend -->
+        <div class="bg-surface p-8 rounded-3xl border border-white/5">
+          <div class="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center mb-6">
+            <svg class="w-7 h-7 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+            </svg>
+          </div>
+          <h3 class="font-heading text-xl font-bold text-text mb-4">Frontend</h3>
+          <div class="flex flex-wrap gap-2">
+            <span class="px-3 py-2 rounded-lg bg-background text-muted text-sm">React</span>
+            <span class="px-3 py-2 rounded-lg bg-background text-muted text-sm">Next.js</span>
+            <span class="px-3 py-2 rounded-lg bg-background text-muted text-sm">TypeScript</span>
+            <span class="px-3 py-2 rounded-lg bg-background text-muted text-sm">Vue.js</span>
+            <span class="px-3 py-2 rounded-lg bg-background text-muted text-sm">Tailwind CSS</span>
+            <span class="px-3 py-2 rounded-lg bg-background text-muted text-sm">Framer Motion</span>
+          </div>
+        </div>
+
+        <!-- Backend -->
+        <div class="bg-surface p-8 rounded-3xl border border-white/5">
+          <div class="w-14 h-14 rounded-2xl bg-green-500/10 flex items-center justify-center mb-6">
+            <svg class="w-7 h-7 text-green-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01"/>
+            </svg>
+          </div>
+          <h3 class="font-heading text-xl font-bold text-text mb-4">Backend</h3>
+          <div class="flex flex-wrap gap-2">
+            <span class="px-3 py-2 rounded-lg bg-background text-muted text-sm">Node.js</span>
+            <span class="px-3 py-2 rounded-lg bg-background text-muted text-sm">Python</span>
+            <span class="px-3 py-2 rounded-lg bg-background text-muted text-sm">PostgreSQL</span>
+            <span class="px-3 py-2 rounded-lg bg-background text-muted text-sm">MongoDB</span>
+            <span class="px-3 py-2 rounded-lg bg-background text-muted text-sm">GraphQL</span>
+            <span class="px-3 py-2 rounded-lg bg-background text-muted text-sm">REST APIs</span>
+          </div>
+        </div>
+
+        <!-- Tools -->
+        <div class="bg-surface p-8 rounded-3xl border border-white/5">
+          <div class="w-14 h-14 rounded-2xl bg-purple-500/10 flex items-center justify-center mb-6">
+            <svg class="w-7 h-7 text-purple-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/>
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+            </svg>
+          </div>
+          <h3 class="font-heading text-xl font-bold text-text mb-4">Tools & DevOps</h3>
+          <div class="flex flex-wrap gap-2">
+            <span class="px-3 py-2 rounded-lg bg-background text-muted text-sm">Git</span>
+            <span class="px-3 py-2 rounded-lg bg-background text-muted text-sm">Docker</span>
+            <span class="px-3 py-2 rounded-lg bg-background text-muted text-sm">AWS</span>
+            <span class="px-3 py-2 rounded-lg bg-background text-muted text-sm">Vercel</span>
+            <span class="px-3 py-2 rounded-lg bg-background text-muted text-sm">CI/CD</span>
+            <span class="px-3 py-2 rounded-lg bg-background text-muted text-sm">Figma</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="py-24 px-6">
+    <div class="max-w-6xl mx-auto">
+      <div class="grid lg:grid-cols-2 gap-16 items-center">
+        <div class="order-2 lg:order-1">
+          <p class="text-primary font-medium mb-3">About Me</p>
+          <h2 class="font-heading text-4xl md:text-5xl font-bold text-text mb-6">Turning Ideas into Reality</h2>
+          <p class="text-muted text-lg leading-relaxed mb-6">
+            With 5+ years of experience in web development, I've had the privilege of working with startups and established companies to build products that make a difference.
+          </p>
+          <p class="text-muted text-lg leading-relaxed mb-8">
+            I believe great software is born from the intersection of clean code, intuitive design, and deep understanding of user needs. When I'm not coding, you'll find me contributing to open source or exploring the latest web technologies.
+          </p>
+          <div class="grid grid-cols-3 gap-8">
+            <div>
+              <div class="font-heading text-4xl font-bold gradient-text mb-2">5+</div>
+              <div class="text-muted text-sm">Years Experience</div>
+            </div>
+            <div>
+              <div class="font-heading text-4xl font-bold gradient-text mb-2">50+</div>
+              <div class="text-muted text-sm">Projects Completed</div>
+            </div>
+            <div>
+              <div class="font-heading text-4xl font-bold gradient-text mb-2">30+</div>
+              <div class="text-muted text-sm">Happy Clients</div>
+            </div>
+          </div>
+        </div>
+        <div class="order-1 lg:order-2">
+          <div class="aspect-square rounded-3xl bg-gradient-to-br from-primary/10 to-purple-600/10 border border-white/5 p-8 flex items-center justify-center">
+            <div class="text-center">
+              <div class="w-32 h-32 rounded-full bg-gradient-to-br from-primary to-purple-600 mx-auto mb-6 flex items-center justify-center">
+                <svg class="w-16 h-16 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z"/>
+                </svg>
+              </div>
+              <blockquote class="text-text text-lg italic">"Code is poetry written for machines to execute and humans to admire."</blockquote>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="py-24 px-6 bg-surface/50">
+    <div class="max-w-4xl mx-auto text-center">
+      <p class="text-primary font-medium mb-3">Get In Touch</p>
+      <h2 class="font-heading text-4xl md:text-5xl font-bold text-text mb-6">Let's Work Together</h2>
+      <p class="text-muted text-lg mb-12 max-w-2xl mx-auto">
+        Have a project in mind or just want to chat? I'm always open to discussing new opportunities and creative ideas.
+      </p>
+
+      <form class="bg-surface rounded-3xl border border-white/5 p-8 md:p-12 text-left">
+        <div class="grid md:grid-cols-2 gap-6 mb-6">
+          <div>
+            <label for="name" class="block text-sm font-medium text-text mb-2">Name</label>
+            <input type="text" id="name" name="name" class="w-full px-4 py-3 rounded-xl bg-background border border-white/10 text-text placeholder-muted focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all duration-200" placeholder="John Doe">
+          </div>
+          <div>
+            <label for="email" class="block text-sm font-medium text-text mb-2">Email</label>
+            <input type="email" id="email" name="email" class="w-full px-4 py-3 rounded-xl bg-background border border-white/10 text-text placeholder-muted focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all duration-200" placeholder="john@example.com">
+          </div>
+        </div>
+        <div class="mb-6">
+          <label for="subject" class="block text-sm font-medium text-text mb-2">Subject</label>
+          <input type="text" id="subject" name="subject" class="w-full px-4 py-3 rounded-xl bg-background border border-white/10 text-text placeholder-muted focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all duration-200" placeholder="Project Inquiry">
+        </div>
+        <div class="mb-8">
+          <label for="message" class="block text-sm font-medium text-text mb-2">Message</label>
+          <textarea id="message" name="message" rows="5" class="w-full px-4 py-3 rounded-xl bg-background border border-white/10 text-text placeholder-muted focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all duration-200 resize-none" placeholder="Tell me about your project..."></textarea>
+        </div>
+        <button type="submit" class="w-full bg-primary hover:bg-cta text-white font-semibold py-4 rounded-xl transition-colors duration-200 cursor-pointer">
+          Send Message
+        </button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="py-12 px-6 border-t border-white/5">
+    <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+      <div class="flex items-center gap-2">
+        <span class="font-heading font-bold text-xl gradient-text">AC</span>
+        <span class="text-muted">Alex Chen</span>
+      </div>
+      <p class="text-muted text-sm">2026 All rights reserved. Built with passion.</p>
+      <div class="flex gap-4">
+        <a href="#" class="text-muted hover:text-text transition-colors duration-200 cursor-pointer" aria-label="GitHub">
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+        </a>
+        <a href="#" class="text-muted hover:text-text transition-colors duration-200 cursor-pointer" aria-label="LinkedIn">
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        </a>
+        <a href="#" class="text-muted hover:text-text transition-colors duration-200 cursor-pointer" aria-label="Twitter">
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+        </a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,48 @@
+name: Bug Report
+description: Report something broken in the skill, CLI, or generated design system
+labels: [bug]
+body:
+  - type: input
+    id: assistant
+    attributes:
+      label: AI assistant / platform
+      description: Claude Code, Cursor, Windsurf, etc.
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: ui-ux-pro-max-cli version
+      description: Output of `npm list -g ui-ux-pro-max-cli` or `uipro --version`
+    validations:
+      required: true
+  - type: input
+    id: os
+    attributes:
+      label: OS
+      placeholder: macOS 15 / Windows 11 / Ubuntu 24.04
+    validations:
+      required: true
+  - type: textarea
+    id: command
+    attributes:
+      label: Exact command or prompt that triggered the bug
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behavior
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: Error messages / screenshots
+      render: shell

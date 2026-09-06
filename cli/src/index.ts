@@ -27,8 +27,10 @@ program
   .description('Install UI/UX Pro Max skill to current project')
   .option('-a, --ai <type>', `AI assistant type (${AI_TYPES.join(', ')})`)
   .option('-f, --force', 'Overwrite existing files')
-  .option('-o, --offline', 'Skip GitHub download, use bundled assets only')
+  .option('-o, --offline', 'Compatibility flag; template installs use bundled assets')
   .option('-g, --global', 'Install globally to home directory (~/) instead of current project')
+  .option('-t, --token <token>', 'GitHub Personal Access Token for higher API rate limits')
+  .option('--dry-run', 'Preview install actions without writing files')
   .action(async (options) => {
     if (options.ai && !AI_TYPES.includes(options.ai)) {
       console.error(`Invalid AI type: ${options.ai}`);
@@ -40,18 +42,23 @@ program
       force: options.force,
       offline: options.offline,
       global: options.global,
+      dryRun: options.dryRun,
+      token: options.token,
     });
   });
 
 program
   .command('versions')
   .description('List available versions')
+  .option('-t, --token <token>', 'GitHub Personal Access Token for higher API rate limits')
   .action(versionsCommand);
 
 program
   .command('update')
   .description('Update UI/UX Pro Max to latest version')
   .option('-a, --ai <type>', `AI assistant type (${AI_TYPES.join(', ')})`)
+  .option('-g, --global', 'Update global installation in home directory (~/)')
+  .option('-t, --token <token>', 'GitHub Personal Access Token for higher API rate limits')
   .action(async (options) => {
     if (options.ai && !AI_TYPES.includes(options.ai)) {
       console.error(`Invalid AI type: ${options.ai}`);
@@ -60,6 +67,8 @@ program
     }
     await updateCommand({
       ai: options.ai as AIType | undefined,
+      global: options.global,
+      token: options.token,
     });
   });
 

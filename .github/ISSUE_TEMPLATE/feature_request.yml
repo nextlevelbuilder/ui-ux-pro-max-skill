@@ -1,0 +1,29 @@
+name: Feature Request
+description: Suggest a new UI style, color palette, industry rule, stack, or CLI feature
+labels: [enhancement]
+body:
+  - type: dropdown
+    id: category
+    attributes:
+      label: Category
+      options:
+        - New UI style
+        - New color palette
+        - New industry reasoning rule
+        - New tech stack support
+        - CLI improvement
+        - Other
+    validations:
+      required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: What do you want to see added or changed?
+    validations:
+      required: true
+  - type: textarea
+    id: motivation
+    attributes:
+      label: Why is this useful? (use case, example project)
+    validations:
+      required: true

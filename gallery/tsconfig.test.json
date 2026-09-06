@@ -1,0 +1,27 @@
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "module": "CommonJS",
+    "moduleResolution": "Node",
+    "jsx": "react-jsx",
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./*"]
+    },
+    "outDir": ".test-dist",
+    "esModuleInterop": true,
+    "strict": true,
+    "skipLibCheck": true
+  },
+  "include": [
+    "lib/types.ts",
+    "lib/colorExtractor.ts",
+    "lib/cssGenerator.ts",
+    "lib/parseStyles.ts",
+    "lib/filterStyles.ts",
+    "lib/parseStyles.test.ts",
+    "components/MetadataBadges.tsx",
+    "components/FilterBar.tsx",
+    "components/metadata-badges.test.tsx"
+  ]
+}

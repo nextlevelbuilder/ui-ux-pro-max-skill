@@ -1,0 +1,4 @@
+{
+  "client": ["Acorn", "ArrowLeft", "IconContext"],
+  "ssr": ["Acorn", "ArrowLeft"]
+}

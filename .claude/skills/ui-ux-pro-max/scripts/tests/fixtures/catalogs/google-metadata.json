@@ -1,0 +1,17 @@
+{
+  "families": [
+    {
+      "name": "Zeta Serif",
+      "designer": "Zeta Studio",
+      "license": "APACHE2",
+      "date_added": "2018-04-09"
+    },
+    {
+      "name": "Alpha Sans",
+      "designer": ["Ada Type", "Binh Fonts"],
+      "license": "OFL",
+      "date_added": "2020-02-20"
+    }
+  ],
+  "excludedFamilies": []
+}

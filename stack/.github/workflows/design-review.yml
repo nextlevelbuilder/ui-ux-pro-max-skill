@@ -1,0 +1,47 @@
+name: Design Review
+
+# Runs the heuristic design audit on PRs that touch UI. The full taste/interaction review is
+# the /design-review subagent inside Claude Code; this CI gate catches the mechanical defects
+# (overflow, focus, contrast, unsized media, missing meta) automatically on every PR.
+
+on:
+  pull_request:
+    paths:
+      - '**/*.html'
+      - '**/*.css'
+      - '**/*.jsx'
+      - '**/*.tsx'
+      - '**/*.vue'
+      - '**/*.svelte'
+      - '**/*.astro'
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install deps + Chromium
+        run: |
+          npm install
+          npx playwright install --with-deps chromium
+
+      # Point --url at your preview/deploy URL, or --file at a built static entry point.
+      # Replace the target below with how your app serves a page in CI.
+      - name: Run design audit
+        run: |
+          node scripts/design-audit.mjs --file ./index.html --out audit-output || true
+
+      - name: Upload audit report + screenshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: design-audit
+          path: audit-output/
+
+      - name: Fail on high-severity findings
+        run: node scripts/design-audit.mjs --file ./index.html --out audit-output

@@ -1,0 +1,38 @@
+name: Smoke test data
+
+on:
+  pull_request:
+    paths:
+      - 'src/ui-ux-pro-max/data/**'
+      - 'src/ui-ux-pro-max/scripts/**'
+      - 'cli/assets/data/**'
+      - 'cli/assets/scripts/**'
+      - 'scripts/validate-csv.py'
+      - 'scripts/evaluate-relevance.py'
+      - 'scripts/relevance_metrics.py'
+      - 'scripts/smoke-stacks.sh'
+      - 'scripts/smoke-domains.sh'
+      - 'cli/package.json'
+      - '.github/workflows/smoke-stacks.yml'
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: '3.x'
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Run aggregate offline data gate
+        run: npm --prefix cli run verify:data

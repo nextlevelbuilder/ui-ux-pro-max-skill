@@ -1,0 +1,3366 @@
+{
+  "cases": [
+    {
+      "actual": [
+        {
+          "Style Category": "Glassmorphism"
+        },
+        {
+          "Style Category": "Spatial UI (VisionOS)"
+        },
+        {
+          "Style Category": "Liquid Glass"
+        }
+      ],
+      "diagnostics": {
+        "abstained": false,
+        "calibration_version": "2026-08-12-v1",
+        "margin": 10.180590466442855,
+        "normalized_query": "frosted glass transparent blurred layered UI",
+        "query_rewrites": [],
+        "reason": "matched",
+        "runner_up_score": 9.240573829729811,
+        "search_query": "frosted glass transparent blurred layered UI",
+        "token_coverage": 1.0,
+        "top_score": 19.421164296172666
+      },
+      "expectedRoute": null,
+      "grades": [
+        2,
+        0,
+        0
+      ],
+      "id": "domain-style-glassmorphism",
+      "route": "style",
+      "scores": {
+        "mrr3": 1.0,
+        "ndcg3": 1.0,
+        "p1": 1.0,
+        "p3": 0.3333333333333333
+      }
+    },
+    {
+      "actual": [
+        {
+          "Style Category": "Accessible & Ethical"
+        },
+        {
+          "Style Category": "Inclusive Design"
+        },
+        {
+          "Style Category": "Vibrant & Block-based"
+        }
+      ],
+      "diagnostics": {
+        "abstained": false,
+        "calibration_version": "2026-08-12-v1",
+        "margin": 0.2007607310218411,
+        "normalized_query": "inclusive high contrast interface with keyboard navigation and screen readers",
+        "query_rewrites": [],
+        "reason": "matched",
+        "runner_up_score": 18.40140231643771,
+        "search_query": "inclusive high contrast interface with keyboard nav and screen readers",
+        "token_coverage": 0.8888888888888888,
+        "top_score": 18.602163047459552
+      },
+      "expectedRoute": null,
+      "grades": [
+        2,
+        1,
+        0
+      ],
+      "id": "domain-style-accessible-paraphrase",
+      "route": "style",
+      "scores": {
+        "mrr3": 1.0,
+        "ndcg3": 1.0,
+        "p1": 1.0,
+        "p3": 0.6666666666666666
+      }
+    },
+    {
+      "actual": [
+        {
+          "Product Type": "Beauty/Spa/Wellness Service"
+        },
+        {
+          "Product Type": "Mental Health App"
+        },
+        {
+          "Product Type": "Parenting & Baby Tracker"
+        }
+      ],
+      "diagnostics": {
+        "abstained": false,
+        "calibration_version": "2026-08-12-v1",
+        "margin": 17.678305652755625,
+        "normalized_query": "beauty spa wellness soft pink lavender palette",
+        "query_rewrites": [],
+        "reason": "matched",
+        "runner_up_score": 7.159928053272678,
+        "search_query": "beauty spa wellness soft pink lavender palette",
+        "token_coverage": 0.8571428571428571,
+        "top_score": 24.838233706028305
+      },
+      "expectedRoute": null,
+      "grades": [
+        2,
+        0,
+        0
+      ],
+      "id": "domain-color-spa",
+      "route": "color",
+      "scores": {
+        "mrr3": 1.0,
+        "ndcg3": 1.0,
+        "p1": 1.0,
+        "p3": 0.3333333333333333
+      }
+    },
+    {
+      "actual": [
+        {
+          "Product Type": "Financial Dashboard"
+        },
+        {
+          "Product Type": "Cybersecurity Platform"
+        },
+        {
+          "Product Type": "Smart Home/IoT Dashboard"
+        }
+      ],
+      "diagnostics": {
+        "abstained": false,
+        "calibration_version": "2026-08-12-v1",
+        "margin": 0.29636583933813654,
+        "normalized_query": "cybersecurty threat dashboard matrix green dark pallete",
+        "query_rewrites": [],
+        "reason": "matched",
+        "runner_up_score": 6.62187033218134,
+        "search_query": "cybersecurty threat dashboard matrix green dark pallete",
+        "token_coverage": 0.5714285714285714,
+        "top_score": 6.918236171519476
+      },
+      "expectedRoute": null,
+      "grades": [
+        0,
+        2,
+        0
+      ],
+      "id": "domain-color-cyber-typo",
+      "route": "color",
+      "scores": {
+        "mrr3": 0.5,
+        "ndcg3": 0.6309297535714574,
+        "p1": 0.0,
+        "p3": 0.3333333333333333
+      }
+    },
+    {
+      "actual": [
+        {
+          "Data Type": "Trend Over Time"
+        },
+        {
+          "Data Type": "Real-Time Streaming"
+        },
+        {
+          "Data Type": "Anomaly Detection"
+        }
+      ],
+      "diagnostics": {
+        "abstained": false,
+        "calibration_version": "2026-08-12-v1",
+        "margin": 12.637395123197123,
+        "normalized_query": "trend over time growth timeline line chart",
+        "query_rewrites": [],
+        "reason": "matched",
+        "runner_up_score": 3.1856244638240696,
+        "search_query": "trend over time growth timeline line chart",
+        "token_coverage": 1.0,
+        "top_score": 15.823019587021193
+      },
+      "expectedRoute": null,
+      "grades": [
+        2,
+        0,
+        0
+      ],
+      "id": "domain-chart-time-series",
+      "route": "chart",
+      "scores": {
+        "mrr3": 1.0,
+        "ndcg3": 0.8262346571285599,
+        "p1": 1.0,
+        "p3": 0.3333333333333333
+      }
+    },
+    {
+      "actual": [
+        {
+          "Data Type": "Correlation / Distribution"
+        },
+        {
+          "Data Type": "Real-Time Streaming"
+        }
+      ],
+      "diagnostics": {
+        "abstained": false,
+        "calibration_version": "2026-08-12-v1",
+        "margin": 0.08727362229790625,
+        "normalized_query": "show whether two measures move together using dots and bubbles",
+        "query_rewrites": [],
+        "reason": "matched",
+        "runner_up_score": 2.7743314821590044,
+        "search_query": "show whether two measures move together using dots and bubbles",
+        "token_coverage": 0.2222222222222222,
+        "top_score": 2.8616051044569106
+      },
+      "expectedRoute": null,
+      "grades": [
+        2,
+        0
+      ],
+      "id": "domain-chart-correlation-paraphrase",
+      "route": "chart",
+      "scores": {
+        "mrr3": 1.0,
+        "ndcg3": 1.0,
+        "p1": 1.0,
+        "p3": 0.3333333333333333
+      }
+    },
+    {
+      "actual": [
+        {
+          "Pattern Name": "Pricing-Focused Landing"
+        },
+        {
+          "Pattern Name": "Pricing Page + CTA"
+        },
+        {
+          "Pattern Name": "Comparison Table + CTA"
+        }
+      ],
+      "diagnostics": {
+        "abstained": false,
+        "calibration_version": "2026-08-12-v1",
+        "margin": 1.4239185572152468,
+        "normalized_query": "pricing plans tiers comparison landing CTA",
+        "query_rewrites": [],
+        "reason": "matched",
+        "runner_up_score": 13.508045243232234,
+        "search_query": "pricing plans tiers comparison landing CTA",
+        "token_coverage": 1.0,
+        "top_score": 14.93196380044748
+      },
+      "expectedRoute": null,
+      "grades": [
+        2,
+        2,
+        1
+      ],
+      "id": "domain-landing-pricing",
+      "route": "landing",
+      "scores": {
+        "mrr3": 1.0,
+        "ndcg3": 1.0,
+        "p1": 1.0,
+        "p3": 1.0
+      }
+    },
+    {
+      "actual": [
+        {
+          "Pattern Name": "Trust & Authority + Conversion"
+        },
+        {
+          "Pattern Name": "Enterprise Gateway"
+        },
+        {
+          "Pattern Name": "Pricing Page + CTA"
+        }
+      ],
+      "diagnostics": {
+        "abstained": false,
+        "calibration_version": "2026-08-12-v1",
+        "margin": 4.337981479641247,
+        "normalized_query": "enterprise credibilty trust authority conversion page",
+        "query_rewrites": [],
+        "reason": "matched",
+        "runner_up_score": 9.751278486627811,
+        "search_query": "enterprise credibilty trust authority conversion page",
+        "token_coverage": 0.8333333333333334,
+        "top_score": 14.089259966269058
+      },
+      "expectedRoute": null,
+      "grades": [
+        2,
+        1,
+        0
+      ],
+      "id": "domain-landing-enterprise-typo",
+      "route": "landing",
+      "scores": {
+        "mrr3": 1.0,
+        "ndcg3": 1.0,
+        "p1": 1.0,
+        "p3": 0.6666666666666666
+      }
+    },
+    {
+      "actual": [
+        {
+          "Product Type": "Beauty/Spa/Wellness Service"
+        },
+        {
+          "Product Type": "Booking & Appointment App"
+        },
+        {
+          "Product Type": "Photography Studio"
+        }
+      ],
+      "diagnostics": {
+        "abstained": false,
+        "calibration_version": "2026-08-12-v1",
+        "margin": 18.297270037662248,
+        "normalized_query": "salon massage skincare booking and wellness service",
+        "query_rewrites": [],
+        "reason": "matched",
+        "runner_up_score": 7.065266409246995,
+        "search_query": "salon massage skincare booking and wellness service",
+        "token_coverage": 1.0,
+        "top_score": 25.362536446909242
+      },
+      "expectedRoute": null,
+      "grades": [
+        2,
+        1,
+        0
+      ],
+      "id": "domain-product-spa",
+      "route": "product",
+      "scores": {
+        "mrr3": 1.0,
+        "ndcg3": 1.0,
+        "p1": 1.0,
+        "p3": 0.6666666666666666
+      }
+    },
+    {
+      "actual": [],
+      "diagnostics": {
+        "abstained": true,
+        "calibration_version": "2026-08-12-v1",
+        "margin": 0.6408757429869336,
+        "normalized_query": "platform for monitoring digital threats and protecting systems",
+        "query_rewrites": [],
+        "reason": "low-confidence",
+        "runner_up_score": 5.294892947558106,
+        "search_query": "platform for monitoring digital threats and protecting systems",
+        "token_coverage": 0.5,
+        "top_score": 5.935768690545039
+      },
+      "expectedRoute": null,
+      "grades": [],
+      "id": "domain-product-security-paraphrase",
+      "route": "product",
+      "scores": {
+        "mrr3": 0.0,
+        "ndcg3": 0.0,
+        "p1": 0.0,
+        "p3": 0.0
+      }
+    },
+    {
+      "actual": [
+        {
+          "Category": "Accessibility",
+          "Issue": "Keyboard Navigation"
+        },
+        {
+          "Category": "Accessibility",
+          "Issue": "Focus Not Obscured (Enhanced)"
+        },
+        {
+          "Category": "Accessibility",
+          "Issue": "Focus Not Obscured (Minimum)"
+        }
+      ],
+      "diagnostics": {
+        "abstained": false,
+        "calibration_version": "2026-08-12-v1",
+        "margin": 7.712612997594313,
+        "normalized_query": "visible focus and complete keyboard navigation for web users",
+        "query_rewrites": [],
+        "reason": "matched",
+        "runner_up_score": 9.166328360401398,
+        "search_query": "visible focus and complete keyboard navigation for web users",
+        "token_coverage": 1.0,
+        "top_score": 16.87894135799571
+      },
+      "expectedRoute": null,
+      "grades": [
+        2,
+        0,
+        0
+      ],
+      "id": "domain-ux-keyboard-focus",
+      "route": "ux",
+      "scores": {
+        "mrr3": 1.0,
+        "ndcg3": 0.6131471927654584,
+        "p1": 1.0,
+        "p3": 0.3333333333333333
+      }
+    },
+    {
+      "actual": [
+        {
+          "Category": "Animation",
+          "Issue": "Excessive Motion"
+        },
+        {
+          "Category": "Animation",
+          "Issue": "Reduced Motion"
+        },
+        {
+          "Category": "Animation",
+          "Issue": "Continuous Animation"
+        }
+      ],
+      "diagnostics": {
+        "abstained": false,
+        "calibration_version": "2026-08-12-v1",
+        "margin": 3.342400772580876,
+        "normalized_query": "stop animations making people sick and honor their motion preference",
+        "query_rewrites": [],
+        "reason": "matched",
+        "runner_up_score": 4.7581916385107546,
+        "search_query": "stop animations making people sick and honor their motion preference",
+        "token_coverage": 0.2222222222222222,
+        "top_score": 8.10059241109163
+      },
+      "expectedRoute": null,
+      "grades": [
+        1,
+        2,
+        0
+      ],
+      "id": "domain-ux-motion-paraphrase",
+      "route": "ux",
+      "scores": {
+        "mrr3": 1.0,
+        "ndcg3": 0.7967075809905066,
+        "p1": 1.0,
+        "p3": 0.6666666666666666
+      }
+    },
+    {
+      "actual": [
+        {
+          "Category": "Serif + Sans",
+          "Font Pairing Name": "Luxury Serif"
+        },
+        {
+          "Category": "Serif + Sans",
+          "Font Pairing Name": "Classic Elegant"
+        },
+        {
+          "Category": "Serif + Sans",
+          "Font Pairing Name": "Real Estate Luxury"
+        }
+      ],
+      "diagnostics": {
+        "abstained": false,
+        "calibration_version": "2026-08-12-v1",
+        "margin": 0.4054912435846667,
+        "normalized_query": "elegant luxury serif heading with clean readable body font",
+        "query_rewrites": [],
+        "reason": "matched",
+        "runner_up_score": 7.678808998514057,
+        "search_query": "elegant luxury serif heading with clean readable body font",
+        "token_coverage": 0.6666666666666666,
+        "top_score": 8.084300242098724
+      },
+      "expectedRoute": null,
+      "grades": [
+        2,
+        2,
+        0
+      ],
+      "id": "domain-typography-luxury",
+      "route": "typography",
+      "scores": {
+        "mrr3": 1.0,
+        "ndcg3": 0.9072836011519267,
+        "p1": 1.0,
+        "p3": 0.6666666666666666
+      }
+    },
+    {
+      "actual": [
+        {
+          "Category": "Sans + Sans",
+          "Font Pairing Name": "Accessibility First"
+        },
+        {
+          "Category": "Serif + Sans",
+          "Font Pairing Name": "Academic/Research"
+        },
+        {
+          "Category": "Sans + Serif (Display) + Mono",
+          "Font Pairing Name": "Bold Typography Mobile (Inter Poster)"
+        }
+      ],
+      "diagnostics": {
+        "abstained": false,
+        "calibration_version": "2026-08-12-v1",
+        "margin": 11.232450027626605,
+        "normalized_query": "dyslexia frendly hyperlegible inclusive type pairing",
+        "query_rewrites": [],
+        "reason": "matched",
+        "runner_up_score": 3.7239164952881945,
+        "search_query": "dyslexia frendly hyperlegible inclusive type pairing",
+        "token_coverage": 0.6666666666666666,
+        "top_score": 14.956366522914799
+      },
+      "expectedRoute": null,
+      "grades": [
+        2,
+        1,
+        0
+      ],
+      "id": "domain-typography-accessible-typo",
+      "route": "typography",
+      "scores": {
+        "mrr3": 1.0,
+        "ndcg3": 1.0,
+        "p1": 1.0,
+        "p3": 0.6666666666666666
+      }
+    },
+    {
+      "actual": [
+        {
+          "Category": "Action",
+          "Icon Name": "magnifying-glass"
+        },
+        {
+          "Category": "Guideline",
+          "Icon Name": "icon-context-accessibility"
+        },
+        {
+          "Category": "Style Config",
+          "Icon Name": "cyberpunk-icon-system"
+        }
+      ],
+      "diagnostics": {
+        "abstained": false,
+        "calibration_version": "2026-08-12-v1",
+        "margin": 13.46638832339189,
+        "normalized_query": "find lookup search icon for a query field",
+        "query_rewrites": [],
+        "reason": "matched",
+        "runner_up_score": 4.529111017843179,
+        "search_query": "find lookup search icon for a query field",
+        "token_coverage": 0.8333333333333334,
+        "top_score": 17.995499341235067
+      },
+      "expectedRoute": null,
+      "grades": [
+        2,
+        0,
+        0
+      ],
+      "id": "domain-icons-search",
+      "route": "icons",
+      "scores": {
+        "mrr3": 1.0,
+        "ndcg3": 0.8262346571285599,
+        "p1": 1.0,
+        "p3": 0.3333333333333333
+      }
+    },
+    {
+      "actual": [
+        {
+          "Category": "Status",
+          "Icon Name": "warning"
+        },
+        {
+          "Category": "Status",
+          "Icon Name": "check"
+        },
+        {
+          "Category": "Status",
+          "Icon Name": "x-circle"
+        }
+      ],
+      "diagnostics": {
+        "abstained": false,
+        "calibration_version": "2026-08-12-v1",
+        "margin": 11.175655604554517,
+        "normalized_query": "warnng caution danger status symbol",
+        "query_rewrites": [],
+        "reason": "matched",
+        "runner_up_score": 2.771682721324879,
+        "search_query": "warnng caution danger status symbol",
+        "token_coverage": 0.6,
+        "top_score": 13.947338325879397
+      },
+      "expectedRoute": null,
+      "grades": [
+        2,
+        0,
+        0
+      ],
+      "id": "domain-icons-warning-typo",
+      "route": "icons",
+      "scores": {
+        "mrr3": 1.0,
+        "ndcg3": 0.8262346571285599,
+        "p1": 1.0,
+        "p3": 0.3333333333333333
+      }
+    },
+    {
+      "actual": [
+        {
+          "Category": "Scroll Reveal",
+          "Intensity Tier": "Subtle",
+          "Trigger": "scroll (viewport enter)"
+        },
+        {
+          "Category": "Scroll Reveal",
+          "Intensity Tier": "Standard",
+          "Trigger": "scroll (viewport enter)"
+        },
+        {
+          "Category": "Scroll Reveal",
+          "Intensity Tier": "Complex",
+          "Trigger": "scroll (continuous scrub)"
+        }
+      ],
+      "diagnostics": {
+        "abstained": false,
+        "calibration_version": "2026-08-12-v1",
+        "margin": 0.47825840830284605,
+        "normalized_query": "GSAP reveal elements when they enter the viewport on scroll",
+        "query_rewrites": [
+          "gsap->animation"
+        ],
+        "reason": "matched",
+        "runner_up_score": 7.3587320792912365,
+        "search_query": "GSAP reveal elements when they enter the viewport on scroll animation",
+        "token_coverage": 0.5555555555555556,
+        "top_score": 7.836990487594083
+      },
+      "expectedRoute": null,
+      "grades": [
+        2,
+        2,
+        1
+      ],
+      "id": "domain-gsap-scroll-reveal",
+      "route": "gsap",
+      "scores": {
+        "mrr3": 1.0,
+        "ndcg3": 1.0,
+        "p1": 1.0,
+        "p3": 1.0
+      }
+    },
+    {
+      "actual": [
+        {
+          "Category": "Loading / Skeleton",
+          "Intensity Tier": "Subtle",
+          "Trigger": "on mount / async wait"
+        },
+        {
+          "Category": "Loading / Skeleton",
+          "Intensity Tier": "Standard",
+          "Trigger": "on mount / async wait"
+        }
+      ],
+      "diagnostics": {
+        "abstained": false,
+        "calibration_version": "2026-08-12-v1",
+        "margin": 0.19985661655781062,
+        "normalized_query": "skeletn shimmer loader while async content waits",
+        "query_rewrites": [],
+        "reason": "matched",
+        "runner_up_score": 3.464834479866627,
+        "search_query": "skeletn shimmer loader while async content waits",
+        "token_coverage": 0.42857142857142855,
+        "top_score": 3.6646910964244377
+      },
+      "expectedRoute": null,
+      "grades": [
+        2,
+        1
+      ],
+      "id": "domain-gsap-skeleton-typo",
+      "route": "gsap",
+      "scores": {
+        "mrr3": 1.0,
+        "ndcg3": 1.0,
+        "p1": 1.0,
+        "p3": 0.6666666666666666
+      }
+    },
+    {
+      "actual": [
+        {
+          "Category": "Async Waterfall",
+          "Issue": "Promise.all Parallel"
+        },
+        {
+          "Category": "Async Waterfall",
+          "Issue": "Dependency Parallelization"
+        },
+        {
+          "Category": "Server",
+          "Issue": "React.cache Dedup"
+        }
+      ],
+      "diagnostics": {
+        "abstained": false,
+        "calibration_version": "2026-08-12-v1",
+        "margin": 9.800420361659564,
+        "normalized_query": "React Promise.all parallel concurrent requests instead of waterfall",
+        "query_rewrites": [],
+        "reason": "matched",
+        "runner_up_score": 8.52666055496694,
+        "search_query": "React Promise.all parallel concurrent requests instead of waterfall",
+        "token_coverage": 1.0,
+        "top_score": 18.327080916626503
+      },
+      "expectedRoute": null,
+      "grades": [
+        2,
+        1,
+        0
+      ],
+      "id": "domain-react-parallel-promises",
+      "route": "react",
+      "scores": {
+        "mrr3": 1.0,
+        "ndcg3": 1.0,
+        "p1": 1.0,
+        "p3": 0.6666666666666666
+      }
+    },
+    {
+      "actual": [
+        {
+          "Category": "Bundle Size",
+          "Issue": "Conditional Loading"
+        },
+        {
+          "Category": "Bundle Size",
+          "Issue": "Preload Intent"
+        },
+        {
+          "Category": "Bundle Size",
+          "Issue": "Dynamic Imports"
+        }
+      ],
+      "diagnostics": {
+        "abstained": false,
+        "calibration_version": "2026-08-12-v1",
+        "margin": 1.0365367412508002,
+        "normalized_query": "load a heavy JavaScript chunk only when the component is needed",
+        "query_rewrites": [],
+        "reason": "matched",
+        "runner_up_score": 6.078726135115516,
+        "search_query": "load a heavy JavaScript chunk only when the component is needed",
+        "token_coverage": 0.75,
+        "top_score": 7.115262876366316
+      },
+      "expectedRoute": null,
+      "grades": [
+        1,
+        0,
+        2
+      ],
+      "id": "domain-react-dynamic-import-paraphrase",
+      "route": "react",
+      "scores": {
+        "mrr3": 1.0,
+        "ndcg3": 0.6885288809404666,
+        "p1": 1.0,
+        "p3": 0.6666666666666666
+      }
+    },
+    {
+      "actual": [
+        {
+          "Category": "Accessibility",
+          "Issue": "Icon Button Labels"
+        },
+        {
+          "Category": "Anti-Pattern",
+          "Issue": "No Gesture-Only Actions"
+        },
+        {
+          "Category": "Accessibility",
+          "Issue": "Decorative Icons"
+        }
+      ],
+      "diagnostics": {
+        "abstained": false,
+        "calibration_version": "2026-08-12-v1",
+        "margin": 11.167539124802396,
+        "normalized_query": "accessible name for an icon-only mobile button",
+        "query_rewrites": [],
+        "reason": "matched",
+        "runner_up_score": 3.626190306648762,
+        "search_query": "accessible name for an icon-only mobile button",
+        "token_coverage": 0.6666666666666666,
+        "top_score": 14.793729431451158
+      },
+      "expectedRoute": null,
+      "grades": [
+        2,
+        0,
+        0
+      ],
+      "id": "domain-web-icon-label",
+      "route": "web",
+      "scores": {
+        "mrr3": 1.0,
+        "ndcg3": 1.0,
+        "p1": 1.0,
+        "p3": 0.3333333333333333
+      }
+    },
+    {
+      "actual": [
+        {
+          "Category": "Typography",
+          "Issue": "Dynamic Type Support"
+        },
+        {
+          "Category": "Performance",
+          "Issue": "Virtualize Long Lists"
+        }
+      ],
+      "diagnostics": {
+        "abstained": false,
+        "calibration_version": "2026-08-12-v1",
+        "margin": 0.10147240671323177,
+        "normalized_query": "keep a very long mobile list smooth without rendering every row",
+        "query_rewrites": [],
+        "reason": "matched",
+        "runner_up_score": 3.2065985190872297,
+        "search_query": "keep a very long mobile list smooth without rendering every row",
+        "token_coverage": 0.2,
+        "top_score": 3.3080709258004615
+      },
+      "expectedRoute": null,
+      "grades": [
+        0,
+        2
+      ],
+      "id": "domain-web-virtual-list-paraphrase",
+      "route": "web",
+      "scores": {
+        "mrr3": 0.5,
+        "ndcg3": 0.6309297535714574,
+        "p1": 0.0,
+        "p3": 0.3333333333333333
+      }
+    },
+    {
+      "actual": [
+        {
+          "Category": "Sans Serif",
+          "Family": "Inter"
+        },
+        {
+          "Category": "Sans Serif",
+          "Family": "Noto Emoji"
+        },
+        {
+          "Category": "Sans Serif",
+          "Family": "Inter Tight"
+        }
+      ],
+      "diagnostics": {
+        "abstained": false,
+        "calibration_version": "2026-08-12-v1",
+        "margin": 0.37747529757203324,
+        "normalized_query": "Inter variable sans serif Google font family",
+        "query_rewrites": [],
+        "reason": "matched",
+        "runner_up_score": 8.721342653469991,
+        "search_query": "Inter variable sans serif Google font family",
+        "token_coverage": 0.8571428571428571,
+        "top_score": 9.098817951042024
+      },
+      "expectedRoute": null,
+      "grades": [
+        2,
+        0,
+        1
+      ],
+      "id": "domain-google-fonts-inter",
+      "route": "google-fonts",
+      "scores": {
+        "mrr3": 1.0,
+        "ndcg3": 0.9639404333166532,
+        "p1": 1.0,
+        "p3": 0.6666666666666666
+      }
+    },
+    {
+      "actual": [
+        {
+          "Category": "Sans Serif",
+          "Family": "Atkinson Hyperlegible"
+        },
+        {
+          "Category": "Sans Serif",
+          "Family": "Atkinson Hyperlegible Mono"
+        },
+        {
+          "Category": "Sans Serif",
+          "Family": "Atkinson Hyperlegible Next"
+        }
+      ],
+      "diagnostics": {
+        "abstained": false,
+        "calibration_version": "2026-08-12-v1",
+        "margin": 0.5106003172771905,
+        "normalized_query": "hyperlegible accessible sans typeface for easier reading",
+        "query_rewrites": [],
+        "reason": "matched",
+        "runner_up_score": 6.32804090990704,
+        "search_query": "hyperlegible accessible sans typeface for easier reading",
+        "token_coverage": 0.3333333333333333,
+        "top_score": 6.8386412271842305
+      },
+      "expectedRoute": null,
+      "grades": [
+        2,
+        0,
+        1
+      ],
+      "id": "domain-google-fonts-atkinson-paraphrase",
+      "route": "google-fonts",
+      "scores": {
+        "mrr3": 1.0,
+        "ndcg3": 0.9639404333166532,
+        "p1": 1.0,
+        "p3": 0.6666666666666666
+      }
+    },
+    {
+      "actual": [
+        {
+          "Category": "Components",
+          "Guideline": "Use standalone components"
+        },
+        {
+          "Category": "Performance",
+          "Guideline": "Minimize bundle with standalone APIs"
+        },
+        {
+          "Category": "Testing",
+          "Guideline": "Use TestBed for component tests"
+        }
+      ],
+      "diagnostics": {
+        "abstained": false,
+        "calibration_version": "2026-08-12-v1",
+        "margin": 6.566552335592893,
+        "normalized_query": "standalone Angular components for a new project",
+        "query_rewrites": [],
+        "reason": "matched",
+        "runner_up_score": 5.449976492762441,
+        "search_query": "standalone Angular components for a new project",
+        "token_coverage": 0.8,
+        "top_score": 12.016528828355334
+      },
+      "expectedRoute": null,
+      "grades": [
+        2,
+        0,
+        0
+      ],
+      "id": "stack-angular-standalone",
+      "route": "stack",
+      "scores": {
+        "mrr3": 1.0,
+        "ndcg3": 1.0,
+        "p1": 1.0,
+        "p3": 0.3333333333333333
+      }
+    },
+    {
+      "actual": [
+        {
+          "Category": "State",
+          "Guideline": "Use signals for local state"
+        },
+        {
+          "Category": "Components",
+          "Guideline": "Use signals for state"
+        },
+        {
+          "Category": "State",
+          "Guideline": "Use NgRx Signal Store for complex state"
+        }
+      ],
+      "diagnostics": {
+        "abstained": false,
+        "calibration_version": "2026-08-12-v1",
+        "margin": 6.6483199763736955,
+        "normalized_query": "reactive local state with Angular signal primitives",
+        "query_rewrites": [],
+        "reason": "matched",
+        "runner_up_score": 8.487784788196057,
+        "search_query": "reactive local state with Angular signal primitives",
+        "token_coverage": 0.8571428571428571,
+        "top_score": 15.136104764569753
+      },
+      "expectedRoute": null,
+      "grades": [
+        0,
+        2,
+        0
+      ],
+      "id": "stack-angular-signals-paraphrase",
+      "route": "stack",
+      "scores": {
+        "mrr3": 0.5,
+        "ndcg3": 0.6309297535714574,
+        "p1": 0.0,
+        "p3": 0.3333333333333333
+      }
+    },
+    {
+      "actual": [
+        {
+          "Category": "Architecture",
+          "Guideline": "Use Islands Architecture"
+        },
+        {
+          "Category": "Markdown",
+          "Guideline": "Use MDX for components"
+        },
+        {
+          "Category": "Architecture",
+          "Guideline": "Default to zero JS"
+        }
+      ],
+      "diagnostics": {
+        "abstained": false,
+        "calibration_version": "2026-08-12-v1",
+        "margin": 7.6348295879388655,
+        "normalized_query": "Astro islands architecture interactive components",
+        "query_rewrites": [],
+        "reason": "matched",
+        "runner_up_score": 5.447744961773134,
+        "search_query": "Astro islands architecture interactive components",
+        "token_coverage": 1.0,
+        "top_score": 13.082574549712
+      },
+      "expectedRoute": null,
+      "grades": [
+        2,
+        0,
+        0
+      ],
+      "id": "stack-astro-islands",
+      "route": "stack",
+      "scores": {
+        "mrr3": 1.0,
+        "ndcg3": 1.0,
+        "p1": 1.0,
+        "p3": 0.3333333333333333
+      }
+    },
+    {
+      "actual": [],
+      "diagnostics": {
+        "abstained": true,
+        "calibration_version": "2026-08-12-v1",
+        "margin": 4.052169367659749,
+        "normalized_query": "ship no browser JavaScript unless interaction requires it",
+        "query_rewrites": [],
+        "reason": "low-confidence",
+        "runner_up_score": 0.0,
+        "search_query": "ship no browser JavaScript unless interaction requires it",
+        "token_coverage": 0.16666666666666666,
+        "top_score": 4.052169367659749
+      },
+      "expectedRoute": null,
+      "grades": [],
+      "id": "stack-astro-zero-js-paraphrase",
+      "route": "stack",
+      "scores": {
+        "mrr3": 0.0,
+        "ndcg3": 0.0,
+        "p1": 0.0,
+        "p3": 0.0
+      }
+    },
+    {
+      "actual": [
+        {
+          "Category": "XAML",
+          "Guideline": "Use Avalonia XAML namespace"
+        },
+        {
+          "Category": "XAML",
+          "Guideline": "Enable compiled bindings globally"
+        },
+        {
+          "Category": "Animation",
+          "Guideline": "Use CSS-like keyframe animations"
+        }
+      ],
+      "diagnostics": {
+        "abstained": false,
+        "calibration_version": "2026-08-12-v1",
+        "margin": 8.24735172482831,
+        "normalized_query": "Avalonia XAML namespace declaration",
+        "query_rewrites": [],
+        "reason": "matched",
+        "runner_up_score": 3.6580251097976015,
+        "search_query": "Avalonia XAML namespace declaration",
+        "token_coverage": 0.75,
+        "top_score": 11.905376834625912
+      },
+      "expectedRoute": null,
+      "grades": [
+        2,
+        0,
+        0
+      ],
+      "id": "stack-avalonia-namespace",
+      "route": "stack",
+      "scores": {
+        "mrr3": 1.0,
+        "ndcg3": 1.0,
+        "p1": 1.0,
+        "p3": 0.3333333333333333
+      }
+    },
+    {
+      "actual": [
+        {
+          "Category": "XAML",
+          "Guideline": "Use compiled bindings with x:DataType"
+        },
+        {
+          "Category": "XAML",
+          "Guideline": "Enable compiled bindings globally"
+        },
+        {
+          "Category": "Performance",
+          "Guideline": "Use compiled bindings and TrimmerRoots.xml for PublishAot"
+        }
+      ],
+      "diagnostics": {
+        "abstained": false,
+        "calibration_version": "2026-08-12-v1",
+        "margin": 3.6606165467089795,
+        "normalized_query": "type checked compiled binding with x DataType",
+        "query_rewrites": [],
+        "reason": "matched",
+        "runner_up_score": 7.811951298927232,
+        "search_query": "type checked compiled binding with x DataType",
+        "token_coverage": 0.8333333333333334,
+        "top_score": 11.472567845636211
+      },
+      "expectedRoute": null,
+      "grades": [
+        2,
+        0,
+        0
+      ],
+      "id": "stack-avalonia-compiled-binding",
+      "route": "stack",
+      "scores": {
+        "mrr3": 1.0,
+        "ndcg3": 1.0,
+        "p1": 1.0,
+        "p3": 0.3333333333333333
+      }
+    },
+    {
+      "actual": [
+        {
+          "Category": "Widgets",
+          "Guideline": "Use StatelessWidget when possible"
+        },
+        {
+          "Category": "State",
+          "Guideline": "Prefer Riverpod or Provider"
+        },
+        {
+          "Category": "State",
+          "Guideline": "Use setState correctly"
+        }
+      ],
+      "diagnostics": {
+        "abstained": false,
+        "calibration_version": "2026-08-12-v1",
+        "margin": 3.902365771945936,
+        "normalized_query": "prefer StatelessWidget when Flutter UI has no mutable state",
+        "query_rewrites": [],
+        "reason": "matched",
+        "runner_up_score": 6.130414879101661,
+        "search_query": "prefer StatelessWidget when Flutter UI has no mutable state",
+        "token_coverage": 0.75,
+        "top_score": 10.032780651047597
+      },
+      "expectedRoute": null,
+      "grades": [
+        2,
+        0,
+        0
+      ],
+      "id": "stack-flutter-stateless",
+      "route": "stack",
+      "scores": {
+        "mrr3": 1.0,
+        "ndcg3": 1.0,
+        "p1": 1.0,
+        "p3": 0.3333333333333333
+      }
+    },
+    {
+      "actual": [
+        {
+          "Category": "Widgets",
+          "Guideline": "Use const constructors"
+        },
+        {
+          "Category": "Performance",
+          "Guideline": "Use const widgets"
+        },
+        {
+          "Category": "Widgets",
+          "Guideline": "Use StatelessWidget when possible"
+        }
+      ],
+      "diagnostics": {
+        "abstained": false,
+        "calibration_version": "2026-08-12-v1",
+        "margin": 2.859752022203951,
+        "normalized_query": "reduce Flutter rebuild cost with immutable compile-time widgets",
+        "query_rewrites": [],
+        "reason": "matched",
+        "runner_up_score": 6.347284919209351,
+        "search_query": "reduce Flutter rebuild cost with immutable compile-time widgets",
+        "token_coverage": 0.8888888888888888,
+        "top_score": 9.207036941413302
+      },
+      "expectedRoute": null,
+      "grades": [
+        2,
+        0,
+        0
+      ],
+      "id": "stack-flutter-const-paraphrase",
+      "route": "stack",
+      "scores": {
+        "mrr3": 1.0,
+        "ndcg3": 1.0,
+        "p1": 1.0,
+        "p3": 0.3333333333333333
+      }
+    },
+    {
+      "actual": [
+        {
+          "Category": "Z-Index",
+          "Guideline": "Use Tailwind z-* scale"
+        },
+        {
+          "Category": "Spacing",
+          "Guideline": "Consistent spacing scale"
+        },
+        {
+          "Category": "Performance",
+          "Guideline": "Declare non-detected sources"
+        }
+      ],
+      "diagnostics": {
+        "abstained": false,
+        "calibration_version": "2026-08-12-v1",
+        "margin": 3.634601707496982,
+        "normalized_query": "Tailwind z-index utility scale for layered UI",
+        "query_rewrites": [],
+        "reason": "matched",
+        "runner_up_score": 7.208515535060073,
+        "search_query": "Tailwind z-index utility scale for layered UI",
+        "token_coverage": 0.8333333333333334,
+        "top_score": 10.843117242557055
+      },
+      "expectedRoute": null,
+      "grades": [
+        2,
+        0,
+        0
+      ],
+      "id": "stack-html-tailwind-z-index",
+      "route": "stack",
+      "scores": {
+        "mrr3": 1.0,
+        "ndcg3": 1.0,
+        "p1": 1.0,
+        "p3": 0.3333333333333333
+      }
+    },
+    {
+      "actual": [
+        {
+          "Category": "Animation",
+          "Guideline": "Hover transitions"
+        },
+        {
+          "Category": "Layout",
+          "Guideline": "Container queries"
+        },
+        {
+          "Category": "Animation",
+          "Guideline": "Transition duration"
+        }
+      ],
+      "diagnostics": {
+        "abstained": false,
+        "calibration_version": "2026-08-12-v1",
+        "margin": 2.919055718924226,
+        "normalized_query": "smooth transition when a Tailwind element is hovered",
+        "query_rewrites": [],
+        "reason": "matched",
+        "runner_up_score": 4.947978221881804,
+        "search_query": "smooth transition when a Tailwind element is hovered",
+        "token_coverage": 0.6666666666666666,
+        "top_score": 7.86703394080603
+      },
+      "expectedRoute": null,
+      "grades": [
+        2,
+        0,
+        0
+      ],
+      "id": "stack-html-tailwind-hover",
+      "route": "stack",
+      "scores": {
+        "mrr3": 1.0,
+        "ndcg3": 1.0,
+        "p1": 1.0,
+        "p3": 0.3333333333333333
+      }
+    },
+    {
+      "actual": [
+        {
+          "Category": "Application",
+          "Guideline": "Start UI from Application subclass"
+        },
+        {
+          "Category": "Threading",
+          "Guideline": "Update UI only on FX thread"
+        },
+        {
+          "Category": "Theme",
+          "Guideline": "Use AtlantaFX as the enterprise theme baseline"
+        }
+      ],
+      "diagnostics": {
+        "abstained": false,
+        "calibration_version": "2026-08-12-v1",
+        "margin": 6.1251861498568685,
+        "normalized_query": "launch JavaFX UI from an Application subclass",
+        "query_rewrites": [],
+        "reason": "matched",
+        "runner_up_score": 6.8361655485691815,
+        "search_query": "launch JavaFX UI from an Application subclass",
+        "token_coverage": 0.8333333333333334,
+        "top_score": 12.96135169842605
+      },
+      "expectedRoute": null,
+      "grades": [
+        2,
+        0,
+        0
+      ],
+      "id": "stack-javafx-application",
+      "route": "stack",
+      "scores": {
+        "mrr3": 1.0,
+        "ndcg3": 1.0,
+        "p1": 1.0,
+        "p3": 0.3333333333333333
+      }
+    },
+    {
+      "actual": [
+        {
+          "Category": "Threading",
+          "Guideline": "Keep work off the FX Application Thread"
+        },
+        {
+          "Category": "Threading",
+          "Guideline": "Update UI only on FX thread"
+        },
+        {
+          "Category": "CSS",
+          "Guideline": "Use design tokens through looked-up colors"
+        }
+      ],
+      "diagnostics": {
+        "abstained": false,
+        "calibration_version": "2026-08-12-v1",
+        "margin": 2.555947932900576,
+        "normalized_query": "prevent slow background work from freezing the FX application thread",
+        "query_rewrites": [],
+        "reason": "matched",
+        "runner_up_score": 12.976523086530914,
+        "search_query": "prevent slow background work from freezing the FX application thread",
+        "token_coverage": 0.6666666666666666,
+        "top_score": 15.53247101943149
+      },
+      "expectedRoute": null,
+      "grades": [
+        2,
+        0,
+        0
+      ],
+      "id": "stack-javafx-threading-paraphrase",
+      "route": "stack",
+      "scores": {
+        "mrr3": 1.0,
+        "ndcg3": 1.0,
+        "p1": 1.0,
+        "p3": 0.3333333333333333
+      }
+    },
+    {
+      "actual": [
+        {
+          "Category": "Composable",
+          "Guideline": "Pure UI composables"
+        },
+        {
+          "Category": "State",
+          "Guideline": "Snapshot state only"
+        },
+        {
+          "Category": "Composable",
+          "Guideline": "Small composables"
+        }
+      ],
+      "diagnostics": {
+        "abstained": false,
+        "calibration_version": "2026-08-12-v1",
+        "margin": 2.5467806853020214,
+        "normalized_query": "pure Jetpack Compose UI composables",
+        "query_rewrites": [],
+        "reason": "matched",
+        "runner_up_score": 5.311775987059262,
+        "search_query": "pure Jetpack Compose UI composables",
+        "token_coverage": 0.8,
+        "top_score": 7.858556672361283
+      },
+      "expectedRoute": null,
+      "grades": [
+        2,
+        0,
+        0
+      ],
+      "id": "stack-compose-pure-ui",
+      "route": "stack",
+      "scores": {
+        "mrr3": 1.0,
+        "ndcg3": 1.0,
+        "p1": 1.0,
+        "p3": 0.3333333333333333
+      }
+    },
+    {
+      "actual": [
+        {
+          "Category": "State",
+          "Guideline": "Snapshot state only"
+        },
+        {
+          "Category": "Layout",
+          "Guideline": "Avoid nested scroll containers"
+        },
+        {
+          "Category": "State",
+          "Guideline": "Single source of truth"
+        }
+      ],
+      "diagnostics": {
+        "abstained": false,
+        "calibration_version": "2026-08-12-v1",
+        "margin": 1.1660673240932597,
+        "normalized_query": "one authoritative owner for Compose screen state",
+        "query_rewrites": [],
+        "reason": "matched",
+        "runner_up_score": 5.439024678588048,
+        "search_query": "one authoritative owner for Compose screen state",
+        "token_coverage": 0.6666666666666666,
+        "top_score": 6.605092002681308
+      },
+      "expectedRoute": null,
+      "grades": [
+        0,
+        0,
+        2
+      ],
+      "id": "stack-compose-single-source",
+      "route": "stack",
+      "scores": {
+        "mrr3": 0.3333333333333333,
+        "ndcg3": 0.5,
+        "p1": 0.0,
+        "p3": 0.3333333333333333
+      }
+    },
+    {
+      "actual": [
+        {
+          "Category": "Blade Templates",
+          "Guideline": "Use Blade components for reusable UI"
+        },
+        {
+          "Category": "Components",
+          "Guideline": "Use anonymous Blade components for UI primitives"
+        },
+        {
+          "Category": "Styling",
+          "Guideline": "Set up Tailwind CSS via Vite"
+        }
+      ],
+      "diagnostics": {
+        "abstained": false,
+        "calibration_version": "2026-08-12-v1",
+        "margin": 1.8287280502716037,
+        "normalized_query": "reusable Laravel Blade UI components",
+        "query_rewrites": [],
+        "reason": "matched",
+        "runner_up_score": 9.707535053949467,
+        "search_query": "reusable Laravel Blade UI components",
+        "token_coverage": 1.0,
+        "top_score": 11.53626310422107
+      },
+      "expectedRoute": null,
+      "grades": [
+        2,
+        0,
+        0
+      ],
+      "id": "stack-laravel-blade-component",
+      "route": "stack",
+      "scores": {
+        "mrr3": 1.0,
+        "ndcg3": 1.0,
+        "p1": 1.0,
+        "p3": 0.3333333333333333
+      }
+    },
+    {
+      "actual": [
+        {
+          "Category": "Blade Templates",
+          "Guideline": "Use @props for component type-safety"
+        },
+        {
+          "Category": "Livewire",
+          "Guideline": "Bind inputs with wire:model"
+        },
+        {
+          "Category": "Blade Templates",
+          "Guideline": "Use Blade components for reusable UI"
+        }
+      ],
+      "diagnostics": {
+        "abstained": false,
+        "calibration_version": "2026-08-12-v1",
+        "margin": 7.6191267013724495,
+        "normalized_query": "declare typed inputs for a Blade component using props",
+        "query_rewrites": [],
+        "reason": "matched",
+        "runner_up_score": 6.048108478173402,
+        "search_query": "declare typed inputs for a Blade component using props",
+        "token_coverage": 0.7142857142857143,
+        "top_score": 13.667235179545852
+      },
+      "expectedRoute": null,
+      "grades": [
+        2,
+        0,
+        0
+      ],
+      "id": "stack-laravel-props",
+      "route": "stack",
+      "scores": {
+        "mrr3": 1.0,
+        "ndcg3": 1.0,
+        "p1": 1.0,
+        "p3": 0.3333333333333333
+      }
+    },
+    {
+      "actual": [
+        {
+          "Category": "Routing",
+          "Guideline": "Use App Router for new projects"
+        },
+        {
+          "Category": "Routing",
+          "Guideline": "Use file-based routing"
+        },
+        {
+          "Category": "Deployment",
+          "Guideline": "Use Vercel for easiest deploy"
+        }
+      ],
+      "diagnostics": {
+        "abstained": false,
+        "calibration_version": "2026-08-12-v1",
+        "margin": 8.675077924446402,
+        "normalized_query": "Next.js App Router for a new project",
+        "query_rewrites": [],
+        "reason": "matched",
+        "runner_up_score": 5.757326980617933,
+        "search_query": "Next.js App Router for a new project",
+        "token_coverage": 0.8333333333333334,
+        "top_score": 14.432404905064335
+      },
+      "expectedRoute": null,
+      "grades": [
+        2,
+        0,
+        0
+      ],
+      "id": "stack-nextjs-app-router",
+      "route": "stack",
+      "scores": {
+        "mrr3": 1.0,
+        "ndcg3": 1.0,
+        "p1": 1.0,
+        "p3": 0.3333333333333333
+      }
+    },
+    {
+      "actual": [
+        {
+          "Category": "Rendering",
+          "Guideline": "Use Server Components by default"
+        },
+        {
+          "Category": "Rendering",
+          "Guideline": "Use streaming for better UX"
+        },
+        {
+          "Category": "Environment",
+          "Guideline": "Use NEXT_PUBLIC prefix"
+        }
+      ],
+      "diagnostics": {
+        "abstained": false,
+        "calibration_version": "2026-08-12-v1",
+        "margin": 1.3338457057594848,
+        "normalized_query": "render on the server by default and opt into client boundaries",
+        "query_rewrites": [],
+        "reason": "matched",
+        "runner_up_score": 9.1240740008518,
+        "search_query": "render on the server by default and opt into client boundaries",
+        "token_coverage": 0.7142857142857143,
+        "top_score": 10.457919706611285
+      },
+      "expectedRoute": null,
+      "grades": [
+        2,
+        0,
+        0
+      ],
+      "id": "stack-nextjs-server-components",
+      "route": "stack",
+      "scores": {
+        "mrr3": 1.0,
+        "ndcg3": 1.0,
+        "p1": 1.0,
+        "p3": 0.3333333333333333
+      }
+    },
+    {
+      "actual": [
+        {
+          "Category": "Installation",
+          "Guideline": "Add Nuxt UI module"
+        },
+        {
+          "Category": "Installation",
+          "Guideline": "Let Nuxt UI declare module dependencies"
+        },
+        {
+          "Category": "Icons",
+          "Guideline": "Install required icon collections locally"
+        }
+      ],
+      "diagnostics": {
+        "abstained": false,
+        "calibration_version": "2026-08-12-v1",
+        "margin": 3.1826026810457666,
+        "normalized_query": "install the Nuxt UI module",
+        "query_rewrites": [],
+        "reason": "matched",
+        "runner_up_score": 9.430568542253825,
+        "search_query": "install the Nuxt UI module",
+        "token_coverage": 1.0,
+        "top_score": 12.613171223299592
+      },
+      "expectedRoute": null,
+      "grades": [
+        2,
+        0,
+        0
+      ],
+      "id": "stack-nuxt-ui-module",
+      "route": "stack",
+      "scores": {
+        "mrr3": 1.0,
+        "ndcg3": 1.0,
+        "p1": 1.0,
+        "p3": 0.3333333333333333
+      }
+    },
+    {
+      "actual": [
+        {
+          "Category": "Components",
+          "Guideline": "Use semantic color props"
+        },
+        {
+          "Category": "Theming",
+          "Guideline": "Use @theme directive for custom colors"
+        },
+        {
+          "Category": "Installation",
+          "Guideline": "Let Nuxt UI declare module dependencies"
+        }
+      ],
+      "diagnostics": {
+        "abstained": false,
+        "calibration_version": "2026-08-12-v1",
+        "margin": 0.48203542343964934,
+        "normalized_query": "style Nuxt UI components through meaning-based color props",
+        "query_rewrites": [],
+        "reason": "matched",
+        "runner_up_score": 7.263126698989611,
+        "search_query": "style Nuxt UI components through meaning-based color props",
+        "token_coverage": 0.7777777777777778,
+        "top_score": 7.74516212242926
+      },
+      "expectedRoute": null,
+      "grades": [
+        2,
+        0,
+        0
+      ],
+      "id": "stack-nuxt-ui-semantic-color",
+      "route": "stack",
+      "scores": {
+        "mrr3": 1.0,
+        "ndcg3": 1.0,
+        "p1": 1.0,
+        "p3": 0.3333333333333333
+      }
+    },
+    {
+      "actual": [
+        {
+          "Category": "Routing",
+          "Guideline": "Use file-based routing"
+        },
+        {
+          "Category": "Routing",
+          "Guideline": "Define page metadata with definePageMeta"
+        },
+        {
+          "Category": "Lifecycle",
+          "Guideline": "Use onPrehydrate for pre-hydration logic"
+        }
+      ],
+      "diagnostics": {
+        "abstained": false,
+        "calibration_version": "2026-08-12-v1",
+        "margin": 5.567033399578623,
+        "normalized_query": "Nuxt file-based page routing",
+        "query_rewrites": [],
+        "reason": "matched",
+        "runner_up_score": 7.104908839950289,
+        "search_query": "Nuxt file-based page routing",
+        "token_coverage": 1.0,
+        "top_score": 12.671942239528912
+      },
+      "expectedRoute": null,
+      "grades": [
+        2,
+        0,
+        0
+      ],
+      "id": "stack-nuxtjs-file-routing",
+      "route": "stack",
+      "scores": {
+        "mrr3": 1.0,
+        "ndcg3": 1.0,
+        "p1": 1.0,
+        "p3": 0.3333333333333333
+      }
+    },
+    {
+      "actual": [
+        {
+          "Category": "Rendering",
+          "Guideline": "Use .client suffix for client-only components"
+        },
+        {
+          "Category": "Rendering",
+          "Guideline": "Use .server suffix for server-only components"
+        },
+        {
+          "Category": "Plugins",
+          "Guideline": "Use .client or .server suffix"
+        }
+      ],
+      "diagnostics": {
+        "abstained": false,
+        "calibration_version": "2026-08-12-v1",
+        "margin": 1.143178773862184,
+        "normalized_query": "server render Nuxt pages unless a client-only boundary is necessary",
+        "query_rewrites": [],
+        "reason": "matched",
+        "runner_up_score": 9.132761728060801,
+        "search_query": "server render Nuxt pages unless a client-only boundary is necessary",
+        "token_coverage": 0.6666666666666666,
+        "top_score": 10.275940501922985
+      },
+      "expectedRoute": null,
+      "grades": [
+        0,
+        0,
+        0
+      ],
+      "id": "stack-nuxtjs-ssr",
+      "route": "stack",
+      "scores": {
+        "mrr3": 0.0,
+        "ndcg3": 0.0,
+        "p1": 0.0,
+        "p3": 0.0
+      }
+    },
+    {
+      "actual": [
+        {
+          "Category": "Components",
+          "Guideline": "Use functional components"
+        },
+        {
+          "Category": "Animation",
+          "Guideline": "Use gesture handler"
+        },
+        {
+          "Category": "Native",
+          "Guideline": "Use Expo when possible"
+        }
+      ],
+      "diagnostics": {
+        "abstained": false,
+        "calibration_version": "2026-08-12-v1",
+        "margin": 4.989968098406658,
+        "normalized_query": "functional React Native components",
+        "query_rewrites": [],
+        "reason": "matched",
+        "runner_up_score": 4.1125670990542265,
+        "search_query": "functional React Native components",
+        "token_coverage": 1.0,
+        "top_score": 9.102535197460885
+      },
+      "expectedRoute": null,
+      "grades": [
+        2,
+        0,
+        0
+      ],
+      "id": "stack-react-native-functional",
+      "route": "stack",
+      "scores": {
+        "mrr3": 1.0,
+        "ndcg3": 1.0,
+        "p1": 1.0,
+        "p3": 0.3333333333333333
+      }
+    },
+    {
+      "actual": [
+        {
+          "Category": "Styling",
+          "Guideline": "Avoid inline styles"
+        },
+        {
+          "Category": "Styling",
+          "Guideline": "Use StyleSheet.create"
+        },
+        {
+          "Category": "Testing",
+          "Guideline": "Use React Native Testing Library"
+        }
+      ],
+      "diagnostics": {
+        "abstained": false,
+        "calibration_version": "2026-08-12-v1",
+        "margin": 3.145960230049914,
+        "normalized_query": "define reusable native styles outside render instead of inline objects",
+        "query_rewrites": [],
+        "reason": "matched",
+        "runner_up_score": 9.472145189558896,
+        "search_query": "define reusable native styles outside render instead of inline objects",
+        "token_coverage": 0.5555555555555556,
+        "top_score": 12.61810541960881
+      },
+      "expectedRoute": null,
+      "grades": [
+        0,
+        2,
+        0
+      ],
+      "id": "stack-react-native-stylesheet",
+      "route": "stack",
+      "scores": {
+        "mrr3": 0.5,
+        "ndcg3": 0.6309297535714574,
+        "p1": 0.0,
+        "p3": 0.3333333333333333
+      }
+    },
+    {
+      "actual": [
+        {
+          "Category": "State",
+          "Guideline": "Use useState for local state"
+        },
+        {
+          "Category": "State",
+          "Guideline": "Initialize state lazily"
+        },
+        {
+          "Category": "Hooks",
+          "Guideline": "Follow rules of hooks"
+        }
+      ],
+      "diagnostics": {
+        "abstained": false,
+        "calibration_version": "2026-08-12-v1",
+        "margin": 6.437424023576185,
+        "normalized_query": "React useState for component local state",
+        "query_rewrites": [],
+        "reason": "matched",
+        "runner_up_score": 6.055591405394695,
+        "search_query": "React useState for component local state",
+        "token_coverage": 1.0,
+        "top_score": 12.49301542897088
+      },
+      "expectedRoute": null,
+      "grades": [
+        2,
+        0,
+        0
+      ],
+      "id": "stack-react-usestate",
+      "route": "stack",
+      "scores": {
+        "mrr3": 1.0,
+        "ndcg3": 1.0,
+        "p1": 1.0,
+        "p3": 0.3333333333333333
+      }
+    },
+    {
+      "actual": [
+        {
+          "Category": "Effects",
+          "Guideline": "Clean up effects"
+        },
+        {
+          "Category": "Effects",
+          "Guideline": "Specify dependencies correctly"
+        },
+        {
+          "Category": "Hooks",
+          "Guideline": "Use an Effect Event for non-reactive effect logic"
+        }
+      ],
+      "diagnostics": {
+        "abstained": false,
+        "calibration_version": "2026-08-12-v1",
+        "margin": 1.6932484336579066,
+        "normalized_query": "remove subscriptions and timers when a React effect unmounts",
+        "query_rewrites": [],
+        "reason": "matched",
+        "runner_up_score": 7.784357771546359,
+        "search_query": "remove subscriptions and timers when a React effect unmounts",
+        "token_coverage": 0.7142857142857143,
+        "top_score": 9.477606205204266
+      },
+      "expectedRoute": null,
+      "grades": [
+        2,
+        0,
+        0
+      ],
+      "id": "stack-react-effect-cleanup",
+      "route": "stack",
+      "scores": {
+        "mrr3": 1.0,
+        "ndcg3": 1.0,
+        "p1": 1.0,
+        "p3": 0.3333333333333333
+      }
+    },
+    {
+      "actual": [
+        {
+          "Category": "Setup",
+          "Guideline": "Use CLI for installation"
+        },
+        {
+          "Category": "Registry",
+          "Guideline": "Inspect CLI changes before writing"
+        },
+        {
+          "Category": "Registry",
+          "Guideline": "Install public GitHub registries directly"
+        }
+      ],
+      "diagnostics": {
+        "abstained": false,
+        "calibration_version": "2026-08-12-v1",
+        "margin": 0.5128477752968479,
+        "normalized_query": "install shadcn components with the CLI",
+        "query_rewrites": [],
+        "reason": "matched",
+        "runner_up_score": 6.736161519655241,
+        "search_query": "install shadcn components with the CLI",
+        "token_coverage": 1.0,
+        "top_score": 7.249009294952089
+      },
+      "expectedRoute": null,
+      "grades": [
+        2,
+        0,
+        0
+      ],
+      "id": "stack-shadcn-cli",
+      "route": "stack",
+      "scores": {
+        "mrr3": 1.0,
+        "ndcg3": 1.0,
+        "p1": 1.0,
+        "p3": 0.3333333333333333
+      }
+    },
+    {
+      "actual": [
+        {
+          "Category": "Theming",
+          "Guideline": "Use CSS variables for colors"
+        },
+        {
+          "Category": "Theming",
+          "Guideline": "Support dark mode"
+        },
+        {
+          "Category": "Customization",
+          "Guideline": "Create custom components"
+        }
+      ],
+      "diagnostics": {
+        "abstained": false,
+        "calibration_version": "2026-08-12-v1",
+        "margin": 3.986634966226747,
+        "normalized_query": "theme shadcn semantic colors through custom properties",
+        "query_rewrites": [],
+        "reason": "matched",
+        "runner_up_score": 6.805101440815466,
+        "search_query": "theme shadcn semantic colors through custom properties",
+        "token_coverage": 0.8571428571428571,
+        "top_score": 10.791736407042213
+      },
+      "expectedRoute": null,
+      "grades": [
+        2,
+        0,
+        0
+      ],
+      "id": "stack-shadcn-css-vars",
+      "route": "stack",
+      "scores": {
+        "mrr3": 1.0,
+        "ndcg3": 1.0,
+        "p1": 1.0,
+        "p3": 0.3333333333333333
+      }
+    },
+    {
+      "actual": [
+        {
+          "Category": "Reactivity",
+          "Guideline": "Use $state in Svelte 5"
+        },
+        {
+          "Category": "Stores",
+          "Guideline": "Use writable for mutable state"
+        },
+        {
+          "Category": "SvelteKit",
+          "Guideline": "Use $app/state for current app state"
+        }
+      ],
+      "diagnostics": {
+        "abstained": false,
+        "calibration_version": "2026-08-12-v1",
+        "margin": 0.7256931731283558,
+        "normalized_query": "Svelte 5 $state rune for reactive state",
+        "query_rewrites": [],
+        "reason": "matched",
+        "runner_up_score": 7.628254489631688,
+        "search_query": "Svelte 5 $state rune for reactive state",
+        "token_coverage": 1.0,
+        "top_score": 8.353947662760044
+      },
+      "expectedRoute": null,
+      "grades": [
+        2,
+        0,
+        0
+      ],
+      "id": "stack-svelte-state",
+      "route": "stack",
+      "scores": {
+        "mrr3": 1.0,
+        "ndcg3": 1.0,
+        "p1": 1.0,
+        "p3": 0.3333333333333333
+      }
+    },
+    {
+      "actual": [
+        {
+          "Category": "Reactivity",
+          "Guideline": "Use $effect for side effects"
+        },
+        {
+          "Category": "Lifecycle",
+          "Guideline": "Avoid beforeUpdate and afterUpdate"
+        },
+        {
+          "Category": "Lifecycle",
+          "Guideline": "Use onMount for initialization"
+        }
+      ],
+      "diagnostics": {
+        "abstained": false,
+        "calibration_version": "2026-08-12-v1",
+        "margin": 3.023618467174618,
+        "normalized_query": "run a Svelte 5 side effect when reactive dependencies change",
+        "query_rewrites": [],
+        "reason": "matched",
+        "runner_up_score": 7.882700190739712,
+        "search_query": "run a Svelte 5 side effect when reactive dependencies change",
+        "token_coverage": 0.875,
+        "top_score": 10.90631865791433
+      },
+      "expectedRoute": null,
+      "grades": [
+        2,
+        0,
+        0
+      ],
+      "id": "stack-svelte-effect",
+      "route": "stack",
+      "scores": {
+        "mrr3": 1.0,
+        "ndcg3": 1.0,
+        "p1": 1.0,
+        "p3": 0.3333333333333333
+      }
+    },
+    {
+      "actual": [
+        {
+          "Category": "State",
+          "Guideline": "Use @State for local state"
+        },
+        {
+          "Category": "Views",
+          "Guideline": "Use struct for views"
+        },
+        {
+          "Category": "State",
+          "Guideline": "Use @EnvironmentObject for shared state"
+        }
+      ],
+      "diagnostics": {
+        "abstained": false,
+        "calibration_version": "2026-08-12-v1",
+        "margin": 7.6971805007386305,
+        "normalized_query": "SwiftUI @State for view-local value state",
+        "query_rewrites": [],
+        "reason": "matched",
+        "runner_up_score": 7.6341573731484615,
+        "search_query": "SwiftUI @State for view-local value state",
+        "token_coverage": 1.0,
+        "top_score": 15.331337873887092
+      },
+      "expectedRoute": null,
+      "grades": [
+        2,
+        0,
+        0
+      ],
+      "id": "stack-swiftui-state",
+      "route": "stack",
+      "scores": {
+        "mrr3": 1.0,
+        "ndcg3": 1.0,
+        "p1": 1.0,
+        "p3": 0.3333333333333333
+      }
+    },
+    {
+      "actual": [
+        {
+          "Category": "Navigation",
+          "Guideline": "Use NavigationStack or NavigationSplitView (iOS 16+)"
+        },
+        {
+          "Category": "Observable",
+          "Guideline": "Use @Observable macro (iOS 17+)"
+        },
+        {
+          "Category": "Navigation",
+          "Guideline": "Use navigationDestination"
+        }
+      ],
+      "diagnostics": {
+        "abstained": false,
+        "calibration_version": "2026-08-12-v1",
+        "margin": 5.209907857758237,
+        "normalized_query": "modern value-driven iOS navigation container replacing NavigationView",
+        "query_rewrites": [],
+        "reason": "matched",
+        "runner_up_score": 5.839858032176647,
+        "search_query": "modern value-driven iOS navigation container replacing NavigationView",
+        "token_coverage": 0.625,
+        "top_score": 11.049765889934884
+      },
+      "expectedRoute": null,
+      "grades": [
+        2,
+        0,
+        0
+      ],
+      "id": "stack-swiftui-navigation",
+      "route": "stack",
+      "scores": {
+        "mrr3": 1.0,
+        "ndcg3": 1.0,
+        "p1": 1.0,
+        "p3": 0.3333333333333333
+      }
+    },
+    {
+      "actual": [
+        {
+          "Category": "Setup",
+          "Guideline": "Import OrbitControls from Three.js Addons"
+        },
+        {
+          "Category": "Camera",
+          "Guideline": "OrbitControls vs GSAP Camera Rig"
+        },
+        {
+          "Category": "Production",
+          "Guideline": "Bundler Stack for Production"
+        }
+      ],
+      "diagnostics": {
+        "abstained": false,
+        "calibration_version": "2026-08-12-v1",
+        "margin": 7.076134819591472,
+        "normalized_query": "Three.js OrbitControls must be imported separately",
+        "query_rewrites": [],
+        "reason": "matched",
+        "runner_up_score": 8.693423066563268,
+        "search_query": "Three.js OrbitControls must be imported separately",
+        "token_coverage": 1.0,
+        "top_score": 15.76955788615474
+      },
+      "expectedRoute": null,
+      "grades": [
+        2,
+        0,
+        0
+      ],
+      "id": "stack-threejs-orbitcontrols",
+      "route": "stack",
+      "scores": {
+        "mrr3": 1.0,
+        "ndcg3": 1.0,
+        "p1": 1.0,
+        "p3": 0.3333333333333333
+      }
+    },
+    {
+      "actual": [
+        {
+          "Category": "Setup",
+          "Guideline": "Pixel Ratio Cap at 2"
+        },
+        {
+          "Category": "Setup",
+          "Guideline": "Single Renderer Per Page"
+        },
+        {
+          "Category": "Animation",
+          "Guideline": "Pause Render Loop on Tab Hidden"
+        }
+      ],
+      "diagnostics": {
+        "abstained": false,
+        "calibration_version": "2026-08-12-v1",
+        "margin": 3.10124290892679,
+        "normalized_query": "avoid excessive GPU work on retina screens by limiting renderer DPR",
+        "query_rewrites": [],
+        "reason": "matched",
+        "runner_up_score": 4.439617524910303,
+        "search_query": "avoid excessive GPU work on retina screens by limiting renderer DPR",
+        "token_coverage": 0.4444444444444444,
+        "top_score": 7.540860433837093
+      },
+      "expectedRoute": null,
+      "grades": [
+        2,
+        0,
+        0
+      ],
+      "id": "stack-threejs-pixel-ratio",
+      "route": "stack",
+      "scores": {
+        "mrr3": 1.0,
+        "ndcg3": 1.0,
+        "p1": 1.0,
+        "p3": 0.3333333333333333
+      }
+    },
+    {
+      "actual": [
+        {
+          "Category": "XAML",
+          "Guideline": "Use Uno.WinUI not Uno.UI for new projects"
+        },
+        {
+          "Category": "XAML",
+          "Guideline": "Use WinUI XAML API surface"
+        },
+        {
+          "Category": "XAML",
+          "Guideline": "Check API implementation status"
+        }
+      ],
+      "diagnostics": {
+        "abstained": false,
+        "calibration_version": "2026-08-12-v1",
+        "margin": 2.18446684719442,
+        "normalized_query": "Uno Platform WinUI XAML API surface",
+        "query_rewrites": [],
+        "reason": "matched",
+        "runner_up_score": 13.621042404831824,
+        "search_query": "Uno Platform WinUI XAML API surface",
+        "token_coverage": 1.0,
+        "top_score": 15.805509252026244
+      },
+      "expectedRoute": null,
+      "grades": [
+        0,
+        2,
+        0
+      ],
+      "id": "stack-uno-winui-xaml",
+      "route": "stack",
+      "scores": {
+        "mrr3": 0.5,
+        "ndcg3": 0.6309297535714574,
+        "p1": 0.0,
+        "p3": 0.3333333333333333
+      }
+    },
+    {
+      "actual": [
+        {
+          "Category": "XAML",
+          "Guideline": "Use Uno.WinUI not Uno.UI for new projects"
+        },
+        {
+          "Category": "Architecture",
+          "Guideline": "Use Uno.Sdk with UnoFeatures"
+        },
+        {
+          "Category": "XAML",
+          "Guideline": "Use WinUI XAML API surface"
+        }
+      ],
+      "diagnostics": {
+        "abstained": false,
+        "calibration_version": "2026-08-12-v1",
+        "margin": 2.474983201534247,
+        "normalized_query": "choose the modern Uno WinUI package instead of the legacy Uno UI package",
+        "query_rewrites": [],
+        "reason": "matched",
+        "runner_up_score": 11.430679226720533,
+        "search_query": "choose the modern Uno WinUI package instead of the legacy Uno UI package",
+        "token_coverage": 0.75,
+        "top_score": 13.90566242825478
+      },
+      "expectedRoute": null,
+      "grades": [
+        2,
+        0,
+        0
+      ],
+      "id": "stack-uno-package-paraphrase",
+      "route": "stack",
+      "scores": {
+        "mrr3": 1.0,
+        "ndcg3": 1.0,
+        "p1": 1.0,
+        "p3": 0.3333333333333333
+      }
+    },
+    {
+      "actual": [
+        {
+          "Category": "Performance",
+          "Guideline": "Use compiled bindings in DataTemplates"
+        },
+        {
+          "Category": "XAML",
+          "Guideline": "Use x:Bind for compiled bindings"
+        },
+        {
+          "Category": "Data Binding",
+          "Guideline": "Specify Mode on x:Bind"
+        }
+      ],
+      "diagnostics": {
+        "abstained": false,
+        "calibration_version": "2026-08-12-v1",
+        "margin": 0.6373481771241885,
+        "normalized_query": "UWP compiled x:Bind data binding",
+        "query_rewrites": [],
+        "reason": "matched",
+        "runner_up_score": 8.905312026216578,
+        "search_query": "UWP compiled x:Bind data binding",
+        "token_coverage": 1.0,
+        "top_score": 9.542660203340766
+      },
+      "expectedRoute": null,
+      "grades": [
+        0,
+        2,
+        0
+      ],
+      "id": "stack-uwp-xbind",
+      "route": "stack",
+      "scores": {
+        "mrr3": 0.5,
+        "ndcg3": 0.6309297535714574,
+        "p1": 0.0,
+        "p3": 0.3333333333333333
+      }
+    },
+    {
+      "actual": [
+        {
+          "Category": "Architecture",
+          "Guideline": "Prefer WinUI 3 for new projects"
+        }
+      ],
+      "diagnostics": {
+        "abstained": false,
+        "calibration_version": "2026-08-12-v1",
+        "margin": 0.0,
+        "normalized_query": "which Windows UI framework should a brand new app choose instead of legacy UWP",
+        "query_rewrites": [],
+        "reason": "exact-identifier",
+        "runner_up_score": 0.0,
+        "search_query": "which Windows UI framework should a brand new app choose instead of legacy UWP",
+        "token_coverage": 1.0,
+        "top_score": 0.0
+      },
+      "expectedRoute": null,
+      "grades": [
+        2
+      ],
+      "id": "stack-uwp-migration",
+      "route": "stack",
+      "scores": {
+        "mrr3": 1.0,
+        "ndcg3": 1.0,
+        "p1": 1.0,
+        "p3": 0.3333333333333333
+      }
+    },
+    {
+      "actual": [
+        {
+          "Category": "Composition",
+          "Guideline": "Use Composition API for new projects"
+        },
+        {
+          "Category": "State",
+          "Guideline": "Use Pinia for global state"
+        },
+        {
+          "Category": "Routing",
+          "Guideline": "Use useRouter and useRoute"
+        }
+      ],
+      "diagnostics": {
+        "abstained": false,
+        "calibration_version": "2026-08-12-v1",
+        "margin": 6.4068166691600625,
+        "normalized_query": "Vue Composition API for a new project",
+        "query_rewrites": [],
+        "reason": "matched",
+        "runner_up_score": 5.421650203321847,
+        "search_query": "Vue Composition API for a new project",
+        "token_coverage": 0.8,
+        "top_score": 11.82846687248191
+      },
+      "expectedRoute": null,
+      "grades": [
+        2,
+        0,
+        0
+      ],
+      "id": "stack-vue-composition",
+      "route": "stack",
+      "scores": {
+        "mrr3": 1.0,
+        "ndcg3": 1.0,
+        "p1": 1.0,
+        "p3": 0.3333333333333333
+      }
+    },
+    {
+      "actual": [
+        {
+          "Category": "State",
+          "Guideline": "Use Pinia for global state"
+        },
+        {
+          "Category": "State",
+          "Guideline": "Use storeToRefs for destructuring"
+        },
+        {
+          "Category": "Testing",
+          "Guideline": "Use Vue Test Utils"
+        }
+      ],
+      "diagnostics": {
+        "abstained": false,
+        "calibration_version": "2026-08-12-v1",
+        "margin": 4.676899858440489,
+        "normalized_query": "central shared Vue application state store",
+        "query_rewrites": [],
+        "reason": "matched",
+        "runner_up_score": 7.2049605094668205,
+        "search_query": "central shared Vue application state store",
+        "token_coverage": 0.6666666666666666,
+        "top_score": 11.88186036790731
+      },
+      "expectedRoute": null,
+      "grades": [
+        2,
+        0,
+        0
+      ],
+      "id": "stack-vue-pinia",
+      "route": "stack",
+      "scores": {
+        "mrr3": 1.0,
+        "ndcg3": 1.0,
+        "p1": 1.0,
+        "p3": 0.3333333333333333
+      }
+    },
+    {
+      "actual": [
+        {
+          "Category": "Controls",
+          "Guideline": "Use InfoBar for status messages"
+        },
+        {
+          "Category": "Threading",
+          "Guideline": "Use DispatcherQueue not Dispatcher"
+        },
+        {
+          "Category": "Styling",
+          "Guideline": "Use WinUI theme resources"
+        }
+      ],
+      "diagnostics": {
+        "abstained": false,
+        "calibration_version": "2026-08-12-v1",
+        "margin": 12.161783844325017,
+        "normalized_query": "WinUI InfoBar for status messages",
+        "query_rewrites": [],
+        "reason": "matched",
+        "runner_up_score": 4.9098159337083285,
+        "search_query": "WinUI InfoBar for status messages",
+        "token_coverage": 1.0,
+        "top_score": 17.071599778033345
+      },
+      "expectedRoute": null,
+      "grades": [
+        2,
+        0,
+        0
+      ],
+      "id": "stack-winui-infobar",
+      "route": "stack",
+      "scores": {
+        "mrr3": 1.0,
+        "ndcg3": 1.0,
+        "p1": 1.0,
+        "p3": 0.3333333333333333
+      }
+    },
+    {
+      "actual": [
+        {
+          "Category": "Threading",
+          "Guideline": "Use DispatcherQueue not Dispatcher"
+        },
+        {
+          "Category": "Navigation",
+          "Guideline": "Handle back navigation"
+        },
+        {
+          "Category": "Threading",
+          "Guideline": "Use async/await for IO operations"
+        }
+      ],
+      "diagnostics": {
+        "abstained": false,
+        "calibration_version": "2026-08-12-v1",
+        "margin": 4.012547394878277,
+        "normalized_query": "marshal a WinUI update back onto the UI thread with the modern dispatcher",
+        "query_rewrites": [],
+        "reason": "matched",
+        "runner_up_score": 8.687245749390007,
+        "search_query": "marshal a WinUI update back onto the UI thread with the modern dispatcher",
+        "token_coverage": 0.7,
+        "top_score": 12.699793144268284
+      },
+      "expectedRoute": null,
+      "grades": [
+        2,
+        0,
+        0
+      ],
+      "id": "stack-winui-dispatcherqueue",
+      "route": "stack",
+      "scores": {
+        "mrr3": 1.0,
+        "ndcg3": 1.0,
+        "p1": 1.0,
+        "p3": 0.3333333333333333
+      }
+    },
+    {
+      "actual": [
+        {
+          "Category": "Data Binding",
+          "Guideline": "Implement INotifyPropertyChanged"
+        },
+        {
+          "Category": "Data Binding",
+          "Guideline": "Use UpdateSourceTrigger appropriately"
+        },
+        {
+          "Category": "Architecture",
+          "Guideline": "Use MVVM pattern"
+        }
+      ],
+      "diagnostics": {
+        "abstained": false,
+        "calibration_version": "2026-08-12-v1",
+        "margin": 2.942132689217268,
+        "normalized_query": "WPF INotifyPropertyChanged data binding updates",
+        "query_rewrites": [],
+        "reason": "matched",
+        "runner_up_score": 6.693068956030353,
+        "search_query": "WPF INotifyPropertyChanged data binding updates",
+        "token_coverage": 1.0,
+        "top_score": 9.635201645247621
+      },
+      "expectedRoute": null,
+      "grades": [
+        2,
+        0,
+        0
+      ],
+      "id": "stack-wpf-property-change",
+      "route": "stack",
+      "scores": {
+        "mrr3": 1.0,
+        "ndcg3": 1.0,
+        "p1": 1.0,
+        "p3": 0.3333333333333333
+      }
+    },
+    {
+      "actual": [
+        {
+          "Category": "Data Binding",
+          "Guideline": "Use ObservableCollection for lists"
+        },
+        {
+          "Category": "Performance",
+          "Guideline": "Use async for long operations"
+        },
+        {
+          "Category": "Performance",
+          "Guideline": "Use VirtualizingStackPanel for large lists"
+        }
+      ],
+      "diagnostics": {
+        "abstained": false,
+        "calibration_version": "2026-08-12-v1",
+        "margin": 2.3840109708535895,
+        "normalized_query": "keep a huge WPF list responsive by only creating visible item containers",
+        "query_rewrites": [],
+        "reason": "matched",
+        "runner_up_score": 7.386388596971386,
+        "search_query": "keep a huge WPF list responsive by only creating visible item containers",
+        "token_coverage": 0.7,
+        "top_score": 9.770399567824976
+      },
+      "expectedRoute": null,
+      "grades": [
+        0,
+        0,
+        2
+      ],
+      "id": "stack-wpf-virtualization",
+      "route": "stack",
+      "scores": {
+        "mrr3": 0.3333333333333333,
+        "ndcg3": 0.5,
+        "p1": 0.0,
+        "p3": 0.3333333333333333
+      }
+    },
+    {
+      "actual": [
+        {
+          "Category": "Accessibility",
+          "Issue": "Focus Not Obscured (Enhanced)"
+        },
+        {
+          "Category": "Accessibility",
+          "Issue": "Focus Not Obscured (Minimum)"
+        },
+        {
+          "Category": "Accessibility",
+          "Issue": "Keyboard Navigation"
+        }
+      ],
+      "diagnostics": {
+        "abstained": false,
+        "calibration_version": "2026-08-12-v1",
+        "margin": 0.40507227614749475,
+        "normalized_query": "WCAG keyboard accessibility and visible focus",
+        "query_rewrites": [],
+        "reason": "matched",
+        "runner_up_score": 11.718159532722154,
+        "search_query": "WCAG keyboard accessibility and visible focus",
+        "token_coverage": 1.0,
+        "top_score": 12.12323180886965
+      },
+      "expectedRoute": "ux",
+      "grades": [
+        0,
+        0,
+        2
+      ],
+      "id": "auto-route-accessibility",
+      "route": "ux",
+      "scores": {
+        "mrr3": 0.3333333333333333,
+        "ndcg3": 0.41311732856427996,
+        "p1": 0.0,
+        "p3": 0.3333333333333333
+      }
+    },
+    {
+      "actual": [
+        {
+          "Product Type": "E-commerce Luxury"
+        },
+        {
+          "Product Type": "Creative Agency"
+        },
+        {
+          "Product Type": "Architecture / Interior"
+        }
+      ],
+      "diagnostics": {
+        "abstained": false,
+        "calibration_version": "2026-08-12-v1",
+        "margin": 0.0,
+        "normalized_query": "hex color palette accent foreground destructive tokens",
+        "query_rewrites": [],
+        "reason": "matched",
+        "runner_up_score": 1.3810723013506525,
+        "search_query": "hex color palette accent foreground destructive tokens",
+        "token_coverage": 0.14285714285714285,
+        "top_score": 1.3810723013506525
+      },
+      "expectedRoute": "color",
+      "grades": [
+        0,
+        0,
+        0
+      ],
+      "id": "auto-route-color",
+      "route": "color",
+      "scores": {
+        "mrr3": 0.0,
+        "ndcg3": 0.0,
+        "p1": 0.0,
+        "p3": 0.0
+      }
+    },
+    {
+      "actual": [
+        {
+          "Data Type": "Correlation / Distribution"
+        },
+        {
+          "Data Type": "Distribution / Statistical"
+        },
+        {
+          "Data Type": "Flow / Process Data"
+        }
+      ],
+      "diagnostics": {
+        "abstained": false,
+        "calibration_version": "2026-08-12-v1",
+        "margin": 6.972147018311762,
+        "normalized_query": "scatter chart for correlation distribution",
+        "query_rewrites": [],
+        "reason": "matched",
+        "runner_up_score": 3.0089233768269104,
+        "search_query": "scatter chart for correlation distribution",
+        "token_coverage": 1.0,
+        "top_score": 9.981070395138673
+      },
+      "expectedRoute": "chart",
+      "grades": [
+        2,
+        0,
+        0
+      ],
+      "id": "auto-route-chart",
+      "route": "chart",
+      "scores": {
+        "mrr3": 1.0,
+        "ndcg3": 1.0,
+        "p1": 1.0,
+        "p3": 0.3333333333333333
+      }
+    },
+    {
+      "actual": [
+        {
+          "Pattern Name": "Hero + Testimonials + CTA"
+        },
+        {
+          "Pattern Name": "Pricing Page + CTA"
+        },
+        {
+          "Pattern Name": "AI Personalization Landing"
+        }
+      ],
+      "diagnostics": {
+        "abstained": false,
+        "calibration_version": "2026-08-12-v1",
+        "margin": 1.3351764977325598,
+        "normalized_query": "hero testimonials CTA conversion landing page",
+        "query_rewrites": [],
+        "reason": "matched",
+        "runner_up_score": 5.878339153207031,
+        "search_query": "hero testimonials CTA conversion landing page",
+        "token_coverage": 1.0,
+        "top_score": 7.21351565093959
+      },
+      "expectedRoute": "landing",
+      "grades": [
+        2,
+        0,
+        0
+      ],
+      "id": "auto-route-landing",
+      "route": "landing",
+      "scores": {
+        "mrr3": 1.0,
+        "ndcg3": 0.8262346571285599,
+        "p1": 1.0,
+        "p3": 0.3333333333333333
+      }
+    },
+    {
+      "actual": [
+        {
+          "Category": "Monospace",
+          "Family": "JetBrains Mono"
+        },
+        {
+          "Category": "Sans Serif",
+          "Family": "Noto Sans Mono"
+        },
+        {
+          "Category": "Monospace",
+          "Family": "Kode Mono"
+        }
+      ],
+      "diagnostics": {
+        "abstained": false,
+        "calibration_version": "2026-08-12-v1",
+        "margin": 6.278618538174246,
+        "normalized_query": "JetBrains Mono Google font family variable styles",
+        "query_rewrites": [],
+        "reason": "matched",
+        "runner_up_score": 8.97732007305582,
+        "search_query": "JetBrains Mono Google font family variable styles",
+        "token_coverage": 0.7142857142857143,
+        "top_score": 15.255938611230066
+      },
+      "expectedRoute": "google-fonts",
+      "grades": [
+        2,
+        0,
+        0
+      ],
+      "id": "auto-route-fonts",
+      "route": "google-fonts",
+      "scores": {
+        "mrr3": 1.0,
+        "ndcg3": 1.0,
+        "p1": 1.0,
+        "p3": 0.3333333333333333
+      }
+    },
+    {
+      "actual": [
+        {
+          "Category": "Status",
+          "Icon Name": "warning"
+        },
+        {
+          "Category": "Status",
+          "Icon Name": "warning-circle"
+        },
+        {
+          "Category": "Guideline",
+          "Icon Name": "icon-context-accessibility"
+        }
+      ],
+      "diagnostics": {
+        "abstained": false,
+        "calibration_version": "2026-08-12-v1",
+        "margin": 7.395932347359384,
+        "normalized_query": "Phosphor warning icon glyph for danger status",
+        "query_rewrites": [],
+        "reason": "matched",
+        "runner_up_score": 6.630280470695599,
+        "search_query": "Phosphor warning icon glyph for danger status",
+        "token_coverage": 0.8333333333333334,
+        "top_score": 14.026212818054983
+      },
+      "expectedRoute": "icons",
+      "grades": [
+        2,
+        1,
+        0
+      ],
+      "id": "auto-route-icons",
+      "route": "icons",
+      "scores": {
+        "mrr3": 1.0,
+        "ndcg3": 1.0,
+        "p1": 1.0,
+        "p3": 0.6666666666666666
+      }
+    },
+    {
+      "actual": [
+        {
+          "Category": "Stagger List",
+          "Intensity Tier": "Complex",
+          "Trigger": "load or scroll"
+        },
+        {
+          "Category": "Scroll Reveal",
+          "Intensity Tier": "Subtle",
+          "Trigger": "scroll (viewport enter)"
+        },
+        {
+          "Category": "Stagger List",
+          "Intensity Tier": "Subtle",
+          "Trigger": "load or scroll"
+        }
+      ],
+      "diagnostics": {
+        "abstained": false,
+        "calibration_version": "2026-08-12-v1",
+        "margin": 1.2795521952300577,
+        "normalized_query": "GSAP ScrollTrigger stagger reveal animation",
+        "query_rewrites": [
+          "gsap->animation",
+          "scrolltrigger->scroll"
+        ],
+        "reason": "matched",
+        "runner_up_score": 3.4546110204576452,
+        "search_query": "GSAP ScrollTrigger stagger reveal animation animation scroll",
+        "token_coverage": 0.6666666666666666,
+        "top_score": 4.734163215687703
+      },
+      "expectedRoute": "gsap",
+      "grades": [
+        0,
+        0,
+        0
+      ],
+      "id": "auto-route-gsap",
+      "route": "gsap",
+      "scores": {
+        "mrr3": 0.0,
+        "ndcg3": 0.0,
+        "p1": 0.0,
+        "p3": 0.0
+      }
+    },
+    {
+      "actual": [
+        {
+          "Category": "Async Waterfall",
+          "Issue": "Suspense Boundaries"
+        },
+        {
+          "Category": "Async Waterfall",
+          "Issue": "API Route Optimization"
+        },
+        {
+          "Category": "Server",
+          "Issue": "React.cache Dedup"
+        }
+      ],
+      "diagnostics": {
+        "abstained": false,
+        "calibration_version": "2026-08-12-v1",
+        "margin": 1.8048143700680992,
+        "normalized_query": "React Suspense waterfall bundle rerender optimization",
+        "query_rewrites": [],
+        "reason": "matched",
+        "runner_up_score": 5.931874048973622,
+        "search_query": "React Suspense waterfall bundle rerender optimization",
+        "token_coverage": 1.0,
+        "top_score": 7.736688419041721
+      },
+      "expectedRoute": "react",
+      "grades": [
+        2,
+        0,
+        0
+      ],
+      "id": "auto-route-react",
+      "route": "react",
+      "scores": {
+        "mrr3": 1.0,
+        "ndcg3": 1.0,
+        "p1": 1.0,
+        "p3": 0.3333333333333333
+      }
+    },
+    {
+      "falsePositiveTargets": [],
+      "falsePositives": 0,
+      "id": "negative-gibberish-alpha",
+      "negativeChecks": 34
+    },
+    {
+      "falsePositiveTargets": [],
+      "falsePositives": 0,
+      "id": "negative-gibberish-numeric",
+      "negativeChecks": 34
+    },
+    {
+      "falsePositiveTargets": [],
+      "falsePositives": 0,
+      "id": "negative-geography-fact",
+      "negativeChecks": 34
+    },
+    {
+      "falsePositiveTargets": [
+        "domain:ux",
+        "domain:google-fonts",
+        "stack:threejs",
+        "stack:winui"
+      ],
+      "falsePositives": 4,
+      "id": "negative-math-proof",
+      "negativeChecks": 34
+    },
+    {
+      "falsePositiveTargets": [],
+      "falsePositives": 0,
+      "id": "negative-cooking",
+      "negativeChecks": 34
+    },
+    {
+      "falsePositiveTargets": [],
+      "falsePositives": 0,
+      "id": "negative-biology",
+      "negativeChecks": 34
+    },
+    {
+      "actual": {
+        "category": "Beauty/Spa/Wellness Service",
+        "pattern": "Hero + Testimonials + CTA",
+        "style": "Soft UI Evolution"
+      },
+      "coherence": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "id": "design-system-spa"
+    },
+    {
+      "actual": {
+        "category": "Cybersecurity Platform",
+        "pattern": "Real-Time / Operations Landing",
+        "style": "Cyberpunk UI"
+      },
+      "coherence": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "id": "design-system-cybersecurity-dark"
+    },
+    {
+      "actual": {
+        "category": "SaaS (General)",
+        "pattern": "Hero + Features + CTA",
+        "style": "Glassmorphism"
+      },
+      "coherence": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "id": "design-system-saas"
+    },
+    {
+      "actual": {
+        "category": "Healthcare App",
+        "pattern": "Hero + Testimonials + CTA",
+        "style": "Neumorphism"
+      },
+      "coherence": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "id": "design-system-healthcare"
+    },
+    {
+      "actual": {
+        "category": "Portfolio/Personal",
+        "pattern": "Scroll-Triggered Storytelling",
+        "style": "Brutalism"
+      },
+      "coherence": [
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "id": "design-system-portfolio-dark"
+    },
+    {
+      "actual": {
+        "category": "Fintech/Crypto",
+        "pattern": "Trust & Authority + Conversion",
+        "style": "Minimalism & Swiss Style"
+      },
+      "coherence": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "id": "design-system-fintech-dark"
+    },
+    {
+      "actual": {
+        "category": "Beauty/Spa/Wellness Service",
+        "pattern": "Hero + Testimonials + CTA",
+        "style": "Soft UI Evolution"
+      },
+      "coherence": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "id": "design-system-spa-paraphrase"
+    },
+    {
+      "actual": {
+        "category": "Cybersecurity Platform",
+        "pattern": "Real-Time / Operations Landing",
+        "style": "Cyberpunk UI"
+      },
+      "coherence": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "id": "design-system-cyber-typo"
+    }
+  ],
+  "metrics": {
+    "designSystemCoherence": 1.0,
+    "mrrAt3": 0.868421052631579,
+    "ndcgAt3": 0.861015560539328,
+    "negativeAbstention": 0.9803921568627451,
+    "precisionAt1": 0.8157894736842105,
+    "precisionAt3": 0.3815789473684211,
+    "routingAccuracy": 1.0,
+    "typoRecoveryAt3": 1.0
+  },
+  "oracleFingerprint": "02e7226428c64a995ec24ae104ce4d186f5f91bf0f062556e90ef9b0fcb6d67a",
+  "runtimeFingerprint": "0d096d52499c2dd84ef80b2e45a1793bc4ed7c9be8fe5948b08151790959b376",
+  "samples": {
+    "cases": 90,
+    "designSystem": 8,
+    "domain:chart": 2,
+    "domain:color": 2,
+    "domain:google-fonts": 2,
+    "domain:gsap": 2,
+    "domain:icons": 2,
+    "domain:landing": 2,
+    "domain:product": 2,
+    "domain:react": 2,
+    "domain:style": 2,
+    "domain:typography": 2,
+    "domain:ux": 2,
+    "domain:web": 2,
+    "negativeChecks": 204,
+    "retrieval": 76,
+    "routing": 8,
+    "stack:angular": 2,
+    "stack:astro": 2,
+    "stack:avalonia": 2,
+    "stack:flutter": 2,
+    "stack:html-tailwind": 2,
+    "stack:javafx": 2,
+    "stack:jetpack-compose": 2,
+    "stack:laravel": 2,
+    "stack:nextjs": 2,
+    "stack:nuxt-ui": 2,
+    "stack:nuxtjs": 2,
+    "stack:react": 2,
+    "stack:react-native": 2,
+    "stack:shadcn": 2,
+    "stack:svelte": 2,
+    "stack:swiftui": 2,
+    "stack:threejs": 2,
+    "stack:uno": 2,
+    "stack:uwp": 2,
+    "stack:vue": 2,
+    "stack:winui": 2,
+    "stack:wpf": 2,
+    "typo": 5
+  },
+  "schemaVersion": 1,
+  "splits": {
+    "calibration": {
+      "metrics": {
+        "designSystemCoherence": 1.0,
+        "mrrAt3": 0.9316239316239316,
+        "ndcgAt3": 0.9182517276204706,
+        "negativeAbstention": 1.0,
+        "precisionAt1": 0.8974358974358975,
+        "precisionAt3": 0.40170940170940167,
+        "routingAccuracy": 1.0,
+        "typoRecoveryAt3": 0.0
+      },
+      "samples": {
+        "cases": 46,
+        "designSystem": 4,
+        "negativeChecks": 102,
+        "retrieval": 39,
+        "routing": 5,
+        "typo": 0
+      }
+    },
+    "held_out": {
+      "metrics": {
+        "designSystemCoherence": 1.0,
+        "mrrAt3": 0.8018018018018018,
+        "ndcgAt3": 0.8006855465889345,
+        "negativeAbstention": 0.9607843137254902,
+        "precisionAt1": 0.7297297297297297,
+        "precisionAt3": 0.36036036036036034,
+        "routingAccuracy": 1.0,
+        "typoRecoveryAt3": 1.0
+      },
+      "samples": {
+        "cases": 44,
+        "designSystem": 4,
+        "negativeChecks": 102,
+        "retrieval": 37,
+        "routing": 3,
+        "typo": 5
+      }
+    }
+  }
+}

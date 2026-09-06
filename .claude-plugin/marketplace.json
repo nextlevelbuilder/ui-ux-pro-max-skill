@@ -5,15 +5,15 @@
     "name": "nextlevelbuilder"
   },
   "metadata": {
-    "description": "UI/UX design intelligence skill with 67 styles, 96 palettes, 57 font pairings, 25 charts, and 13 stack guidelines",
-    "version": "2.2.1"
+    "description": "UI/UX design intelligence skill with 79 styles, 192 palettes, 74 font pairings, 25 charts, and 22 stack guidelines",
+    "version": "2.13.0"
   },
   "plugins": [
     {
       "name": "ui-ux-pro-max",
       "source": "./",
-      "description": "Professional UI/UX design intelligence for AI coding assistants. Includes searchable databases of styles, colors, typography, charts, and UX guidelines for React, Next.js, Astro, Vue, Nuxt.js, Nuxt UI, Svelte, SwiftUI, React Native, Flutter, Tailwind, shadcn/ui, and Jetpack Compose.",
-      "version": "2.2.1",
+      "description": "Professional UI/UX design intelligence for AI coding assistants. Includes searchable databases of styles, colors, typography, charts, and UX guidelines for React, Next.js, Astro, Vue, Nuxt.js, Nuxt UI, Svelte, SwiftUI, React Native, Flutter, Tailwind, shadcn/ui, Jetpack Compose, Angular, Laravel, JavaFX, and Three.js.",
+      "version": "2.13.0",
       "author": {
         "name": "nextlevelbuilder"
       },

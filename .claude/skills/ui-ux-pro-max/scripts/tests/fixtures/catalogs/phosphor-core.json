@@ -1,0 +1,23 @@
+[
+  {
+    "name": "acorn",
+    "pascal_name": "Acorn",
+    "codepoint": 62002,
+    "categories": ["animals", "nature"],
+    "figma_category": "weather & nature",
+    "tags": ["savings", "food"],
+    "published_in": 1.2,
+    "updated_in": 2.0
+  },
+  {
+    "name": "arrow-left",
+    "pascal_name": "ArrowLeft",
+    "alias": {"name": "back-arrow", "pascal_name": "BackArrow"},
+    "codepoint": 62000,
+    "categories": ["arrows", "navigation", "arrows"],
+    "figma_category": "arrows",
+    "tags": ["previous", "back"],
+    "published_in": 1.0,
+    "updated_in": 2.1
+  }
+]

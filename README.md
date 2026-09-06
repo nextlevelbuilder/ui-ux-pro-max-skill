@@ -1,16 +1,24 @@
 # [UI UX Pro Max](https://uupm.cc)
- 
+
+<p align="center">
+  <a href="https://github.com/nextlevelbuilder/ui-ux-pro-max-skill/blob/main/README.id.md">🇮🇩 Bahasa Indonesia</a> |
+  <a href="https://github.com/nextlevelbuilder/ui-ux-pro-max-skill/blob/main/README.ko.md">🇰🇷 한국어</a> |
+  <a href="https://github.com/nextlevelbuilder/ui-ux-pro-max-skill/blob/main/README.vi.md">🇻🇳 Tiếng Việt</a> |
+  <a href="https://github.com/nextlevelbuilder/ui-ux-pro-max-skill/blob/main/README.zh.md">🇨🇳 简体中文</a> |
+  <a href="https://github.com/nextlevelbuilder/ui-ux-pro-max-skill/blob/main/README.md">🇺🇸 English</a>
+</p>
+
 <p align="center">
   <a href="https://github.com/nextlevelbuilder/ui-ux-pro-max-skill/releases"><img src="https://img.shields.io/github/v/release/nextlevelbuilder/ui-ux-pro-max-skill?style=for-the-badge&color=blue" alt="GitHub Release"></a>
-  <img src="https://img.shields.io/badge/reasoning_rules-161-green?style=for-the-badge" alt="161 Reasoning Rules">
-  <img src="https://img.shields.io/badge/UI_styles-67-purple?style=for-the-badge" alt="67 UI Styles">
+  <img src="https://img.shields.io/badge/reasoning_rules-192-green?style=for-the-badge" alt="192 Reasoning Rules">
+  <img src="https://img.shields.io/badge/UI_styles-79_searchable-purple?style=for-the-badge" alt="79 searchable UI styles">
   <img src="https://img.shields.io/badge/python-3.x-yellow?style=for-the-badge&logo=python&logoColor=white" alt="Python 3.x">
   <a href="https://github.com/nextlevelbuilder/ui-ux-pro-max-skill/blob/main/LICENSE"><img src="https://img.shields.io/github/license/nextlevelbuilder/ui-ux-pro-max-skill?style=for-the-badge&color=green" alt="License"></a>
 </p>
 
 <p align="center">
-  <a href="https://www.npmjs.com/package/uipro-cli"><img src="https://img.shields.io/npm/v/uipro-cli?style=flat-square&logo=npm&label=CLI" alt="npm"></a>
-  <a href="https://www.npmjs.com/package/uipro-cli"><img src="https://img.shields.io/npm/dm/uipro-cli?style=flat-square&label=downloads" alt="npm downloads"></a>
+  <a href="https://www.npmjs.com/package/ui-ux-pro-max-cli"><img src="https://img.shields.io/npm/v/ui-ux-pro-max-cli?style=flat-square&logo=npm&label=CLI" alt="npm"></a>
+  <a href="https://www.npmjs.com/package/ui-ux-pro-max-cli"><img src="https://img.shields.io/npm/dm/ui-ux-pro-max-cli?style=flat-square&label=downloads" alt="npm downloads"></a>
   <a href="https://github.com/nextlevelbuilder/ui-ux-pro-max-skill/stargazers"><img src="https://img.shields.io/github/stars/nextlevelbuilder/ui-ux-pro-max-skill?style=flat-square&logo=github" alt="GitHub stars"></a>
   <a href="https://paypal.me/uiuxpromax"><img src="https://img.shields.io/badge/PayPal-Support%20Development-00457C?style=flat-square&logo=paypal&logoColor=white" alt="PayPal"></a>
 </p>
@@ -30,7 +38,7 @@ An AI skill that provides design intelligence for building professional UI/UX ac
 
 <p align="center">
   <i>Other projects</i><br>
-  <a href="https://nextlevelbuilder.io">NextLevelBuilder.io</a> | <a href="https://goclaw.sh">GoClaw.sh</a> | <a href="https://claudekit.cc">ClaudeKit.cc</a> | <a href="https://tose.sh">TOSE.sh</a>
+  <a href="https://nextlevelbuilder.io">NextLevelBuilder.io</a> | <a href="https://goclaw.sh">GoClaw.sh</a> | <a href="https://agentkit.best">AgentKit.best</a> | <a href="https://tose.sh">TOSE.sh</a>
 </p>
 
 ## What's New in v2.0
@@ -57,7 +65,7 @@ The flagship feature of v2.0 is the **Design System Generator** - an AI-powered 
 |  STYLE: Soft UI Evolution                                                              |
 |     Keywords: Soft shadows, subtle depth, calming, premium feel, organic shapes        |
 |     Best For: Wellness, beauty, lifestyle brands, premium services                     |
-|     Performance: Excellent | Accessibility: WCAG AA                                    |
+|     Performance: cost:low | Accessibility: risk:conditional; verify requirements       |
 |                                                                                        |
 |  COLORS:                                                                               |
 |     Primary:    #E8B4B8 (Soft Pink)                                                    |
@@ -73,7 +81,7 @@ The flagship feature of v2.0 is the **Design System Generator** - an AI-powered 
 |     Google Fonts: https://fonts.google.com/share?selection.family=...                  |
 |                                                                                        |
 |  KEY EFFECTS:                                                                          |
-|     Soft shadows + Smooth transitions (200-300ms) + Gentle hover states                |
+|     Soft shadows + Context-appropriate transitions + Gentle hover states               |
 |                                                                                        |
 |  AVOID (Anti-patterns):                                                                |
 |     Bright neon colors + Harsh animations + Dark mode + AI purple/pink gradients       |
@@ -81,10 +89,11 @@ The flagship feature of v2.0 is the **Design System Generator** - an AI-powered 
 |  PRE-DELIVERY CHECKLIST:                                                               |
 |     [ ] No emojis as icons (use SVG: Heroicons/Lucide)                                 |
 |     [ ] cursor-pointer on all clickable elements                                       |
-|     [ ] Hover states with smooth transitions (150-300ms)                               |
+|     [ ] Interaction timing follows the platform, component, and user preference        |
 |     [ ] Light mode: text contrast 4.5:1 minimum                                        |
 |     [ ] Focus states visible for keyboard nav                                          |
 |     [ ] prefers-reduced-motion respected                                               |
+|     [ ] Text, chips, and badges reflow without clipping or broken labels               |
 |     [ ] Responsive: 375px, 768px, 1024px, 1440px                                       |
 |                                                                                        |
 +----------------------------------------------------------------------------------------+
@@ -101,11 +110,11 @@ The flagship feature of v2.0 is the **Design System Generator** - an AI-powered 
                               ▼
 ┌─────────────────────────────────────────────────────────────────┐
 │  2. MULTI-DOMAIN SEARCH (5 parallel searches)                   │
-│     • Product type matching (161 categories)                    │
-│     • Style recommendations (67 styles)                         │
-│     • Color palette selection (161 palettes)                    │
-│     • Landing page patterns (24 patterns)                       │
-│     • Typography pairing (57 font combinations)                 │
+│     • Product type matching (192 categories)                    │
+│     • Style recommendations (79 searchable; 50 active)          │
+│     • Color palette selection (192 palettes)                    │
+│     • Landing page patterns (34 patterns)                       │
+│     • Typography pairing (74 font combinations)                 │
 └─────────────────────────────────────────────────────────────────┘
                               │
                               ▼
@@ -125,7 +134,7 @@ The flagship feature of v2.0 is the **Design System Generator** - an AI-powered 
 └─────────────────────────────────────────────────────────────────┘
 ```
 
-### 161 Industry-Specific Reasoning Rules
+### 192 Industry-Specific Reasoning Rules
 
 The reasoning engine includes specialized rules for:
 
@@ -150,106 +159,65 @@ Each rule includes:
 
 ## Features
 
-- **67 UI Styles** - Glassmorphism, Claymorphism, Minimalism, Brutalism, Neumorphism, Bento Grid, Dark Mode, AI-Native UI, and more
-- **161 Color Palettes** - Industry-specific palettes aligned 1:1 with the 161 product types
-- **57 Font Pairings** - Curated typography combinations with Google Fonts imports
+- **79 Searchable UI Styles (50 active)** - Glassmorphism, Claymorphism, Minimalism, Brutalism, Neumorphism, Bento Grid, Dark Mode, AI-Native UI, and more
+- **192 Color Palettes** - Industry-specific palettes aligned 1:1 with the 192 product types
+- **74 Font Pairings** - Curated typography combinations with Google Fonts imports
 - **25 Chart Types** - Recommendations for dashboards and analytics
-- **15 Tech Stacks** - React, Next.js, Astro, Vue, Nuxt.js, Nuxt UI, Svelte, SwiftUI, React Native, Flutter, HTML+Tailwind, shadcn/ui, Jetpack Compose, Angular, Laravel
-- **99 UX Guidelines** - Best practices, anti-patterns, and accessibility rules
-- **161 Reasoning Rules** - Industry-specific design system generation (NEW in v2.0)
+- **22 Tech Stacks** - React, Next.js, Astro, Vue, Nuxt.js, Nuxt UI, Svelte, SwiftUI, React Native, Flutter, HTML+Tailwind, shadcn/ui, Jetpack Compose, Angular, Laravel, Three.js, JavaFX, WPF, WinUI 3, UWP, Avalonia, Uno Platform
+- **119 UX Guidelines** - Best practices, anti-patterns, accessibility rules, resilient text layout, compact labels, and cancellable interactions
+- **192 Reasoning Rules** - Industry-specific design system generation (NEW in v2.0)
 
-### Available Styles (67)
+### Resilient Text and Compact UI
 
-<details>
-<summary><b>General Styles (49)</b></summary>
+The guidance now covers common production failures around headings, long tokens,
+chips, badges, and interrupted micro-interactions:
 
-| # | Style | Best For |
-|---|-------|----------|
-| 1 | Minimalism & Swiss Style | Enterprise apps, dashboards, documentation |
-| 2 | Neumorphism | Health/wellness apps, meditation platforms |
-| 3 | Glassmorphism | Modern SaaS, financial dashboards |
-| 4 | Brutalism | Design portfolios, artistic projects |
-| 5 | 3D & Hyperrealism | Gaming, product showcase, immersive |
-| 6 | Vibrant & Block-based | Startups, creative agencies, gaming |
-| 7 | Dark Mode (OLED) | Night-mode apps, coding platforms |
-| 8 | Accessible & Ethical | Government, healthcare, education |
-| 9 | Claymorphism | Educational apps, children's apps, SaaS |
-| 10 | Aurora UI | Modern SaaS, creative agencies |
-| 11 | Retro-Futurism | Gaming, entertainment, music platforms |
-| 12 | Flat Design | Web apps, mobile apps, startup MVPs |
-| 13 | Skeuomorphism | Legacy apps, gaming, premium products |
-| 14 | Liquid Glass | Premium SaaS, high-end e-commerce |
-| 15 | Motion-Driven | Portfolio sites, storytelling platforms |
-| 16 | Micro-interactions | Mobile apps, touchscreen UIs |
-| 17 | Inclusive Design | Public services, education, healthcare |
-| 18 | Zero Interface | Voice assistants, AI platforms |
-| 19 | Soft UI Evolution | Modern enterprise apps, SaaS |
-| 20 | Neubrutalism | Gen Z brands, startups, Figma-style |
-| 21 | Bento Box Grid | Dashboards, product pages, portfolios |
-| 22 | Y2K Aesthetic | Fashion brands, music, Gen Z |
-| 23 | Cyberpunk UI | Gaming, tech products, crypto apps |
-| 24 | Organic Biophilic | Wellness apps, sustainability brands |
-| 25 | AI-Native UI | AI products, chatbots, copilots |
-| 26 | Memphis Design | Creative agencies, music, youth brands |
-| 27 | Vaporwave | Music platforms, gaming, portfolios |
-| 28 | Dimensional Layering | Dashboards, card layouts, modals |
-| 29 | Exaggerated Minimalism | Fashion, architecture, portfolios |
-| 30 | Kinetic Typography | Hero sections, marketing sites |
-| 31 | Parallax Storytelling | Brand storytelling, product launches |
-| 32 | Swiss Modernism 2.0 | Corporate sites, architecture, editorial |
-| 33 | HUD / Sci-Fi FUI | Sci-fi games, space tech, cybersecurity |
-| 34 | Pixel Art | Indie games, retro tools, creative |
-| 35 | Bento Grids | Product features, dashboards, personal |
-| 36 | Spatial UI (VisionOS) | Spatial computing apps, VR/AR |
-| 37 | E-Ink / Paper | Reading apps, digital newspapers |
-| 38 | Gen Z Chaos / Maximalism | Gen Z lifestyle, music artists |
-| 39 | Biomimetic / Organic 2.0 | Sustainability tech, biotech, health |
-| 40 | Anti-Polish / Raw Aesthetic | Creative portfolios, artist sites |
-| 41 | Tactile Digital / Deformable UI | Modern mobile apps, playful brands |
-| 42 | Nature Distilled | Wellness brands, sustainable products |
-| 43 | Interactive Cursor Design | Creative portfolios, interactive |
-| 44 | Voice-First Multimodal | Voice assistants, accessibility apps |
-| 45 | 3D Product Preview | E-commerce, furniture, fashion |
-| 46 | Gradient Mesh / Aurora Evolved | Hero sections, backgrounds, creative |
-| 47 | Editorial Grid / Magazine | News sites, blogs, magazines |
-| 48 | Chromatic Aberration / RGB Split | Music platforms, gaming, tech |
-| 49 | Vintage Analog / Retro Film | Photography, music/vinyl brands |
+- Balanced heading wrapping is a progressive enhancement, not a guarantee that a
+  specific word will remain on the last line. Designs must still work with natural
+  wrapping across widths, fonts, and locales.
+- Essential text must reflow without clipping at narrow widths, browser zoom, text
+  scaling, and user spacing overrides. Long URLs and identifiers may wrap safely.
+- Chip and tag collections should wrap or use an operable `+n` disclosure. A compact
+  label should remain whole when practical; unavoidable truncation needs an accessible
+  full-value path for keyboard, pointer, and touch users.
+- Badge meaning cannot rely on color alone. Interactive chips need native semantics,
+  visible focus, and programmatic state; live counts need meaningful context.
+- Rapid interactions may cancel animation, but the final semantic state, focus, and
+  content must remain correct. Timing is selected for the platform and component,
+  with reduced-motion preferences respected.
 
-</details>
+### Style Taxonomy
 
-<details>
-<summary><b>Landing Page Styles (8)</b></summary>
+The catalog contains **79 searchable styles** backed by stable IDs and aliases:
 
-| # | Style | Best For |
-|---|-------|----------|
-| 1 | Hero-Centric Design | Products with strong visual identity |
-| 2 | Conversion-Optimized | Lead generation, sales pages |
-| 3 | Feature-Rich Showcase | SaaS, complex products |
-| 4 | Minimal & Direct | Simple products, apps |
-| 5 | Social Proof-Focused | Services, B2C products |
-| 6 | Interactive Product Demo | Software, tools |
-| 7 | Trust & Authority | B2B, enterprise, consulting |
-| 8 | Storytelling-Driven | Brands, agencies, nonprofits |
+| Status | Count | Search behavior |
+|--------|------:|-----------------|
+| Active | 50 | Included in normal recommendations and shown by default in the gallery |
+| Supplemental | 29 | Returned for exact or explicit variant/system intent; available through the gallery status filter |
+| Deprecated | 9 | Excluded from normal ranking; legacy names redirect to a canonical style or landing pattern |
 
-</details>
+The active set covers 43 general visual families, 2 mobile-specific styles, 3 official platform/design systems, 1 platform material, and 1 core analytics style. Current official systems include Fluent 2, Shopify Polaris, and Adobe Spectrum; Liquid Glass is scoped as an Apple platform material, Material 3 Expressive remains a mobile Material variant, and Spectrum 2 is supplemental. Landing-page structures live in the separate 34-pattern landing dataset rather than competing with visual styles in BM25 ranking.
 
-<details>
-<summary><b>BI/Analytics Dashboard Styles (10)</b></summary>
+See [`styles.csv`](src/ui-ux-pro-max/data/styles.csv) for the full taxonomy and provenance-aware metadata.
 
-| # | Style | Best For |
-|---|-------|----------|
-| 1 | Data-Dense Dashboard | Complex data analysis |
-| 2 | Heat Map & Heatmap Style | Geographic/behavior data |
-| 3 | Executive Dashboard | C-suite summaries |
-| 4 | Real-Time Monitoring | Operations, DevOps |
-| 5 | Drill-Down Analytics | Detailed exploration |
-| 6 | Comparative Analysis Dashboard | Side-by-side comparisons |
-| 7 | Predictive Analytics | Forecasting, ML insights |
-| 8 | User Behavior Analytics | UX research, product analytics |
-| 9 | Financial Dashboard | Finance, accounting |
-| 10 | Sales Intelligence Dashboard | Sales teams, CRM |
+## 💎 Basic vs. Premium Version Comparison
 
-</details>
+Many users ask about the differences between the open-source and premium versions. Here is a detailed breakdown to help you choose the right fit for your workflow.
+
+### 🟢 Basic Version (This Repository)
+* **Fully Open Source:** Perfect for individual developers, hobbyists, and standard projects.
+* **Core UI/UX Intelligence:** Full access to 79 searchable UI styles (50 active), 192 product types, color palettes, and curated font pairings.
+* **Smart Recommendations:** Built-in BM25 search engine for highly accurate design matching.
+* **Cross-Platform Support:** Stack-specific guidelines supporting 22 major frameworks (React, Vue, Tailwind, iOS, Android, etc.).
+* **Design System Generation:** Instantly generate tailored UI rules, patterns, and logic via CLI.
+
+### 🟡 Premium Version
+* **Extended Brand Design Skills:** Goes beyond UI/UX to include Brand Identity generation, Logo Design, Corporate Identity Programs (CIP), Banners, Presentation Slides, and custom Iconography.
+* **Advanced Asset Creation:** Deep integration with AI-powered image generation to create real visual assets, not just placeholders.
+* **Enterprise Architecture:** A more comprehensive and scalable Design Token architecture, built for large-scale team deployments.
+* **Priority Support:** Dedicated technical assistance for teams and professionals who need an uninterrupted full design workflow.
+
+👉 *For more details on upgrading to the Premium tier, visit [uupm.cc](https://uupm.cc).*
 
 ## Installation
 
@@ -266,7 +234,7 @@ Install directly in Claude Code with two commands:
 
 ```bash
 # Install CLI globally
-npm install -g uipro-cli
+npm install -g ui-ux-pro-max-cli
 
 # Go to your project
 cd /path/to/your/project
@@ -290,22 +258,29 @@ uipro init --ai droid       # Droid (Factory)
 uipro init --ai kilocode    # KiloCode
 uipro init --ai warp        # Warp
 uipro init --ai augment     # Augment
+uipro init --ai codewhale   # CodeWhale
+uipro init --ai universal   # Universal / Agent Standard (.agents/skills/)
 uipro init --ai all         # All assistants
 ```
+
+The npm package is `ui-ux-pro-max-cli`; it still installs the `uipro` command. Older `uipro-cli` releases are stale and should not be used for current assets.
 
 ### Global Install (Available for All Projects)
 
 ```bash
 uipro init --ai claude --global   # Install to ~/.claude/skills/
 uipro init --ai cursor --global   # Install to ~/.cursor/skills/
+uipro init --ai universal --global # Install to ~/.agents/skills/
 ```
 
 ### Other CLI Commands
 
 ```bash
 uipro versions              # List available versions
-uipro update                # Update to latest version
-uipro init --offline        # Skip GitHub download, use bundled assets
+uipro update                # Refresh skill files from installed CLI package
+uipro update --global       # Refresh global skill files from installed CLI package
+uipro init --offline        # Compatibility flag; installs bundled templates
+uipro init --dry-run        # Preview install actions without writing files
 uipro uninstall             # Remove skill (auto-detect platform)
 uipro uninstall --ai claude # Remove specific platform
 uipro uninstall --global    # Remove from global install
@@ -313,27 +288,21 @@ uipro uninstall --global    # Remove from global install
 
 ## Prerequisites
 
-Python 3.x is required for the search script.
+Python 3.x is required for the search script (standard library only — the scripts install nothing and make no network calls).
+
+Check if Python is installed:
 
 ```bash
-# Check if Python is installed
 python3 --version
-
-# macOS
-brew install python3
-
-# Ubuntu/Debian
-sudo apt update && sudo apt install python3
-
-# Windows
-winget install Python.Python.3.12
 ```
+
+If it is missing, install it yourself from [python.org](https://www.python.org/downloads/) or with your OS package manager (Homebrew, apt, winget). These install steps are for **you, the human user** — AI agents using this skill should never install software on your machine; they are instructed to ask you instead.
 
 ## Usage
 
 ### Skill Mode (Auto-activate)
 
-**Supported:** Claude Code, Cursor, Windsurf, Antigravity, Codex CLI, Continue, Gemini CLI, OpenCode, Qoder, CodeBuddy, Droid (Factory), KiloCode, Warp, Augment
+**Supported:** Claude Code, Cursor, Windsurf, Antigravity, Codex CLI, Continue, Gemini CLI, OpenCode, Qoder, CodeBuddy, Droid (Factory), KiloCode, Warp, Augment, CodeWhale
 
 The skill activates automatically when you request UI/UX work. Just chat naturally:
 
@@ -386,7 +355,8 @@ The skill provides stack-specific guidelines for:
 | **Vue Ecosystem** | Vue, Nuxt.js, Nuxt UI |
 | **Angular** | Angular |
 | **PHP** | Laravel (Blade, Livewire, Inertia.js) |
-| **Other Web** | Svelte, Astro |
+| **Other Web** | Svelte, Astro, Three.js |
+| **Desktop** | JavaFX, WPF, WinUI 3, Avalonia, Uno Platform, UWP |
 | **iOS** | SwiftUI |
 | **Android** | Jetpack Compose |
 | **Cross-Platform** | React Native, Flutter |
@@ -410,18 +380,34 @@ python3 .claude/skills/ui-ux-pro-max/scripts/search.py "fintech banking" --desig
 python3 .claude/skills/ui-ux-pro-max/scripts/search.py "glassmorphism" --domain style
 python3 .claude/skills/ui-ux-pro-max/scripts/search.py "elegant serif" --domain typography
 python3 .claude/skills/ui-ux-pro-max/scripts/search.py "dashboard" --domain chart
+python3 .claude/skills/ui-ux-pro-max/scripts/search.py "error summary validation" --domain ux
+python3 .claude/skills/ui-ux-pro-max/scripts/search.py "decorative icon aria hidden" --domain icons
+python3 .claude/skills/ui-ux-pro-max/scripts/search.py "icon button accessible label" --domain icons
+python3 .claude/skills/ui-ux-pro-max/scripts/search.py "orphan heading line balance" --domain ux
+python3 .claude/skills/ui-ux-pro-max/scripts/search.py "badge chip label wraps to second line" --domain ux
+python3 .claude/skills/ui-ux-pro-max/scripts/search.py "rapid chip animation interrupted" --domain ux
 
 # Stack-specific guidelines
 python3 .claude/skills/ui-ux-pro-max/scripts/search.py "form validation" --stack react
 python3 .claude/skills/ui-ux-pro-max/scripts/search.py "responsive layout" --stack html-tailwind
+python3 .claude/skills/ui-ux-pro-max/scripts/search.py "chip badge overflow nowrap" --stack html-tailwind
+python3 .claude/skills/ui-ux-pro-max/scripts/search.py "tableview binding" --stack javafx
+python3 .claude/skills/ui-ux-pro-max/scripts/search.py "atlantafx primer enterprise theme" --stack javafx
+python3 .claude/skills/ui-ux-pro-max/scripts/search.py "enterprise tableview density permission" --stack javafx
 ```
+
+Web-stack search is version-aware. Queries without an older major return current,
+active guidance. Explicit legacy terms or older majors (for example, `Svelte 4`
+or `Next.js 15`) return only curated legacy rows, labeled by `Status` and
+`Applies To`; when no matching legacy guidance is curated, search returns no
+results instead of mixing framework generations.
 
 ### Persist Design System (Master + Overrides Pattern)
 
 Save your design system to files for **hierarchical retrieval across sessions**:
 
 ```bash
-# Generate and persist to design-system/MASTER.md
+# Generate and persist to design-system/myapp/MASTER.md
 python3 .claude/skills/ui-ux-pro-max/scripts/search.py "SaaS dashboard" --design-system --persist -p "MyApp"
 
 # Also create a page-specific override file
@@ -432,20 +418,21 @@ This creates a `design-system/` folder structure:
 
 ```
 design-system/
-├── MASTER.md           # Global Source of Truth (colors, typography, spacing, components)
-└── pages/
-    └── dashboard.md    # Page-specific overrides (only deviations from Master)
+└── myapp/                  # One folder per project (slug of -p "MyApp")
+    ├── MASTER.md           # Global Source of Truth (colors, typography, spacing, components)
+    └── pages/
+        └── dashboard.md    # Page-specific overrides (only deviations from Master)
 ```
 
 **How hierarchical retrieval works:**
-1. When building a specific page (e.g., "Checkout"), first check `design-system/pages/checkout.md`
+1. When building a specific page (e.g., "Checkout"), first check `design-system/[project-slug]/pages/checkout.md`
 2. If the page file exists, its rules **override** the Master file
-3. If not, use `design-system/MASTER.md` exclusively
+3. If not, use `design-system/[project-slug]/MASTER.md` exclusively
 
 **Context-aware retrieval prompt:**
 ```
-I am building the [Page Name] page. Please read design-system/MASTER.md.
-Also check if design-system/pages/[page-name].md exists.
+I am building the [Page Name] page. Please read design-system/[project-slug]/MASTER.md.
+Also check if design-system/[project-slug]/pages/[page-name].md exists.
 If the page file exists, prioritize its rules.
 If not, use the Master rules exclusively.
 Now, generate the code...
@@ -460,11 +447,11 @@ The codebase has been restructured to use a **template-based generation system**
 **Always use the CLI to install:**
 
 ```bash
-npm install -g uipro-cli
+npm install -g ui-ux-pro-max-cli
 uipro init --ai <platform>
 ```
 
-This ensures you get the latest templates and correct file structure for your AI assistant.
+This ensures you get the latest templates bundled with the installed CLI package and the correct file structure for your AI assistant. Update the npm package first when a new release is published.
 
 ### For Contributors
 
@@ -487,13 +474,17 @@ cli/                         # CLI installer (generates files from templates)
 # - templates/              → Platform-specific templates
 
 # 4. Sync to CLI and test locally
-cp -r src/ui-ux-pro-max/data/* cli/assets/data/
-cp -r src/ui-ux-pro-max/scripts/* cli/assets/scripts/
-cp -r src/ui-ux-pro-max/templates/* cli/assets/templates/
+cd cli
+npm run sync:assets
+npm run check:assets
+npm run verify:data
+npm run typecheck
 
 # 5. Build and test CLI
-cd cli && bun run build
+# `npm run build` uses Bun when available and falls back to TypeScript compiler output after `npm ci`.
+npm run build
 node dist/index.js init --ai claude --offline  # Test in a temp folder
+node dist/index.js init --ai claude --dry-run  # Preview install actions (no writes)
 
 # 6. Create PR (never push directly to main)
 git checkout -b feat/your-feature
@@ -504,10 +495,177 @@ gh pr create
 
 See [CLAUDE.md](CLAUDE.md) for detailed development guidelines.
 
+### Catalog provenance and refresh
+
+The committed catalog summary currently records **1,934 approved Google Fonts**
+plus **8 review exclusions** that are not promoted without matching official
+license metadata. The icon guidance remains **105 curated rows** (100 direct
+Phosphor web imports plus React Native/fallback guidance); the separate
+**1,512-icon upstream Phosphor manifest** validates names,
+weights, and React/SSR imports without flooding search results with the entire
+upstream package.
+
+Ordinary development and pull-request CI are network-independent. Run the full
+offline gate, including snapshot hashes and generated count validation, with:
+
+```bash
+npm --prefix cli run verify:data
+# Or check only the generated catalog summary:
+npm --prefix cli run validate:catalog-summary
+```
+
+Refresh normalization can also be exercised entirely offline against the
+committed fixtures. Outputs go to a temporary candidate directory and never
+replace canonical data:
+
+```bash
+candidate_dir="$(mktemp -d)"
+python3 scripts/refresh-google-fonts.py \
+  --api-input src/ui-ux-pro-max/scripts/tests/fixtures/catalogs/google-api.json \
+  --metadata-input src/ui-ux-pro-max/scripts/tests/fixtures/catalogs/google-metadata.json \
+  --existing-csv src/ui-ux-pro-max/scripts/tests/fixtures/catalogs/google-existing.csv \
+  --overrides src/ui-ux-pro-max/scripts/tests/fixtures/catalogs/google-overrides.json \
+  --output-csv "$candidate_dir/google-fonts.csv" \
+  --license-output "$candidate_dir/google-font-licenses.json" \
+  --metadata-revision fixture-catalogs-v1 \
+  --verified-at 2026-08-13 --expected-count 2 --approve-changes
+python3 scripts/refresh-icon-catalog.py \
+  --input src/ui-ux-pro-max/scripts/tests/fixtures/catalogs/phosphor-core.json \
+  --package-json src/ui-ux-pro-max/scripts/tests/fixtures/catalogs/phosphor-package.json \
+  --react-package-json src/ui-ux-pro-max/scripts/tests/fixtures/catalogs/phosphor-react-package.json \
+  --react-exports-input src/ui-ux-pro-max/scripts/tests/fixtures/catalogs/phosphor-react-exports.json \
+  --curated-csv src/ui-ux-pro-max/scripts/tests/fixtures/catalogs/icons-curated.csv \
+  --output "$candidate_dir/phosphor-icons-upstream.json" \
+  --verified-at 2026-08-13 --expected-count 2
+```
+
+Live upstream refresh is intentionally isolated in the `refresh-catalogs.yml`
+workflow, scheduled for Mondays at 03:17 UTC and also available on demand.
+Configure `GOOGLE_FONTS_API_KEY` as a GitHub Actions secret, then run and
+download its review artifact:
+
+```bash
+gh workflow run refresh-catalogs.yml
+run_id="$(gh run list --workflow refresh-catalogs.yml --limit 1 --json databaseId --jq '.[0].databaseId')"
+gh run watch "$run_id"
+gh run download "$run_id" --name "catalog-refresh-review-$run_id"
+```
+
+The workflow reads the Google Fonts Developer API and pinned official Phosphor
+packages, writes candidates and unified diffs to an artifact, and has read-only
+repository permissions. It never commits, pushes, opens a PR, or merges. Review
+the change reports, exclusions, licenses, relevance metrics, and offline gate
+before manually promoting candidate files into `src/ui-ux-pro-max/data/`.
+
+
+## Automated Releases
+
+This repository uses semantic-release with Conventional Commits to create GitHub releases automatically:
+
+- `dev` branch creates beta GitHub prereleases such as `2.6.0-beta.1`.
+- `main` branch creates official stable GitHub releases such as `2.6.0`.
+
+Release notes and `CHANGELOG.md` are generated from Conventional Commit messages. Version numbers are synchronized across `skill.json`, `.claude-plugin/plugin.json`, `.claude-plugin/marketplace.json`, `cli/package.json`, and `cli/package-lock.json` during release preparation.
+
+Use these commit types for correct version bumps:
+
+- `fix:` -> patch release
+- `feat:` -> minor release
+- `feat!:` or `BREAKING CHANGE:` -> major release
+
+The release workflow uses the default `GITHUB_TOKEN` for GitHub releases and the repository `NPM_TOKEN` secret to publish `ui-ux-pro-max-cli` to npm.
+
+## Troubleshooting
+
+### `uipro: unknown command 'uninstall'` or `unknown command 'update'`
+
+Your installed version of `ui-ux-pro-max-cli` is outdated. Update it and retry:
+
+```bash
+npm install -g ui-ux-pro-max-cli@latest
+uipro uninstall
+```
+
+### `uipro uninstall` says "No installed AI skill directories detected"
+
+The skill was installed in a different directory than where you're running the command. Either:
+
+```bash
+# Option A — run from the project root where you originally installed it
+cd /path/to/your/project
+uipro uninstall
+
+# Option B — remove the global install
+uipro uninstall --global
+
+# Option C — remove manually
+rm -rf .claude/skills/ui-ux-pro-max   # Claude Code
+rm -rf .cursor/skills/ui-ux-pro-max   # Cursor
+rm -rf .windsurf/skills/ui-ux-pro-max # Windsurf
+rm -rf .agents/skills/ui-ux-pro-max   # Antigravity / Codex
+```
+
+### Claude.ai's "Upload a skill" dialog says "Zip contains too many files (maximum 200)"
+
+Do not upload the full GitHub repository ZIP. It is a development checkout that includes source code, CLI assets, documentation, previews, and multiple bundled skills, so it exceeds Claude's 200-file upload limit. It is not a Claude skill upload artifact, and this project does not currently publish a separate manual-upload ZIP for Claude.ai.
+
+For Claude Code, install through the Marketplace:
+
+```bash
+/plugin marketplace add nextlevelbuilder/ui-ux-pro-max-skill
+/plugin install ui-ux-pro-max@ui-ux-pro-max-skill
+```
+
+Or use the CLI installer:
+
+```bash
+npx ui-ux-pro-max-cli init --ai claude
+```
+
+### Claude Marketplace install fails with "Zip file contains a symbolic link"
+
+This is a known issue with versions prior to v2.5.1. The repository used symlinks internally which some installation tools can't handle. **Fix:** use the CLI installer instead:
+
+```bash
+npm install -g ui-ux-pro-max-cli
+uipro init --ai claude
+```
+
+Or wait for the next release where this is resolved.
+
+### `npm install -g ui-ux-pro-max-cli` fails with permission error
+
+Use a Node version manager (recommended), or skip the global install entirely:
+
+```bash
+# npx without installing globally
+npx ui-ux-pro-max-cli init --ai claude
+```
+
+### Python not found when running design system commands
+
+The search scripts require Python 3.x. Install it manually from [python.org](https://www.python.org/downloads/) or with your OS package manager (Homebrew, apt, winget). AI agents should not install it for you — they are instructed to ask you instead.
+
+### Design system output is cut off / fields truncated
+
+Human-readable output truncates long fields at 300 characters. Use `--json` to get the full, untruncated data:
+
+```bash
+python3 .claude/skills/ui-ux-pro-max/scripts/search.py "SaaS" --domain style --json
+```
+
+---
+
 ## Star History
 
-[![Star History Chart](https://api.star-history.com/svg?repos=nextlevelbuilder/ui-ux-pro-max-skill&type=Date)](https://star-history.com/#nextlevelbuilder/ui-ux-pro-max-skill&Date)
+[![Star History Chart](https://star-history.dera.page/svg?repos=nextlevelbuilder/ui-ux-pro-max-skill&type=Date)](https://star-history.dera.page/#nextlevelbuilder/ui-ux-pro-max-skill&Date)
 
 ## License
 
 This project is licensed under the [MIT License](LICENSE).
+
+## Compatible Agents
+
+This skill works with:
+- [Claude Code](https://claude.com/product/claude-code)
+- [AdaL](https://sylph.ai/) - Self-evolving AI coding agent ([Docs](https://docs.sylph.ai/) | [GitHub](https://github.com/SylphAI-Inc/adal-cli))

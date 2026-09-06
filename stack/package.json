@@ -1,0 +1,19 @@
+{
+  "name": "claude-website-design-stack",
+  "version": "1.0.0",
+  "private": true,
+  "description": "A ready-to-use Claude Code stack that makes the agent good at website design: knowledge (ui-ux-pro-max) + taste (frontend-design) + visual feedback (Playwright/Chrome DevTools MCP) + automated design review.",
+  "type": "module",
+  "scripts": {
+    "setup": "bash scripts/setup.sh",
+    "audit": "node scripts/design-audit.mjs",
+    "audit:file": "node scripts/design-audit.mjs --file ./index.html"
+  },
+  "devDependencies": {
+    "playwright": "^1.49.0"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "license": "MIT"
+}

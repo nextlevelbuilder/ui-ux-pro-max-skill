@@ -1,0 +1,27 @@
+# Dependencies
+node_modules/
+package-lock.json
+pnpm-lock.yaml
+yarn.lock
+
+# Audit / Playwright output (regenerate locally; examples/ is committed on purpose)
+audit-output/
+test-results/
+playwright-report/
+.playwright/
+
+# Local Claude Code state
+.claude/settings.local.json
+.claude/.session/
+
+# Env / secrets
+.env
+.env.*
+!.env.example
+
+# OS / editor
+.DS_Store
+Thumbs.db
+*.log
+.idea/
+.vscode/
