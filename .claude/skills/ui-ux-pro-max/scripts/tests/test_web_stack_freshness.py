@@ -24,7 +24,7 @@ CURRENT_APPLICABILITY = {
     "html-tailwind": "html-tailwind 4.3",
     "shadcn": "shadcn cli 4",
     "nuxtjs": "nuxtjs 4.5",
-    "nuxt-ui": "nuxt-ui 4.10",
+    "nuxt-ui": "nuxt-ui 4.11.1",
 }
 
 

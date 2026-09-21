@@ -1707,21 +1707,21 @@
           "Guideline": "Let Nuxt UI declare module dependencies"
         },
         {
-          "Category": "Icons",
-          "Guideline": "Install required icon collections locally"
+          "Category": "Theming",
+          "Guideline": "Read generated theme file to find slot names"
         }
       ],
       "diagnostics": {
         "abstained": false,
         "calibration_version": "2026-08-12-v1",
-        "margin": 3.1826026810457666,
+        "margin": 3.838208672372261,
         "normalized_query": "install the Nuxt UI module",
         "query_rewrites": [],
         "reason": "matched",
-        "runner_up_score": 9.430568542253825,
+        "runner_up_score": 9.354004973008944,
         "search_query": "install the Nuxt UI module",
         "token_coverage": 1.0,
-        "top_score": 12.613171223299592
+        "top_score": 13.192213645381205
       },
       "expectedRoute": null,
       "grades": [
@@ -1745,25 +1745,25 @@
           "Guideline": "Use semantic color props"
         },
         {
-          "Category": "Theming",
-          "Guideline": "Use @theme directive for custom colors"
+          "Category": "Performance",
+          "Guideline": "Enable component detection for Nuxt"
         },
         {
-          "Category": "Installation",
-          "Guideline": "Let Nuxt UI declare module dependencies"
+          "Category": "Theming",
+          "Guideline": "Define complete custom palettes with @theme static"
         }
       ],
       "diagnostics": {
         "abstained": false,
         "calibration_version": "2026-08-12-v1",
-        "margin": 0.48203542343964934,
+        "margin": 13.200313041581737,
         "normalized_query": "style Nuxt UI components through meaning-based color props",
         "query_rewrites": [],
         "reason": "matched",
-        "runner_up_score": 7.263126698989611,
+        "runner_up_score": 9.334552712447977,
         "search_query": "style Nuxt UI components through meaning-based color props",
-        "token_coverage": 0.7777777777777778,
-        "top_score": 7.74516212242926
+        "token_coverage": 1.0,
+        "top_score": 22.534865754029713
       },
       "expectedRoute": null,
       "grades": [
@@ -3277,7 +3277,7 @@
     "typoRecoveryAt3": 1.0
   },
   "oracleFingerprint": "02e7226428c64a995ec24ae104ce4d186f5f91bf0f062556e90ef9b0fcb6d67a",
-  "runtimeFingerprint": "8ba69ee0070e055363e089a3a9338d0d2f79196ed4f8509c3a8a0aec379d40df",
+  "runtimeFingerprint": "1d18a1cac526f15cea7f4e94cef4bed39fafa250a2b6cc81d8c8007b47c6042e",
   "samples": {
     "cases": 90,
     "designSystem": 8,
