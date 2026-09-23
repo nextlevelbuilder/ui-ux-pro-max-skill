@@ -54,6 +54,7 @@ const AI_TO_PLATFORM: Record<string, string> = {
   warp: 'warp',
   augment: 'augment',
   codewhale: 'codewhale',
+  zcode: 'zcode',
   universal: 'universal',
 };
 

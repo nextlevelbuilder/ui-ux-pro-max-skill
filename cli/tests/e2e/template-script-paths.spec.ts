@@ -7,6 +7,7 @@ const cases = [
   ['copilot', '.github/prompts/ui-ux-pro-max/scripts/search.py'],
   ['kiro', '.kiro/steering/ui-ux-pro-max/scripts/search.py'],
   ['droid', '.factory/skills/ui-ux-pro-max/scripts/search.py'],
+  ['zcode', '.zcode/skills/ui-ux-pro-max/scripts/search.py'],
 ] as const;
 const SEARCH_COMMAND_COUNT = 17;
 

@@ -71,6 +71,9 @@ export function detectAIType(cwd: string = process.cwd()): DetectionResult {
   if (existsSync(join(cwd, '.codewhale'))) {
     detected.push('codewhale');
   }
+  if (existsSync(join(cwd, '.zcode'))) {
+    detected.push('zcode');
+  }
 
   // Suggest based on what's detected
   let suggested: AIType | null = null;
@@ -130,6 +133,8 @@ export function getAITypeDescription(aiType: AIType): string {
       return 'Augment (.augment/skills/)';
     case 'codewhale':
       return 'CodeWhale (.codewhale/skills/)';
+    case 'zcode':
+      return 'ZCode (.zcode/skills/)';
     case 'universal':
       return 'Universal (.agents/skills/)';
     case 'all':

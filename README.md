@@ -288,6 +288,7 @@ uipro init --ai kilocode    # KiloCode
 uipro init --ai warp        # Warp
 uipro init --ai augment     # Augment
 uipro init --ai codewhale   # CodeWhale
+uipro init --ai zcode       # ZCode
 uipro init --ai universal   # Universal / Agent Standard (.agents/skills/)
 uipro init --ai all         # All assistants
 ```
@@ -299,6 +300,7 @@ The npm package is `ui-ux-pro-max-cli`; it still installs the `uipro` command. O
 ```bash
 uipro init --ai claude --global   # Install to ~/.claude/skills/
 uipro init --ai cursor --global   # Install to ~/.cursor/skills/
+uipro init --ai zcode --global    # Install to ~/.zcode/skills/
 uipro init --ai universal --global # Install to ~/.agents/skills/
 ```
 
@@ -331,7 +333,7 @@ If it is missing, install it yourself from [python.org](https://www.python.org/d
 
 ### Skill Mode (Auto-activate)
 
-**Supported:** Claude Code, Cursor, Windsurf, Antigravity, Codex CLI, Continue, Gemini CLI, OpenCode, Qoder, CodeBuddy, Droid (Factory), KiloCode, Warp, Augment, CodeWhale
+**Supported:** Claude Code, Cursor, Windsurf, Antigravity, Codex CLI, Continue, Gemini CLI, OpenCode, Qoder, CodeBuddy, Droid (Factory), KiloCode, Warp, Augment, CodeWhale, ZCode
 
 The skill activates automatically when you request UI/UX work. Just chat naturally:
 
@@ -396,7 +398,7 @@ Just mention your preferred stack in the prompt, or let it default to HTML + Tai
 
 For direct access to the design system generator:
 
-> Note: If you installed via Continue, replace `.claude/skills/` with `.continue/skills/` in the commands below. For Droid (Factory), use `.factory/skills/`.
+> Note: If you installed via Continue, replace `.claude/skills/` with `.continue/skills/` in the commands below. For Droid (Factory), use `.factory/skills/`. For ZCode, use `.zcode/skills/`.
 
 ```bash
 # Generate design system with ASCII output
