@@ -147,7 +147,7 @@ python "${CLAUDE_PLUGIN_ROOT}/.claude/skills/ui-ux-pro-max/scripts/search.py" "<
 | Chart recommendations | `chart` | `"real-time dashboard" --domain chart` |
 | UX best practices | `ux` | `"error summary validation" --domain ux` |
 | Landing page structure | `landing` | `"hero social-proof" --domain landing` |
-| Icon recommendations | `icons` | `"decorative icon aria hidden" --domain icons` |
+| Icon recommendations | `icons` | `"decorative icon aria hidden" --domain icons` (for library selection, read `references/icon-libraries.md`) |
 | GSAP animation presets | `gsap` | `"scroll reveal stagger" --domain gsap` |
 | React/Next.js performance | `react` | `"rerender memo list" --domain react` |
 | App/native interface guidelines | `web` | `"accessibilityLabel touch safe-areas" --domain web` |
