@@ -1,0 +1,16 @@
+goal,emotion,layout_pattern,direction,visual_weight,break_pattern,use_bg_image
+hook,curiosity,split-hero,visual-right,70-visual,false,true
+problem,frustration,card-grid,centered,balanced,false,false
+agitation,fear,full-bleed-stat,centered,100-text,true,false
+solution,relief,split-feature,visual-left,50-50,false,true
+proof,trust,metric-grid,centered,numbers-dominant,false,false
+social,connection,quote-hero,centered,80-text,true,true
+comparison,evaluation,split-compare,side-by-side,balanced,false,false
+traction,confidence,chart-insight,chart-left,60-chart,false,false
+cta,urgency,gradient-cta,centered,100-text,true,true
+team,warmth,team-grid,centered,balanced,false,true
+pricing,evaluation,pricing-cards,centered,balanced,false,false
+demo,interest,split-demo,visual-left,60-visual,false,false
+vision,hope,full-bleed-hero,centered,100-visual,true,true
+timeline,narrative,timeline-flow,horizontal,balanced,false,false
+features,clarity,feature-grid,centered,balanced,false,false
