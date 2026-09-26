@@ -16,6 +16,7 @@ or directly:
     python scripts/tests/test_design_system_mode.py
 """
 
+import re
 import sys
 import unittest
 from pathlib import Path
@@ -26,13 +27,18 @@ sys.path.insert(0, str(SCRIPTS_DIR))
 from design_system import (  # noqa: E402
     _filter_anti_patterns_for_mode,
     _contrast_ratio,
+    _mode_support_labels,
     _palette_is_dark,
     _query_wants_dark,
     _relative_luminance,
     _resolve_color_mode,
     _select_palette_for_mode,
     _style_is_dark_primary,
+    BOX_WIDTH,
     DesignSystemGenerator,
+    format_ascii_box,
+    format_markdown,
+    format_master_md,
 )  # noqa: I001 - private helpers first, public class last
 
 LIGHT_PALETTE = {"Product Type": "SaaS", "Background": "#F8FAFC", "Foreground": "#020617"}
@@ -183,6 +189,44 @@ class TestEndToEndCoherence(unittest.TestCase):
     def test_light_query_keeps_a_light_background(self):
         ds = DesignSystemGenerator().generate("healthcare clinic booking app")
         self.assertFalse(_palette_is_dark({"Background": ds["colors"]["background"]}))
+
+
+class TestLightResultOutputCoherence(unittest.TestCase):
+    """A light result that avoids dark mode must not also call dark "supported"."""
+
+    QUERY = "beauty spa wellness"
+
+    @classmethod
+    def setUpClass(cls):
+        cls.ds = DesignSystemGenerator().generate(cls.QUERY, "Serenity Spa")
+
+    def test_dark_support_is_qualified_when_the_product_avoids_dark_mode(self):
+        self.assertIn("dark mode", self.ds["anti_patterns"].lower())
+        light, dark = _mode_support_labels(self.ds["style"], self.ds["anti_patterns"])
+        self.assertIn("avoid for this product", dark)
+        self.assertIn("avoid for this product", format_ascii_box(self.ds))
+        self.assertIn("avoid for this product", format_markdown(self.ds))
+
+    def test_labels_unchanged_when_dark_mode_is_not_avoided(self):
+        style = {"light_mode": "supported", "dark_mode": "supported"}
+        self.assertEqual(_mode_support_labels(style, "Harsh animations"),
+                         ("supported", "supported"))
+
+    def test_ascii_box_lines_never_overflow_the_border(self):
+        for query in (self.QUERY, "SaaS invoicing fintech B2B professional dark mode"):
+            with self.subTest(query=query):
+                ds = DesignSystemGenerator().generate(query, motion=7)
+                widths = {len(re.sub(r"\033\[[0-9;]*m", "", line))
+                          for line in format_ascii_box(ds).splitlines()}
+                self.assertEqual(widths, {BOX_WIDTH + 1})
+
+    def test_master_button_text_meets_contrast_on_its_background(self):
+        colors = self.ds["colors"]
+        master = format_master_md(self.ds)
+        primary = re.search(r"\.btn-primary \{\n  background: (#\w+);\n  color: (#\w+);", master)
+        secondary = re.search(r"\.btn-secondary \{\n  background: transparent;\n  color: (#\w+);", master)
+        self.assertGreaterEqual(_contrast_ratio(primary.group(2), primary.group(1)), 4.5)
+        self.assertGreaterEqual(_contrast_ratio(secondary.group(1), colors["background"]), 4.5)
 
 
 if __name__ == "__main__":

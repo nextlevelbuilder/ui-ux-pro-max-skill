@@ -254,6 +254,31 @@ def _filter_anti_patterns_for_mode(anti_patterns: str, mode: str) -> str:
     return " + ".join(clause.strip() for clause in kept if clause.strip())
 
 
+def _mode_support_labels(style: dict, anti_patterns: str):
+    """Light/dark support labels that agree with the product's anti-patterns.
+
+    A light result keeps its "avoid dark mode" clause, so a dark-capable style
+    must not read as a plain "Dark supported" next to it.
+    """
+    light = style.get("light_mode", "")
+    dark = style.get("dark_mode", "")
+    avoids_dark = any(
+        marker in (anti_patterns or "").lower() for marker in _DARK_ANTI_PATTERN_MARKERS
+    )
+    if dark and dark != "not-recommended" and avoids_dark:
+        dark = f"{dark}, but avoid for this product"
+    return light, dark
+
+
+def _button_outline_text_color(colors: dict) -> str:
+    """Primary for outline-button text when it is readable, else the foreground."""
+    primary = colors.get("primary", "#2563EB")
+    background = colors.get("background", "#FFFFFF")
+    if (_contrast_ratio(primary, background) or 0) >= 4.5:
+        return primary
+    return colors.get("foreground") or primary
+
+
 # ============ DESIGN SYSTEM GENERATOR ============
 class DesignSystemGenerator:
     """Generates design system recommendations from aggregated searches."""
@@ -650,10 +675,13 @@ def format_ascii_box(design_system: dict) -> str:
     motion_snippet = design_system.get("motion_snippet", {})
 
     def wrap_text(text: str, prefix: str, width: int) -> list:
-        """Wrap long text into multiple lines."""
+        """Wrap long text into multiple lines, splitting tokens (URLs) wider than a line."""
         if not text:
             return []
-        words = text.split()
+        room = width - 2 - len(prefix)
+        words = []
+        for word in text.split():
+            words.extend(word[i:i + room] for i in range(0, len(word), room))
         lines = []
         current_line = prefix
         for word in words:
@@ -666,6 +694,10 @@ def format_ascii_box(design_system: dict) -> str:
         if current_line != prefix:
             lines.append(current_line)
         return lines
+
+    def add_wrapped(text: str, prefix: str = "│     ") -> None:
+        for line in wrap_text(text, prefix, BOX_WIDTH):
+            lines.append(line.ljust(BOX_WIDTH) + "│")
 
     # Build sections from pattern
     sections = pattern.get("sections", "").split(" > ")
@@ -683,7 +715,7 @@ def format_ascii_box(design_system: dict) -> str:
 
     # Design Dials section (only if at least one dial was set)
     if any(dials.get(k) is not None for k in ("variance", "motion", "density")):
-        lines.append(section_header("DESIGN DIALS", BOX_WIDTH + 1))
+        lines.append(section_header("DESIGN DIALS", BOX_WIDTH))
         if dials.get("variance") is not None:
             lines.append(f"│  Variance: {dials['variance']}/10 — {dials['variance_label']}".ljust(BOX_WIDTH) + "│")
         if dials.get("motion") is not None:
@@ -692,71 +724,65 @@ def format_ascii_box(design_system: dict) -> str:
             lines.append(f"│  Density:  {dials['density']}/10 — {dials['density_label']}".ljust(BOX_WIDTH) + "│")
 
     # Pattern section
-    lines.append(section_header("PATTERN", BOX_WIDTH + 1))
-    lines.append(f"│  Name: {pattern.get('name', '')}".ljust(BOX_WIDTH) + "│")
+    lines.append(section_header("PATTERN", BOX_WIDTH))
+    add_wrapped(f"Name: {pattern.get('name', '')}", "│  ")
     if pattern.get('conversion'):
-        lines.append(f"│     Conversion: {pattern.get('conversion', '')}".ljust(BOX_WIDTH) + "│")
+        add_wrapped(f"Conversion: {pattern.get('conversion', '')}")
     if pattern.get('cta_placement'):
-        lines.append(f"│     CTA: {pattern.get('cta_placement', '')}".ljust(BOX_WIDTH) + "│")
+        add_wrapped(f"CTA: {pattern.get('cta_placement', '')}")
     lines.append("│     Sections:".ljust(BOX_WIDTH) + "│")
     for i, section in enumerate(sections, 1):
-        lines.append(f"│       {i}. {section}".ljust(BOX_WIDTH) + "│")
+        add_wrapped(f"{i}. {section}", "│       ")
 
     # Style section
-    lines.append(section_header("STYLE", BOX_WIDTH + 1))
-    lines.append(f"│  Name: {style.get('name', '')}".ljust(BOX_WIDTH) + "│")
-    light = style.get("light_mode", "")
-    dark = style.get("dark_mode", "")
+    lines.append(section_header("STYLE", BOX_WIDTH))
+    add_wrapped(f"Name: {style.get('name', '')}", "│  ")
+    light, dark = _mode_support_labels(style, anti_patterns)
     if light or dark:
-        lines.append(f"│     Mode Support: Light {light}  Dark {dark}".ljust(BOX_WIDTH) + "│")
+        add_wrapped(f"Mode Support: Light {light} | Dark {dark}")
     if style.get("keywords"):
-        for line in wrap_text(f"Keywords: {style.get('keywords', '')}", "│     ", BOX_WIDTH):
-            lines.append(line.ljust(BOX_WIDTH) + "│")
+        add_wrapped(f"Keywords: {style.get('keywords', '')}")
     if style.get("best_for"):
-        for line in wrap_text(f"Best For: {style.get('best_for', '')}", "│     ", BOX_WIDTH):
-            lines.append(line.ljust(BOX_WIDTH) + "│")
+        add_wrapped(f"Best For: {style.get('best_for', '')}")
     if style.get("performance") or style.get("accessibility"):
-        perf_a11y = f"Performance: {style.get('performance', '')} | Accessibility: {style.get('accessibility', '')}"
-        lines.append(f"│     {perf_a11y}".ljust(BOX_WIDTH) + "│")
+        add_wrapped(f"Performance: {style.get('performance', '')} | Accessibility: {style.get('accessibility', '')}")
 
     # Colors section (extended palette with ANSI swatches)
-    lines.append(section_header("COLORS", BOX_WIDTH + 1))
+    lines.append(section_header("COLORS", BOX_WIDTH))
     for label, key, css_var in SEMANTIC_COLOR_ENTRIES:
         hex_val = colors.get(key, "")
         if not hex_val:
             continue
         swatch = hex_to_ansi(hex_val)
-        content = f"│     {swatch}{label + ':':14s} {hex_val:10s} ({css_var})"
+        content = f"│     {swatch}{label + ':':18s} {hex_val:10s} ({css_var})"
         lines.append(ansi_ljust(content, BOX_WIDTH) + "│")
     if colors.get("notes"):
         for line in wrap_text(f"Notes: {colors.get('notes', '')}", "│     ", BOX_WIDTH):
             lines.append(line.ljust(BOX_WIDTH) + "│")
 
     # Typography section
-    lines.append(section_header("TYPOGRAPHY", BOX_WIDTH + 1))
-    lines.append(f"│  {typography.get('heading', '')} / {typography.get('body', '')}".ljust(BOX_WIDTH) + "│")
+    lines.append(section_header("TYPOGRAPHY", BOX_WIDTH))
+    add_wrapped(f"{typography.get('heading', '')} / {typography.get('body', '')}", "│  ")
     if typography.get("mood"):
-        for line in wrap_text(f"Mood: {typography.get('mood', '')}", "│     ", BOX_WIDTH):
-            lines.append(line.ljust(BOX_WIDTH) + "│")
+        add_wrapped(f"Mood: {typography.get('mood', '')}")
     if typography.get("best_for"):
-        for line in wrap_text(f"Best For: {typography.get('best_for', '')}", "│     ", BOX_WIDTH):
-            lines.append(line.ljust(BOX_WIDTH) + "│")
+        add_wrapped(f"Best For: {typography.get('best_for', '')}")
     if typography.get("google_fonts_url"):
-        lines.append(f"│     Google Fonts: {typography.get('google_fonts_url', '')}".ljust(BOX_WIDTH) + "│")
+        add_wrapped(f"Google Fonts: {typography.get('google_fonts_url', '')}")
     if typography.get("css_import"):
-        lines.append(f"│     CSS Import: {typography.get('css_import', '')[:70]}...".ljust(BOX_WIDTH) + "│")
+        lines.append(f"│     CSS Import: {typography.get('css_import', '')[:67]}...".ljust(BOX_WIDTH) + "│")
 
     # Key Effects section
     if effects:
-        lines.append(section_header("KEY EFFECTS", BOX_WIDTH + 1))
+        lines.append(section_header("KEY EFFECTS", BOX_WIDTH))
         for line in wrap_text(effects, "│     ", BOX_WIDTH):
             lines.append(line.ljust(BOX_WIDTH) + "│")
 
     # Motion section (GSAP skeleton, only if --motion dial was set)
     if motion_snippet:
-        lines.append(section_header("MOTION", BOX_WIDTH + 1))
-        lines.append(f"│  {motion_snippet.get('Category', '')} ({motion_snippet.get('Intensity Tier', '')})".ljust(BOX_WIDTH) + "│")
-        lines.append(f"│     Trigger: {motion_snippet.get('Trigger', '')} | Duration: {motion_snippet.get('Duration', '')} | Easing: {motion_snippet.get('Easing', '')}".ljust(BOX_WIDTH) + "│")
+        lines.append(section_header("MOTION", BOX_WIDTH))
+        add_wrapped(f"{motion_snippet.get('Category', '')} ({motion_snippet.get('Intensity Tier', '')})", "│  ")
+        add_wrapped(f"Trigger: {motion_snippet.get('Trigger', '')} | Duration: {motion_snippet.get('Duration', '')} | Easing: {motion_snippet.get('Easing', '')}")
         for line in wrap_text(f"GSAP: {motion_snippet.get('GSAP Snippet', '')}", "│     ", BOX_WIDTH):
             lines.append(line.ljust(BOX_WIDTH) + "│")
         if motion_snippet.get("Framework Notes"):
@@ -765,12 +791,12 @@ def format_ascii_box(design_system: dict) -> str:
 
     # Anti-patterns section
     if anti_patterns:
-        lines.append(section_header("AVOID", BOX_WIDTH + 1))
+        lines.append(section_header("AVOID", BOX_WIDTH))
         for line in wrap_text(anti_patterns, "│     ", BOX_WIDTH):
             lines.append(line.ljust(BOX_WIDTH) + "│")
 
     # Pre-Delivery Checklist section
-    lines.append(section_header("PRE-DELIVERY CHECKLIST", BOX_WIDTH + 1))
+    lines.append(section_header("PRE-DELIVERY CHECKLIST", BOX_WIDTH))
     checklist_items = [
         "[ ] No emojis as icons (use SVG: Heroicons/Lucide)",
         "[ ] cursor-pointer on all clickable elements",
@@ -830,8 +856,7 @@ def format_markdown(design_system: dict) -> str:
     # Style section
     lines.append("### Style")
     lines.append(f"- **Name:** {style.get('name', '')}")
-    light = style.get("light_mode", "")
-    dark = style.get("dark_mode", "")
+    light, dark = _mode_support_labels(style, anti_patterns)
     if light or dark:
         lines.append(f"- **Mode Support:** Light {light} | Dark {dark}")
     if style.get('keywords'):
@@ -1194,7 +1219,7 @@ def format_master_md(design_system: dict) -> str:
     lines.append("/* Primary Button */")
     lines.append(".btn-primary {")
     lines.append(f"  background: {colors.get('cta', '#F97316')};")
-    lines.append("  color: white;")
+    lines.append(f"  color: {colors.get('on_cta') or 'white'};")
     lines.append("  padding: 12px 24px;")
     lines.append("  border-radius: 8px;")
     lines.append("  font-weight: 600;")
@@ -1210,7 +1235,7 @@ def format_master_md(design_system: dict) -> str:
     lines.append("/* Secondary Button */")
     lines.append(".btn-secondary {")
     lines.append(f"  background: transparent;")
-    lines.append(f"  color: {colors.get('primary', '#2563EB')};")
+    lines.append(f"  color: {_button_outline_text_color(colors)};")
     lines.append(f"  border: 2px solid {colors.get('primary', '#2563EB')};")
     lines.append("  padding: 12px 24px;")
     lines.append("  border-radius: 8px;")
