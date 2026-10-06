@@ -101,6 +101,7 @@ export async function uninstallCommand(options: UninstallOptions): Promise<void>
     if (aiType === 'all') {
       // Remove for all detected platforms
       for (const type of initialDetected) {
+        if (type === 'all') continue;
         const removed = await removeSkillDir(baseDir, type);
         allRemoved.push(...removed);
       }

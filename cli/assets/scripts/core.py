@@ -73,7 +73,22 @@ CSV_CONFIG = {
 }
 
 STACK_CONFIG = {
-    "react-native": {"file": "stacks/react-native.csv"},
+    "react":            {"file": "stacks/react.csv"},
+    "nextjs":           {"file": "stacks/nextjs.csv"},
+    "vue":              {"file": "stacks/vue.csv"},
+    "svelte":           {"file": "stacks/svelte.csv"},
+    "astro":            {"file": "stacks/astro.csv"},
+    "swiftui":          {"file": "stacks/swiftui.csv"},
+    "react-native":     {"file": "stacks/react-native.csv"},
+    "flutter":          {"file": "stacks/flutter.csv"},
+    "nuxtjs":           {"file": "stacks/nuxtjs.csv"},
+    "nuxt-ui":          {"file": "stacks/nuxt-ui.csv"},
+    "html-tailwind":    {"file": "stacks/html-tailwind.csv"},
+    "shadcn":           {"file": "stacks/shadcn.csv"},
+    "jetpack-compose":  {"file": "stacks/jetpack-compose.csv"},
+    "threejs":          {"file": "stacks/threejs.csv"},
+    "angular":          {"file": "stacks/angular.csv"},
+    "laravel":          {"file": "stacks/laravel.csv"},
 }
 
 # Common columns for all stacks
