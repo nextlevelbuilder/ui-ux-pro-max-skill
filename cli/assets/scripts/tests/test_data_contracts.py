@@ -198,7 +198,7 @@ class TestReasoningContract(unittest.TestCase):
             "typography_mood": "Readable",
             "constraints": ["keyboard-navigation", "touch-targets"],
         }
-        with patch("design_system.search", side_effect=capture):
+        with patch("ds_generator.search", side_effect=capture):
             generator._multi_domain_search(
                 "public portal", "Government Portal", reasoning, ["Minimalism"])
         queried = {domain: query for domain, query in calls}

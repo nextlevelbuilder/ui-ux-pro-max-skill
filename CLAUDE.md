@@ -48,7 +48,12 @@ src/ui-ux-pro-max/                # Source of Truth
 ├── scripts/
 │   ├── search.py                 # CLI entry point
 │   ├── core.py                   # BM25 + regex hybrid search engine
-│   └── design_system.py          # Design system generation
+│   ├── design_system.py          # Design system generation (facade + generate_design_system + CLI)
+│   ├── ds_config.py              #   constants, design dials
+│   ├── ds_color.py               #   color-mode / contrast / dark-palette helpers
+│   ├── ds_generator.py           #   DesignSystemGenerator (search + reasoning)
+│   ├── ds_format_terminal.py     #   ASCII-box + Markdown formatters
+│   └── ds_persist.py             #   MASTER.md / page-override persistence + templates
 └── templates/
     ├── base/                     # Base templates (skill-content.md, quick-reference.md)
     └── platforms/                # Platform configs (claude.json, cursor.json, ...)

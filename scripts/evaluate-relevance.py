@@ -37,6 +37,8 @@ def runtime_fingerprint():
         RUNTIME_DIR / "design_system.py",
         RUNTIME_DIR / "reasoning_contract.py",
     ]
+    # design_system.py is a facade over the ds_*.py modules; hash them too.
+    paths += sorted(RUNTIME_DIR.glob("ds_*.py"))
     paths += sorted(DATA_DIR.rglob("*.csv"))
     digest = hashlib.sha256()
     for path in paths:

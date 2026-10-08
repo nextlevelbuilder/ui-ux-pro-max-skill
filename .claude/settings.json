@@ -1,0 +1,24 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm run sync:assets)",
+      "Bash(npm run check:assets)",
+      "Bash(node scripts/sync-assets.mjs:*)",
+      "Bash(python -m unittest:*)",
+      "Bash(python3 -m unittest:*)"
+    ]
+  },
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Edit|Write|MultiEdit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"$CLAUDE_PROJECT_DIR/.claude/hooks/block-mirror-edits.mjs\""
+          }
+        ]
+      }
+    ]
+  }
+}

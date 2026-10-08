@@ -83,7 +83,7 @@ class TestThresholdGate(unittest.TestCase):
             data = root / "src/ui-ux-pro-max/data"
             runtime.mkdir(parents=True)
             data.mkdir(parents=True)
-            for name in ("core.py", "design_system.py", "reasoning_contract.py"):
+            for name in ("core.py", "design_system.py", "reasoning_contract.py", "ds_generator.py"):
                 (runtime / name).write_text(name, encoding="utf-8")
             (data / "styles.csv").write_text("No,Style\n1,Test\n", encoding="utf-8")
             evaluator.ROOT, evaluator.RUNTIME_DIR, evaluator.DATA_DIR = root, runtime, data
@@ -91,6 +91,9 @@ class TestThresholdGate(unittest.TestCase):
                 before = evaluator.runtime_fingerprint()
                 (runtime / "reasoning_contract.py").write_text("changed", encoding="utf-8")
                 self.assertNotEqual(before, evaluator.runtime_fingerprint())
+                after_contract = evaluator.runtime_fingerprint()
+                (runtime / "ds_generator.py").write_text("changed", encoding="utf-8")
+                self.assertNotEqual(after_contract, evaluator.runtime_fingerprint())
             finally:
                 evaluator.ROOT, evaluator.RUNTIME_DIR, evaluator.DATA_DIR = original
 
