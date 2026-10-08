@@ -13,7 +13,7 @@ design is missing: a **knowledge** layer, a **taste** layer, and a **visual feed
 
 | Layer | Tool | What it adds |
 |-------|------|--------------|
-| 🧠 **Knowledge** | [`ui-ux-pro-max`](https://github.com/nextlevelbuilder/ui-ux-pro-max-skill) | 84 UI styles, 192 color palettes, 73 font pairings, 99 UX rules, Core Web Vitals, 22 stacks — searchable, turned into a concrete design system |
+| 🧠 **Knowledge** | [`ui-ux-pro-max`](https://github.com/nextlevelbuilder/ui-ux-pro-max-skill) | 79 searchable UI styles, 192 color palettes, 74 font pairings, 119 UX rules, Core Web Vitals, 22 stacks — searchable, turned into a concrete design system |
 | 🎨 **Taste** | [`frontend-design`](https://github.com/anthropics/claude-code/tree/main/plugins/frontend-design) (official Anthropic) | Forces a real aesthetic commitment before any CSS; kills "AI slop" defaults |
 | 🧩 **Components** | [`shadcn` MCP](https://ui.shadcn.com/docs/mcp) | Search/add production components by natural language |
 | 👁️ **Visual feedback** | [`@playwright/mcp`](https://github.com/microsoft/playwright-mcp) + [`chrome-devtools-mcp`](https://github.com/ChromeDevTools/chrome-devtools-mcp) | Claude opens a real browser, screenshots, reads the console, exercises states, and fixes what it sees |
