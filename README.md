@@ -407,7 +407,7 @@ A plain ops dashboard ([before](https://skill-fixture-before.theroost.dev)) rest
 
 For direct access to the design system generator:
 
-> Note: If you installed via Continue, replace `.claude/skills/` with `.continue/skills/` in the commands below. For Droid (Factory), use `.factory/skills/`. For ZCode, use `.zcode/skills/`. For Amazon Q Developer, use `.amazonq/skills/`.
+> Note: If you installed via Continue, replace `.claude/skills/` with `.continue/skills/` in the commands below. For Droid (Factory), use `.factory/skills/`. For ZCode, use `.zcode/skills/`. For Amazon Q Developer, use `.amazonq/skills/` (Amazon Q only auto-loads the rule at `.amazonq/rules/ui-ux-pro-max.md`; the data and scripts under `.amazonq/skills/` are files the rule points to).
 
 ```bash
 # Generate design system with ASCII output
