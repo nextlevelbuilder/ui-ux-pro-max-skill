@@ -66,6 +66,17 @@ def load_logo_image(logo_path):
         return None
 
 # Load environment variables
+# Only these keys are taken from a .env. The files below are shared with other
+# tools, and this process talks to third-party image APIs -- an unrelated secret
+# sitting in one of them must not enter its environment.
+ENV_ALLOWLIST = (
+    "GEMINI_API_KEY",
+    "GOOGLE_API_KEY",
+    "ATLASCLOUD_API_KEY",
+    "MUAPI_API_KEY",
+)
+
+
 def load_env():
     """Load environment variables from .env files"""
     env_paths = [
@@ -80,7 +91,8 @@ def load_env():
                     line = line.strip()
                     if line and not line.startswith("#") and "=" in line:
                         key, value = line.split("=", 1)
-                        if key not in os.environ:
+                        key = key.strip()
+                        if key in ENV_ALLOWLIST and key not in os.environ:
                             os.environ[key] = value.strip('"\'')
 
 load_env()
