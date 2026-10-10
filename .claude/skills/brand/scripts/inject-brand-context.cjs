@@ -123,12 +123,15 @@ function extractVoice(content) {
     /### Prohibited[\s\S]*?(?=###|##|$)/i
   );
   if (prohibitedMatch) {
-    const terms = prohibitedMatch[0].match(/\|\s*([^|]+)\s*\|/g);
-    if (terms) {
-      voice.prohibited = terms
-        .map((t) => t.replace(/\|/g, "").trim())
-        .filter((t) => t && !t.includes("Avoid") && !t.includes("---"));
-    }
+    // Take the first cell of each table row. Matching cells with a single
+    // global regex consumes the shared pipe between columns, which makes the
+    // matches alternate between the Avoid and Reason columns.
+    voice.prohibited = prohibitedMatch[0]
+      .split("\n")
+      .filter((line) => line.trim().startsWith("|"))
+      .map((line) => line.trim().replace(/^\||\|$/g, "").split("|")[0])
+      .map((cell) => cell.replace(/\*\*/g, "").trim())
+      .filter((term) => term && !/^-+$/.test(term) && !/^avoid$/i.test(term));
   }
 
   // Fallback: look for Forbidden Phrases
