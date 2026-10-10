@@ -93,6 +93,22 @@ def format_output(result, full=False):
     return "\n".join(output)
 
 
+
+def _apply_rtl_filter(result, rtl_level):
+    if result.get("domain") not in ("style", "product"):
+        print("note: --rtl only applies to --domain style or product", file=sys.stderr)
+        return result
+    if "results" not in result or not result["results"]:
+        return result
+    valid = ("full", "partial", "caveats")
+    if rtl_level == "all":
+        result["results"] = [r for r in result["results"] if r.get("rtl_level") in valid]
+    else:
+        result["results"] = [r for r in result["results"] if r.get("rtl_level") == rtl_level]
+    result["count"] = len(result["results"])
+    return result
+
+
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="UI Pro Max Search")
     parser.add_argument("query", help="Search query")
@@ -115,6 +131,14 @@ if __name__ == "__main__":
     parser.add_argument("--variance", type=int, choices=range(1, 11), metavar="1-10", help="DESIGN_VARIANCE dial: 1=centered/minimal, 10=bold/asymmetric (only with --design-system)")
     parser.add_argument("--motion", type=int, choices=range(1, 11), metavar="1-10", help="MOTION_INTENSITY dial: 1=subtle, 10=complex; pulls a matching GSAP snippet from motion.csv (only with --design-system)")
     parser.add_argument("--density", type=int, choices=range(1, 11), metavar="1-10", help="VISUAL_DENSITY dial: 1=spacious, 10=dense/dashboard; overrides the spacing scale (only with --design-system)")
+    parser.add_argument(
+        "--rtl",
+        nargs="?",
+        const="all",
+        choices=["all", "full", "partial", "caveats"],
+        default=None,
+        help="Filter by RTL level (style/product domain only). Usage: --rtl, --rtl=full, --rtl=partial, --rtl=caveats"
+    )
 
     args = parser.parse_args()
 
@@ -171,6 +195,8 @@ if __name__ == "__main__":
     # Domain search
     else:
         result = search(args.query, args.domain, args.max_results)
+        if args.rtl is not None:
+            result = _apply_rtl_filter(result, args.rtl)
         if args.json:
             print(json_module.dumps(result, indent=2, ensure_ascii=False))
         else:
