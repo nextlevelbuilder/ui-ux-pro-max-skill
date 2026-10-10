@@ -1,0 +1,15 @@
+content_type,primary_size,secondary_size,accent_size,weight_contrast,letter_spacing,line_height
+hero-statement,120px,32px,14px,700-400,tight,1.0
+metric-callout,96px,18px,12px,700-500,normal,1.1
+feature-grid,28px,16px,12px,600-400,normal,1.4
+quote-block,36px,18px,14px,400-italic,loose,1.5
+data-insight,48px,20px,14px,700-400,normal,1.2
+cta-action,64px,24px,16px,700-500,tight,1.1
+title-only,80px,24px,14px,700-400,tight,1.0
+subtitle-heavy,56px,28px,16px,600-400,normal,1.2
+body-focus,24px,18px,14px,500-400,normal,1.6
+comparison,32px,16px,12px,600-400,normal,1.3
+timeline,28px,16px,12px,500-400,normal,1.4
+pricing,48px,20px,14px,700-500,normal,1.2
+team,24px,16px,14px,600-400,normal,1.4
+testimonial,32px,20px,14px,400-italic,loose,1.5
