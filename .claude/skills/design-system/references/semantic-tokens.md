@@ -1,101 +1,120 @@
-# Semantic Tokens
+# Semantic Tokens — Andritz Precision
 
-Purpose-based aliases referencing primitive tokens.
+Purpose-based aliases referencing primitive tokens. Material Design surface hierarchy with Andritz industrial identity.
 
 ## Color Semantics
 
-### Background & Foreground
+### Surface Hierarchy (Light — `:root`)
 
 ```css
 :root {
-  /* Page background */
-  --color-background: var(--color-gray-50);
-  --color-foreground: var(--color-gray-900);
+  /* Surface Hierarchy — "Machined Plates" */
+  --color-surface:                    var(--surface-low);        /* #f8fafb — application floor */
+  --color-surface-container:          var(--surface-mid);        /* #eceeef — primary content */
+  --color-surface-container-low:      var(--surface-base);       /* #f2f4f5 — sidebar/secondary */
+  --color-surface-container-high:     var(--surface-high);       /* #e6e8e9 — interactive surfaces */
+  --color-surface-container-highest:  var(--surface-highest);    /* #e1e3e4 — prominent highlights */
+  --color-surface-container-lowest:   var(--surface-lowest);     /* #ffffff — cards for "pop" */
 
-  /* Card/surface background */
-  --color-card: white;
-  --color-card-foreground: var(--color-gray-900);
+  /* Text & Content */
+  --color-on-surface:          var(--neutral-900);   /* #191c1d — primary text */
+  --color-on-surface-variant:  var(--neutral-700);   /* #404751 — secondary data */
 
-  /* Popover/dropdown */
-  --color-popover: white;
-  --color-popover-foreground: var(--color-gray-900);
+  /* Primary (Andritz Blue) */
+  --color-primary:             var(--andritz-blue-500);  /* #0075be — action containers */
+  --color-primary-text:        var(--andritz-blue-600);  /* #005c97 — text/iconography */
+  --color-primary-container:   var(--andritz-blue-500);  /* #0075be — CTA containers */
+  --color-on-primary:          #ffffff;
+  --color-primary-fixed-dim:   var(--andritz-blue-300);  /* #9bcaff — light blue text/icons */
+
+  /* Secondary */
+  --color-secondary:           var(--neutral-600);   /* #49607f */
+  --color-secondary-container: var(--surface-high);  /* #e6e8e9 */
+
+  /* Tertiary */
+  --color-tertiary:            var(--neutral-500);   /* #4b5a69 */
+
+  /* Error */
+  --color-error:               var(--color-error-600);   /* #ba1a1a */
+  --color-error-container:     var(--color-error-100);   /* #ffdad6 */
+  --color-on-error:            #ffffff;
+  --color-on-error-container:  var(--color-error-600);   /* #ba1a1a */
+
+  /* Outline (Ghost Border) */
+  --color-outline-variant:     var(--neutral-300);  /* #c0c7d2 at 15% opacity */
+  --ghost-border-opacity:      0.15;
+
+  /* Card / Popover */
+  --color-card:                var(--color-surface-container-lowest);
+  --color-card-foreground:     var(--color-on-surface);
+  --color-popover:             var(--color-surface-container-lowest);
+  --color-popover-foreground:  var(--color-on-surface);
+
+  /* Muted */
+  --color-muted:               var(--surface-mid);     /* #eceeef */
+  --color-muted-foreground:    var(--neutral-700);     /* #404751 */
+
+  /* Border & Ring */
+  --color-border:    transparent;  /* No-Line Rule: no visible borders */
+  --color-input:     var(--color-surface-container-highest);
+  --color-ring:      var(--color-primary);
+
+  /* Destructive */
+  --color-destructive:            var(--color-error-600);
+  --color-destructive-foreground: #ffffff;
 }
 ```
 
-### Primary
+### Dark Theme (`.dark`)
 
 ```css
-:root {
-  --color-primary: var(--color-blue-600);
-  --color-primary-hover: var(--color-blue-700);
-  --color-primary-active: var(--color-blue-800);
-  --color-primary-foreground: white;
-}
-```
+.dark {
+  /* Surface Hierarchy — "The Void" */
+  --color-surface:                    #10141a;  /* application void */
+  --color-surface-container:          #1c2026;  /* primary content */
+  --color-surface-container-low:      #181c22;  /* secondary sections */
+  --color-surface-container-high:     #262a31;  /* interactive surfaces */
+  --color-surface-container-highest:  #31353c;  /* prominent highlights */
+  --color-surface-container-lowest:   #0a0e14;  /* deepest recesses */
 
-### Secondary
+  /* Text & Content */
+  --color-on-surface:          #dfe2eb;  /* primary text */
+  --color-on-surface-variant:  #c0c7d2;  /* secondary data */
 
-```css
-:root {
-  --color-secondary: var(--color-gray-100);
-  --color-secondary-hover: var(--color-gray-200);
-  --color-secondary-foreground: var(--color-gray-900);
-}
-```
+  /* Primary (Andritz Blue — inverted for dark) */
+  --color-primary:             #0075be;  /* action containers */
+  --color-primary-text:        #9bcaff;  /* text/iconography */
+  --color-primary-container:   #0075be;
+  --color-on-primary:          #ffffff;
+  --color-primary-fixed-dim:   #9bcaff;
 
-### Muted
+  /* Tertiary (Warning/Caution — "caution tape" high-contrast) */
+  --color-tertiary:            #ffb781;
 
-```css
-:root {
-  --color-muted: var(--color-gray-100);
-  --color-muted-foreground: var(--color-gray-500);
-}
-```
+  /* Error */
+  --color-error:               #ffb4ab;
+  --color-error-container:     #93000a;
+  --color-on-error-container:  #ffdad6;
 
-### Accent
+  /* Outline (Ghost Border — 20% in dark) */
+  --color-outline-variant:     #404751;
+  --ghost-border-opacity:      0.20;
 
-```css
-:root {
-  --color-accent: var(--color-gray-100);
-  --color-accent-foreground: var(--color-gray-900);
-}
-```
+  /* Card / Popover */
+  --color-card:                var(--color-surface-container);
+  --color-card-foreground:     var(--color-on-surface);
 
-### Destructive
+  /* Muted */
+  --color-muted:               #262a31;
+  --color-muted-foreground:    #c0c7d2;
 
-```css
-:root {
-  --color-destructive: var(--color-red-600);
-  --color-destructive-hover: var(--color-red-700);
-  --color-destructive-foreground: white;
-}
-```
+  /* Border & Ring */
+  --color-border:    transparent;
+  --color-input:     #0a0e14;  /* inset look */
+  --color-ring:      #9bcaff;
 
-### Status Colors
-
-```css
-:root {
-  --color-success: var(--color-green-600);
-  --color-success-foreground: white;
-
-  --color-warning: var(--color-yellow-500);
-  --color-warning-foreground: var(--color-gray-900);
-
-  --color-error: var(--color-red-600);
-  --color-error-foreground: white;
-
-  --color-info: var(--color-blue-500);
-  --color-info-foreground: white;
-}
-```
-
-### Border & Ring
-
-```css
-:root {
-  --color-border: var(--color-gray-200);
-  --color-input: var(--color-gray-200);
-  --color-ring: var(--color-blue-500);
+  /* Deepest Black (NEVER use pure #000000) */
+  --color-deepest-black:       #001c38;  /* on-secondary-fixed */
 }
 ```
 
@@ -103,20 +122,21 @@ Purpose-based aliases referencing primitive tokens.
 
 ```css
 :root {
-  /* Component internal spacing */
-  --spacing-component-xs: var(--space-1);
-  --spacing-component-sm: var(--space-2);
-  --spacing-component: var(--space-3);
-  --spacing-component-lg: var(--space-4);
+  /* Component internal spacing — "Extreme Whitespace" */
+  --spacing-component-xs: var(--space-1);   /* 4px */
+  --spacing-component-sm: var(--space-2);   /* 8px */
+  --spacing-component:    var(--space-4);   /* 16px */
+  --spacing-component-lg: var(--space-6);   /* 24px */
 
-  /* Section spacing */
-  --spacing-section-sm: var(--space-8);
-  --spacing-section: var(--space-12);
-  --spacing-section-lg: var(--space-16);
+  /* Zone & section spacing */
+  --spacing-zone-gap:     var(--space-8);   /* 32px — zone separation */
+  --spacing-section:      var(--space-12);  /* 48px — section gap */
+  --spacing-section-lg:   var(--space-16);  /* 64px */
+  --spacing-hero:         var(--space-32);  /* 128px — hero breathing room */
 
   /* Page margins */
-  --spacing-page-x: var(--space-4);
-  --spacing-page-y: var(--space-6);
+  --spacing-page-x: var(--space-6);   /* 24px */
+  --spacing-page-y: var(--space-8);   /* 32px */
 }
 ```
 
@@ -124,19 +144,22 @@ Purpose-based aliases referencing primitive tokens.
 
 ```css
 :root {
-  /* Headings */
-  --font-heading: var(--font-size-2xl);
-  --font-heading-lg: var(--font-size-3xl);
-  --font-heading-xl: var(--font-size-4xl);
+  /* Font family */
+  --font-heading:  var(--font-family-primary);  /* Inter */
+  --font-body:     var(--font-family-primary);  /* Inter */
+  --font-label:    var(--font-family-primary);  /* Inter */
 
-  /* Body */
-  --font-body: var(--font-size-base);
-  --font-body-sm: var(--font-size-sm);
-  --font-body-lg: var(--font-size-lg);
+  /* Display — bold only, "stamped metal" */
+  --font-display-lg: var(--font-weight-bold) var(--font-size-display-lg) / var(--leading-tight) var(--font-heading);
+  --font-display-md: var(--font-weight-bold) var(--font-size-display-md) / var(--leading-tight) var(--font-heading);
+  --font-display-sm: var(--font-weight-bold) var(--font-size-display-sm) / var(--leading-tight) var(--font-heading);
 
-  /* Labels & Captions */
-  --font-label: var(--font-size-sm);
-  --font-caption: var(--font-size-xs);
+  /* Headline — tight tracking, "technical manual" */
+  --font-headline-tracking: var(--tracking-tight);  /* -0.02em */
+
+  /* Label — ALL CAPS, wide tracking, "machined" */
+  --font-label-transform: uppercase;
+  --font-label-tracking: var(--tracking-wide);  /* +0.05em */
 }
 ```
 
@@ -144,45 +167,15 @@ Purpose-based aliases referencing primitive tokens.
 
 ```css
 :root {
-  /* Focus ring */
   --ring-width: 2px;
-  --ring-offset: 2px;
+  --ring-offset: 0px;  /* No offset — industrial precision */
   --ring-color: var(--color-ring);
 
-  /* Opacity for disabled */
   --opacity-disabled: 0.5;
 
-  /* Transitions */
   --transition-colors: color, background-color, border-color;
   --transition-transform: transform;
   --transition-all: all;
-}
-```
-
-## Dark Mode Overrides
-
-```css
-.dark {
-  --color-background: var(--color-gray-950);
-  --color-foreground: var(--color-gray-50);
-
-  --color-card: var(--color-gray-900);
-  --color-card-foreground: var(--color-gray-50);
-
-  --color-popover: var(--color-gray-900);
-  --color-popover-foreground: var(--color-gray-50);
-
-  --color-muted: var(--color-gray-800);
-  --color-muted-foreground: var(--color-gray-400);
-
-  --color-secondary: var(--color-gray-800);
-  --color-secondary-foreground: var(--color-gray-50);
-
-  --color-accent: var(--color-gray-800);
-  --color-accent-foreground: var(--color-gray-50);
-
-  --color-border: var(--color-gray-800);
-  --color-input: var(--color-gray-800);
 }
 ```
 
@@ -191,25 +184,26 @@ Purpose-based aliases referencing primitive tokens.
 ### Applying Semantic Tokens
 
 ```css
-/* Good - uses semantic tokens */
+/* Good — uses Andritz semantic tokens */
 .card {
-  background: var(--color-card);
-  color: var(--color-card-foreground);
-  border: 1px solid var(--color-border);
+  background: var(--color-surface-container-lowest);
+  color: var(--color-on-surface);
+  /* No border — No-Line Rule */
 }
 
-/* Bad - uses primitive tokens directly */
+/* Bad — uses primitive tokens directly */
 .card {
-  background: var(--color-gray-50);
-  color: var(--color-gray-900);
+  background: #ffffff;
+  color: #191c1d;
+  border: 1px solid #c0c7d2;  /* violates No-Line Rule */
 }
 ```
 
 ### Theme Switching
 
-Semantic tokens enable instant theme switching:
+Semantic tokens enable instant theme switching — surfaces shift automatically:
 
 ```js
-// Toggle dark mode
+// Toggle dark mode — surfaces shift automatically
 document.documentElement.classList.toggle('dark');
 ```
