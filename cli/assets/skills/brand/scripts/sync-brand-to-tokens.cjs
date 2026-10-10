@@ -20,13 +20,36 @@ const DESIGN_TOKENS_JSON = 'assets/design-tokens.json';
 const DESIGN_TOKENS_CSS = 'assets/design-tokens.css';
 const CSS_TOKEN_SOURCES = [
   'src/index.css',
+  'src/main.css',
+  'src/app.css',
+  'src/global.css',
   'src/globals.css',
+  'src/styles/global.css',
   'src/styles/globals.css',
+  'src/styles/index.css',
+  'src/styles/main.css',
   'src/styles/tokens.css',
+  'src/app/global.css',
   'src/app/globals.css',
+  'app/global.css',
   'app/globals.css',
+  'styles/global.css',
   'styles/globals.css',
   'styles/tokens.css'
+];
+// Directories shallow-scanned for any *.css that already declares tokens.
+// A hardcoded filename list alone misses real projects by a single letter
+// (e.g. styles/global.css vs styles/globals.css), which silently defeats the
+// overwrite guard.
+const CSS_SCAN_DIRS = [
+  'src',
+  'src/styles',
+  'src/css',
+  'src/assets/styles',
+  'app',
+  'app/styles',
+  'styles',
+  'css'
 ];
 const TAILWIND_CONFIGS = [
   'tailwind.config.js',
@@ -89,7 +112,23 @@ function findExistingTokenSources(projectRoot) {
   addIfPresent(DESIGN_TOKENS_JSON);
   addIfPresent(DESIGN_TOKENS_CSS);
 
-  for (const relativePath of CSS_TOKEN_SOURCES) {
+  const candidates = new Set(CSS_TOKEN_SOURCES);
+  for (const dir of CSS_SCAN_DIRS) {
+    const absoluteDir = path.resolve(projectRoot, dir);
+    let entries;
+    try {
+      entries = fs.readdirSync(absoluteDir, { withFileTypes: true });
+    } catch {
+      continue;
+    }
+    for (const entry of entries) {
+      if (entry.isFile() && entry.name.toLowerCase().endsWith('.css')) {
+        candidates.add(`${dir}/${entry.name}`);
+      }
+    }
+  }
+
+  for (const relativePath of candidates) {
     const absolutePath = path.resolve(projectRoot, relativePath);
     scanCssSource(absolutePath);
   }

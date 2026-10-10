@@ -315,3 +315,54 @@ def test_force_allows_sync_with_existing_css_token_source(tmp_path):
 
     assert result.returncode == 0, result.stderr + result.stdout
     assert (tmp_path / "assets" / "design-tokens.json").exists()
+
+
+@pytest.mark.parametrize(
+    "relative_path",
+    [
+        "src/styles/global.css",
+        "src/global.css",
+        "src/main.css",
+        "src/styles/theme.css",
+        "styles/variables.css",
+    ],
+)
+def test_refuses_token_source_under_unlisted_css_filename(tmp_path, relative_path):
+    """Token detection must not hinge on an exact filename.
+
+    The candidate list only held the plural `globals.css` spellings, so a
+    project whose entry point is `src/styles/global.css` — one letter apart —
+    was never scanned and the guard silently passed, leaving the generated
+    `assets/design-tokens.*` to compete with an existing palette.
+    """
+    (tmp_path / "docs").mkdir()
+    shutil.copy(BRAND_STARTER, tmp_path / "docs" / "brand-guidelines.md")
+    css = tmp_path / relative_path
+    css.parent.mkdir(parents=True, exist_ok=True)
+    css.write_text(":root {\n  --dawn: #f5a524;\n  --ink: #1c1626;\n}\n")
+
+    result = _run(tmp_path)
+
+    assert result.returncode == 1, result.stdout + result.stderr
+    assert relative_path in result.stderr
+    assert "--force" in result.stderr
+    assert not (tmp_path / "assets" / "design-tokens.json").exists()
+
+
+def test_discovered_css_without_tokens_does_not_block_sync(tmp_path):
+    """Scanning extra CSS files must not introduce false positives.
+
+    Plain stylesheets carry no custom properties, so they are not token
+    sources and must leave the sync path alone.
+    """
+    (tmp_path / "docs").mkdir()
+    shutil.copy(BRAND_STARTER, tmp_path / "docs" / "brand-guidelines.md")
+    styles = tmp_path / "src" / "styles"
+    styles.mkdir(parents=True)
+    (styles / "global.css").write_text(".btn {\n  color: red;\n}\n")
+    (styles / "reset.css").write_text("* {\n  margin: 0;\n}\n")
+
+    result = _run(tmp_path)
+
+    assert result.returncode == 0, result.stderr + result.stdout
+    assert (tmp_path / "assets" / "design-tokens.json").exists()
