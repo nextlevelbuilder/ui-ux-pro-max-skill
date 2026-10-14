@@ -21,6 +21,7 @@
   <a href="https://www.npmjs.com/package/ui-ux-pro-max-cli"><img src="https://img.shields.io/npm/dm/ui-ux-pro-max-cli?style=flat-square&label=downloads" alt="npm downloads"></a>
   <a href="https://github.com/nextlevelbuilder/ui-ux-pro-max-skill/stargazers"><img src="https://img.shields.io/github/stars/nextlevelbuilder/ui-ux-pro-max-skill?style=flat-square&logo=github" alt="GitHub stars"></a>
   <a href="https://paypal.me/uiuxpromax"><img src="https://img.shields.io/badge/PayPal-Support%20Development-00457C?style=flat-square&logo=paypal&logoColor=white" alt="PayPal"></a>
+  <a href="https://gaiaskilltree.com/named/#explorer/nextlevelbuilder/ui-ux-pro-max"><img src="https://gaiaskilltree.com/badges/_assets/nextlevelbuilder/ui-ux-pro-max.svg?repo=nextlevelbuilder/ui-ux-pro-max-skill" alt="Gaia Skill: UI UX Pro Max"></a>
 </p>
 
 An AI skill that provides design intelligence for building professional UI/UX across multiple platforms and frameworks.
