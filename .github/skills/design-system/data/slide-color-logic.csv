@@ -1,0 +1,14 @@
+emotion,background,text_color,accent_usage,use_full_bleed,gradient,card_style
+frustration,dark-surface,foreground,minimal,false,none,subtle-border
+hope,accent-bleed,dark,none,true,none,none
+fear,dark-background,primary,stats-only,false,none,glow-primary
+relief,surface,foreground,icons,false,none,accent-bar
+trust,surface-elevated,foreground,metrics,false,none,subtle-border
+urgency,gradient,white,cta-button,true,primary,none
+curiosity,dark-glow,gradient-text,badge,false,glow,glow-secondary
+confidence,surface,foreground,chart-accent,false,none,none
+warmth,dark-surface,foreground,avatar-ring,false,none,none
+evaluation,surface-elevated,foreground,highlight,false,none,comparison
+narrative,dark-background,foreground-secondary,timeline-dots,false,none,none
+clarity,surface,foreground,icons,false,none,feature-card
+interest,dark-glow,foreground,demo-highlight,false,glow,none
