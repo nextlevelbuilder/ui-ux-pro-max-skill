@@ -162,6 +162,28 @@ python "${CLAUDE_PLUGIN_ROOT}/.claude/skills/ui-ux-pro-max/scripts/search.py" "<
 
 **Available stacks:** `react`, `nextjs`, `vue`, `svelte`, `astro`, `nuxtjs`, `nuxt-ui`, `angular`, `laravel`, `swiftui`, `react-native`, `flutter`, `jetpack-compose`, `html-tailwind`, `shadcn`, `threejs`, `javafx`, `wpf`, `winui`, `avalonia`, `uno`, `uwp`. Use the stack detected in Step 1.
 
+## Visual Design Pro Max (art direction, reference analysis, visual audit)
+
+Three sibling skills extend this one when a product needs an art direction as a checkable contract, not only a palette: games (Flutter/Flame, Unity) as well as web and native apps. They are installed next to this skill (plugin install, `uipro init`, or a manual copy side by side) and are loaded by name; each documents its own script commands, so run them from the loaded skill rather than from here.
+
+| Trigger | Load |
+|---|---|
+| choose, define or compare an art style; game UI direction (HUD, tiles, popups, reward beats); a style profile, `tokens.json` or design contract | `visual-direction` skill |
+| the user supplies screenshots, mockups or a competitor look to copy, match or compare | `reference-analysis` skill, then `visual-direction` skill |
+| "audit the UI", "inconsistent", "style drift", "which screens are off-style", "screenshot compare" / visual regression | `visual-audit` skill |
+| CSS variables or a Tailwind theme from a `tokens.json` | `design-system` skill (`generate-tokens.cjs`) |
+| landing-page structure, palette and typography search, `--design-system` | stay here (`ui-ux-pro-max`) |
+
+How they chain: `reference-analysis` turns images into an evidence-graded `reference-analysis.json` (observed / high / assumption / not-derivable). The `visual-direction` skill's `vd.py profile` turns a catalog style (`--style`), a genre (`--genre`) or that analysis (`--reference`) into `style-profile.json`; `vd.py init` writes `design-system/<slug>/` (`MASTER.md`, three-layer `tokens.json`, component / asset / interaction guidelines, QA checklist, `pages/`, `CHANGELOG.md`); `vd.py validate` must exit 0 before implementation. Afterwards the `visual-audit` skill's `audit.py scan <dir> --contract design-system/<slug>/tokens.json` reports drift with file:line evidence and a fix plan, and its `visual_qa.py` produces checklists, capture manifests and screenshot diffs. No script captures screenshots: captures are manual or CI work and are reported NOT RUN otherwise.
+
+Hand-off from this skill: a `--design-system --json` result can seed the profile so the palette and typography reasoning here is reused instead of re-derived:
+
+```bash
+python "${CLAUDE_PLUGIN_ROOT}/.claude/skills/ui-ux-pro-max/scripts/search.py" "casual puzzle game" --design-system --json
+```
+
+Save that output and pass it as `vd.py profile --seed-design-system <file>`; it fills gaps only. If `design-system/<slug>/MASTER.md` already exists from `--persist`, `vd.py init` leaves it untouched and writes `MASTER.visual-direction.md` plus a paste block instead, so the persisted Master stays the global source of truth. Full guide: `docs/VISUAL_DESIGN_PRO_MAX.md` in the repository.
+
 ---
 
 ## If a search returns 0 results

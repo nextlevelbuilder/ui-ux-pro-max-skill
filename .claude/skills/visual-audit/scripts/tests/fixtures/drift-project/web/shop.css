@@ -1,0 +1,29 @@
+/* FIXTURE: shop stylesheet with intentional drift (see expected-findings.md) */
+.shop-hero {
+  background: #1E88E5;            /* color.off-palette (count: shop.css + CtaButton.tsx = 2) */
+  border-radius: 7px;             /* radius.off-scale */
+  padding: 10px 18px;             /* spacing.off-scale x2 */
+  font-family: "Poppins", sans-serif; /* font-family.unlisted */
+  transition: all 337ms ease-in;  /* duration.off-scale */
+}
+
+.shop-hero h2 {
+  font-size: 15px;                /* font-size.off-scale */
+  color: rgb(255, 139, 77);       /* color.near-duplicate of accent #FF8A4C */
+}
+
+.icon-btn {
+  width: 28px;                    /* touch.target-too-small (heuristic: button-like selector) */
+  height: 28px;
+  border-radius: 8px;
+}
+
+.promo {
+  color: #FFD43B;                 /* text.contrast-risk: reward yellow on background cream (both in palette) */
+  background: #FFF8F0;
+  box-shadow: 0 5px 13px rgba(0, 0, 0, 0.25); /* 2nd distinct web shadow; counts toward variant explosion */
+}
+
+.hero-shadow {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.10); /* identical to --shadow-card: not a new variant */
+}

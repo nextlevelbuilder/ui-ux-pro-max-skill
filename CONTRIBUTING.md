@@ -115,6 +115,8 @@ python3 src/ui-ux-pro-max/scripts/search.py "your query" --design-system
 git push -u origin feat/your-feature-name
 ```
 
+**Visual Design Pro Max skills** (`.claude/skills/visual-direction`, `.claude/skills/reference-analysis`, `.claude/skills/visual-audit`) are standard-library Python with pytest suites under each skill's `scripts/tests/` (offline, fixtures in-repo; image tests skip when Pillow is missing). Run them with `python3 -m pytest .claude/skills/visual-direction .claude/skills/reference-analysis .claude/skills/visual-audit -q`. CI runs `python3 -m pytest .claude/skills -v` plus the path contract `python3 -m unittest discover -s src/ui-ux-pro-max/scripts/tests -p 'test_skill_script_paths.py'`, so every script path written in a skill's markdown must stay skill-relative (`scripts/<file>` or `../<skill>/scripts/<file>`) and name a file that ships; `cd cli && npm run sync:assets` mirrors the three folders into `cli/assets/skills/`.
+
 ---
 
 ## Commit Message Format

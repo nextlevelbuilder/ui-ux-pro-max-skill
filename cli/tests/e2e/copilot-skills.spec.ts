@@ -50,7 +50,7 @@ test('copilot dry-run plans the .github/skills layout and writes nothing', async
   const skillDir = join(scratch, '.github', 'skills', 'ui-ux-pro-max');
   expect(actions[0]).toBe(`Would write: ${join(skillDir, 'SKILL.md')}`);
   expect(actions[1]).toBe(`Would copy data + scripts: ${skillDir}`);
-  expect(actions[2]).toMatch(/^Would copy 6 sub-skills \(/);
+  expect(actions[2].startsWith(`Would copy ${(await listBundledSubSkills()).length} sub-skills (`)).toBe(true);
   expect(actions[2].endsWith(`: ${join(scratch, '.github', 'skills')}`)).toBe(true);
   expect(actions).toHaveLength(3);
   expect(await readdir(scratch)).toEqual([]);

@@ -1,0 +1,9 @@
+/* every value below is copied verbatim from tokens.json component.* (Example A) */
+.btn-primary { background: #FF8FAB; color: #2E2A32; border: 3px solid #972743; border-radius: 16px; font-size: 22px; padding: 0 24px; box-shadow: 0 4px 0 #972743, 0 8px 12px rgba(46, 42, 50, 0.14); transition: transform 90ms; }
+.btn-primary:active { background: #BA4A66; color: #FFFFFF; }
+.btn-secondary { background: #FFFFFF; color: #BA4A66; border: 3px solid #BA4A66; border-radius: 16px; box-shadow: 0 2px 0 #56505E, 0 4px 6px rgba(46, 42, 50, 0.12); transition: transform 90ms; }
+.tile { background: #FFFFFF; border: 3px solid #A88655; border-radius: 12px; box-shadow: 0 2px 0 #56505E, 0 4px 6px rgba(46, 42, 50, 0.12); }
+.card { background: #FFFFFF; border: 3px solid #FFDDAC; border-radius: 24px; padding: 20px; box-shadow: 0 2px 0 rgba(46, 42, 50, 0.25), 0 4px 6px rgba(46, 42, 50, 0.12); }
+.popup { border-radius: 32px; padding: 24px; box-shadow: 0 6px 0 rgba(46, 42, 50, 0.25), 0 12px 20px rgba(46, 42, 50, 0.18); transition: transform 200ms cubic-bezier(0.34, 1.56, 0.64, 1); }
+.chip { border-radius: 9999px; padding: 0 12px; font-size: 18px; border: 3px solid #FFDDAC; }
+.progress { transition: width 350ms cubic-bezier(0.22, 1, 0.36, 1); border-radius: 9999px; }

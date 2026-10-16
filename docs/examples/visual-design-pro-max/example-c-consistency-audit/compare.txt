@@ -1,0 +1,43 @@
+resolved: 31  new: 0  unchanged: 9  changed_severity: 8
+note: severity recomputed from project-wide occurrence counts after fixes; changed_severity entries are unchanged findings, not regressions
+## Resolved
+- VA-0017 `component.duplicate-implementation` lib/screens/rewards.dart — `class MainButton extends StatelessWidget`
+- VA-0036 `color.near-duplicate` lib/screens/shop.dart — `Color(0xFFFF8B4D)`
+- VA-0001 `color.off-palette` lib/screens/shop.dart — `Color(0xFFE91E63)`
+- VA-0005 `duration.off-scale` lib/screens/shop.dart — `Duration(milliseconds: 337)`
+- VA-0003 `font-family.unlisted` lib/screens/shop.dart — `fontFamily: 'Comic Sans MS'`
+- VA-0004 `font-size.off-scale` lib/screens/shop.dart — `fontSize: 15`
+- VA-0018 `icon.mixed-libraries` lib/screens/shop.dart — `import 'package:font_awesome_flutter/...'`
+- VA-0002 `radius.off-scale` lib/screens/shop.dart — `BorderRadius.circular(13)`
+- VA-0037 `shadow.unlisted` lib/screens/shop.dart — `BoxShadow(color: Color(0x40000000), blurRadius: 13, offset: Offset(0, 5))`
+- VA-0021 `shadow.variant-explosion` lib/screens/shop.dart — `x=0 y=5 blur=13 spread=0 color=#000000 a=0.25`
+- VA-0019 `spacing.off-scale` lib/screens/shop.dart — `EdgeInsets.symmetric(horizontal: 18, vertical: 10) → 10`
+- VA-0020 `spacing.off-scale` lib/screens/shop.dart — `EdgeInsets.symmetric(horizontal: 18, vertical: 10) → 18`
+- VA-0022 `touch.target-too-small` lib/screens/shop.dart — `SizedBox( width: 32, height: 32, child: IconButton`
+- VA-0024 `icon.mixed-libraries` web/components/Button.tsx — `from 'lucide-react`
+- VA-0026 `color.off-palette` web/components/CtaButton.tsx — `bg-[#1E88E5]`
+- VA-0025 `component.duplicate-implementation` web/components/CtaButton.tsx — `export const CtaButton`
+- VA-0014 `duration.off-scale` web/components/CtaButton.tsx — `transitionDuration: '337ms'`
+- VA-0013 `font-size.off-scale` web/components/CtaButton.tsx — `text-[15px]`
+- VA-0027 `radius.off-scale` web/components/CtaButton.tsx — `rounded-[7px]`
+- VA-0028 `spacing.off-scale` web/components/CtaButton.tsx — `px-[18px]`
+- VA-0039 `color.near-duplicate` web/shop.css — `rgb(255, 139, 77)`
+- VA-0029 `color.off-palette` web/shop.css — `#1E88E5`
+- VA-0015 `duration.off-scale` web/shop.css — `transition: all 337ms ease-in`
+- VA-0033 `font-family.unlisted` web/shop.css — `font-family: "Poppins", sans-serif`
+- VA-0016 `font-size.off-scale` web/shop.css — `font-size: 15px`
+- VA-0030 `radius.off-scale` web/shop.css — `border-radius: 7px`
+- VA-0040 `shadow.unlisted` web/shop.css — `box-shadow: 0 5px 13px rgba(0, 0, 0, 0.25)`
+- VA-0031 `spacing.off-scale` web/shop.css — `padding: 10px 18px → 10`
+- VA-0032 `spacing.off-scale` web/shop.css — `padding: 10px 18px → 18`
+- VA-0035 `text.contrast-risk` web/shop.css — `.promo { color: #FFD43B; background: #FFF8F0 }`
+- VA-0034 `touch.target-too-small` web/shop.css — `.icon-btn { width: 28; height: 28 }`
+## Changed severity
+- VA-0006 → VA-0001 `color.off-palette` unity/Assets/Scripts/ShopPanel.cs: high → medium
+- VA-0007 → VA-0002 `duration.off-scale` unity/Assets/Scripts/ShopPanel.cs: high → medium
+- VA-0008 → VA-0003 `color.off-palette` unity/Assets/UI/Shop.uss: high → medium
+- VA-0011 → VA-0006 `duration.off-scale` unity/Assets/UI/Shop.uss: high → medium
+- VA-0012 → VA-0007 `font-size.off-scale` unity/Assets/UI/Shop.uss: high → medium
+- VA-0009 → VA-0004 `radius.off-scale` unity/Assets/UI/Shop.uss: high → medium
+- VA-0010 → VA-0005 `radius.off-scale` unity/Assets/UI/Shop.uss: high → medium
+- VA-0023 → VA-0009 `spacing.off-scale` unity/Assets/UI/Shop.uss: medium → low

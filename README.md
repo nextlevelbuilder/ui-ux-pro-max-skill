@@ -479,6 +479,30 @@ If not, use the Master rules exclusively.
 Now, generate the code...
 ```
 
+### Visual Design Pro Max (new)
+
+Three sibling skills that turn an art direction into a checkable contract, for games (Flutter/Flame, Unity) as well as web and native apps. They install with the rest of the bundle (Claude Marketplace, `uipro init`, or a manual copy side by side) and live next to `ui-ux-pro-max` in the skills folder.
+
+- **`visual-direction`** — a searchable catalog of 20 art styles, 18 game/app genres and 55 components. `vd.py profile` builds a Visual Direction Profile (`style-profile.json`, schema `vdp/1`) from a catalog style, a genre or a reference analysis; `vd.py init` writes the design contract folder `design-system/<slug>/` (`MASTER.md`, three-layer `tokens.json`, component / asset / interaction guidelines, QA checklist, `pages/`, `CHANGELOG.md`); `vd.py validate` checks it. A `MASTER.md` persisted by `search.py --persist` is never overwritten — the skill adds `MASTER.visual-direction.md` next to it instead.
+- **`reference-analysis`** — extracts the visual language of screenshots or mockups into an evidence-graded `reference-analysis.json` (observed / high / assumption / not-derivable), merges several references with roles ("colours from A, buttons from B"), extracts a pixel-share palette (Pillow optional) and feeds `vd.py profile --reference`. It never uploads images anywhere.
+- **`visual-audit`** — a static drift scanner for Flutter, Unity (USS/UXML/C#), web (CSS/TSX/Vue/Svelte/Tailwind) and native code against the contract, with severity, file:line evidence and a fix plan ordered tokens → shared components → screens; plus a UX checklist, capture manifests and a screenshot pixel diff reported as PASS / FAIL / BLOCKED / NOT RUN.
+
+```bash
+# Pick a direction from the catalog and write the contract
+python3 .claude/skills/visual-direction/scripts/vd.py profile --style japanese-cute-puzzle --platform mobile-ios,mobile-android --stack flutter-flame --project "Onet Garden" --out style-profile.json
+python3 .claude/skills/visual-direction/scripts/vd.py init --profile style-profile.json --output-dir .
+python3 .claude/skills/visual-direction/scripts/vd.py validate --dir design-system/onet-garden
+
+# Or derive the direction from analysed screenshots
+python3 .claude/skills/visual-direction/scripts/vd.py profile --reference reference-analysis.json --platform mobile-ios --out style-profile.json
+
+# Audit the code against the contract (exit 1 on findings at/above high), then diff screenshots
+python3 .claude/skills/visual-audit/scripts/audit.py scan . --contract design-system/onet-garden/tokens.json --fail-on high
+python3 .claude/skills/visual-audit/scripts/visual_qa.py diff baseline/home_phone-m.png current/home_phone-m.png --threshold 0.5 --json
+```
+
+Python 3.8+ standard library only. Pillow is optional (palette extraction and pixel diff report `BLOCKED`, exit 3, without it); Node is needed only to turn `tokens.json` into CSS with the `design-system` skill. Full guide, runtime notes and limitations: [docs/VISUAL_DESIGN_PRO_MAX.md](docs/VISUAL_DESIGN_PRO_MAX.md); worked example: `docs/examples/visual-design-pro-max/`.
+
 ## Architecture & Contributing
 
 ### For Users

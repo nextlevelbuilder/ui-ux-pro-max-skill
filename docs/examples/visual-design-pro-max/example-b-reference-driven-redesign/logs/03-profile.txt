@@ -1,0 +1,1 @@
+wrote docs/examples/visual-design-pro-max/example-b-reference-driven-redesign/style-profile.json (style reference-derived-custom, kind app, platforms mobile-ios,mobile-android, stack flutter)

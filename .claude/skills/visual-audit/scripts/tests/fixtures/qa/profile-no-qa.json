@@ -1,0 +1,12 @@
+{
+  "schema": "vdp/1",
+  "project": {"name": "No QA", "slug": "no-qa"},
+  "product": {"kind": "app", "platforms": ["web"], "stack": "react"},
+  "style": {"id": "minimal-flat", "confidence": "assumption"},
+  "sources": [{"type": "catalog", "ref": "visual-styles.csv#minimal-flat"}],
+  "shape": {"radius_class": "md"},
+  "rendering": {"shading": "flat"},
+  "typography": {"display": "Inter", "body": "Inter"},
+  "motion": {"class": "snappy"},
+  "anti_patterns": []
+}

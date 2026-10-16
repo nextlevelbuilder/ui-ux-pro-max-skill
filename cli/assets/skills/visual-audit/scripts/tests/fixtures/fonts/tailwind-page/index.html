@@ -1,0 +1,26 @@
+<!doctype html><!-- FIXTURE: font families outside CSS declarations (see ../README.md) -->
+<html lang="en">
+<head>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&amp;family=Nunito:wght@400;700&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: { extend: {
+        fontFamily: {
+          heading: ['Poppins', 'sans-serif'],
+          body: ['Nunito', 'sans-serif'],
+          'display': "Fredoka, sans-serif",
+          sans: ['var(--font-inter)', 'sans-serif'],
+        },
+      } },
+    }
+  </script>
+  <style>
+    @import url('https://fonts.googleapis.com/css?family=Lobster|Fredoka:400,700');
+    h1 { font-family: 'Comic Sans MS', cursive; }
+  </style>
+</head>
+<body>
+  <p style="font-family: Papyrus, serif; color: #3B5BDB">on-palette colour, off-contract family</p>
+  <div :style="{ fontFamily: dynamicFont }">bound style is not a literal</div>
+</body>
+</html>

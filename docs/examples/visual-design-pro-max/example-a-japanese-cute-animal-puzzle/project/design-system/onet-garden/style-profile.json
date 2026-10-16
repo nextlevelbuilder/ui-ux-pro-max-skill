@@ -1,0 +1,189 @@
+{
+  "schema": "vdp/1",
+  "project": {
+    "name": "Onet Garden",
+    "slug": "onet-garden"
+  },
+  "product": {
+    "kind": "game",
+    "genre": "onet-animal-puzzle",
+    "platforms": [
+      "mobile-ios",
+      "mobile-android"
+    ],
+    "stack": "flutter-flame",
+    "audience": "casual-all-ages",
+    "orientation": "portrait"
+  },
+  "style": {
+    "id": "japanese-cute-puzzle",
+    "name": "Japanese Cute Puzzle",
+    "family": "cute-cartoon",
+    "mood": [
+      "cheerful",
+      "soft",
+      "rounded",
+      "friendly",
+      "calm-energetic"
+    ],
+    "confidence": "high"
+  },
+  "sources": [
+    {
+      "type": "genre",
+      "ref": "genre-profiles.csv#onet-animal-puzzle"
+    },
+    {
+      "type": "catalog",
+      "ref": "visual-styles.csv#japanese-cute-puzzle"
+    }
+  ],
+  "principles": [
+    "Pastel base (tints at 85-92% lightness) for backgrounds and panels",
+    "Rounded-blob silhouettes",
+    "3px outline on all gameplay pieces and buttons in a 25% darker shade of the fill (HSL L -25), never pure black",
+    "Rounded sans display (Fredoka / M PLUS Rounded 1c / Zen Maru Gothic for JP) 700 for titles"
+  ],
+  "shape": {
+    "radius_class": "xl",
+    "silhouette": "rounded-blob",
+    "outline": {
+      "width": 3,
+      "color_rule": "darker-shade-of-fill",
+      "secondary_button": "primary"
+    }
+  },
+  "rendering": {
+    "shading": "soft-cel",
+    "highlight": "top-left-gloss",
+    "shadow": "double-clay",
+    "texture": "none",
+    "shadow_tint": "neutral"
+  },
+  "typography": {
+    "display": "Fredoka",
+    "body": "Nunito",
+    "case": "title",
+    "weight_rule": "display 700 / body 500"
+  },
+  "palette_strategy": "Pastel base (tints at 85-92% lightness) for backgrounds and panels; exactly 3 saturated accents reserved for CTA, reward and selection states; never more than 2 saturated hues on one screen outside reward moments",
+  "palette": {
+    "seeds": {
+      "brand": "#FF8FAB",
+      "secondary": "#7ED6C4",
+      "accent": "#FFD23F",
+      "neutral": "#7F758A"
+    },
+    "surfaces": {
+      "background": "#FFF6E9",
+      "surface": "#FFFFFF",
+      "text": "#4A3B5C"
+    }
+  },
+  "iconography": {
+    "style": "filled-rounded",
+    "stroke": null,
+    "library_hint": "custom"
+  },
+  "illustration": {
+    "character_style": "chibi",
+    "asset_rendering": "vector flat with one soft shade band in a hue-shifted (toward purple) darker tone"
+  },
+  "motion": {
+    "class": "bouncy",
+    "duration_scale": {
+      "fast": 120,
+      "base": 200,
+      "slow": 350
+    },
+    "easing": "spring-soft",
+    "reduced_motion": "respect"
+  },
+  "components": {
+    "button.primary": "Pill primary 56px tall, fill = primary, 3px darker-shade outline, 4px hard bottom shadow, label 18px 700 centred with 1px darker text shadow; secondary = surface fill with primary outline; pressed = translate 3px down and drop shadow in 90ms",
+    "popup": "Rounded panel radius 28px, surface fill, 4px outline in secondary-darker, ribbon title plate overlapping the top edge by 50%; close button circular 44px top-right; entrance scale 0.85 to 1 with overshoot 1.04 in 260ms",
+    "hud": "Top bar 64px with coin/life/timer capsules (pill, surface fill, 2px outline); timer bar uses accent fill with rounded ends; never more than 3 capsules; gameplay grid gets at least 85% of vertical space in portrait",
+    "reward": "Reward popups go one saturation step higher (accent plus gold); confetti of 3 shapes max (circle, star, heart) in palette colours; mascot cheer pose; sparkle burst 6-8 rays; bounce to 1.1 scale synced to sound"
+  },
+  "anti_patterns": [
+    "Pure black outlines",
+    "Thin stroke icons mixed with filled",
+    "Sharp-corner tiles next to pill buttons",
+    "More than 3 saturated hues on the gameplay screen",
+    "Large-blur drop shadows on tiles",
+    "Photoreal textures",
+    "Timer bar that turns red and pulses for the whole level",
+    "Tile faces with busy background patterns",
+    "Boosters larger than tiles",
+    "Ad overlay covering the board",
+    "Mixed animal art styles across species"
+  ],
+  "qa_criteria": [
+    "All outlines are darker shades of their own fill, never #000",
+    "Corner radius within the xl class on every panel and button",
+    "Text contrast at least 4.5:1 on the cream background",
+    "Tile silhouettes identical size and radius across the grid",
+    "Reward screen uses the same character style as home",
+    "Pressed state visible within 100ms"
+  ],
+  "intentional_exceptions": [],
+  "unknowns": [
+    "success: built-in status fill darkened from #138B3F to #107435 for contrast (5.88:1 on {primitive.color.white})",
+    "button.secondary.fg: primary-family label stepped from #FF8FAB to brand.700 (#BA4A66) to reach 4.5:1 on the secondary states"
+  ],
+  "catalog_rules": {
+    "shape_language": "Rounded-blob silhouettes; tiles are superellipses (squircles) not circles; no acute angles anywhere in UI; character heads 1.3-1.5x body width; panel corners visibly rounder than tile corners",
+    "outline_rule": "3px outline on all gameplay pieces and buttons in a 25% darker shade of the fill (HSL L -25), never pure black; HUD text panels 2px outline in surface-darker; outline width scales with element size (min 2px at 32px, 4px at 128px+)",
+    "highlight_rule": "Single top-left gloss ellipse at 30% white on buttons and tiles covering the top 35% of the element; no specular on text panels; eyes get one white dot",
+    "shadow_rule": "Offset shadow 0 4px 0 in the outline colour (hard) plus 0 6px 12px 15% black (soft); pressed state removes the hard offset and translates the element down 3px",
+    "typography_direction": "Rounded sans display (Fredoka / M PLUS Rounded 1c / Zen Maru Gothic for JP) 700 for titles; body Nunito or Noto Sans JP 500; title case; tabular numerals; letter-spacing +1% on display only",
+    "icon_style": "Filled rounded glyphs with 2px darker-shade outline matching the button rule; two-tone max; never thin-stroke icons",
+    "illustration_style": "Chibi animals with 2:1 head-to-body ratio, dot eyes with single white highlight, blush circles, smiles only; vector flat with one soft shade band in a hue-shifted (toward purple) darker tone",
+    "button_rule": "Pill primary 56px tall, fill = primary, 3px darker-shade outline, 4px hard bottom shadow, label 18px 700 centred with 1px darker text shadow; secondary = surface fill with primary outline; pressed = translate 3px down and drop shadow in 90ms",
+    "panel_popup_rule": "Rounded panel radius 28px, surface fill, 4px outline in secondary-darker, ribbon title plate overlapping the top edge by 50%; close button circular 44px top-right; entrance scale 0.85 to 1 with overshoot 1.04 in 260ms",
+    "hud_rule": "Top bar 64px with coin/life/timer capsules (pill, surface fill, 2px outline); timer bar uses accent fill with rounded ends; never more than 3 capsules; gameplay grid gets at least 85% of vertical space in portrait",
+    "reward_rule": "Reward popups go one saturation step higher (accent plus gold); confetti of 3 shapes max (circle, star, heart) in palette colours; mascot cheer pose; sparkle burst 6-8 rays; bounce to 1.1 scale synced to sound",
+    "best_for": "Tile-matching and onet puzzles, casual collection games, mascot-driven puzzle apps for all ages",
+    "avoid_for": "Competitive or hardcore genres, dark narrative games, enterprise apps, anything needing a serious tone",
+    "reference_notes": "Japanese casual puzzle and onet-style games with chibi animal mascots, soft coloured outlines, cream backgrounds and ribbon-titled popups; Japanese mascot (yuru-chara) design conventions"
+  },
+  "genre_profile": {
+    "name": "Onet Animal Puzzle",
+    "default_styles": [
+      "cute-animal-onet",
+      "japanese-cute-puzzle",
+      "kawaii-sticker",
+      "soft-2d-cartoon"
+    ],
+    "core_screens": [
+      "splash",
+      "home-level-map",
+      "gameplay-board",
+      "pause",
+      "level-complete",
+      "level-failed",
+      "shop-boosters",
+      "settings",
+      "daily-reward"
+    ],
+    "hud_elements": [
+      "level-number",
+      "timer-bar",
+      "score",
+      "booster-tray-3",
+      "pause-button",
+      "hint-count"
+    ],
+    "key_interactions": [
+      "tap-select-tile",
+      "tap-second-tile-to-link",
+      "path-draw-feedback",
+      "booster-tap",
+      "shuffle",
+      "hint"
+    ],
+    "reward_loop": "Level clear -> 1-3 stars by remaining time -> coins -> boosters; daily login chest; collection album unlocks animal species",
+    "touch_rules": "Tiles min 44x44 logical even on 10x14 boards (scale the board to fit, never shrink tiles below 40); selection feedback within 1 frame; link path visible 120-200ms; booster buttons 64px with 8px gap; tap only, no gestures",
+    "performance_notes": "Boards up to 140 tiles must redraw at 60fps; animal icons in one sprite atlas; path line as a single polyline; no per-tile shadows (bake into atlas)"
+  }
+}

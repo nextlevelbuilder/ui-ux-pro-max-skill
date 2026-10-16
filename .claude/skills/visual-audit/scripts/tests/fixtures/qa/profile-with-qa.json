@@ -1,0 +1,24 @@
+{
+  "schema": "vdp/1",
+  "project": {"name": "Onet Garden", "slug": "onet-garden"},
+  "product": {"kind": "game", "genre": "onet-animal-puzzle", "platforms": ["mobile-ios", "mobile-android", "tablet"],
+              "stack": "flutter-flame", "audience": "casual-all-ages", "orientation": "portrait"},
+  "style": {"id": "japanese-cute-puzzle", "name": "Japanese Cute Puzzle", "family": "cute-cartoon",
+            "mood": ["cheerful", "soft", "rounded"], "confidence": "high"},
+  "sources": [{"type": "catalog", "ref": "visual-styles.csv#japanese-cute-puzzle"}],
+  "principles": ["soft shapes", "one accent per screen"],
+  "shape": {"radius_class": "xl", "silhouette": "rounded-blob", "outline": {"width": 3, "color_rule": "darker-shade-of-fill"}},
+  "rendering": {"shading": "soft-cel", "highlight": "top-left-gloss", "shadow": "offset-soft", "texture": "none"},
+  "typography": {"display": "Fredoka", "body": "Nunito", "case": "title", "weight_rule": "display bold / body medium"},
+  "motion": {"class": "bouncy", "duration_scale": {"fast": 120, "base": 200, "slow": 350}, "easing": "spring-soft", "reduced_motion": "respect"},
+  "iconography": {"style": "filled-rounded", "stroke": null, "library_hint": "material"},
+  "anti_patterns": ["drop shadow on text", "ad-hoc colours outside the palette"],
+  "qa_criteria": [
+    "All CTAs use the primary token",
+    "Cards use radius class xl",
+    "HUD readable over gameplay",
+    "Reward animation feels bouncy"
+  ],
+  "intentional_exceptions": [{"scope": "shop", "rule": "radius.off-scale", "reason": "price tags are compact"}],
+  "unknowns": []
+}

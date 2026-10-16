@@ -1,0 +1,402 @@
+{
+  "schema": "visual-qa-manifest/1",
+  "generated_at": "2026-10-16T11:55:48Z",
+  "stack": "flutter",
+  "resolved_stack": "flutter",
+  "note": "Capture instructions, not executed: visual_qa.py never launches the app or takes screenshots. Run the snippets with the project's own test tooling, then compare with `visual_qa.py diff`. Every entry stays NOT RUN until a capture exists; report BLOCKED when the tool is unavailable.",
+  "naming": "<screen>_<device>.png",
+  "devices": [
+    {
+      "name": "phone-s",
+      "logical_size": [
+        375,
+        667
+      ],
+      "dpr": 2,
+      "represents": "iPhone SE / small Android",
+      "mandatory_for": "all mobile (smallest safe area)",
+      "status_bar_mask": [
+        0,
+        0,
+        375,
+        20
+      ]
+    },
+    {
+      "name": "phone-m",
+      "logical_size": [
+        390,
+        844
+      ],
+      "dpr": 3,
+      "represents": "iPhone 14/15, most Android",
+      "mandatory_for": "all mobile",
+      "status_bar_mask": [
+        0,
+        0,
+        390,
+        47
+      ]
+    },
+    {
+      "name": "phone-l",
+      "logical_size": [
+        430,
+        932
+      ],
+      "dpr": 3,
+      "represents": "iPhone Pro Max, large Android",
+      "mandatory_for": "all mobile",
+      "status_bar_mask": [
+        0,
+        0,
+        430,
+        59
+      ]
+    }
+  ],
+  "sidecar_fields": [
+    "captured_with",
+    "app_version",
+    "locale",
+    "theme",
+    "dpr",
+    "ignore_regions",
+    "notes"
+  ],
+  "entries": [
+    {
+      "screen": "home",
+      "device": "phone-s",
+      "logical_size": [
+        375,
+        667
+      ],
+      "dpr": 2,
+      "file": "home_phone-s.png",
+      "baseline": "baselines/home/phone-s@2x.png",
+      "sidecar": "baselines/home/phone-s.json",
+      "capture": {
+        "tool": "integration_test",
+        "mechanism": "integration_test package + IntegrationTestWidgetsFlutterBinding.takeScreenshot('<name>'); golden tests (matchesGoldenFile) for widget-level; run with `flutter drive --driver test_driver/integration_test.dart --target integration_test/<screen>_test.dart`",
+        "snippet": "final binding = IntegrationTestWidgetsFlutterBinding.ensureInitialized();\ntestWidgets('home phone-s', (tester) async {\n  tester.view.physicalSize = const Size(750, 1334); tester.view.devicePixelRatio = 2;\n  timeDilation = 1.0; // disable animations via binding.transitionDuration where available\n  await tester.pumpWidget(const App(seed: 42)); await tester.pumpAndSettle();\n  await binding.takeScreenshot('home_phone-s');\n});"
+      },
+      "settle": "pumpAndSettle() after navigation; fixed seed data; fonts bundled (no network); pin physicalSize/devicePixelRatio via tester.view",
+      "suggested_masks": [
+        {
+          "region": [
+            0,
+            0,
+            375,
+            20
+          ],
+          "why": "status bar (clock/battery)"
+        },
+        {
+          "region": null,
+          "why": "add --ignore for FPS counters, live timers, ad slots and particle layers"
+        }
+      ],
+      "compare": "python3 scripts/visual_qa.py diff baselines/home/phone-s@2x.png home_phone-s.png --threshold 0.5 --json",
+      "executed": false,
+      "status": "NOT RUN",
+      "note": "manual/automation hint, not executed"
+    },
+    {
+      "screen": "home",
+      "device": "phone-m",
+      "logical_size": [
+        390,
+        844
+      ],
+      "dpr": 3,
+      "file": "home_phone-m.png",
+      "baseline": "baselines/home/phone-m@3x.png",
+      "sidecar": "baselines/home/phone-m.json",
+      "capture": {
+        "tool": "integration_test",
+        "mechanism": "integration_test package + IntegrationTestWidgetsFlutterBinding.takeScreenshot('<name>'); golden tests (matchesGoldenFile) for widget-level; run with `flutter drive --driver test_driver/integration_test.dart --target integration_test/<screen>_test.dart`",
+        "snippet": "final binding = IntegrationTestWidgetsFlutterBinding.ensureInitialized();\ntestWidgets('home phone-m', (tester) async {\n  tester.view.physicalSize = const Size(1170, 2532); tester.view.devicePixelRatio = 3;\n  timeDilation = 1.0; // disable animations via binding.transitionDuration where available\n  await tester.pumpWidget(const App(seed: 42)); await tester.pumpAndSettle();\n  await binding.takeScreenshot('home_phone-m');\n});"
+      },
+      "settle": "pumpAndSettle() after navigation; fixed seed data; fonts bundled (no network); pin physicalSize/devicePixelRatio via tester.view",
+      "suggested_masks": [
+        {
+          "region": [
+            0,
+            0,
+            390,
+            47
+          ],
+          "why": "status bar (clock/battery)"
+        },
+        {
+          "region": null,
+          "why": "add --ignore for FPS counters, live timers, ad slots and particle layers"
+        }
+      ],
+      "compare": "python3 scripts/visual_qa.py diff baselines/home/phone-m@3x.png home_phone-m.png --threshold 0.5 --json",
+      "executed": false,
+      "status": "NOT RUN",
+      "note": "manual/automation hint, not executed"
+    },
+    {
+      "screen": "home",
+      "device": "phone-l",
+      "logical_size": [
+        430,
+        932
+      ],
+      "dpr": 3,
+      "file": "home_phone-l.png",
+      "baseline": "baselines/home/phone-l@3x.png",
+      "sidecar": "baselines/home/phone-l.json",
+      "capture": {
+        "tool": "integration_test",
+        "mechanism": "integration_test package + IntegrationTestWidgetsFlutterBinding.takeScreenshot('<name>'); golden tests (matchesGoldenFile) for widget-level; run with `flutter drive --driver test_driver/integration_test.dart --target integration_test/<screen>_test.dart`",
+        "snippet": "final binding = IntegrationTestWidgetsFlutterBinding.ensureInitialized();\ntestWidgets('home phone-l', (tester) async {\n  tester.view.physicalSize = const Size(1290, 2796); tester.view.devicePixelRatio = 3;\n  timeDilation = 1.0; // disable animations via binding.transitionDuration where available\n  await tester.pumpWidget(const App(seed: 42)); await tester.pumpAndSettle();\n  await binding.takeScreenshot('home_phone-l');\n});"
+      },
+      "settle": "pumpAndSettle() after navigation; fixed seed data; fonts bundled (no network); pin physicalSize/devicePixelRatio via tester.view",
+      "suggested_masks": [
+        {
+          "region": [
+            0,
+            0,
+            430,
+            59
+          ],
+          "why": "status bar (clock/battery)"
+        },
+        {
+          "region": null,
+          "why": "add --ignore for FPS counters, live timers, ad slots and particle layers"
+        }
+      ],
+      "compare": "python3 scripts/visual_qa.py diff baselines/home/phone-l@3x.png home_phone-l.png --threshold 0.5 --json",
+      "executed": false,
+      "status": "NOT RUN",
+      "note": "manual/automation hint, not executed"
+    },
+    {
+      "screen": "shop",
+      "device": "phone-s",
+      "logical_size": [
+        375,
+        667
+      ],
+      "dpr": 2,
+      "file": "shop_phone-s.png",
+      "baseline": "baselines/shop/phone-s@2x.png",
+      "sidecar": "baselines/shop/phone-s.json",
+      "capture": {
+        "tool": "integration_test",
+        "mechanism": "integration_test package + IntegrationTestWidgetsFlutterBinding.takeScreenshot('<name>'); golden tests (matchesGoldenFile) for widget-level; run with `flutter drive --driver test_driver/integration_test.dart --target integration_test/<screen>_test.dart`",
+        "snippet": "final binding = IntegrationTestWidgetsFlutterBinding.ensureInitialized();\ntestWidgets('shop phone-s', (tester) async {\n  tester.view.physicalSize = const Size(750, 1334); tester.view.devicePixelRatio = 2;\n  timeDilation = 1.0; // disable animations via binding.transitionDuration where available\n  await tester.pumpWidget(const App(seed: 42)); await tester.pumpAndSettle();\n  await binding.takeScreenshot('shop_phone-s');\n});"
+      },
+      "settle": "pumpAndSettle() after navigation; fixed seed data; fonts bundled (no network); pin physicalSize/devicePixelRatio via tester.view",
+      "suggested_masks": [
+        {
+          "region": [
+            0,
+            0,
+            375,
+            20
+          ],
+          "why": "status bar (clock/battery)"
+        },
+        {
+          "region": null,
+          "why": "add --ignore for FPS counters, live timers, ad slots and particle layers"
+        }
+      ],
+      "compare": "python3 scripts/visual_qa.py diff baselines/shop/phone-s@2x.png shop_phone-s.png --threshold 0.5 --json",
+      "executed": false,
+      "status": "NOT RUN",
+      "note": "manual/automation hint, not executed"
+    },
+    {
+      "screen": "shop",
+      "device": "phone-m",
+      "logical_size": [
+        390,
+        844
+      ],
+      "dpr": 3,
+      "file": "shop_phone-m.png",
+      "baseline": "baselines/shop/phone-m@3x.png",
+      "sidecar": "baselines/shop/phone-m.json",
+      "capture": {
+        "tool": "integration_test",
+        "mechanism": "integration_test package + IntegrationTestWidgetsFlutterBinding.takeScreenshot('<name>'); golden tests (matchesGoldenFile) for widget-level; run with `flutter drive --driver test_driver/integration_test.dart --target integration_test/<screen>_test.dart`",
+        "snippet": "final binding = IntegrationTestWidgetsFlutterBinding.ensureInitialized();\ntestWidgets('shop phone-m', (tester) async {\n  tester.view.physicalSize = const Size(1170, 2532); tester.view.devicePixelRatio = 3;\n  timeDilation = 1.0; // disable animations via binding.transitionDuration where available\n  await tester.pumpWidget(const App(seed: 42)); await tester.pumpAndSettle();\n  await binding.takeScreenshot('shop_phone-m');\n});"
+      },
+      "settle": "pumpAndSettle() after navigation; fixed seed data; fonts bundled (no network); pin physicalSize/devicePixelRatio via tester.view",
+      "suggested_masks": [
+        {
+          "region": [
+            0,
+            0,
+            390,
+            47
+          ],
+          "why": "status bar (clock/battery)"
+        },
+        {
+          "region": null,
+          "why": "add --ignore for FPS counters, live timers, ad slots and particle layers"
+        }
+      ],
+      "compare": "python3 scripts/visual_qa.py diff baselines/shop/phone-m@3x.png shop_phone-m.png --threshold 0.5 --json",
+      "executed": false,
+      "status": "NOT RUN",
+      "note": "manual/automation hint, not executed"
+    },
+    {
+      "screen": "shop",
+      "device": "phone-l",
+      "logical_size": [
+        430,
+        932
+      ],
+      "dpr": 3,
+      "file": "shop_phone-l.png",
+      "baseline": "baselines/shop/phone-l@3x.png",
+      "sidecar": "baselines/shop/phone-l.json",
+      "capture": {
+        "tool": "integration_test",
+        "mechanism": "integration_test package + IntegrationTestWidgetsFlutterBinding.takeScreenshot('<name>'); golden tests (matchesGoldenFile) for widget-level; run with `flutter drive --driver test_driver/integration_test.dart --target integration_test/<screen>_test.dart`",
+        "snippet": "final binding = IntegrationTestWidgetsFlutterBinding.ensureInitialized();\ntestWidgets('shop phone-l', (tester) async {\n  tester.view.physicalSize = const Size(1290, 2796); tester.view.devicePixelRatio = 3;\n  timeDilation = 1.0; // disable animations via binding.transitionDuration where available\n  await tester.pumpWidget(const App(seed: 42)); await tester.pumpAndSettle();\n  await binding.takeScreenshot('shop_phone-l');\n});"
+      },
+      "settle": "pumpAndSettle() after navigation; fixed seed data; fonts bundled (no network); pin physicalSize/devicePixelRatio via tester.view",
+      "suggested_masks": [
+        {
+          "region": [
+            0,
+            0,
+            430,
+            59
+          ],
+          "why": "status bar (clock/battery)"
+        },
+        {
+          "region": null,
+          "why": "add --ignore for FPS counters, live timers, ad slots and particle layers"
+        }
+      ],
+      "compare": "python3 scripts/visual_qa.py diff baselines/shop/phone-l@3x.png shop_phone-l.png --threshold 0.5 --json",
+      "executed": false,
+      "status": "NOT RUN",
+      "note": "manual/automation hint, not executed"
+    },
+    {
+      "screen": "rewards",
+      "device": "phone-s",
+      "logical_size": [
+        375,
+        667
+      ],
+      "dpr": 2,
+      "file": "rewards_phone-s.png",
+      "baseline": "baselines/rewards/phone-s@2x.png",
+      "sidecar": "baselines/rewards/phone-s.json",
+      "capture": {
+        "tool": "integration_test",
+        "mechanism": "integration_test package + IntegrationTestWidgetsFlutterBinding.takeScreenshot('<name>'); golden tests (matchesGoldenFile) for widget-level; run with `flutter drive --driver test_driver/integration_test.dart --target integration_test/<screen>_test.dart`",
+        "snippet": "final binding = IntegrationTestWidgetsFlutterBinding.ensureInitialized();\ntestWidgets('rewards phone-s', (tester) async {\n  tester.view.physicalSize = const Size(750, 1334); tester.view.devicePixelRatio = 2;\n  timeDilation = 1.0; // disable animations via binding.transitionDuration where available\n  await tester.pumpWidget(const App(seed: 42)); await tester.pumpAndSettle();\n  await binding.takeScreenshot('rewards_phone-s');\n});"
+      },
+      "settle": "pumpAndSettle() after navigation; fixed seed data; fonts bundled (no network); pin physicalSize/devicePixelRatio via tester.view",
+      "suggested_masks": [
+        {
+          "region": [
+            0,
+            0,
+            375,
+            20
+          ],
+          "why": "status bar (clock/battery)"
+        },
+        {
+          "region": null,
+          "why": "add --ignore for FPS counters, live timers, ad slots and particle layers"
+        }
+      ],
+      "compare": "python3 scripts/visual_qa.py diff baselines/rewards/phone-s@2x.png rewards_phone-s.png --threshold 0.5 --json",
+      "executed": false,
+      "status": "NOT RUN",
+      "note": "manual/automation hint, not executed"
+    },
+    {
+      "screen": "rewards",
+      "device": "phone-m",
+      "logical_size": [
+        390,
+        844
+      ],
+      "dpr": 3,
+      "file": "rewards_phone-m.png",
+      "baseline": "baselines/rewards/phone-m@3x.png",
+      "sidecar": "baselines/rewards/phone-m.json",
+      "capture": {
+        "tool": "integration_test",
+        "mechanism": "integration_test package + IntegrationTestWidgetsFlutterBinding.takeScreenshot('<name>'); golden tests (matchesGoldenFile) for widget-level; run with `flutter drive --driver test_driver/integration_test.dart --target integration_test/<screen>_test.dart`",
+        "snippet": "final binding = IntegrationTestWidgetsFlutterBinding.ensureInitialized();\ntestWidgets('rewards phone-m', (tester) async {\n  tester.view.physicalSize = const Size(1170, 2532); tester.view.devicePixelRatio = 3;\n  timeDilation = 1.0; // disable animations via binding.transitionDuration where available\n  await tester.pumpWidget(const App(seed: 42)); await tester.pumpAndSettle();\n  await binding.takeScreenshot('rewards_phone-m');\n});"
+      },
+      "settle": "pumpAndSettle() after navigation; fixed seed data; fonts bundled (no network); pin physicalSize/devicePixelRatio via tester.view",
+      "suggested_masks": [
+        {
+          "region": [
+            0,
+            0,
+            390,
+            47
+          ],
+          "why": "status bar (clock/battery)"
+        },
+        {
+          "region": null,
+          "why": "add --ignore for FPS counters, live timers, ad slots and particle layers"
+        }
+      ],
+      "compare": "python3 scripts/visual_qa.py diff baselines/rewards/phone-m@3x.png rewards_phone-m.png --threshold 0.5 --json",
+      "executed": false,
+      "status": "NOT RUN",
+      "note": "manual/automation hint, not executed"
+    },
+    {
+      "screen": "rewards",
+      "device": "phone-l",
+      "logical_size": [
+        430,
+        932
+      ],
+      "dpr": 3,
+      "file": "rewards_phone-l.png",
+      "baseline": "baselines/rewards/phone-l@3x.png",
+      "sidecar": "baselines/rewards/phone-l.json",
+      "capture": {
+        "tool": "integration_test",
+        "mechanism": "integration_test package + IntegrationTestWidgetsFlutterBinding.takeScreenshot('<name>'); golden tests (matchesGoldenFile) for widget-level; run with `flutter drive --driver test_driver/integration_test.dart --target integration_test/<screen>_test.dart`",
+        "snippet": "final binding = IntegrationTestWidgetsFlutterBinding.ensureInitialized();\ntestWidgets('rewards phone-l', (tester) async {\n  tester.view.physicalSize = const Size(1290, 2796); tester.view.devicePixelRatio = 3;\n  timeDilation = 1.0; // disable animations via binding.transitionDuration where available\n  await tester.pumpWidget(const App(seed: 42)); await tester.pumpAndSettle();\n  await binding.takeScreenshot('rewards_phone-l');\n});"
+      },
+      "settle": "pumpAndSettle() after navigation; fixed seed data; fonts bundled (no network); pin physicalSize/devicePixelRatio via tester.view",
+      "suggested_masks": [
+        {
+          "region": [
+            0,
+            0,
+            430,
+            59
+          ],
+          "why": "status bar (clock/battery)"
+        },
+        {
+          "region": null,
+          "why": "add --ignore for FPS counters, live timers, ad slots and particle layers"
+        }
+      ],
+      "compare": "python3 scripts/visual_qa.py diff baselines/rewards/phone-l@3x.png rewards_phone-l.png --threshold 0.5 --json",
+      "executed": false,
+      "status": "NOT RUN",
+      "note": "manual/automation hint, not executed"
+    }
+  ]
+}
