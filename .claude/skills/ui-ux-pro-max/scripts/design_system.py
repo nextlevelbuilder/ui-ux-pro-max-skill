@@ -1037,10 +1037,7 @@ def persist_design_system(design_system: dict, page: str = None, output_dir: str
     """
     base_dir = Path(output_dir) if output_dir else Path.cwd()
 
-    # Use project name for project-specific folder. Coalesce falsy values
-    # (missing key, explicit None, or "") so the .lower() below can't crash.
-    project_name = design_system.get("project_name") or "default"
-    project_slug = safe_slug(project_name)
+    project_slug = _project_slug(design_system)
 
     design_system_dir = base_dir / "design-system" / project_slug
     pages_dir = design_system_dir / "pages"
@@ -1098,6 +1095,12 @@ def persist_design_system(design_system: dict, page: str = None, output_dir: str
     }
 
 
+def _project_slug(design_system: dict) -> str:
+    """Folder name persist_design_system() saves under, also cited by the generated files."""
+    # Coalesce falsy values (missing key, explicit None, or "") so slugging can't crash.
+    return safe_slug(design_system.get("project_name") or "default")
+
+
 def format_master_md(design_system: dict) -> str:
     """Format design system as MASTER.md with hierarchical override logic."""
     project = design_system.get("project_name", "PROJECT")
@@ -1118,7 +1121,7 @@ def format_master_md(design_system: dict) -> str:
     # Logic header
     lines.append("# Design System Master File")
     lines.append("")
-    lines.append("> **LOGIC:** When building a specific page, first check `design-system/pages/[page-name].md`.")
+    lines.append(f"> **LOGIC:** When building a specific page, first check `design-system/{_project_slug(design_system)}/pages/[page-name].md`.")
     lines.append("> If that file exists, its rules **override** this Master file.")
     lines.append("> If not, strictly follow the rules below.")
     lines.append("")
@@ -1420,7 +1423,7 @@ def format_page_override_md(design_system: dict, page_name: str, page_query: str
     lines.append(f"> **Generated:** {timestamp}")
     lines.append(f"> **Page Type:** {page_overrides.get('page_type', 'General')}")
     lines.append("")
-    lines.append("> ⚠️ **IMPORTANT:** Rules in this file **override** the Master file (`design-system/MASTER.md`).")
+    lines.append(f"> ⚠️ **IMPORTANT:** Rules in this file **override** the Master file (`design-system/{_project_slug(design_system)}/MASTER.md`).")
     lines.append("> Only deviations from the Master are documented here. For all other rules, refer to the Master.")
     lines.append("")
     lines.append("---")

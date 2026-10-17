@@ -299,6 +299,20 @@ class TestPersistence(unittest.TestCase):
             self.assertEqual(page_result2["persistence"]["status"], "skipped_exists")
             self.assertEqual(page_file.read_text(encoding="utf-8"), page_content)
 
+    def test_persisted_files_cite_the_paths_they_were_saved_to(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            result = generate_design_system(
+                "checkout form", "Test Project", persist=True, page="Checkout", output_dir=tmp
+            )
+            project_dir = Path(tmp) / "design-system" / "test-project"
+            master = (project_dir / "MASTER.md").read_text(encoding="utf-8")
+            page = (project_dir / "pages" / "checkout.md").read_text(encoding="utf-8")
+            self.assertEqual(result["persistence"]["status"], "success")
+
+            # Agents follow these pointers literally, so they must match the real layout.
+            self.assertIn("`design-system/test-project/pages/[page-name].md`", master)
+            self.assertIn("`design-system/test-project/MASTER.md`", page)
+
             # With force=True it must overwrite.
             result3 = generate_design_system("ecommerce luxury", "Test Project", persist=True, output_dir=tmp, force=True)
             self.assertEqual(result3["persistence"]["status"], "success")
