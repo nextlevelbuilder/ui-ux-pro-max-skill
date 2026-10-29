@@ -56,23 +56,23 @@ This skill ships four core capabilities:
 
 ## Using the Search Script (CLI)
 
-When invoked, this skill can run the bundled Python search script to query the catalogs. The script uses only the Python 3 standard library - no extra dependencies.
+# When invoked, this skill can run the bundled Python search script to query the catalogs. The script uses only the Python 3 standard library - no extra dependencies.
 
 ```bash
 # Generate a full design system for a project
-python3 scripts/search.py "beauty spa wellness" --design-system -p "Serenity Spa"
-python3 scripts/search.py "fintech banking" --design-system -f markdown
+python3 src/ui-ux-pro-max/scripts/search.py "beauty spa wellness" --design-system -p "Serenity Spa"
+python3 src/ui-ux-pro-max/scripts/search.py "fintech banking" --design-system -f markdown
 
 # Domain-specific keyword search
-python3 scripts/search.py "glassmorphism" --domain style
-python3 scripts/search.py "elegant serif" --domain typography
-python3 scripts/search.py "dashboard" --domain chart
-python3 scripts/search.py "error summary validation" --domain ux
+python3 src/ui-ux-pro-max/scripts/search.py "glassmorphism" --domain style
+python3 src/ui-ux-pro-max/scripts/search.py "elegant serif" --domain typography
+python3 src/ui-ux-pro-max/scripts/search.py "dashboard" --domain chart
+python3 src/ui-ux-pro-max/scripts/search.py "error summary validation" --domain ux
 
 # Stack-specific guidelines
-python3 scripts/search.py "form validation" --stack react
-python3 scripts/search.py "responsive layout" --stack html-tailwind
-python3 scripts/search.py "tableview binding" --stack javafx
+python3 src/ui-ux-pro-max/scripts/search.py "form validation" --stack react
+python3 src/ui-ux-pro-max/scripts/search.py "responsive layout" --stack html-tailwind
+python3 src/ui-ux-pro-max/scripts/search.py "tableview binding" --stack javafx
 ```
 
 If the search script is not available in the user's environment, fall back to using the catalog knowledge directly from the `data/` directory in this skill folder.
@@ -132,8 +132,7 @@ If the user's industry is not in this list, pick the closest match and note the 
 ## Folder Layout
 
 ```
-ui-ux-pro-max/
-├── SKILL.md             <- This file (AutoClaw entry point)
+src/ui-ux-pro-max/
 ├── data/                <- Catalog data (styles, palettes, fonts, charts, UX, reasoning rules)
 ├── scripts/
 │   └── search.py        <- Python 3 stdlib search script
