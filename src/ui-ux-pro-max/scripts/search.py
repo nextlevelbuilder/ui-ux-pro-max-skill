@@ -27,8 +27,15 @@ Persistence (Master + Overrides pattern):
 
 import argparse
 import json as json_module
+import os
 import sys
 import io
+
+# Embedded Python builds (for example AutoClaw's bundled runtime, which ships a
+# ._pth file) do not add this script's directory to sys.path. Resolve sibling
+# modules explicitly so `python <path>/search.py` works in those environments.
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+
 from core import CSV_CONFIG, AVAILABLE_STACKS, MAX_RESULTS, UNTRUNCATED_COLS, search, search_stack
 from design_system import generate_design_system
 

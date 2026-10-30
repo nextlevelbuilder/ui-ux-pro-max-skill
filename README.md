@@ -293,7 +293,7 @@ uipro init --ai zcode       # ZCode
 uipro init --ai kimi        # Kimi Code
 uipro init --ai amazonq     # Amazon Q Developer
 uipro init --ai openclaw    # OpenClaw (.agents/skills/)
-uipro init --ai autoclaw   # AutoClaw (Z.ai)
+uipro init --ai autoclaw    # AutoClaw (skills/ or ~/.openclaw-autoclaw/skills)
 uipro init --ai universal   # Universal / Agent Standard (.agents/skills/)
 uipro init --ai all         # All assistants
 ```

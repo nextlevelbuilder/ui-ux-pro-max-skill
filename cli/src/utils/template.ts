@@ -73,6 +73,7 @@ const AI_TO_PLATFORM: Record<string, string> = {
   kimi: 'kimi',
   amazonq: 'amazonq',
   openclaw: 'openclaw',
+  autoclaw: 'autoclaw',
   universal: 'universal',
 };
 

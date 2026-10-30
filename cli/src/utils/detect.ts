@@ -88,6 +88,9 @@ export function detectAIType(cwd: string = process.cwd()): DetectionResult {
   if (existsSync(join(cwd, '.zcode'))) {
     detected.push('zcode');
   }
+  if (existsSync(join(cwd, '.autoclaw')) || existsSync(join(cwd, 'skills', 'ui-ux-pro-max', 'SKILL.md'))) {
+    detected.push('autoclaw');
+  }
   if (existsSync(join(cwd, '.kimi-code'))) {
     detected.push('kimi');
   }
@@ -161,6 +164,8 @@ export function getAITypeDescription(aiType: AIType): string {
       return 'Amazon Q Developer (.amazonq/rules/)';
     case 'openclaw':
       return 'OpenClaw (.agents/skills/)';
+    case 'autoclaw':
+      return 'AutoClaw (skills/ locally, ~/.openclaw-autoclaw/skills/ globally)';
     case 'universal':
       return 'Universal (.agents/skills/)';
     case 'all':

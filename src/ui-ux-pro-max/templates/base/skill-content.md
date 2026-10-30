@@ -18,6 +18,14 @@ If the user prefers not to install Python, skip the CLI searches and {{#QR}}rely
 
 ---
 
+## Using the Search Script (CLI)
+
+When invoked, this skill can run the bundled Python search script to query the catalogs. The script uses only the Python 3 standard library - no extra dependencies.
+
+The script lives in this skill's own `scripts/search.py`. The commands below use the install-rooted path so they resolve when run from the project root.
+
+---
+
 ## How to Use This Skill
 
 Use this skill when the user requests any of the following:
@@ -312,7 +320,7 @@ Scope notice: The rules below are for App UI (iOS/Android/React Native/Flutter),
 
 ### Icons & Visual Elements
 
-- 默认图标库使用 **Phosphor (`@phosphor-icons/react`)**。`src/ui-ux-pro-max/data/icons.csv` 中列出的只是常用推荐图标，不是完整集合。
+- 默认图标库使用 **Phosphor (`@phosphor-icons/react`)**。`data/icons.csv` 中列出的只是常用推荐图标，不是完整集合。
 - 当推荐表中找不到合适的图标时：
   - **优先继续从 Phosphor 的完整图标集中选择任何语义更贴切的图标**；
   - 如果 Phosphor 也没有理想选项，可以使用 **Heroicons (`@heroicons/react`)** 作为备选，注意保持风格一致（线性/填充、笔画粗细、圆角风格）。
