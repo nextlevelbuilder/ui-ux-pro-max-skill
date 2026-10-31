@@ -403,7 +403,7 @@ Pencarian web-stack memahami versi. Query tanpa major version lama akan mengemba
 Simpan design system ke file untuk **hierarchical retrieval lintas sesi**:
 
 ```bash
-# Generate and persist to design-system/MASTER.md
+# Generate and persist to design-system/myapp/MASTER.md
 python3 .claude/skills/ui-ux-pro-max/scripts/search.py "SaaS dashboard" --design-system --persist -p "MyApp"
 
 # Also create a page-specific override file
@@ -414,20 +414,21 @@ Ini membuat struktur folder `design-system/`:
 
 ```
 design-system/
-├── MASTER.md           # Global Source of Truth (colors, typography, spacing, components)
-└── pages/
-    └── dashboard.md    # Page-specific overrides (only deviations from Master)
+└── myapp/                  # One folder per project (slug of -p "MyApp")
+    ├── MASTER.md           # Global Source of Truth (colors, typography, spacing, components)
+    └── pages/
+        └── dashboard.md    # Page-specific overrides (only deviations from Master)
 ```
 
 **Cara kerja hierarchical retrieval:**
-1. Saat membuat halaman tertentu (misalnya, "Checkout"), periksa `design-system/pages/checkout.md` terlebih dahulu
+1. Saat membuat halaman tertentu (misalnya, "Checkout"), periksa `design-system/[project-slug]/pages/checkout.md` terlebih dahulu
 2. Jika file halaman ada, aturannya **menimpa** file Master
-3. Jika tidak, gunakan `design-system/MASTER.md` saja
+3. Jika tidak, gunakan `design-system/[project-slug]/MASTER.md` saja
 
 **Prompt context-aware retrieval:**
 ```
-I am building the [Page Name] page. Please read design-system/MASTER.md.
-Also check if design-system/pages/[page-name].md exists.
+I am building the [Page Name] page. Please read design-system/[project-slug]/MASTER.md.
+Also check if design-system/[project-slug]/pages/[page-name].md exists.
 If the page file exists, prioritize its rules.
 If not, use the Master rules exclusively.
 Now, generate the code...
