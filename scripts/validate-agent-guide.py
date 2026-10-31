@@ -28,7 +28,7 @@ FLAGS = {
     "-f", "--persist", "--page", "--output-dir", "-o", "--force",
     "--variance", "--motion", "--density",
 }
-PLATFORM_COUNT = 24
+PLATFORM_COUNT = 25
 GUIDE_REQUIREMENTS = (
     "## Query Contract", "one dominant intent", "Retry once",
     "Do not persist unverified output", "explicit accessibility outcome terms",
