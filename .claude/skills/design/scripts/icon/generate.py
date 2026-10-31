@@ -24,6 +24,17 @@ from pathlib import Path
 from datetime import datetime
 
 
+# Only these keys are taken from a .env. The files below are shared with other
+# tools, and this process talks to third-party image APIs -- an unrelated secret
+# sitting in one of them must not enter its environment.
+ENV_ALLOWLIST = (
+    "GEMINI_API_KEY",
+    "GOOGLE_API_KEY",
+    "ATLASCLOUD_API_KEY",
+    "MUAPI_API_KEY",
+)
+
+
 def load_env():
     """Load .env files in priority order"""
     env_paths = [
@@ -38,7 +49,8 @@ def load_env():
                     line = line.strip()
                     if line and not line.startswith('#') and '=' in line:
                         key, value = line.split('=', 1)
-                        if key not in os.environ:
+                        key = key.strip()
+                        if key in ENV_ALLOWLIST and key not in os.environ:
                             os.environ[key] = value.strip('"\'')
 
 load_env()
