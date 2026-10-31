@@ -91,6 +91,13 @@ See `examples/juniper-audit/` for a real report.
 MIT. The bundled tools keep their own licenses — see `docs/STACK.md` for links.
 
 ---
+### MCP Servers & Permissions
 
+The starter template includes three pre-configured developer tools in `.mcp.json`:
+- **Playwright MCP (`@playwright/mcp@0.0.83`)**: Headless browser automation.
+- **Chrome DevTools MCP (`chrome-devtools-mcp@1.10.1`)**: Live browser inspection and debugging.
+- **shadcn MCP (`shadcn@4.21.0`)**: UI component registry access.
+
+> **Security & Prompt Setting:** By default, `.claude/settings.json` has `"enableAllProjectMcpServers": true`, which pre-approves these three servers so they load automatically without repeated prompts. If you prefer Claude Code to prompt you for confirmation before starting any project server, change this value to `false` or delete `.claude/settings.json`.
 Built as a starter for teams who want Claude Code to ship distinctive, accessible,
 production-grade web UI instead of generic AI output.
