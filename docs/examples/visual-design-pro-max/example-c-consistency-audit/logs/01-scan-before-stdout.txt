@@ -1,0 +1,1 @@
+visual audit: 40 findings (critical 0, high 16, medium 19, low 5, info 0) · platform mixed · scanned 12 · skipped 3 → docs/examples/visual-design-pro-max/example-c-consistency-audit/findings-before.md

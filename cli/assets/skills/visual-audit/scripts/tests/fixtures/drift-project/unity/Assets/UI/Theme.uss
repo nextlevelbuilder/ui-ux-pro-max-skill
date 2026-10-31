@@ -1,0 +1,25 @@
+/* FIXTURE: clean USS theme — every literal matches tokens.json. Expected findings: none */
+:root {
+  --color-primary: #3B5BDB;
+  --color-accent: #FF8A4C;
+  --color-background: #FFF8F0;
+  --color-text: #1A1A2E;
+  --radius-md: 8px;
+  --radius-lg: 16px;
+}
+
+.btn-primary {
+  background-color: var(--color-primary);
+  color: #FFFFFF;
+  border-radius: 16px;
+  min-width: 48px;
+  min-height: 48px;
+  padding: 12px 24px;
+  font-size: 16px;
+  transition-duration: 200ms;
+}
+
+.hud-label {
+  color: #1A1A2E;
+  font-size: 14px;
+}

@@ -1,0 +1,8 @@
+# fixture only — not a real package
+name: drift_fixture
+environment:
+  sdk: ">=3.0.0 <4.0.0"
+dependencies:
+  flutter:
+    sdk: flutter
+  font_awesome_flutter: ^10.0.0

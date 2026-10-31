@@ -1,0 +1,7 @@
+resolved: 5  new: 0  unchanged: 0  changed_severity: 0
+## Resolved
+- VA-0001 `color.off-palette` lib/screens/shop_screen.dart — `Color(0xFF8E24AA)`
+- VA-0003 `color.off-palette` lib/screens/shop_screen.dart — `Color(0xFF8E24AA)`
+- VA-0005 `component.duplicate-implementation` lib/screens/shop_screen.dart — `class CtaButton extends StatelessWidget`
+- VA-0002 `radius.off-scale` lib/screens/shop_screen.dart — `BorderRadius.circular(13)`
+- VA-0004 `radius.off-scale` lib/screens/shop_screen.dart — `BorderRadius.circular(13)`

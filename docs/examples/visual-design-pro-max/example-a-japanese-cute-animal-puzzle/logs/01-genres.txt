@@ -1,0 +1,10 @@
+1. onet-animal-puzzle — Onet Animal Puzzle  [game] (8.08)
+   default styles: cute-animal-onet, japanese-cute-puzzle, kawaii-sticker, soft-2d-cartoon
+2. block-sorting — Block Sorting  [game] (1.08)
+   default styles: colorful-toy-3d, flat-vector-casual, neon-hypercasual, soft-2d-cartoon
+3. water-sort — Water Sort  [game] (1.08)
+   default styles: flat-vector-casual, colorful-toy-3d, cozy-pastel, neon-hypercasual
+4. match-3 — Match-3  [game] (1.06)
+   default styles: glossy-candy-match3, premium-casual-game, japanese-cute-puzzle, colorful-toy-3d
+5. word-puzzle — Word Puzzle  [game] (1.06)
+   default styles: flat-vector-casual, cozy-pastel, minimal-modern-mobile, japanese-casual-game

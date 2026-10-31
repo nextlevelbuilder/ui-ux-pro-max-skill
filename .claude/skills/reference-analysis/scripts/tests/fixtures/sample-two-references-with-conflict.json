@@ -1,0 +1,210 @@
+{
+  "schema": "vdp-reference-analysis/1",
+  "project": "synthetic fixture — not a user-provided reference",
+  "references": [
+    {
+      "id": "ref-1",
+      "path": "refs/home.png",
+      "label": "home / level-select screen, portrait phone",
+      "roles": ["color", "shapes", "hud", "layout", "characters"],
+      "viewed_by": "model-vision",
+      "screen_type": "home",
+      "provenance": {
+        "owner": "user",
+        "license": "unknown",
+        "note": "user-provided; synthetic fixture, no real product depicted"
+      }
+    },
+    {
+      "id": "ref-2",
+      "path": "refs/level-complete-popup.png",
+      "label": "level complete popup over dimmed gameplay",
+      "roles": ["buttons", "popup"],
+      "viewed_by": "human-description",
+      "screen_type": "popup",
+      "provenance": {
+        "owner": "user",
+        "license": "unknown",
+        "note": "user-provided; described in writing by the user because the runtime could not view images"
+      }
+    }
+  ],
+  "observations": [
+    {
+      "id": "obs-1",
+      "category": "color",
+      "statement": "Background is a soft mint green gradient (lighter at top); panels are cream; the accent is a saturated coral used on the play button and star icons.",
+      "refs": ["ref-1"],
+      "evidence": "full-bleed background; level cards; play button; star rating icons",
+      "confidence": "observed"
+    },
+    {
+      "id": "obs-2",
+      "category": "shape",
+      "statement": "Level cards and the HUD panel have corners rounded to roughly 25-30% of their height (xl class); no element is a full pill.",
+      "refs": ["ref-1"],
+      "evidence": "3x3 grid of level cards; HUD panel top-left",
+      "confidence": "observed"
+    },
+    {
+      "id": "obs-3",
+      "category": "shape",
+      "statement": "All cards and panels carry a dark brown outline of consistent width, around 2% of the element height.",
+      "refs": ["ref-1"],
+      "evidence": "level cards, HUD panel, play button",
+      "confidence": "observed"
+    },
+    {
+      "id": "obs-4",
+      "category": "character",
+      "statement": "Mascot is a chibi-proportion animal (head roughly 50% of total height) with flat colour fills, a single soft cel shadow under the chin, and the same dark brown outline as the UI panels.",
+      "refs": ["ref-1"],
+      "evidence": "mascot at bottom-left of the frame",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-5",
+      "category": "typography",
+      "statement": "Level numbers and the title are a heavy rounded sans in Title Case with a dark outline and a one-pixel-class drop shadow.",
+      "refs": ["ref-1"],
+      "evidence": "title at top centre; numbers on level cards",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-6",
+      "category": "component",
+      "statement": "Per the user's description: the popup is a cream panel with a decorative ribbon header, three stars above a score line, and two stacked buttons (Next in green, Retry in grey); the panel corners are described as 'slightly rounded, not very round'.",
+      "refs": ["ref-2"],
+      "evidence": "user description, paragraph 1-2",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-7",
+      "category": "component",
+      "statement": "Per the user's description: popup buttons are 'full pill shaped' with a thick dark outline and a solid darker bottom edge; labels are 'all caps'.",
+      "refs": ["ref-2"],
+      "evidence": "user description, paragraph 3",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-8",
+      "category": "layout",
+      "statement": "Per the user's description: the popup is centred, occupies about 80% of the width, and the gameplay behind is dimmed with a dark overlay.",
+      "refs": ["ref-2"],
+      "evidence": "user description, paragraph 1",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-9",
+      "category": "shape",
+      "statement": "Popup panel radius described as 'slightly rounded' is read as md class; this contradicts the xl class observed on home-screen panels.",
+      "refs": ["ref-1", "ref-2"],
+      "evidence": "ref-1 level cards vs ref-2 user description of panel corners",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-10",
+      "category": "typography",
+      "statement": "Label case differs: Title Case on the home screen (viewed) versus all caps on popup buttons (described).",
+      "refs": ["ref-1", "ref-2"],
+      "evidence": "ref-1 title and level numbers vs ref-2 user description of button labels",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-11",
+      "category": "shading",
+      "statement": "Whether popup buttons have the same top highlight band as home-screen buttons is not stated in the description.",
+      "refs": ["ref-2"],
+      "evidence": "n/a — user description does not mention highlights",
+      "confidence": "not-derivable"
+    },
+    {
+      "id": "obs-12",
+      "category": "motion",
+      "statement": "Popup entrance animation is not derivable from a static image or a written description of a still frame.",
+      "refs": ["ref-1", "ref-2"],
+      "evidence": "n/a — static inputs",
+      "confidence": "not-derivable"
+    }
+  ],
+  "rules": [
+    {
+      "id": "rule-1",
+      "target": "palette",
+      "statement": "Mint background, cream surfaces, coral accent reserved for primary action and reward icons; dark brown as the universal outline colour.",
+      "derived_from": ["obs-1", "obs-3"],
+      "confidence": "observed",
+      "scope": "global"
+    },
+    {
+      "id": "rule-2",
+      "target": "radius",
+      "statement": "Panels and cards use the xl radius class; this applies to popup panels as well because ref-1 owns the shapes role.",
+      "derived_from": ["obs-2", "obs-9"],
+      "confidence": "high",
+      "scope": "global"
+    },
+    {
+      "id": "rule-3",
+      "target": "button.primary",
+      "statement": "Pill silhouette, thick dark outline, solid darker bottom edge; green for the advancing action, grey for the secondary action.",
+      "derived_from": ["obs-7"],
+      "confidence": "high",
+      "scope": "global"
+    },
+    {
+      "id": "rule-4",
+      "target": "popup",
+      "statement": "Centred cream panel at ~80% width over a dark dimming overlay, decorative ribbon header, reward row (stars) above the result line, stacked buttons.",
+      "derived_from": ["obs-6", "obs-8"],
+      "confidence": "high",
+      "scope": "context:popup"
+    },
+    {
+      "id": "rule-5",
+      "target": "character",
+      "statement": "Chibi-proportion mascot with flat fills, one soft cel shadow, and the same outline colour and width class as UI panels.",
+      "derived_from": ["obs-4", "obs-3"],
+      "confidence": "high",
+      "scope": "global"
+    },
+    {
+      "id": "rule-6",
+      "target": "hud",
+      "statement": "HUD lives in an xl-radius outlined panel at top-left, matching card styling.",
+      "derived_from": ["obs-2", "obs-3"],
+      "confidence": "observed",
+      "scope": "context:home"
+    }
+  ],
+  "conflicts": [
+    {
+      "topic": "panel corner radius",
+      "between": ["ref-1", "ref-2"],
+      "resolution": "ref-1 wins (role shapes): xl class globally. ref-2 md value recorded; ask the user whether popup panels should intentionally differ before adding a context:popup exception.",
+      "status": "resolved"
+    },
+    {
+      "topic": "label case",
+      "between": ["ref-1", "ref-2"],
+      "resolution": "No reference owns the typography role. Title Case (ref-1) vs all caps (ref-2) is unresolved; the user must assign the typography role or state that button labels are intentionally uppercase.",
+      "status": "open"
+    }
+  ],
+  "not_derivable": [
+    "popup entrance animation and timing",
+    "font family names",
+    "highlight treatment on popup buttons (not in description)",
+    "pressed and disabled states",
+    "exact pixel values at device scale",
+    "screens not provided (shop, settings, gameplay without popup)"
+  ],
+  "palette_observed": [
+    {"hex": "#C9F2DF", "share": 0.38, "role_guess": "background", "ref": "ref-1"},
+    {"hex": "#FFF6E3", "share": 0.21, "role_guess": "surface", "ref": "ref-1"},
+    {"hex": "#FF6F61", "share": 0.07, "role_guess": "accent", "ref": "ref-1"},
+    {"hex": "#4A2E22", "share": 0.08, "role_guess": "outline", "ref": "ref-1"},
+    {"hex": "#8ED6A8", "share": 0.12, "role_guess": "primary", "ref": "ref-1"},
+    {"hex": "#FFFFFF", "share": 0.04, "role_guess": "unknown", "ref": "ref-1"}
+  ]
+}

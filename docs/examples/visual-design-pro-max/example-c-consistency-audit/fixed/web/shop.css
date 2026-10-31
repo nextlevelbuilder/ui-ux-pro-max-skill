@@ -1,0 +1,29 @@
+/* FIXED COPY (Example C): shop stylesheet on the token sheet (web/styles.css :root variables) */
+.shop-hero {
+  background: var(--color-primary);
+  border-radius: var(--radius-md);
+  padding: 8px 16px;
+  font-family: var(--font-body);
+  transition: all var(--duration-base) ease-in;
+}
+
+.shop-hero h2 {
+  font-size: 16px;
+  color: var(--color-accent);
+}
+
+.icon-btn {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-md);
+}
+
+.promo {
+  color: var(--color-text);
+  background: var(--color-background);
+  box-shadow: var(--shadow-card);
+}
+
+.hero-shadow {
+  box-shadow: var(--shadow-card);
+}

@@ -1,0 +1,28 @@
+{
+  "design_system": {
+    "project_name": "CUTE PUZZLE MOBILE GAME",
+    "category": "Casual Puzzle Game",
+    "style": {
+      "id": "claymorphism",
+      "name": "Claymorphism"
+    },
+    "colors": {
+      "primary": "#EC4899",
+      "secondary": "#8B5CF6",
+      "accent": "#F59E0B",
+      "background": "#FDF2F8",
+      "foreground": "#0F172A",
+      "muted_foreground": "#475569",
+      "border": "#FCE9F2",
+      "destructive": "#DC2626",
+      "notes": "Cheerful pink + reward gold",
+      "cta": "#F59E0B",
+      "text": "#0F172A"
+    },
+    "typography": {
+      "heading": "Kalam",
+      "body": "Patrick Hand",
+      "mood": "sketch, hand-drawn, handwriting, human, imperfect, organic, paper, kalam, patrick hand, education, journal, creative"
+    }
+  }
+}

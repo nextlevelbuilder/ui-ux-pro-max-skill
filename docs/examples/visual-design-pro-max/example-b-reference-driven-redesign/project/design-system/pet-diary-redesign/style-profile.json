@@ -1,0 +1,212 @@
+{
+  "schema": "vdp/1",
+  "project": {
+    "name": "Pet Diary Redesign",
+    "slug": "pet-diary-redesign"
+  },
+  "product": {
+    "kind": "app",
+    "genre": null,
+    "platforms": [
+      "mobile-ios",
+      "mobile-android"
+    ],
+    "stack": "flutter",
+    "audience": "general",
+    "orientation": "portrait"
+  },
+  "style": {
+    "id": "reference-derived-custom",
+    "name": "Reference-Derived Custom",
+    "family": "flat-modern",
+    "mood": [],
+    "confidence": "high"
+  },
+  "sources": [
+    {
+      "type": "reference-analysis",
+      "ref": "reference-analysis.json",
+      "roles": [
+        "color",
+        "shapes",
+        "buttons",
+        "icons",
+        "typography",
+        "layout"
+      ]
+    },
+    {
+      "type": "catalog",
+      "ref": "visual-styles.csv#reference-derived-custom"
+    }
+  ],
+  "principles": [
+    "One brand orange carries all emphasis (brand mark, key numbers, active state, status dots)",
+    "Radius ladder: cards 20–28px, tiles 12–14px, controls circular/pill",
+    "All surfaces use a 2px peach outline (light tint of brand), never grey/black",
+    "Two-family system: rounded display family for headings/numbers (bold), neutral sans for body",
+    "Filled rounded glyphs, single colour, same optical size across the app bar, tiles and nav"
+  ],
+  "shape": {
+    "radius_class": "xl",
+    "silhouette": "pill",
+    "outline": {
+      "width": 2,
+      "color_rule": "lighter-tint-of-fill"
+    }
+  },
+  "rendering": {
+    "shading": "soft",
+    "highlight": "none",
+    "shadow": "none",
+    "texture": "none",
+    "shadow_tint": "neutral"
+  },
+  "typography": {
+    "display": "bold rounded geometric sans",
+    "body": "humanist sans",
+    "case": "mixed",
+    "weight_rule": "display bold / body medium"
+  },
+  "palette_strategy": "One brand orange carries all emphasis (brand mark, key numbers, active state, status dots); secondary tints are reserved for category tiles only.",
+  "palette": {
+    "seeds": {
+      "brand": "#F97316",
+      "secondary": "#BFDBFE",
+      "accent": "#B24C05",
+      "neutral": "#8A7A75"
+    },
+    "surfaces": {
+      "background": "#FFF7ED",
+      "surface": "#FFFFFF",
+      "outline": "#FED7AA",
+      "text": "#9A3412"
+    },
+    "observed": [
+      {
+        "hex": "#FFF7ED",
+        "share": 0.42,
+        "role_guess": "background",
+        "ref": "ref-1"
+      },
+      {
+        "hex": "#FFFFFF",
+        "share": 0.28,
+        "role_guess": "surface",
+        "ref": "ref-1"
+      },
+      {
+        "hex": "#F97316",
+        "share": 0.06,
+        "role_guess": "primary",
+        "ref": "ref-1"
+      },
+      {
+        "hex": "#FED7AA",
+        "share": 0.05,
+        "role_guess": "outline",
+        "ref": "ref-1"
+      },
+      {
+        "hex": "#9A3412",
+        "share": 0.05,
+        "role_guess": "text",
+        "ref": "ref-1"
+      },
+      {
+        "hex": "#BFDBFE",
+        "share": 0.02,
+        "role_guess": "secondary",
+        "ref": "ref-1"
+      },
+      {
+        "hex": "#A7F3D0",
+        "share": 0.02,
+        "role_guess": "secondary",
+        "ref": "ref-1"
+      }
+    ]
+  },
+  "iconography": {
+    "style": "filled-rounded",
+    "stroke": null,
+    "library_hint": "custom"
+  },
+  "illustration": {
+    "character_style": "not-derivable",
+    "asset_rendering": "not-derivable"
+  },
+  "motion": {
+    "class": "soft",
+    "duration_scale": {
+      "fast": 150,
+      "base": 250,
+      "slow": 400
+    },
+    "easing": "ease-in-out-soft",
+    "reduced_motion": "respect"
+  },
+  "components": {
+    "radius": "Radius ladder: cards 20–28px, tiles 12–14px, controls circular/pill; nothing below 12px except text.",
+    "button.icon": "Circular 44px white button with 2px peach outline and orange glyph.",
+    "nav": "Bottom nav active state = peach pill + orange icon/label; max 4–5 items."
+  },
+  "anti_patterns": [
+    "Mixing rules from two references that conflict without a resolved entry in conflicts",
+    "Inventing values for not_derivable items",
+    "Copying a reference pixel-for-pixel instead of extracting rules",
+    "Dropping the closest catalog style as fallback for gaps",
+    "Treating a single screenshot as proof of motion or typography"
+  ],
+  "qa_criteria": [
+    "palette: One brand orange carries all emphasis (brand mark, key numbers, active state, status dots); secondary tints are reserved for category tiles only.",
+    "radius: Radius ladder: cards 20–28px, tiles 12–14px, controls circular/pill; nothing below 12px except text.",
+    "outline: All surfaces use a 2px peach outline (light tint of brand), never grey/black; outline is the primary separation device, shadow is secondary.",
+    "typography: Two-family system: rounded display family for headings/numbers (bold), neutral sans for body; captions one step smaller and muted.",
+    "icon: Filled rounded glyphs, single colour, same optical size across the app bar, tiles and nav.",
+    "button.icon: Circular 44px white button with 2px peach outline and orange glyph.",
+    "nav: Bottom nav active state = peach pill + orange icon/label; max 4–5 items.",
+    "Every rule in style-profile.json cites an observation id",
+    "Fields with no observation are marked not-derivable or inherited from a named catalog style",
+    "Palette seeds match palette_observed roles",
+    "Text contrast at least 4.5:1 after extraction (adjust text, not background)",
+    "Enum fields hold valid catalog values, never free text"
+  ],
+  "intentional_exceptions": [
+    {
+      "scope": "home",
+      "rule": "Category tiles may use the secondary tints (blue/mint) — an intentional context exception to rule-1.",
+      "reason": "observed in obs-3 (rule-8)"
+    }
+  ],
+  "unknowns": [
+    "typography.display family not identified; classification 'bold rounded geometric sans' from obs-7 (CC-4)",
+    "not derivable from references: font family names",
+    "not derivable from references: motion timing and easing",
+    "motion class not derivable from static references; catalog default 'soft' kept",
+    "not derivable from references: hover/press/disabled states",
+    "not derivable from references: exact shadow values",
+    "not derivable from references: dark mode",
+    "not derivable from references: exact contrast ratios",
+    "not derivable from references: behaviour of the fixed nav on scroll",
+    "accent colour not observed; derived from the brand ramp (brand.700 = #B24C05) — confirm or seed palette.seeds.accent",
+    "success: built-in status fill darkened from #138B3F to #107435 for contrast (5.88:1 on {primitive.color.white})",
+    "button.secondary.fg: primary-family label stepped from #F97316 to brand.700 (#B24C05) to reach 4.5:1 on the secondary states"
+  ],
+  "catalog_rules": {
+    "shape_language": "derived from reference-analysis.json (observations with category shape)",
+    "outline_rule": "derived from reference-analysis.json (rules targeting button.primary and icon; width in px and colour rule required)",
+    "highlight_rule": "derived from reference-analysis.json (observations with category shading)",
+    "shadow_rule": "derived from reference-analysis.json (observations with category shading; default to none when not-derivable)",
+    "typography_direction": "derived from reference-analysis.json (observations with category typography; font family is usually not-derivable from screenshots, record the classification instead)",
+    "icon_style": "derived from reference-analysis.json (observations with category iconography)",
+    "illustration_style": "derived from reference-analysis.json (observations with category character)",
+    "button_rule": "derived from reference-analysis.json (rules targeting button.primary; context:popup overrides win over global)",
+    "panel_popup_rule": "derived from reference-analysis.json (rules targeting popup)",
+    "hud_rule": "derived from reference-analysis.json (rules targeting hud; if no gameplay reference exists, inherit from the genre profile)",
+    "reward_rule": "derived from reference-analysis.json (reference with screen_type reward if present; otherwise inherit from the closest catalog style)",
+    "best_for": "derived from reference-analysis.json (use product.kind and genre from the profile; this row is a template, not a catalog style)",
+    "avoid_for": "derived from reference-analysis.json (anything the references do not show; mark as not-derivable instead of guessing)",
+    "reference_notes": "Template row: enum fields (Family, Radius Class, Shading, Motion Class) hold neutral fallbacks that vd.py profile --reference must overwrite from reference-analysis.json; Seed Colors are a neutral grey fallback for the same reason"
+  }
+}

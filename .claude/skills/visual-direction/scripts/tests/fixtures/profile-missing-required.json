@@ -1,0 +1,115 @@
+{
+  "schema": "vdp/1",
+  "project": {
+    "name": "Onet Garden",
+    "slug": "onet-garden"
+  },
+  "product": {
+    "kind": "game",
+    "genre": null,
+    "platforms": [
+      "mobile-ios",
+      "mobile-android"
+    ],
+    "stack": "flutter-flame",
+    "audience": "casual-all-ages",
+    "orientation": "portrait"
+  },
+  "style": {
+    "id": "japanese-cute-puzzle",
+    "name": "Japanese Cute Puzzle",
+    "family": "cute-cartoon",
+    "mood": [
+      "cheerful",
+      "soft",
+      "rounded",
+      "friendly",
+      "calm-energetic"
+    ],
+    "confidence": "high"
+  },
+  "sources": [
+    {
+      "type": "catalog",
+      "ref": "visual-styles.csv#japanese-cute-puzzle"
+    }
+  ],
+  "principles": [
+    "Pastel base (tints at 85-92% lightness) for backgrounds and panels",
+    "Rounded-blob silhouettes",
+    "3px outline on all gameplay pieces and buttons in a 25% darker shade of the fill (HSL L -25), never pure black",
+    "Rounded sans display (Fredoka / M PLUS Rounded 1c / Zen Maru Gothic for JP) 700 for titles"
+  ],
+  "rendering": {
+    "shading": "soft-cel",
+    "highlight": "top-left-gloss",
+    "shadow": "double-clay",
+    "texture": "none"
+  },
+  "typography": {
+    "display": "Fredoka",
+    "body": "Nunito",
+    "case": "title",
+    "weight_rule": "display 700 / body 500"
+  },
+  "palette_strategy": "Pastel base (tints at 85-92% lightness) for backgrounds and panels; exactly 3 saturated accents reserved for CTA, reward and selection states; never more than 2 saturated hues on one screen outside reward moments",
+  "palette": {
+    "seeds": {
+      "brand": "#FF8FAB",
+      "secondary": "#7ED6C4",
+      "accent": "#FFD23F",
+      "neutral": "#7F758A"
+    }
+  },
+  "iconography": {
+    "style": "filled-rounded",
+    "stroke": null,
+    "library_hint": "custom"
+  },
+  "illustration": {
+    "character_style": "chibi",
+    "asset_rendering": "vector flat with one soft shade band in a hue-shifted (toward purple) darker tone"
+  },
+  "motion": {
+    "class": "bouncy",
+    "duration_scale": {
+      "fast": 120,
+      "base": 200,
+      "slow": 350
+    },
+    "easing": "spring-soft",
+    "reduced_motion": "respect"
+  },
+  "components": {
+    "button.primary": "Pill primary 56px tall, fill = primary, 3px darker-shade outline, 4px hard bottom shadow, label 18px 700 centred with 1px darker text shadow; secondary = surface fill with primary outline; pressed = translate 3px down and drop shadow in 90ms",
+    "popup": "Rounded panel radius 28px, surface fill, 4px outline in secondary-darker, ribbon title plate overlapping the top edge by 50%; close button circular 44px top-right; entrance scale 0.85 to 1 with overshoot 1.04 in 260ms",
+    "hud": "Top bar 64px with coin/life/timer capsules (pill, surface fill, 2px outline); timer bar uses accent fill with rounded ends; never more than 3 capsules; gameplay grid gets at least 85% of vertical space in portrait",
+    "reward": "Reward popups go one saturation step higher (accent plus gold); confetti of 3 shapes max (circle, star, heart) in palette colours; mascot cheer pose; sparkle burst 6-8 rays; bounce to 1.1 scale synced to sound"
+  },
+  "anti_patterns": [
+    "Pure black outlines",
+    "Thin stroke icons mixed with filled",
+    "Sharp-corner tiles next to pill buttons",
+    "More than 3 saturated hues on the gameplay screen",
+    "Large-blur drop shadows on tiles",
+    "Photoreal textures"
+  ],
+  "qa_criteria": [
+    "All outlines are darker shades of their own fill, never #000",
+    "Corner radius within the xl class on every panel and button",
+    "Text contrast at least 4.5:1 on the cream background",
+    "Tile silhouettes identical size and radius across the grid",
+    "Reward screen uses the same character style as home",
+    "Pressed state visible within 100ms"
+  ],
+  "intentional_exceptions": [
+    {
+      "scope": "gameplay-hud",
+      "rule": "tile radius lg instead of xl",
+      "reason": "grid density on 6x8 boards"
+    }
+  ],
+  "unknowns": [
+    "exact character line weight"
+  ]
+}

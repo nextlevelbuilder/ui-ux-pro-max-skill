@@ -1,0 +1,263 @@
+{
+  "schema": "vdp-reference-analysis/1",
+  "project": "synthetic fixture — not a user-provided reference",
+  "references": [
+    {
+      "id": "ref-1",
+      "path": "refs/home.png",
+      "label": "home screen, portrait phone, 1080x1920",
+      "roles": [
+        "color",
+        "shapes",
+        "buttons",
+        "hud",
+        "typography",
+        "layout",
+        "icons"
+      ],
+      "viewed_by": "model-vision",
+      "screen_type": "home",
+      "provenance": {
+        "owner": "user",
+        "license": "unknown",
+        "note": "user-provided; synthetic fixture, no real product depicted"
+      }
+    }
+  ],
+  "observations": [
+    {
+      "id": "obs-1",
+      "category": "layout",
+      "statement": "Vertical stack: top HUD strip (~8% of height), centred hero illustration (~45%), one primary button, then a 4-item bottom tab bar (~10%).",
+      "refs": [
+        "ref-1"
+      ],
+      "evidence": "whole frame, top-to-bottom bands",
+      "confidence": "observed"
+    },
+    {
+      "id": "obs-2",
+      "category": "color",
+      "statement": "Background is a light pastel pink filling most of the frame; a second lighter cream band sits behind the hero illustration.",
+      "refs": [
+        "ref-1"
+      ],
+      "evidence": "full-bleed background; band behind centre illustration",
+      "confidence": "observed"
+    },
+    {
+      "id": "obs-3",
+      "category": "color",
+      "statement": "The single most saturated colour is a warm orange used only on the primary button and the coin counter icon.",
+      "refs": [
+        "ref-1"
+      ],
+      "evidence": "primary button fill (centre-bottom), coin icon in HUD (top-left)",
+      "confidence": "observed"
+    },
+    {
+      "id": "obs-4",
+      "category": "shape",
+      "statement": "Primary button is a full pill (radius equals half of its height); bottom tab bar container and HUD chips use a large but non-pill radius (~25% of element height).",
+      "refs": [
+        "ref-1"
+      ],
+      "evidence": "primary button corners; tab bar container corners; HUD chip corners",
+      "confidence": "observed"
+    },
+    {
+      "id": "obs-5",
+      "category": "shape",
+      "statement": "Every interactive element has a visible dark outline, roughly 1.5-2% of the element height, in a darker shade of its own fill colour rather than black.",
+      "refs": [
+        "ref-1"
+      ],
+      "evidence": "primary button, HUD chips, tab bar icons",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-6",
+      "category": "shading",
+      "statement": "Buttons show a flat fill with a lighter horizontal highlight band across the top third and a solid darker bottom edge; no gradient within the fill.",
+      "refs": [
+        "ref-1"
+      ],
+      "evidence": "primary button face and bottom edge",
+      "confidence": "observed"
+    },
+    {
+      "id": "obs-7",
+      "category": "typography",
+      "statement": "Display text is a heavy rounded sans-serif in Title Case; HUD numerals are the same family at a smaller size with a dark outline.",
+      "refs": [
+        "ref-1"
+      ],
+      "evidence": "primary button label 'Play'; HUD coin and level counters",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-8",
+      "category": "typography",
+      "statement": "The exact font family name cannot be identified from the raster image.",
+      "refs": [
+        "ref-1"
+      ],
+      "evidence": "n/a — family identification requires the source asset or user confirmation",
+      "confidence": "not-derivable"
+    },
+    {
+      "id": "obs-9",
+      "category": "component",
+      "statement": "HUD consists of two chips (coins, lives) left-aligned and a settings gear right-aligned; chips are pill-shaped with the icon overlapping the left edge.",
+      "refs": [
+        "ref-1"
+      ],
+      "evidence": "top strip of the frame",
+      "confidence": "observed"
+    },
+    {
+      "id": "obs-10",
+      "category": "iconography",
+      "statement": "Icons are filled, rounded, two-tone (fill plus darker outline), with no thin-stroke icons anywhere in the frame.",
+      "refs": [
+        "ref-1"
+      ],
+      "evidence": "tab bar icons, HUD coin and heart icons, settings gear",
+      "confidence": "observed"
+    },
+    {
+      "id": "obs-11",
+      "category": "accessibility",
+      "statement": "Primary button label (white on orange) is estimated at roughly 3:1 contrast; the dark outline around glyphs likely raises effective legibility, but the ratio against the fill alone would not meet 4.5:1.",
+      "refs": [
+        "ref-1"
+      ],
+      "evidence": "primary button label; estimate from sampled colours #FFFFFF on #FF8A3D",
+      "confidence": "assumption"
+    },
+    {
+      "id": "obs-12",
+      "category": "motion",
+      "statement": "No motion information is available from a single static frame.",
+      "refs": [
+        "ref-1"
+      ],
+      "evidence": "n/a — static image",
+      "confidence": "not-derivable"
+    }
+  ],
+  "rules": [
+    {
+      "id": "rule-1",
+      "target": "palette",
+      "statement": "Pastel light background with one warm saturated accent reserved for the primary action and reward/currency indicators.",
+      "derived_from": [
+        "obs-2",
+        "obs-3"
+      ],
+      "confidence": "observed",
+      "scope": "global"
+    },
+    {
+      "id": "rule-2",
+      "target": "button.primary",
+      "statement": "Pill silhouette; darker-shade-of-fill outline; top highlight band plus solid darker bottom edge; label in heavy rounded sans, Title Case.",
+      "derived_from": [
+        "obs-4",
+        "obs-5",
+        "obs-6",
+        "obs-7"
+      ],
+      "confidence": "high",
+      "scope": "global"
+    },
+    {
+      "id": "rule-3",
+      "target": "radius",
+      "statement": "Two radius classes only: pill for buttons and chips, xl (~25% of height) for containers and panels.",
+      "derived_from": [
+        "obs-4"
+      ],
+      "confidence": "observed",
+      "scope": "global"
+    },
+    {
+      "id": "rule-4",
+      "target": "hud",
+      "statement": "HUD chips are pills with a leading icon overlapping the left edge; currency chips left, settings right.",
+      "derived_from": [
+        "obs-9",
+        "obs-10"
+      ],
+      "confidence": "observed",
+      "scope": "context:home"
+    },
+    {
+      "id": "rule-5",
+      "target": "icon",
+      "statement": "Filled rounded icons with a darker outline; no outline-only or thin-stroke icon sets.",
+      "derived_from": [
+        "obs-10"
+      ],
+      "confidence": "observed",
+      "scope": "global"
+    },
+    {
+      "id": "rule-6",
+      "target": "typography",
+      "statement": "Heavy rounded sans classification for display and HUD numerals; Title Case for labels. Family name is unknown and must be confirmed by the user.",
+      "derived_from": [
+        "obs-7"
+      ],
+      "confidence": "high",
+      "scope": "global"
+    }
+  ],
+  "conflicts": [],
+  "not_derivable": [
+    "animation timing and easing",
+    "font family names",
+    "exact pixel values at device scale",
+    "hover, pressed and disabled states",
+    "sound and haptic feedback",
+    "behaviour of screens not shown (gameplay, shop, popup)"
+  ],
+  "palette_observed": [
+    {
+      "hex": "#FFD5E5",
+      "share": 0.42,
+      "role_guess": "background",
+      "ref": "ref-1"
+    },
+    {
+      "hex": "#FFF3E0",
+      "share": 0.18,
+      "role_guess": "surface",
+      "ref": "ref-1"
+    },
+    {
+      "hex": "#FF8A3D",
+      "share": 0.09,
+      "role_guess": "accent",
+      "ref": "ref-1"
+    },
+    {
+      "hex": "#7ED3B2",
+      "share": 0.11,
+      "role_guess": "primary",
+      "ref": "ref-1"
+    },
+    {
+      "hex": "#5B3A29",
+      "share": 0.06,
+      "role_guess": "text",
+      "ref": "ref-1"
+    },
+    {
+      "hex": "#FFFFFF",
+      "share": 0.05,
+      "role_guess": "unknown",
+      "ref": "ref-1"
+    }
+  ]
+}

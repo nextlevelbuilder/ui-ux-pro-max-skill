@@ -1,0 +1,1 @@
+error: unknown screen 'gameplay-board'; valid ids: home, gameplay, level-select, pause, win, lose, settings, shop, rewards, profile, tutorial (or add pages/<name>.md next to the profile)

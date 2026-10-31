@@ -1,0 +1,31 @@
+{
+  "schema": "vdp-reference-analysis/1",
+  "_help": "Fill references first (ids ref-N in the order the user listed the images), validate, then add observations (obs-N), rules (rule-N), conflicts, not_derivable, palette_observed. Keys starting with '_' are comments and are ignored by validate.",
+  "project": "",
+  "references": [
+    {
+      "id": "ref-1",
+      "path": "refs/REPLACE.png",
+      "label": "REPLACE: user's words or filename",
+      "roles": [],
+      "viewed_by": "none",
+      "screen_type": "other",
+      "provenance": {
+        "owner": "unknown",
+        "license": "unknown",
+        "note": "REPLACE: where it came from"
+      },
+      "_help": "roles: subset of color, shapes, characters, buttons, hud, popup, icons, typography, layout, motion, one owner per role; viewed_by: model-vision | human-description | none; screen_type: home, gameplay, popup, shop, other"
+    }
+  ],
+  "_help_observations": "{id: obs-N, category: layout|color|shape|shading|typography|component|character|motion|accessibility|iconography, statement: one claim, refs: [ref-N], evidence: region or 'user description, paragraph N' or 'n/a <reason>' when not-derivable, confidence: observed|high|assumption|not-derivable}",
+  "observations": [],
+  "_help_rules": "{id: rule-N, target: palette|radius|outline|shading|shadow|typography|icon|hud|popup|card|character|layout|motion|button.primary|button.secondary|button.icon|chip|tab-bar|dialog|toast|progress|reward, statement: imperative, derived_from: [obs-N], confidence: observed|high|assumption (min of derived observations), scope: global | context:<screen_type>}",
+  "rules": [],
+  "_help_conflicts": "{topic: lower-case noun phrase, between: [ref-N, ref-M], resolution: 'ref-N wins (role x): ...' when resolved or the question for the user when open, status: resolved | open}",
+  "conflicts": [],
+  "_help_not_derivable": "strings; static images usually need: animation timing and easing, pressed and disabled states, font family names, exact pixel values at device scale",
+  "not_derivable": [],
+  "_help_palette_observed": "{hex: #RRGGBB upper-case, share: 0..1 (<= 4 decimals, sums <= 1 per ref), role_guess: background|surface|primary|secondary|accent|text|outline|shadow|highlight|unknown (always an assumption), ref: ref-N}",
+  "palette_observed": []
+}
