@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "verifiedAt": "2026-08-26",
+  "verifiedAt": "2026-11-01",
   "counts": {
     "styles": {
       "total": 88,
@@ -20,7 +20,7 @@
     "motionPresets": 17,
     "chartTypes": 25,
     "stacks": 22,
-    "stackGuidelines": 1271
+    "stackGuidelines": 1278
   },
   "snapshots": {
     "google-fonts.csv": {
