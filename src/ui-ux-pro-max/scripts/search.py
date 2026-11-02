@@ -36,7 +36,7 @@ import io
 # modules explicitly so `python <path>/search.py` works in those environments.
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
-from core import CSV_CONFIG, AVAILABLE_STACKS, MAX_RESULTS, UNTRUNCATED_COLS, search, search_stack
+from core import CSV_CONFIG, AVAILABLE_STACKS, MAX_RESULTS, RTL_LEVEL_CHOICES, UNTRUNCATED_COLS, search, search_stack
 from design_system import generate_design_system
 
 # Force UTF-8 for stdout/stderr to handle emojis on Windows (cp1252 default)
@@ -104,6 +104,10 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="UI Pro Max Search")
     parser.add_argument("query", help="Search query")
     parser.add_argument("--domain", "-d", choices=list(CSV_CONFIG.keys()), help="Search domain")
+    parser.add_argument("--rtl", nargs="?", const="all", choices=list(RTL_LEVEL_CHOICES), metavar="LEVEL",
+                        help="Filter style/product results by RTL compatibility: full (mirrors without work), "
+                             "partial (mirrors with per-component work), caveats (layout depends on reading "
+                             "direction); omit the value for all levels. Requires --domain style or product")
     parser.add_argument("--stack", "-s", choices=AVAILABLE_STACKS, help=f"Stack-specific search. Available: {', '.join(AVAILABLE_STACKS)}")
     parser.add_argument("--max-results", "-n", type=int, choices=range(1, 21), default=MAX_RESULTS,
                         metavar="1-20", help="Max results (default: 3)")
@@ -127,6 +131,11 @@ if __name__ == "__main__":
 
     # Design system takes priority
     if args.design_system:
+        if args.rtl is not None:
+            parser.error(
+                "--rtl is not supported with --design-system; "
+                "run a separate --domain style or --domain product query"
+            )
         if args.stack:
             print(
                 f"note: --stack {args.stack} is ignored in --design-system mode; "
@@ -170,6 +179,11 @@ if __name__ == "__main__":
                 print("=" * 60)
     # Stack search
     elif args.stack:
+        if args.rtl is not None:
+            parser.error(
+                "--rtl cannot be combined with --stack; "
+                "use --domain style or --domain product"
+            )
         result = search_stack(args.query, args.stack, args.max_results)
         if args.json:
             print(json_module.dumps(result, indent=2, ensure_ascii=False))
@@ -177,7 +191,10 @@ if __name__ == "__main__":
             print(format_output(result, full=args.full))
     # Domain search
     else:
-        result = search(args.query, args.domain, args.max_results)
+        try:
+            result = search(args.query, args.domain, args.max_results, rtl=args.rtl)
+        except ValueError as exc:
+            parser.error(str(exc))
         if args.json:
             print(json_module.dumps(result, indent=2, ensure_ascii=False))
         else:

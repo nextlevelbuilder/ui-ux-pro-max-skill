@@ -458,6 +458,10 @@ python3 .claude/skills/ui-ux-pro-max/scripts/search.py "orphan heading line bala
 python3 .claude/skills/ui-ux-pro-max/scripts/search.py "badge chip label wraps to second line" --domain ux
 python3 .claude/skills/ui-ux-pro-max/scripts/search.py "rapid chip animation interrupted" --domain ux
 
+# RTL / Arabic, Hebrew, Persian interfaces (style and product domains)
+python3 .claude/skills/ui-ux-pro-max/scripts/search.py "dashboard" --domain style --rtl=full
+python3 .claude/skills/ui-ux-pro-max/scripts/search.py "fintech" --domain product --rtl=partial
+
 # Stack-specific guidelines
 python3 .claude/skills/ui-ux-pro-max/scripts/search.py "form validation" --stack react
 python3 .claude/skills/ui-ux-pro-max/scripts/search.py "responsive layout" --stack html-tailwind
@@ -472,6 +476,30 @@ active guidance. Explicit legacy terms or older majors (for example, `Svelte 4`
 or `Next.js 15`) return only curated legacy rows, labeled by `Status` and
 `Applies To`; when no matching legacy guidance is curated, search returns no
 results instead of mixing framework generations.
+
+### RTL Compatibility (`--rtl`)
+
+Every style and product row carries an `rtl_level` for right-to-left interfaces
+(Arabic, Hebrew, Persian, Urdu):
+
+| Level | Meaning |
+|-------|---------|
+| `full` | Direction-agnostic: the layout survives mirroring unchanged. |
+| `partial` | Mirrors cleanly, but individual components and motion need adjustment. |
+| `caveats` | The style or product encodes reading direction (kinetic typography, LTR timelines, code/terminal surfaces, maps and seat ordering). |
+
+```bash
+# Only styles that mirror without extra work
+python3 .claude/skills/ui-ux-pro-max/scripts/search.py "dashboard" --domain style --rtl=full
+
+# All levels, filtered results still tagged with rtl_level
+python3 .claude/skills/ui-ux-pro-max/scripts/search.py "mobile" --domain style --rtl
+```
+
+`--rtl` requires an explicit `--domain style` or `--domain product`. The filter
+is applied after ranking but before `-n/--max-results` truncation, so a narrow
+limit never hides a matching row. It is rejected with `--design-system` and
+`--stack`.
 
 ### Persist Design System (Master + Overrides Pattern)
 
