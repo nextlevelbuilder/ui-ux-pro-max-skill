@@ -32,6 +32,12 @@ python3 src/ui-ux-pro-max/scripts/search.py "<query>" --design-system --variance
 ```
 `--variance` biases style selection (centered/minimal → bold/asymmetric), `--motion` attaches a matching GSAP snippet from `motion.csv`, `--density` overrides the spacing-scale tokens (spacious → dense/dashboard). Any dial left unset behaves exactly as before.
 
+**RTL filter (optional, `style` and `product` only):**
+```bash
+python3 src/ui-ux-pro-max/scripts/search.py "<query>" --domain style --rtl[=full|partial|caveats]
+```
+`styles.csv` and `products.csv` carry an `rtl_level` column (`full`, `partial`, `caveats`) that describes how well the layout survives mirroring for Arabic, Hebrew, Persian and Urdu interfaces. `--rtl` without a value accepts every level; with a value it keeps only that level. The filter runs after BM25 scoring but before `-n/--max-results` truncation, so a small limit cannot hide a matching row. It is rejected with `--design-system`, with `--stack`, and with domains that have no RTL column.
+
 **Stack search:**
 ```bash
 python3 src/ui-ux-pro-max/scripts/search.py "<query>" --stack <stack>
