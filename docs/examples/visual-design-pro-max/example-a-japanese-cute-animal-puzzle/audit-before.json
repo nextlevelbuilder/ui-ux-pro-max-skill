@@ -1,0 +1,179 @@
+{
+  "schema": "visual-audit/1",
+  "generated_at": "2026-10-16T12:34:28Z",
+  "root": "docs/examples/visual-design-pro-max/example-a-japanese-cute-animal-puzzle/drift-fixture",
+  "platform": "flutter",
+  "platform_detected": "flutter",
+  "contract": {
+    "tokens": "docs/examples/visual-design-pro-max/example-a-japanese-cute-animal-puzzle/project/design-system/onet-garden/tokens.json",
+    "profile": null
+  },
+  "scanned_files": 4,
+  "skipped_files": 0,
+  "summary": {
+    "critical": 0,
+    "high": 4,
+    "medium": 1,
+    "low": 0,
+    "info": 0
+  },
+  "inventory": {
+    "colors": {
+      "#2E2A32": 1,
+      "#4A3B5C": 1,
+      "#56505E": 1,
+      "#6B6274": 1,
+      "#8E24AA": 2,
+      "#972743": 1,
+      "#FF8FAB": 1,
+      "#FFC83D": 1,
+      "#FFD23F": 1,
+      "#FFDDAC": 1,
+      "#FFF6E9": 1,
+      "#FFFFFF": 1
+    },
+    "colors_with_alpha": {},
+    "named_colors": {},
+    "radii": {
+      "13": 2
+    },
+    "font_sizes": {
+      "12": 1,
+      "14": 1,
+      "16": 1,
+      "28": 1
+    },
+    "spacing": {
+      "16": 2,
+      "20": 1,
+      "24": 1
+    },
+    "shadows": 0,
+    "durations": {
+      "120": 1,
+      "200": 1,
+      "350": 1
+    },
+    "icon_libraries": [],
+    "icon_libraries_by_platform": {},
+    "font_families": [
+      "Fredoka",
+      "Nunito"
+    ],
+    "components": {
+      "CtaButton": [
+        "lib/screens/shop_screen.dart"
+      ],
+      "PrimaryButton": [
+        "lib/widgets/primary_button.dart"
+      ]
+    }
+  },
+  "findings": [
+    {
+      "id": "VA-0001",
+      "rule": "color.off-palette",
+      "severity": "high",
+      "category": "color",
+      "file": "lib/screens/shop_screen.dart",
+      "line": 20,
+      "evidence": "Color(0xFF8E24AA)",
+      "message": "Hard-coded colour #8E24AA not in tokens.json palette",
+      "violates": "tokens colour values, all layers (allowed set)",
+      "nearest": "component.button.primary.outlineColor #972743 (distance 35.2)",
+      "impact": "`shop_screen` renders #8E24AA, a colour the contract has no counterpart for; it reads as foreign to the palette",
+      "fix": "No close token (nearest component.button.primary.outlineColor #972743 is 35.2 away) — pick the semantic role (primary/accent/surface/text/success/danger/reward) that matches the element's purpose and use its token; if intentional, add to `pages/shop.md` intentional_exceptions",
+      "files_to_change": [
+        "lib/screens/shop_screen.dart"
+      ],
+      "verify": "re-run `audit.py scan`; VA-0001 must be absent (`audit.py compare` lists it under resolved)",
+      "kind": "rule",
+      "confidence": "exact"
+    },
+    {
+      "id": "VA-0002",
+      "rule": "radius.off-scale",
+      "severity": "high",
+      "category": "radius",
+      "file": "lib/screens/shop_screen.dart",
+      "line": 21,
+      "evidence": "BorderRadius.circular(13)",
+      "message": "Corner radius 13 is not on the contract scale (0, 2, 4, 8, 12, 16, 24, 32, 9999); nearest step 12 (2 occurrences project-wide)",
+      "violates": "tokens radius values (all layers) (allowed set 0, 2, 4, 8, 12, 16, 24, 32, 9999)",
+      "nearest": "semantic.radius.tile 12 (scale 0, 2, 4, 8, 12, 16, 24, 32, 9999)",
+      "impact": "`shop_screen` uses corner radius 13 while the scale is 0, 2, 4, 8, 12, 16, 24, 32, 9999; shapes read as a different component family",
+      "fix": "Use the corner radius step 12 (semantic.radius.tile); if intentional, add to `pages/shop.md` intentional_exceptions",
+      "files_to_change": [
+        "lib/screens/shop_screen.dart"
+      ],
+      "verify": "re-run `audit.py scan`; VA-0002 must be absent (`audit.py compare` lists it under resolved)",
+      "kind": "rule",
+      "confidence": "exact"
+    },
+    {
+      "id": "VA-0003",
+      "rule": "color.off-palette",
+      "severity": "high",
+      "category": "color",
+      "file": "lib/screens/shop_screen.dart",
+      "line": 44,
+      "evidence": "Color(0xFF8E24AA)",
+      "message": "Hard-coded colour #8E24AA not in tokens.json palette",
+      "violates": "tokens colour values, all layers (allowed set)",
+      "nearest": "component.button.primary.outlineColor #972743 (distance 35.2)",
+      "impact": "`shop_screen` renders #8E24AA, a colour the contract has no counterpart for; it reads as foreign to the palette",
+      "fix": "No close token (nearest component.button.primary.outlineColor #972743 is 35.2 away) — pick the semantic role (primary/accent/surface/text/success/danger/reward) that matches the element's purpose and use its token; if intentional, add to `pages/shop.md` intentional_exceptions",
+      "files_to_change": [
+        "lib/screens/shop_screen.dart"
+      ],
+      "verify": "re-run `audit.py scan`; VA-0003 must be absent (`audit.py compare` lists it under resolved)",
+      "kind": "rule",
+      "confidence": "exact"
+    },
+    {
+      "id": "VA-0004",
+      "rule": "radius.off-scale",
+      "severity": "high",
+      "category": "radius",
+      "file": "lib/screens/shop_screen.dart",
+      "line": 45,
+      "evidence": "BorderRadius.circular(13)",
+      "message": "Corner radius 13 is not on the contract scale (0, 2, 4, 8, 12, 16, 24, 32, 9999); nearest step 12 (2 occurrences project-wide)",
+      "violates": "tokens radius values (all layers) (allowed set 0, 2, 4, 8, 12, 16, 24, 32, 9999)",
+      "nearest": "semantic.radius.tile 12 (scale 0, 2, 4, 8, 12, 16, 24, 32, 9999)",
+      "impact": "`shop_screen` uses corner radius 13 while the scale is 0, 2, 4, 8, 12, 16, 24, 32, 9999; shapes read as a different component family",
+      "fix": "Use the corner radius step 12 (semantic.radius.tile); if intentional, add to `pages/shop.md` intentional_exceptions",
+      "files_to_change": [
+        "lib/screens/shop_screen.dart"
+      ],
+      "verify": "re-run `audit.py scan`; VA-0004 must be absent (`audit.py compare` lists it under resolved)",
+      "kind": "rule",
+      "confidence": "exact"
+    },
+    {
+      "id": "VA-0005",
+      "rule": "component.duplicate-implementation",
+      "severity": "medium",
+      "category": "component",
+      "file": "lib/screens/shop_screen.dart",
+      "line": 8,
+      "evidence": "class CtaButton extends StatelessWidget",
+      "message": "divergent re-implementation of Button: `CtaButton` in lib/screens/shop_screen.dart:8 vs `PrimaryButton` in lib/widgets/primary_button.dart:5",
+      "violates": "component-catalog: one implementation per component family (Button)",
+      "nearest": "canonical: lib/widgets/primary_button.dart (PrimaryButton)",
+      "impact": "Two implementations of Button drift independently; a fix in one does not reach the other",
+      "fix": "Reuse `PrimaryButton` from lib/widgets/primary_button.dart and delete `CtaButton`; if the variant is intentional, make it a prop/variant of the canonical component",
+      "files_to_change": [
+        "lib/screens/shop_screen.dart",
+        "lib/widgets/primary_button.dart"
+      ],
+      "verify": "re-run `audit.py scan`; VA-0005 must be absent (`audit.py compare` lists it under resolved)",
+      "kind": "recommendation",
+      "confidence": "heuristic"
+    }
+  ],
+  "platforms": {
+    "flutter": 4
+  },
+  "notes": []
+}

@@ -1,0 +1,3 @@
+# SYNTHETIC FIXTURE (fixed copy) — not a runnable Flutter project. Exists only so audit.py detects platform=flutter.
+name: onet_garden_drift_fixture
+description: Hand-written drift demo for docs/examples/visual-design-pro-max/example-a (never built, never run).

@@ -1,0 +1,921 @@
+{
+  "schema": "visual-audit/1",
+  "generated_at": "2026-10-16T11:55:48Z",
+  "root": ".claude/skills/visual-audit/scripts/tests/fixtures/drift-project",
+  "platform": "mixed",
+  "platform_detected": "mixed",
+  "contract": {
+    "tokens": ".claude/skills/visual-audit/scripts/tests/fixtures/drift-project/tokens.json",
+    "profile": null
+  },
+  "scanned_files": 12,
+  "skipped_files": 3,
+  "summary": {
+    "critical": 0,
+    "high": 16,
+    "medium": 19,
+    "low": 5,
+    "info": 0
+  },
+  "inventory": {
+    "colors": {
+      "#1A1A2E": 4,
+      "#1E88E5": 2,
+      "#3B5BDB": 4,
+      "#6B6B80": 2,
+      "#E03E3E": 1,
+      "#E91E63": 3,
+      "#FA804F": 1,
+      "#FF8A4C": 3,
+      "#FF8B4D": 2,
+      "#FFD43B": 2,
+      "#FFF8F0": 4,
+      "#FFFFFF": 5
+    },
+    "colors_with_alpha": {
+      "#000000@0.40": 1,
+      "#FF8A4C@0.90": 1
+    },
+    "named_colors": {},
+    "radii": {
+      "4": 1,
+      "7": 2,
+      "8": 4,
+      "13": 3,
+      "16": 4,
+      "9999": 2
+    },
+    "font_sizes": {
+      "12": 1,
+      "14": 1,
+      "15": 4,
+      "16": 3,
+      "24": 1
+    },
+    "spacing": {
+      "10": 3,
+      "12": 3,
+      "16": 2,
+      "18": 3,
+      "24": 3
+    },
+    "shadows": 3,
+    "durations": {
+      "120": 1,
+      "200": 5,
+      "337": 5,
+      "350": 2
+    },
+    "icon_libraries": [
+      "@heroicons/react",
+      "font_awesome_flutter",
+      "lucide-react",
+      "material"
+    ],
+    "icon_libraries_by_platform": {
+      "flutter": [
+        "font_awesome_flutter",
+        "material"
+      ],
+      "web": [
+        "@heroicons/react",
+        "lucide-react"
+      ]
+    },
+    "font_families": [
+      "Comic Sans MS",
+      "Fredoka",
+      "Nunito",
+      "Poppins"
+    ],
+    "components": {
+      "Button": [
+        "web/components/Button.tsx"
+      ],
+      "CtaButton": [
+        "web/components/CtaButton.tsx"
+      ],
+      "MainButton": [
+        "lib/screens/rewards.dart"
+      ],
+      "PrimaryButton": [
+        "lib/widgets/primary_button.dart"
+      ]
+    }
+  },
+  "findings": [
+    {
+      "id": "VA-0001",
+      "rule": "color.off-palette",
+      "severity": "high",
+      "category": "color",
+      "file": "lib/screens/shop.dart",
+      "line": 12,
+      "evidence": "Color(0xFFE91E63)",
+      "message": "Hard-coded colour #E91E63 not in tokens.json palette",
+      "violates": "tokens.semantic.color / primitive.color (allowed set)",
+      "nearest": "semantic.color.danger #E03E3E (distance 28.0)",
+      "impact": "`shop` renders #E91E63 where the contract expects semantic.color.danger; adjacent screens will not match",
+      "fix": "Replace with the nearest token semantic.color.danger (#E03E3E) or a semantic colour that fits the role; if intentional, add to `pages/shop.md` intentional_exceptions",
+      "files_to_change": [
+        "lib/screens/shop.dart"
+      ],
+      "verify": "re-run `audit.py scan`; VA-0001 must be absent (`audit.py compare` lists it under resolved)",
+      "kind": "rule",
+      "confidence": "exact"
+    },
+    {
+      "id": "VA-0002",
+      "rule": "radius.off-scale",
+      "severity": "high",
+      "category": "radius",
+      "file": "lib/screens/shop.dart",
+      "line": 19,
+      "evidence": "BorderRadius.circular(13)",
+      "message": "Corner radius 13 is not on the contract scale (4, 8, 16, 24, 9999); nearest step 16 (3 occurrences project-wide)",
+      "violates": "tokens.primitive.radius (allowed set 4, 8, 16, 24, 9999)",
+      "nearest": "primitive.radius.step 16 (scale 4, 8, 16, 24, 9999)",
+      "impact": "`shop` uses corner radius 13 while the scale is 4, 8, 16, 24, 9999; shapes read as a different component family",
+      "fix": "Use the corner radius step 16; if intentional, add to `pages/shop.md` intentional_exceptions",
+      "files_to_change": [
+        "lib/screens/shop.dart"
+      ],
+      "verify": "re-run `audit.py scan`; VA-0002 must be absent (`audit.py compare` lists it under resolved)",
+      "kind": "rule",
+      "confidence": "exact"
+    },
+    {
+      "id": "VA-0003",
+      "rule": "font-family.unlisted",
+      "severity": "high",
+      "category": "font-family",
+      "file": "lib/screens/shop.dart",
+      "line": 26,
+      "evidence": "fontFamily: 'Comic Sans MS'",
+      "message": "Font family 'Comic Sans MS' is not a contract family (Fredoka, Nunito)",
+      "violates": "tokens.primitive.fontFamily / semantic.typography (allowed: Fredoka, Nunito)",
+      "nearest": "contract families: Fredoka, Nunito",
+      "impact": "`shop` sets family 'Comic Sans MS'; the contract typography is Fredoka, Nunito, so this text reads as foreign",
+      "fix": "Use the display or body family (Fredoka, Nunito); if intentional, add to `pages/shop.md` intentional_exceptions",
+      "files_to_change": [
+        "lib/screens/shop.dart"
+      ],
+      "verify": "re-run `audit.py scan`; VA-0003 must be absent (`audit.py compare` lists it under resolved)",
+      "kind": "rule",
+      "confidence": "exact"
+    },
+    {
+      "id": "VA-0004",
+      "rule": "font-size.off-scale",
+      "severity": "high",
+      "category": "font-size",
+      "file": "lib/screens/shop.dart",
+      "line": 26,
+      "evidence": "fontSize: 15",
+      "message": "Font size 15 is not on the contract scale (12, 14, 16, 20, 24, 32); nearest step 14 (4 occurrences project-wide)",
+      "violates": "tokens.primitive.fontSize (allowed set 12, 14, 16, 20, 24, 32)",
+      "nearest": "primitive.fontSize.step 14 (scale 12, 14, 16, 20, 24, 32)",
+      "impact": "`shop` sets text at 15 outside the type scale 12, 14, 16, 20, 24, 32; the type rhythm breaks between screens",
+      "fix": "Use the font size step 14; if intentional, add to `pages/shop.md` intentional_exceptions",
+      "files_to_change": [
+        "lib/screens/shop.dart"
+      ],
+      "verify": "re-run `audit.py scan`; VA-0004 must be absent (`audit.py compare` lists it under resolved)",
+      "kind": "rule",
+      "confidence": "exact"
+    },
+    {
+      "id": "VA-0005",
+      "rule": "duration.off-scale",
+      "severity": "high",
+      "category": "duration",
+      "file": "lib/screens/shop.dart",
+      "line": 35,
+      "evidence": "Duration(milliseconds: 337)",
+      "message": "Duration (ms) 337 is not on the contract scale (120, 200, 350); nearest step 350 (5 occurrences project-wide)",
+      "violates": "tokens.primitive.duration (allowed set 120, 200, 350)",
+      "nearest": "primitive.duration.step 350 (scale 120, 200, 350)",
+      "impact": "`shop` animates in 337 ms instead of a contract step (120, 200, 350); motion feels inconsistent between screens",
+      "fix": "Use the duration (ms) step 350; if intentional, add to `pages/shop.md` intentional_exceptions",
+      "files_to_change": [
+        "lib/screens/shop.dart"
+      ],
+      "verify": "re-run `audit.py scan`; VA-0005 must be absent (`audit.py compare` lists it under resolved)",
+      "kind": "rule",
+      "confidence": "exact"
+    },
+    {
+      "id": "VA-0006",
+      "rule": "color.off-palette",
+      "severity": "high",
+      "category": "color",
+      "file": "unity/Assets/Scripts/ShopPanel.cs",
+      "line": 16,
+      "evidence": "ColorUtility.TryParseHtmlString(\"#E91E63\")",
+      "message": "Hard-coded colour #E91E63 not in tokens.json palette",
+      "violates": "tokens.semantic.color / primitive.color (allowed set)",
+      "nearest": "semantic.color.danger #E03E3E (distance 28.0)",
+      "impact": "`ShopPanel` renders #E91E63 where the contract expects semantic.color.danger; adjacent screens will not match",
+      "fix": "Replace with the nearest token semantic.color.danger (#E03E3E) or a semantic colour that fits the role; if intentional, add to `pages/shop.md` intentional_exceptions",
+      "files_to_change": [
+        "unity/Assets/Scripts/ShopPanel.cs"
+      ],
+      "verify": "re-run `audit.py scan`; VA-0006 must be absent (`audit.py compare` lists it under resolved)",
+      "kind": "rule",
+      "confidence": "exact"
+    },
+    {
+      "id": "VA-0007",
+      "rule": "duration.off-scale",
+      "severity": "high",
+      "category": "duration",
+      "file": "unity/Assets/Scripts/ShopPanel.cs",
+      "line": 20,
+      "evidence": ".DOScale(1.1f, 0.337f)",
+      "message": "Duration (ms) 337 is not on the contract scale (120, 200, 350); nearest step 350 (5 occurrences project-wide)",
+      "violates": "tokens.primitive.duration (allowed set 120, 200, 350)",
+      "nearest": "primitive.duration.step 350 (scale 120, 200, 350)",
+      "impact": "`ShopPanel` animates in 337 ms instead of a contract step (120, 200, 350); motion feels inconsistent between screens",
+      "fix": "Use the duration (ms) step 350; if intentional, add to `pages/shop.md` intentional_exceptions",
+      "files_to_change": [
+        "unity/Assets/Scripts/ShopPanel.cs"
+      ],
+      "verify": "re-run `audit.py scan`; VA-0007 must be absent (`audit.py compare` lists it under resolved)",
+      "kind": "rule",
+      "confidence": "exact"
+    },
+    {
+      "id": "VA-0008",
+      "rule": "color.off-palette",
+      "severity": "high",
+      "category": "color",
+      "file": "unity/Assets/UI/Shop.uss",
+      "line": 3,
+      "evidence": "rgb(233, 30, 99)",
+      "message": "Hard-coded colour #E91E63 not in tokens.json palette",
+      "violates": "tokens.semantic.color / primitive.color (allowed set)",
+      "nearest": "semantic.color.danger #E03E3E (distance 28.0)",
+      "impact": "`Shop` renders #E91E63 where the contract expects semantic.color.danger; adjacent screens will not match",
+      "fix": "Replace with the nearest token semantic.color.danger (#E03E3E) or a semantic colour that fits the role; if intentional, add to `pages/shop.md` intentional_exceptions",
+      "files_to_change": [
+        "unity/Assets/UI/Shop.uss"
+      ],
+      "verify": "re-run `audit.py scan`; VA-0008 must be absent (`audit.py compare` lists it under resolved)",
+      "kind": "rule",
+      "confidence": "exact"
+    },
+    {
+      "id": "VA-0009",
+      "rule": "radius.off-scale",
+      "severity": "high",
+      "category": "radius",
+      "file": "unity/Assets/UI/Shop.uss",
+      "line": 4,
+      "evidence": "border-top-left-radius: 13px",
+      "message": "Corner radius 13 is not on the contract scale (4, 8, 16, 24, 9999); nearest step 16 (3 occurrences project-wide)",
+      "violates": "tokens.primitive.radius (allowed set 4, 8, 16, 24, 9999)",
+      "nearest": "primitive.radius.step 16 (scale 4, 8, 16, 24, 9999)",
+      "impact": "`Shop` uses corner radius 13 while the scale is 4, 8, 16, 24, 9999; shapes read as a different component family",
+      "fix": "Use the corner radius step 16; if intentional, add to `pages/shop.md` intentional_exceptions",
+      "files_to_change": [
+        "unity/Assets/UI/Shop.uss"
+      ],
+      "verify": "re-run `audit.py scan`; VA-0009 must be absent (`audit.py compare` lists it under resolved)",
+      "kind": "rule",
+      "confidence": "exact"
+    },
+    {
+      "id": "VA-0010",
+      "rule": "radius.off-scale",
+      "severity": "high",
+      "category": "radius",
+      "file": "unity/Assets/UI/Shop.uss",
+      "line": 5,
+      "evidence": "border-top-right-radius: 13px",
+      "message": "Corner radius 13 is not on the contract scale (4, 8, 16, 24, 9999); nearest step 16 (3 occurrences project-wide)",
+      "violates": "tokens.primitive.radius (allowed set 4, 8, 16, 24, 9999)",
+      "nearest": "primitive.radius.step 16 (scale 4, 8, 16, 24, 9999)",
+      "impact": "`Shop` uses corner radius 13 while the scale is 4, 8, 16, 24, 9999; shapes read as a different component family",
+      "fix": "Use the corner radius step 16; if intentional, add to `pages/shop.md` intentional_exceptions",
+      "files_to_change": [
+        "unity/Assets/UI/Shop.uss"
+      ],
+      "verify": "re-run `audit.py scan`; VA-0010 must be absent (`audit.py compare` lists it under resolved)",
+      "kind": "rule",
+      "confidence": "exact"
+    },
+    {
+      "id": "VA-0011",
+      "rule": "duration.off-scale",
+      "severity": "high",
+      "category": "duration",
+      "file": "unity/Assets/UI/Shop.uss",
+      "line": 7,
+      "evidence": "transition-duration: 337ms",
+      "message": "Duration (ms) 337 is not on the contract scale (120, 200, 350); nearest step 350 (5 occurrences project-wide)",
+      "violates": "tokens.primitive.duration (allowed set 120, 200, 350)",
+      "nearest": "primitive.duration.step 350 (scale 120, 200, 350)",
+      "impact": "`Shop` animates in 337 ms instead of a contract step (120, 200, 350); motion feels inconsistent between screens",
+      "fix": "Use the duration (ms) step 350; if intentional, add to `pages/shop.md` intentional_exceptions",
+      "files_to_change": [
+        "unity/Assets/UI/Shop.uss"
+      ],
+      "verify": "re-run `audit.py scan`; VA-0011 must be absent (`audit.py compare` lists it under resolved)",
+      "kind": "rule",
+      "confidence": "exact"
+    },
+    {
+      "id": "VA-0012",
+      "rule": "font-size.off-scale",
+      "severity": "high",
+      "category": "font-size",
+      "file": "unity/Assets/UI/Shop.uss",
+      "line": 11,
+      "evidence": "font-size: 15px",
+      "message": "Font size 15 is not on the contract scale (12, 14, 16, 20, 24, 32); nearest step 14 (4 occurrences project-wide)",
+      "violates": "tokens.primitive.fontSize (allowed set 12, 14, 16, 20, 24, 32)",
+      "nearest": "primitive.fontSize.step 14 (scale 12, 14, 16, 20, 24, 32)",
+      "impact": "`Shop` sets text at 15 outside the type scale 12, 14, 16, 20, 24, 32; the type rhythm breaks between screens",
+      "fix": "Use the font size step 14; if intentional, add to `pages/shop.md` intentional_exceptions",
+      "files_to_change": [
+        "unity/Assets/UI/Shop.uss"
+      ],
+      "verify": "re-run `audit.py scan`; VA-0012 must be absent (`audit.py compare` lists it under resolved)",
+      "kind": "rule",
+      "confidence": "exact"
+    },
+    {
+      "id": "VA-0013",
+      "rule": "font-size.off-scale",
+      "severity": "high",
+      "category": "font-size",
+      "file": "web/components/CtaButton.tsx",
+      "line": 8,
+      "evidence": "text-[15px]",
+      "message": "Font size 15 is not on the contract scale (12, 14, 16, 20, 24, 32); nearest step 14 (4 occurrences project-wide)",
+      "violates": "tokens.primitive.fontSize (allowed set 12, 14, 16, 20, 24, 32)",
+      "nearest": "primitive.fontSize.step 14 (scale 12, 14, 16, 20, 24, 32)",
+      "impact": "`CtaButton` sets text at 15 outside the type scale 12, 14, 16, 20, 24, 32; the type rhythm breaks between screens",
+      "fix": "Use the font size step 14; if intentional, add to `pages/cta-button.md` intentional_exceptions",
+      "files_to_change": [
+        "web/components/CtaButton.tsx"
+      ],
+      "verify": "re-run `audit.py scan`; VA-0013 must be absent (`audit.py compare` lists it under resolved)",
+      "kind": "rule",
+      "confidence": "exact"
+    },
+    {
+      "id": "VA-0014",
+      "rule": "duration.off-scale",
+      "severity": "high",
+      "category": "duration",
+      "file": "web/components/CtaButton.tsx",
+      "line": 9,
+      "evidence": "transitionDuration: '337ms'",
+      "message": "Duration (ms) 337 is not on the contract scale (120, 200, 350); nearest step 350 (5 occurrences project-wide)",
+      "violates": "tokens.primitive.duration (allowed set 120, 200, 350)",
+      "nearest": "primitive.duration.step 350 (scale 120, 200, 350)",
+      "impact": "`CtaButton` animates in 337 ms instead of a contract step (120, 200, 350); motion feels inconsistent between screens",
+      "fix": "Use the duration (ms) step 350; if intentional, add to `pages/cta-button.md` intentional_exceptions",
+      "files_to_change": [
+        "web/components/CtaButton.tsx"
+      ],
+      "verify": "re-run `audit.py scan`; VA-0014 must be absent (`audit.py compare` lists it under resolved)",
+      "kind": "rule",
+      "confidence": "exact"
+    },
+    {
+      "id": "VA-0015",
+      "rule": "duration.off-scale",
+      "severity": "high",
+      "category": "duration",
+      "file": "web/shop.css",
+      "line": 7,
+      "evidence": "transition: all 337ms ease-in",
+      "message": "Duration (ms) 337 is not on the contract scale (120, 200, 350); nearest step 350 (5 occurrences project-wide)",
+      "violates": "tokens.primitive.duration (allowed set 120, 200, 350)",
+      "nearest": "primitive.duration.step 350 (scale 120, 200, 350)",
+      "impact": "`shop` animates in 337 ms instead of a contract step (120, 200, 350); motion feels inconsistent between screens",
+      "fix": "Use the duration (ms) step 350; if intentional, add to `pages/shop.md` intentional_exceptions",
+      "files_to_change": [
+        "web/shop.css"
+      ],
+      "verify": "re-run `audit.py scan`; VA-0015 must be absent (`audit.py compare` lists it under resolved)",
+      "kind": "rule",
+      "confidence": "exact"
+    },
+    {
+      "id": "VA-0016",
+      "rule": "font-size.off-scale",
+      "severity": "high",
+      "category": "font-size",
+      "file": "web/shop.css",
+      "line": 11,
+      "evidence": "font-size: 15px",
+      "message": "Font size 15 is not on the contract scale (12, 14, 16, 20, 24, 32); nearest step 14 (4 occurrences project-wide)",
+      "violates": "tokens.primitive.fontSize (allowed set 12, 14, 16, 20, 24, 32)",
+      "nearest": "primitive.fontSize.step 14 (scale 12, 14, 16, 20, 24, 32)",
+      "impact": "`shop` sets text at 15 outside the type scale 12, 14, 16, 20, 24, 32; the type rhythm breaks between screens",
+      "fix": "Use the font size step 14; if intentional, add to `pages/shop.md` intentional_exceptions",
+      "files_to_change": [
+        "web/shop.css"
+      ],
+      "verify": "re-run `audit.py scan`; VA-0016 must be absent (`audit.py compare` lists it under resolved)",
+      "kind": "rule",
+      "confidence": "exact"
+    },
+    {
+      "id": "VA-0017",
+      "rule": "component.duplicate-implementation",
+      "severity": "medium",
+      "category": "component",
+      "file": "lib/screens/rewards.dart",
+      "line": 6,
+      "evidence": "class MainButton extends StatelessWidget",
+      "message": "divergent re-implementation of Button: `MainButton` in lib/screens/rewards.dart:6 vs `PrimaryButton` in lib/widgets/primary_button.dart:6",
+      "violates": "component-catalog: one implementation per component family (Button)",
+      "nearest": "canonical: lib/widgets/primary_button.dart (PrimaryButton)",
+      "impact": "Two implementations of Button drift independently; a fix in one does not reach the other",
+      "fix": "Reuse `PrimaryButton` from lib/widgets/primary_button.dart and delete `MainButton`; if the variant is intentional, make it a prop/variant of the canonical component",
+      "files_to_change": [
+        "lib/screens/rewards.dart",
+        "lib/widgets/primary_button.dart"
+      ],
+      "verify": "re-run `audit.py scan`; VA-0017 must be absent (`audit.py compare` lists it under resolved)",
+      "kind": "recommendation",
+      "confidence": "heuristic"
+    },
+    {
+      "id": "VA-0018",
+      "rule": "icon.mixed-libraries",
+      "severity": "medium",
+      "category": "icon",
+      "file": "lib/screens/shop.dart",
+      "line": 3,
+      "evidence": "import 'package:font_awesome_flutter/...'",
+      "message": "flutter group uses 2 icon libraries: font_awesome_flutter (1 file, 2 uses), material (2 files, 2 uses); keep material, replace font_awesome_flutter",
+      "violates": "tokens.$extensions.vdp.iconLibrary / profile iconography.library_hint (one library per platform)",
+      "nearest": "preferred for flutter: material (declared in the contract)",
+      "impact": "Two icon languages (font_awesome_flutter, material) on one platform read as two products; stroke weight and corner style will not match",
+      "fix": "Keep material and replace the font_awesome_flutter icons with material equivalents; if a second library is required, declare it in the profile",
+      "files_to_change": [
+        "lib/screens/home.dart",
+        "lib/screens/shop.dart"
+      ],
+      "verify": "re-run `audit.py scan`; VA-0018 must be absent (`audit.py compare` lists it under resolved)",
+      "kind": "rule",
+      "confidence": "exact"
+    },
+    {
+      "id": "VA-0019",
+      "rule": "spacing.off-scale",
+      "severity": "medium",
+      "category": "spacing",
+      "file": "lib/screens/shop.dart",
+      "line": 13,
+      "evidence": "EdgeInsets.symmetric(horizontal: 18, vertical: 10) → 10",
+      "message": "Spacing 10 is not on the contract scale (4, 8, 12, 16, 24, 32); nearest step 8 (3 occurrences project-wide)",
+      "violates": "tokens.primitive.spacing (allowed set 4, 8, 12, 16, 24, 32)",
+      "nearest": "primitive.spacing.step 8 (scale 4, 8, 12, 16, 24, 32)",
+      "impact": "`shop` pads with 10; off-grid spacing makes groups look misaligned next to on-grid screens",
+      "fix": "Use the spacing step 8; if intentional, add to `pages/shop.md` intentional_exceptions",
+      "files_to_change": [
+        "lib/screens/shop.dart"
+      ],
+      "verify": "re-run `audit.py scan`; VA-0019 must be absent (`audit.py compare` lists it under resolved)",
+      "kind": "rule",
+      "confidence": "exact"
+    },
+    {
+      "id": "VA-0020",
+      "rule": "spacing.off-scale",
+      "severity": "medium",
+      "category": "spacing",
+      "file": "lib/screens/shop.dart",
+      "line": 13,
+      "evidence": "EdgeInsets.symmetric(horizontal: 18, vertical: 10) → 18",
+      "message": "Spacing 18 is not on the contract scale (4, 8, 12, 16, 24, 32); nearest step 16 (3 occurrences project-wide)",
+      "violates": "tokens.primitive.spacing (allowed set 4, 8, 12, 16, 24, 32)",
+      "nearest": "primitive.spacing.step 16 (scale 4, 8, 12, 16, 24, 32)",
+      "impact": "`shop` pads with 18; off-grid spacing makes groups look misaligned next to on-grid screens",
+      "fix": "Use the spacing step 16; if intentional, add to `pages/shop.md` intentional_exceptions",
+      "files_to_change": [
+        "lib/screens/shop.dart"
+      ],
+      "verify": "re-run `audit.py scan`; VA-0020 must be absent (`audit.py compare` lists it under resolved)",
+      "kind": "rule",
+      "confidence": "exact"
+    },
+    {
+      "id": "VA-0021",
+      "rule": "shadow.variant-explosion",
+      "severity": "medium",
+      "category": "shadow",
+      "file": "lib/screens/shop.dart",
+      "line": 21,
+      "evidence": "x=0 y=5 blur=13 spread=0 color=#000000 a=0.25",
+      "message": "distinct=3 allowed=2 shadow signatures project-wide: x=0 y=2 blur=8 spread=0 color=#000000 a=0.1 x3; x=0 y=4 blur=4 spread=0 color=#000000 a=0.2 x1; x=0 y=5 blur=13 spread=0 color=#000000 a=0.25 x2",
+      "violates": "tokens.primitive.shadow (allowed distinct count 2)",
+      "nearest": "allowed signatures: x=0 y=2 blur=8 spread=0 color=#000000 a=0.1; x=0 y=4 blur=4 spread=0 color=#000000 a=0.2",
+      "impact": "3 elevation styles compete across screens; cards and buttons do not share one depth language",
+      "fix": "Map every shadow to a primitive.shadow token; delete the extra signatures; if intentional, add to `pages/shop.md` intentional_exceptions",
+      "files_to_change": [
+        "lib/screens/shop.dart",
+        "lib/theme/app_theme.dart",
+        "web/shop.css",
+        "web/styles.css"
+      ],
+      "verify": "re-run `audit.py scan`; VA-0021 must be absent (`audit.py compare` lists it under resolved)",
+      "kind": "rule",
+      "confidence": "exact"
+    },
+    {
+      "id": "VA-0022",
+      "rule": "touch.target-too-small",
+      "severity": "medium",
+      "category": "touch",
+      "file": "lib/screens/shop.dart",
+      "line": 30,
+      "evidence": "SizedBox( width: 32, height: 32, child: IconButton",
+      "message": "[heuristic] Tappable control 32x32 is below the minimum touch target 44 (IconButton)",
+      "violates": "tokens.$extensions.vdp.minTouchTarget / primitive.touchTarget.min = 44",
+      "nearest": "minimum 44",
+      "impact": "A 32x32 hit area mis-taps on touch devices, especially for the thumb zone on phones",
+      "fix": "Grow the control (or its padding / hit-test area) to at least 44x44; confirm the rendered hit area on device",
+      "files_to_change": [
+        "lib/screens/shop.dart"
+      ],
+      "verify": "re-run `audit.py scan`; VA-0022 must be absent (`audit.py compare` lists it under resolved)",
+      "kind": "recommendation",
+      "confidence": "heuristic"
+    },
+    {
+      "id": "VA-0023",
+      "rule": "spacing.off-scale",
+      "severity": "medium",
+      "category": "spacing",
+      "file": "unity/Assets/UI/Shop.uss",
+      "line": 6,
+      "evidence": "padding: 10px",
+      "message": "Spacing 10 is not on the contract scale (4, 8, 12, 16, 24, 32); nearest step 8 (3 occurrences project-wide)",
+      "violates": "tokens.primitive.spacing (allowed set 4, 8, 12, 16, 24, 32)",
+      "nearest": "primitive.spacing.step 8 (scale 4, 8, 12, 16, 24, 32)",
+      "impact": "`Shop` pads with 10; off-grid spacing makes groups look misaligned next to on-grid screens",
+      "fix": "Use the spacing step 8; if intentional, add to `pages/shop.md` intentional_exceptions",
+      "files_to_change": [
+        "unity/Assets/UI/Shop.uss"
+      ],
+      "verify": "re-run `audit.py scan`; VA-0023 must be absent (`audit.py compare` lists it under resolved)",
+      "kind": "rule",
+      "confidence": "exact"
+    },
+    {
+      "id": "VA-0024",
+      "rule": "icon.mixed-libraries",
+      "severity": "medium",
+      "category": "icon",
+      "file": "web/components/Button.tsx",
+      "line": 4,
+      "evidence": "from 'lucide-react",
+      "message": "web group uses 2 icon libraries: @heroicons/react (1 file, 1 use), lucide-react (1 file, 1 use); keep @heroicons/react, replace lucide-react",
+      "violates": "tokens.$extensions.vdp.iconLibrary / profile iconography.library_hint (one library per platform)",
+      "nearest": "preferred for web: @heroicons/react (tie broken alphabetically)",
+      "impact": "Two icon languages (@heroicons/react, lucide-react) on one platform read as two products; stroke weight and corner style will not match",
+      "fix": "Keep @heroicons/react and replace the lucide-react icons with @heroicons/react equivalents; if a second library is required, declare it in the profile",
+      "files_to_change": [
+        "web/components/Button.tsx",
+        "web/components/CtaButton.tsx"
+      ],
+      "verify": "re-run `audit.py scan`; VA-0024 must be absent (`audit.py compare` lists it under resolved)",
+      "kind": "rule",
+      "confidence": "exact"
+    },
+    {
+      "id": "VA-0025",
+      "rule": "component.duplicate-implementation",
+      "severity": "medium",
+      "category": "component",
+      "file": "web/components/CtaButton.tsx",
+      "line": 5,
+      "evidence": "export const CtaButton",
+      "message": "divergent re-implementation of Button: `CtaButton` in web/components/CtaButton.tsx:5 vs `Button` in web/components/Button.tsx:8",
+      "violates": "component-catalog: one implementation per component family (Button)",
+      "nearest": "canonical: web/components/Button.tsx (Button)",
+      "impact": "Two implementations of Button drift independently; a fix in one does not reach the other",
+      "fix": "Reuse `Button` from web/components/Button.tsx and delete `CtaButton`; if the variant is intentional, make it a prop/variant of the canonical component",
+      "files_to_change": [
+        "web/components/CtaButton.tsx",
+        "web/components/Button.tsx"
+      ],
+      "verify": "re-run `audit.py scan`; VA-0025 must be absent (`audit.py compare` lists it under resolved)",
+      "kind": "recommendation",
+      "confidence": "heuristic"
+    },
+    {
+      "id": "VA-0026",
+      "rule": "color.off-palette",
+      "severity": "medium",
+      "category": "color",
+      "file": "web/components/CtaButton.tsx",
+      "line": 8,
+      "evidence": "bg-[#1E88E5]",
+      "message": "Hard-coded colour #1E88E5 not in tokens.json palette",
+      "violates": "tokens.semantic.color / primitive.color (allowed set)",
+      "nearest": "semantic.color.primary #3B5BDB (distance 38.1)",
+      "impact": "`CtaButton` renders #1E88E5, a colour the contract has no counterpart for; it reads as foreign to the palette",
+      "fix": "No close token (nearest semantic.color.primary #3B5BDB is 38.1 away) — pick the semantic role (primary/accent/surface/text/success/danger/reward) that matches the element's purpose and use its token; if intentional, add to `pages/cta-button.md` intentional_exceptions",
+      "files_to_change": [
+        "web/components/CtaButton.tsx"
+      ],
+      "verify": "re-run `audit.py scan`; VA-0026 must be absent (`audit.py compare` lists it under resolved)",
+      "kind": "rule",
+      "confidence": "exact"
+    },
+    {
+      "id": "VA-0027",
+      "rule": "radius.off-scale",
+      "severity": "medium",
+      "category": "radius",
+      "file": "web/components/CtaButton.tsx",
+      "line": 8,
+      "evidence": "rounded-[7px]",
+      "message": "Corner radius 7 is not on the contract scale (4, 8, 16, 24, 9999); nearest step 8 (2 occurrences project-wide)",
+      "violates": "tokens.primitive.radius (allowed set 4, 8, 16, 24, 9999)",
+      "nearest": "primitive.radius.step 8 (scale 4, 8, 16, 24, 9999)",
+      "impact": "`CtaButton` uses corner radius 7 while the scale is 4, 8, 16, 24, 9999; shapes read as a different component family",
+      "fix": "Use the corner radius step 8; if intentional, add to `pages/cta-button.md` intentional_exceptions",
+      "files_to_change": [
+        "web/components/CtaButton.tsx"
+      ],
+      "verify": "re-run `audit.py scan`; VA-0027 must be absent (`audit.py compare` lists it under resolved)",
+      "kind": "rule",
+      "confidence": "exact"
+    },
+    {
+      "id": "VA-0028",
+      "rule": "spacing.off-scale",
+      "severity": "medium",
+      "category": "spacing",
+      "file": "web/components/CtaButton.tsx",
+      "line": 8,
+      "evidence": "px-[18px]",
+      "message": "Spacing 18 is not on the contract scale (4, 8, 12, 16, 24, 32); nearest step 16 (3 occurrences project-wide)",
+      "violates": "tokens.primitive.spacing (allowed set 4, 8, 12, 16, 24, 32)",
+      "nearest": "primitive.spacing.step 16 (scale 4, 8, 12, 16, 24, 32)",
+      "impact": "`CtaButton` pads with 18; off-grid spacing makes groups look misaligned next to on-grid screens",
+      "fix": "Use the spacing step 16; if intentional, add to `pages/cta-button.md` intentional_exceptions",
+      "files_to_change": [
+        "web/components/CtaButton.tsx"
+      ],
+      "verify": "re-run `audit.py scan`; VA-0028 must be absent (`audit.py compare` lists it under resolved)",
+      "kind": "rule",
+      "confidence": "exact"
+    },
+    {
+      "id": "VA-0029",
+      "rule": "color.off-palette",
+      "severity": "medium",
+      "category": "color",
+      "file": "web/shop.css",
+      "line": 3,
+      "evidence": "#1E88E5",
+      "message": "Hard-coded colour #1E88E5 not in tokens.json palette",
+      "violates": "tokens.semantic.color / primitive.color (allowed set)",
+      "nearest": "semantic.color.primary #3B5BDB (distance 38.1)",
+      "impact": "`shop` renders #1E88E5, a colour the contract has no counterpart for; it reads as foreign to the palette",
+      "fix": "No close token (nearest semantic.color.primary #3B5BDB is 38.1 away) — pick the semantic role (primary/accent/surface/text/success/danger/reward) that matches the element's purpose and use its token; if intentional, add to `pages/shop.md` intentional_exceptions",
+      "files_to_change": [
+        "web/shop.css"
+      ],
+      "verify": "re-run `audit.py scan`; VA-0029 must be absent (`audit.py compare` lists it under resolved)",
+      "kind": "rule",
+      "confidence": "exact"
+    },
+    {
+      "id": "VA-0030",
+      "rule": "radius.off-scale",
+      "severity": "medium",
+      "category": "radius",
+      "file": "web/shop.css",
+      "line": 4,
+      "evidence": "border-radius: 7px",
+      "message": "Corner radius 7 is not on the contract scale (4, 8, 16, 24, 9999); nearest step 8 (2 occurrences project-wide)",
+      "violates": "tokens.primitive.radius (allowed set 4, 8, 16, 24, 9999)",
+      "nearest": "primitive.radius.step 8 (scale 4, 8, 16, 24, 9999)",
+      "impact": "`shop` uses corner radius 7 while the scale is 4, 8, 16, 24, 9999; shapes read as a different component family",
+      "fix": "Use the corner radius step 8; if intentional, add to `pages/shop.md` intentional_exceptions",
+      "files_to_change": [
+        "web/shop.css"
+      ],
+      "verify": "re-run `audit.py scan`; VA-0030 must be absent (`audit.py compare` lists it under resolved)",
+      "kind": "rule",
+      "confidence": "exact"
+    },
+    {
+      "id": "VA-0031",
+      "rule": "spacing.off-scale",
+      "severity": "medium",
+      "category": "spacing",
+      "file": "web/shop.css",
+      "line": 5,
+      "evidence": "padding: 10px 18px → 10",
+      "message": "Spacing 10 is not on the contract scale (4, 8, 12, 16, 24, 32); nearest step 8 (3 occurrences project-wide)",
+      "violates": "tokens.primitive.spacing (allowed set 4, 8, 12, 16, 24, 32)",
+      "nearest": "primitive.spacing.step 8 (scale 4, 8, 12, 16, 24, 32)",
+      "impact": "`shop` pads with 10; off-grid spacing makes groups look misaligned next to on-grid screens",
+      "fix": "Use the spacing step 8; if intentional, add to `pages/shop.md` intentional_exceptions",
+      "files_to_change": [
+        "web/shop.css"
+      ],
+      "verify": "re-run `audit.py scan`; VA-0031 must be absent (`audit.py compare` lists it under resolved)",
+      "kind": "rule",
+      "confidence": "exact"
+    },
+    {
+      "id": "VA-0032",
+      "rule": "spacing.off-scale",
+      "severity": "medium",
+      "category": "spacing",
+      "file": "web/shop.css",
+      "line": 5,
+      "evidence": "padding: 10px 18px → 18",
+      "message": "Spacing 18 is not on the contract scale (4, 8, 12, 16, 24, 32); nearest step 16 (3 occurrences project-wide)",
+      "violates": "tokens.primitive.spacing (allowed set 4, 8, 12, 16, 24, 32)",
+      "nearest": "primitive.spacing.step 16 (scale 4, 8, 12, 16, 24, 32)",
+      "impact": "`shop` pads with 18; off-grid spacing makes groups look misaligned next to on-grid screens",
+      "fix": "Use the spacing step 16; if intentional, add to `pages/shop.md` intentional_exceptions",
+      "files_to_change": [
+        "web/shop.css"
+      ],
+      "verify": "re-run `audit.py scan`; VA-0032 must be absent (`audit.py compare` lists it under resolved)",
+      "kind": "rule",
+      "confidence": "exact"
+    },
+    {
+      "id": "VA-0033",
+      "rule": "font-family.unlisted",
+      "severity": "medium",
+      "category": "font-family",
+      "file": "web/shop.css",
+      "line": 6,
+      "evidence": "font-family: \"Poppins\", sans-serif",
+      "message": "Font family 'Poppins' is not a contract family (Fredoka, Nunito)",
+      "violates": "tokens.primitive.fontFamily / semantic.typography (allowed: Fredoka, Nunito)",
+      "nearest": "contract families: Fredoka, Nunito",
+      "impact": "`shop` sets family 'Poppins'; the contract typography is Fredoka, Nunito, so this text reads as foreign",
+      "fix": "Use the display or body family (Fredoka, Nunito); if intentional, add to `pages/shop.md` intentional_exceptions",
+      "files_to_change": [
+        "web/shop.css"
+      ],
+      "verify": "re-run `audit.py scan`; VA-0033 must be absent (`audit.py compare` lists it under resolved)",
+      "kind": "rule",
+      "confidence": "exact"
+    },
+    {
+      "id": "VA-0034",
+      "rule": "touch.target-too-small",
+      "severity": "medium",
+      "category": "touch",
+      "file": "web/shop.css",
+      "line": 15,
+      "evidence": ".icon-btn { width: 28; height: 28 }",
+      "message": "[heuristic] Tappable control 28x28 is below the minimum touch target 44 (.icon-btn)",
+      "violates": "tokens.$extensions.vdp.minTouchTarget / primitive.touchTarget.min = 44",
+      "nearest": "minimum 44",
+      "impact": "A 28x28 hit area mis-taps on touch devices, especially for the thumb zone on phones",
+      "fix": "Grow the control (or its padding / hit-test area) to at least 44x44; confirm the rendered hit area on device",
+      "files_to_change": [
+        "web/shop.css"
+      ],
+      "verify": "re-run `audit.py scan`; VA-0034 must be absent (`audit.py compare` lists it under resolved)",
+      "kind": "recommendation",
+      "confidence": "heuristic"
+    },
+    {
+      "id": "VA-0035",
+      "rule": "text.contrast-risk",
+      "severity": "medium",
+      "category": "text",
+      "file": "web/shop.css",
+      "line": 22,
+      "evidence": ".promo { color: #FFD43B; background: #FFF8F0 }",
+      "message": "[heuristic] Text #FFD43B on #FFF8F0 has contrast 1.35:1 (< 4.5:1) in `.promo`",
+      "violates": "WCAG 2.x 1.4.3 (4.5:1 body text) / tokens.semantic.color text-on-surface pairs",
+      "nearest": "needs >= 4.5:1 (3:1 for large text)",
+      "impact": "Text in `.promo` is hard to read for low-vision users and in sunlight; 1.35:1 is far below AA",
+      "fix": "Pair the text with a darker/lighter semantic colour (text / onPrimary / onAccent) or add a plate behind it; verify on the rendered background",
+      "files_to_change": [
+        "web/shop.css"
+      ],
+      "verify": "re-run `audit.py scan`; VA-0035 must be absent (`audit.py compare` lists it under resolved)",
+      "kind": "recommendation",
+      "confidence": "heuristic"
+    },
+    {
+      "id": "VA-0036",
+      "rule": "color.near-duplicate",
+      "severity": "low",
+      "category": "color",
+      "file": "lib/screens/shop.dart",
+      "line": 18,
+      "evidence": "Color(0xFFFF8B4D)",
+      "message": "Colour #FF8B4D is a near-duplicate of a contract colour (distance 0.8 <= 12)",
+      "violates": "tokens.semantic.color / primitive.color (allowed set)",
+      "nearest": "semantic.color.accent #FF8A4C (distance 0.8)",
+      "impact": "`shop` renders #FF8B4D next to #FF8A4C elsewhere; the two read as the same colour with a slight mismatch",
+      "fix": "Replace with the semantic.color.accent token (#FF8A4C); if intentional, add to `pages/shop.md` intentional_exceptions",
+      "files_to_change": [
+        "lib/screens/shop.dart"
+      ],
+      "verify": "re-run `audit.py scan`; VA-0036 must be absent (`audit.py compare` lists it under resolved)",
+      "kind": "rule",
+      "confidence": "exact"
+    },
+    {
+      "id": "VA-0037",
+      "rule": "shadow.unlisted",
+      "severity": "low",
+      "category": "shadow",
+      "file": "lib/screens/shop.dart",
+      "line": 21,
+      "evidence": "BoxShadow(color: Color(0x40000000), blurRadius: 13, offset: Offset(0, 5))",
+      "message": "Shadow signature not in tokens.primitive.shadow: x=0 y=5 blur=13 spread=0 color=#000000 a=0.25",
+      "violates": "tokens.primitive.shadow (2 allowed signatures)",
+      "nearest": "allowed: shadow.md = x=0 y=4 blur=4 spread=0 color=#000000 a=0.2; shadow.sm = x=0 y=2 blur=8 spread=0 color=#000000 a=0.1",
+      "impact": "`shop` casts a shadow no other screen uses; elevation reads differently on this screen",
+      "fix": "Use one of the contract shadows (primitive.shadow.md, primitive.shadow.sm); if intentional, add to `pages/shop.md` intentional_exceptions",
+      "files_to_change": [
+        "lib/screens/shop.dart"
+      ],
+      "verify": "re-run `audit.py scan`; VA-0037 must be absent (`audit.py compare` lists it under resolved)",
+      "kind": "rule",
+      "confidence": "exact"
+    },
+    {
+      "id": "VA-0038",
+      "rule": "color.near-duplicate",
+      "severity": "low",
+      "category": "color",
+      "file": "unity/Assets/Scripts/ShopPanel.cs",
+      "line": 9,
+      "evidence": "new Color(0.98f, 0.5f, 0.31f)",
+      "message": "Colour #FA804F is a near-duplicate of a contract colour (distance 8.2 <= 12)",
+      "violates": "tokens.semantic.color / primitive.color (allowed set)",
+      "nearest": "semantic.color.accent #FF8A4C (distance 8.2)",
+      "impact": "`ShopPanel` renders #FA804F next to #FF8A4C elsewhere; the two read as the same colour with a slight mismatch",
+      "fix": "Replace with the semantic.color.accent token (#FF8A4C); if intentional, add to `pages/shop.md` intentional_exceptions",
+      "files_to_change": [
+        "unity/Assets/Scripts/ShopPanel.cs"
+      ],
+      "verify": "re-run `audit.py scan`; VA-0038 must be absent (`audit.py compare` lists it under resolved)",
+      "kind": "rule",
+      "confidence": "exact"
+    },
+    {
+      "id": "VA-0039",
+      "rule": "color.near-duplicate",
+      "severity": "low",
+      "category": "color",
+      "file": "web/shop.css",
+      "line": 12,
+      "evidence": "rgb(255, 139, 77)",
+      "message": "Colour #FF8B4D is a near-duplicate of a contract colour (distance 0.8 <= 12)",
+      "violates": "tokens.semantic.color / primitive.color (allowed set)",
+      "nearest": "semantic.color.accent #FF8A4C (distance 0.8)",
+      "impact": "`shop` renders #FF8B4D next to #FF8A4C elsewhere; the two read as the same colour with a slight mismatch",
+      "fix": "Replace with the semantic.color.accent token (#FF8A4C); if intentional, add to `pages/shop.md` intentional_exceptions",
+      "files_to_change": [
+        "web/shop.css"
+      ],
+      "verify": "re-run `audit.py scan`; VA-0039 must be absent (`audit.py compare` lists it under resolved)",
+      "kind": "rule",
+      "confidence": "exact"
+    },
+    {
+      "id": "VA-0040",
+      "rule": "shadow.unlisted",
+      "severity": "low",
+      "category": "shadow",
+      "file": "web/shop.css",
+      "line": 24,
+      "evidence": "box-shadow: 0 5px 13px rgba(0, 0, 0, 0.25)",
+      "message": "Shadow signature not in tokens.primitive.shadow: x=0 y=5 blur=13 spread=0 color=#000000 a=0.25",
+      "violates": "tokens.primitive.shadow (2 allowed signatures)",
+      "nearest": "allowed: shadow.md = x=0 y=4 blur=4 spread=0 color=#000000 a=0.2; shadow.sm = x=0 y=2 blur=8 spread=0 color=#000000 a=0.1",
+      "impact": "`shop` casts a shadow no other screen uses; elevation reads differently on this screen",
+      "fix": "Use one of the contract shadows (primitive.shadow.md, primitive.shadow.sm); if intentional, add to `pages/shop.md` intentional_exceptions",
+      "files_to_change": [
+        "web/shop.css"
+      ],
+      "verify": "re-run `audit.py scan`; VA-0040 must be absent (`audit.py compare` lists it under resolved)",
+      "kind": "rule",
+      "confidence": "exact"
+    }
+  ],
+  "platforms": {
+    "flutter": 5,
+    "unity": 3,
+    "web": 4
+  },
+  "notes": []
+}

@@ -1,0 +1,10 @@
+{
+  "name": "drift-fixture-web",
+  "private": true,
+  "description": "FIXTURE ONLY - not installable",
+  "dependencies": {
+    "react": "18.3.1",
+    "lucide-react": "0.400.0",
+    "@heroicons/react": "2.1.0"
+  }
+}

@@ -1,0 +1,4 @@
+WARN W-TARGET rules[6].target: rule-7 target 'nav' is outside the recommended vocabulary (palette, radius, outline, shading, shadow, typography, icon, hud, popup, card, character, layout, motion, button.primary, button.secondary, button.icon, chip, tab-bar, dialog, toast, progress, reward)
+WARN R-PAL-3 palette_observed[1]: #FFF7ED and #FFFFFF are near-duplicates (distance 19.7)
+WARN W-ND-STD not_derivable: static inputs: consider listing 'animation timing and easing', 'pressed and disabled states', 'exact pixel values at device scale'
+OK docs/examples/visual-design-pro-max/example-b-reference-driven-redesign/inputs/reference-analysis.json: 1 references, 15 observations (observed 7, high 5, assumption 1, not-derivable 2), 8 rules, 0 conflicts (0 open), 3 warnings

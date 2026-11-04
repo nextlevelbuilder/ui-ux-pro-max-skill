@@ -1,0 +1,392 @@
+{
+  "schema": "visual-audit-compare/1",
+  "resolved": [
+    {
+      "id": "VA-0017",
+      "rule": "component.duplicate-implementation",
+      "file": "lib/screens/rewards.dart",
+      "line": 6,
+      "severity": "medium",
+      "evidence": "class MainButton extends StatelessWidget"
+    },
+    {
+      "id": "VA-0036",
+      "rule": "color.near-duplicate",
+      "file": "lib/screens/shop.dart",
+      "line": 18,
+      "severity": "low",
+      "evidence": "Color(0xFFFF8B4D)"
+    },
+    {
+      "id": "VA-0001",
+      "rule": "color.off-palette",
+      "file": "lib/screens/shop.dart",
+      "line": 12,
+      "severity": "high",
+      "evidence": "Color(0xFFE91E63)"
+    },
+    {
+      "id": "VA-0005",
+      "rule": "duration.off-scale",
+      "file": "lib/screens/shop.dart",
+      "line": 35,
+      "severity": "high",
+      "evidence": "Duration(milliseconds: 337)"
+    },
+    {
+      "id": "VA-0003",
+      "rule": "font-family.unlisted",
+      "file": "lib/screens/shop.dart",
+      "line": 26,
+      "severity": "high",
+      "evidence": "fontFamily: 'Comic Sans MS'"
+    },
+    {
+      "id": "VA-0004",
+      "rule": "font-size.off-scale",
+      "file": "lib/screens/shop.dart",
+      "line": 26,
+      "severity": "high",
+      "evidence": "fontSize: 15"
+    },
+    {
+      "id": "VA-0018",
+      "rule": "icon.mixed-libraries",
+      "file": "lib/screens/shop.dart",
+      "line": 3,
+      "severity": "medium",
+      "evidence": "import 'package:font_awesome_flutter/...'"
+    },
+    {
+      "id": "VA-0002",
+      "rule": "radius.off-scale",
+      "file": "lib/screens/shop.dart",
+      "line": 19,
+      "severity": "high",
+      "evidence": "BorderRadius.circular(13)"
+    },
+    {
+      "id": "VA-0037",
+      "rule": "shadow.unlisted",
+      "file": "lib/screens/shop.dart",
+      "line": 21,
+      "severity": "low",
+      "evidence": "BoxShadow(color: Color(0x40000000), blurRadius: 13, offset: Offset(0, 5))"
+    },
+    {
+      "id": "VA-0021",
+      "rule": "shadow.variant-explosion",
+      "file": "lib/screens/shop.dart",
+      "line": 21,
+      "severity": "medium",
+      "evidence": "x=0 y=5 blur=13 spread=0 color=#000000 a=0.25"
+    },
+    {
+      "id": "VA-0019",
+      "rule": "spacing.off-scale",
+      "file": "lib/screens/shop.dart",
+      "line": 13,
+      "severity": "medium",
+      "evidence": "EdgeInsets.symmetric(horizontal: 18, vertical: 10) → 10"
+    },
+    {
+      "id": "VA-0020",
+      "rule": "spacing.off-scale",
+      "file": "lib/screens/shop.dart",
+      "line": 13,
+      "severity": "medium",
+      "evidence": "EdgeInsets.symmetric(horizontal: 18, vertical: 10) → 18"
+    },
+    {
+      "id": "VA-0022",
+      "rule": "touch.target-too-small",
+      "file": "lib/screens/shop.dart",
+      "line": 30,
+      "severity": "medium",
+      "evidence": "SizedBox( width: 32, height: 32, child: IconButton"
+    },
+    {
+      "id": "VA-0024",
+      "rule": "icon.mixed-libraries",
+      "file": "web/components/Button.tsx",
+      "line": 4,
+      "severity": "medium",
+      "evidence": "from 'lucide-react"
+    },
+    {
+      "id": "VA-0026",
+      "rule": "color.off-palette",
+      "file": "web/components/CtaButton.tsx",
+      "line": 8,
+      "severity": "medium",
+      "evidence": "bg-[#1E88E5]"
+    },
+    {
+      "id": "VA-0025",
+      "rule": "component.duplicate-implementation",
+      "file": "web/components/CtaButton.tsx",
+      "line": 5,
+      "severity": "medium",
+      "evidence": "export const CtaButton"
+    },
+    {
+      "id": "VA-0014",
+      "rule": "duration.off-scale",
+      "file": "web/components/CtaButton.tsx",
+      "line": 9,
+      "severity": "high",
+      "evidence": "transitionDuration: '337ms'"
+    },
+    {
+      "id": "VA-0013",
+      "rule": "font-size.off-scale",
+      "file": "web/components/CtaButton.tsx",
+      "line": 8,
+      "severity": "high",
+      "evidence": "text-[15px]"
+    },
+    {
+      "id": "VA-0027",
+      "rule": "radius.off-scale",
+      "file": "web/components/CtaButton.tsx",
+      "line": 8,
+      "severity": "medium",
+      "evidence": "rounded-[7px]"
+    },
+    {
+      "id": "VA-0028",
+      "rule": "spacing.off-scale",
+      "file": "web/components/CtaButton.tsx",
+      "line": 8,
+      "severity": "medium",
+      "evidence": "px-[18px]"
+    },
+    {
+      "id": "VA-0039",
+      "rule": "color.near-duplicate",
+      "file": "web/shop.css",
+      "line": 12,
+      "severity": "low",
+      "evidence": "rgb(255, 139, 77)"
+    },
+    {
+      "id": "VA-0029",
+      "rule": "color.off-palette",
+      "file": "web/shop.css",
+      "line": 3,
+      "severity": "medium",
+      "evidence": "#1E88E5"
+    },
+    {
+      "id": "VA-0015",
+      "rule": "duration.off-scale",
+      "file": "web/shop.css",
+      "line": 7,
+      "severity": "high",
+      "evidence": "transition: all 337ms ease-in"
+    },
+    {
+      "id": "VA-0033",
+      "rule": "font-family.unlisted",
+      "file": "web/shop.css",
+      "line": 6,
+      "severity": "medium",
+      "evidence": "font-family: \"Poppins\", sans-serif"
+    },
+    {
+      "id": "VA-0016",
+      "rule": "font-size.off-scale",
+      "file": "web/shop.css",
+      "line": 11,
+      "severity": "high",
+      "evidence": "font-size: 15px"
+    },
+    {
+      "id": "VA-0030",
+      "rule": "radius.off-scale",
+      "file": "web/shop.css",
+      "line": 4,
+      "severity": "medium",
+      "evidence": "border-radius: 7px"
+    },
+    {
+      "id": "VA-0040",
+      "rule": "shadow.unlisted",
+      "file": "web/shop.css",
+      "line": 24,
+      "severity": "low",
+      "evidence": "box-shadow: 0 5px 13px rgba(0, 0, 0, 0.25)"
+    },
+    {
+      "id": "VA-0031",
+      "rule": "spacing.off-scale",
+      "file": "web/shop.css",
+      "line": 5,
+      "severity": "medium",
+      "evidence": "padding: 10px 18px → 10"
+    },
+    {
+      "id": "VA-0032",
+      "rule": "spacing.off-scale",
+      "file": "web/shop.css",
+      "line": 5,
+      "severity": "medium",
+      "evidence": "padding: 10px 18px → 18"
+    },
+    {
+      "id": "VA-0035",
+      "rule": "text.contrast-risk",
+      "file": "web/shop.css",
+      "line": 22,
+      "severity": "medium",
+      "evidence": ".promo { color: #FFD43B; background: #FFF8F0 }"
+    },
+    {
+      "id": "VA-0034",
+      "rule": "touch.target-too-small",
+      "file": "web/shop.css",
+      "line": 15,
+      "severity": "medium",
+      "evidence": ".icon-btn { width: 28; height: 28 }"
+    }
+  ],
+  "new": [],
+  "unchanged": [
+    {
+      "before": "VA-0038",
+      "after": "VA-0008",
+      "rule": "color.near-duplicate",
+      "file": "unity/Assets/Scripts/ShopPanel.cs",
+      "evidence": "new color(0.98f, 0.5f, 0.31f)"
+    },
+    {
+      "before": "VA-0006",
+      "after": "VA-0001",
+      "rule": "color.off-palette",
+      "file": "unity/Assets/Scripts/ShopPanel.cs",
+      "evidence": "colorutility.tryparsehtmlstring(\"#e91e63\")"
+    },
+    {
+      "before": "VA-0007",
+      "after": "VA-0002",
+      "rule": "duration.off-scale",
+      "file": "unity/Assets/Scripts/ShopPanel.cs",
+      "evidence": ".doscale(1.1f, 0.337f)"
+    },
+    {
+      "before": "VA-0008",
+      "after": "VA-0003",
+      "rule": "color.off-palette",
+      "file": "unity/Assets/UI/Shop.uss",
+      "evidence": "rgb(233, 30, 99)"
+    },
+    {
+      "before": "VA-0011",
+      "after": "VA-0006",
+      "rule": "duration.off-scale",
+      "file": "unity/Assets/UI/Shop.uss",
+      "evidence": "transition-duration: 337ms"
+    },
+    {
+      "before": "VA-0012",
+      "after": "VA-0007",
+      "rule": "font-size.off-scale",
+      "file": "unity/Assets/UI/Shop.uss",
+      "evidence": "font-size: 15px"
+    },
+    {
+      "before": "VA-0009",
+      "after": "VA-0004",
+      "rule": "radius.off-scale",
+      "file": "unity/Assets/UI/Shop.uss",
+      "evidence": "border-top-left-radius: 13px"
+    },
+    {
+      "before": "VA-0010",
+      "after": "VA-0005",
+      "rule": "radius.off-scale",
+      "file": "unity/Assets/UI/Shop.uss",
+      "evidence": "border-top-right-radius: 13px"
+    },
+    {
+      "before": "VA-0023",
+      "after": "VA-0009",
+      "rule": "spacing.off-scale",
+      "file": "unity/Assets/UI/Shop.uss",
+      "evidence": "padding: 10px"
+    }
+  ],
+  "changed_severity": [
+    {
+      "before": "VA-0006",
+      "after": "VA-0001",
+      "rule": "color.off-palette",
+      "file": "unity/Assets/Scripts/ShopPanel.cs",
+      "from": "high",
+      "to": "medium"
+    },
+    {
+      "before": "VA-0007",
+      "after": "VA-0002",
+      "rule": "duration.off-scale",
+      "file": "unity/Assets/Scripts/ShopPanel.cs",
+      "from": "high",
+      "to": "medium"
+    },
+    {
+      "before": "VA-0008",
+      "after": "VA-0003",
+      "rule": "color.off-palette",
+      "file": "unity/Assets/UI/Shop.uss",
+      "from": "high",
+      "to": "medium"
+    },
+    {
+      "before": "VA-0011",
+      "after": "VA-0006",
+      "rule": "duration.off-scale",
+      "file": "unity/Assets/UI/Shop.uss",
+      "from": "high",
+      "to": "medium"
+    },
+    {
+      "before": "VA-0012",
+      "after": "VA-0007",
+      "rule": "font-size.off-scale",
+      "file": "unity/Assets/UI/Shop.uss",
+      "from": "high",
+      "to": "medium"
+    },
+    {
+      "before": "VA-0009",
+      "after": "VA-0004",
+      "rule": "radius.off-scale",
+      "file": "unity/Assets/UI/Shop.uss",
+      "from": "high",
+      "to": "medium"
+    },
+    {
+      "before": "VA-0010",
+      "after": "VA-0005",
+      "rule": "radius.off-scale",
+      "file": "unity/Assets/UI/Shop.uss",
+      "from": "high",
+      "to": "medium"
+    },
+    {
+      "before": "VA-0023",
+      "after": "VA-0009",
+      "rule": "spacing.off-scale",
+      "file": "unity/Assets/UI/Shop.uss",
+      "from": "medium",
+      "to": "low"
+    }
+  ],
+  "note": "severity is recomputed from project-wide occurrence counts after fixes; changed_severity entries are unchanged findings, not regressions",
+  "counts": {
+    "resolved": 31,
+    "new": 0,
+    "unchanged": 9,
+    "changed_severity": 8
+  }
+}

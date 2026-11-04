@@ -1,0 +1,10 @@
+1. japanese-cute-puzzle — Japanese Cute Puzzle  [family: cute-cartoon · radius: xl · shading: soft-cel · motion: bouncy] (5.17)
+   best for: Tile-matching and onet puzzles, casual collection games, mascot-driven puzzle apps for all ages
+2. japanese-casual-game — Japanese Casual Game  [family: cute-cartoon · radius: lg · shading: flat · motion: snappy] (5.03)
+   best for: Japanese casual collection and puzzle titles, mascot-led apps, light gacha-lite collection, daily-engagement games
+3. kawaii-sticker — Kawaii Sticker  [family: cute-cartoon · radius: pill · shading: flat · motion: bouncy] (3.39)
+   best for: Sticker collection and decoration games, kawaii merge, cute food and cat casual games, chat-sticker brands
+4. cute-animal-onet — Cute Animal Onet  [family: cute-cartoon · radius: lg · shading: soft · motion: snappy] (2.64)
+   best for: Onet / link-pair tile games, mahjong-connect, pair-matching collection games, garden and farm themed tile puzzles
+5. anime-inspired-game-ui — Anime-Inspired Game UI  [family: anime · radius: sm · shading: cel · motion: snappy] (1.46)
+   best for: Anime character collection and casual RPG, gacha, battle and card games, visual-novel hybrids

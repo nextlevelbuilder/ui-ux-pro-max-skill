@@ -1,0 +1,316 @@
+{
+  "schema": "vdp-reference-analysis/1",
+  "project": "Example B — reference-driven redesign (repository-owned screenshot of preview/xiaomaomi-app.html rendered at 390x844 with Playwright; NOT a user-provided reference)",
+  "references": [
+    {
+      "id": "ref-1",
+      "path": "refs/xiaomaomi-390x844.png",
+      "label": "Pet-care app home screen (full-page capture)",
+      "roles": [
+        "color",
+        "shapes",
+        "buttons",
+        "icons",
+        "typography",
+        "layout"
+      ],
+      "viewed_by": "model-vision",
+      "screen_type": "home",
+      "provenance": {
+        "owner": "user",
+        "license": "own-work",
+        "note": "owner: repository (ui-ux-pro-max-skill, preview/xiaomaomi-app.html); licence: MIT (repository licence). rendered by the Principal agent during Example B; capture artefact: the fixed bottom nav appears mid-page because of full-page capture"
+      }
+    }
+  ],
+  "observations": [
+    {
+      "id": "obs-1",
+      "category": "layout",
+      "statement": "Single-column portrait layout: app bar (logo+title left, two circular icon buttons right), hero profile card, '今日待办' 3-up quick-action cards, '今日动态' activity list, fixed 4-item bottom navigation.",
+      "refs": [
+        "ref-1"
+      ],
+      "evidence": "whole image, top to bottom",
+      "confidence": "observed"
+    },
+    {
+      "id": "obs-2",
+      "category": "color",
+      "statement": "Warm cream page background with white/cream cards; one dominant saturated orange used for the brand mark, numbers, avatar gradient, active nav item and status dots; deep brown-orange for headings and body text; peach for card borders.",
+      "refs": [
+        "ref-1"
+      ],
+      "evidence": "page background vs card fills; orange on title '小猫咪', stats '3/42', nav '首页'; borders of every card",
+      "confidence": "observed"
+    },
+    {
+      "id": "obs-3",
+      "category": "color",
+      "statement": "Two secondary tints appear only on the quick-action icon tiles: light blue (玩耍) and mint green (健康); peach for the first tile.",
+      "refs": [
+        "ref-1"
+      ],
+      "evidence": "three square icon tiles in the 今日待办 row",
+      "confidence": "observed"
+    },
+    {
+      "id": "obs-4",
+      "category": "shape",
+      "statement": "Large corner radii everywhere: hero card and list cards ≈20–28px, quick-action cards ≈20px, icon tiles ≈12–14px, icon buttons and avatar fully circular, active nav item a rounded pill.",
+      "refs": [
+        "ref-1"
+      ],
+      "evidence": "corner curvature relative to the 390px frame",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-5",
+      "category": "shape",
+      "statement": "Every card has a thin (≈2px) peach outline in a lighter tint of the brand orange; no pure-black or grey outlines anywhere.",
+      "refs": [
+        "ref-1"
+      ],
+      "evidence": "card edges",
+      "confidence": "observed"
+    },
+    {
+      "id": "obs-6",
+      "category": "shading",
+      "statement": "Surfaces read as flat with a very light lift; the only gradient is on the circular avatar (orange, lighter top-left). Shadows, if present, are too subtle to see at this capture scale.",
+      "refs": [
+        "ref-1"
+      ],
+      "evidence": "card edges show no visible dark halo",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-7",
+      "category": "typography",
+      "statement": "Rounded geometric sans-serif for display (title, section headers, stat numbers, bold), regular weight humanist sans for body/sub-labels; strong size contrast between stat numbers and their captions.",
+      "refs": [
+        "ref-1"
+      ],
+      "evidence": "'小猫咪', '喵小橘', '3 / 42 / 健康' vs captions",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-8",
+      "category": "typography",
+      "statement": "The exact font families cannot be read from the bitmap.",
+      "refs": [
+        "ref-1"
+      ],
+      "evidence": "n/a",
+      "confidence": "not-derivable"
+    },
+    {
+      "id": "obs-9",
+      "category": "component",
+      "statement": "Icon buttons: white circle with peach outline, single-colour orange glyph; approximately 44px diameter at 390px width.",
+      "refs": [
+        "ref-1"
+      ],
+      "evidence": "bell and gear buttons top-right",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-10",
+      "category": "component",
+      "statement": "Bottom nav: 4 items, icon over label; active item = peach pill background + orange icon/text; inactive = muted brown icon/text.",
+      "refs": [
+        "ref-1"
+      ],
+      "evidence": "nav bar",
+      "confidence": "observed"
+    },
+    {
+      "id": "obs-11",
+      "category": "component",
+      "statement": "List items: time label (muted) left, orange dot, bold title + muted subtitle; same card style as quick-action cards.",
+      "refs": [
+        "ref-1"
+      ],
+      "evidence": "今日动态 rows",
+      "confidence": "observed"
+    },
+    {
+      "id": "obs-12",
+      "category": "iconography",
+      "statement": "Icons are filled, single-colour glyphs with rounded corners; one style throughout (no outline/filled mixing).",
+      "refs": [
+        "ref-1"
+      ],
+      "evidence": "bell, gear, lock, paw, book, home, calendar, search, person",
+      "confidence": "high"
+    },
+    {
+      "id": "obs-13",
+      "category": "character",
+      "statement": "Brand mascot is a simplified silhouette-style cat glyph in a single brown-orange tone; no detailed character art.",
+      "refs": [
+        "ref-1"
+      ],
+      "evidence": "avatar and app-bar logo",
+      "confidence": "observed"
+    },
+    {
+      "id": "obs-14",
+      "category": "motion",
+      "statement": "Motion, hover and press states are not derivable from a static capture.",
+      "refs": [
+        "ref-1"
+      ],
+      "evidence": "n/a",
+      "confidence": "not-derivable"
+    },
+    {
+      "id": "obs-15",
+      "category": "accessibility",
+      "statement": "Muted captions (e.g. '橘猫 · 1岁2个月', '今日喂食') are mid-grey-brown on cream; contrast is plausible but must be measured in code, not from the bitmap.",
+      "refs": [
+        "ref-1"
+      ],
+      "evidence": "caption text",
+      "confidence": "assumption"
+    }
+  ],
+  "rules": [
+    {
+      "id": "rule-1",
+      "target": "palette",
+      "statement": "One brand orange carries all emphasis (brand mark, key numbers, active state, status dots); secondary tints are reserved for category tiles only.",
+      "derived_from": [
+        "obs-2",
+        "obs-3"
+      ],
+      "confidence": "high",
+      "scope": "global"
+    },
+    {
+      "id": "rule-2",
+      "target": "radius",
+      "statement": "Radius ladder: cards 20–28px, tiles 12–14px, controls circular/pill; nothing below 12px except text.",
+      "derived_from": [
+        "obs-4"
+      ],
+      "confidence": "high",
+      "scope": "global"
+    },
+    {
+      "id": "rule-3",
+      "target": "outline",
+      "statement": "All surfaces use a 2px peach outline (light tint of brand), never grey/black; outline is the primary separation device, shadow is secondary.",
+      "derived_from": [
+        "obs-5",
+        "obs-6"
+      ],
+      "confidence": "high",
+      "scope": "global"
+    },
+    {
+      "id": "rule-4",
+      "target": "typography",
+      "statement": "Two-family system: rounded display family for headings/numbers (bold), neutral sans for body; captions one step smaller and muted.",
+      "derived_from": [
+        "obs-7"
+      ],
+      "confidence": "high",
+      "scope": "global"
+    },
+    {
+      "id": "rule-5",
+      "target": "icon",
+      "statement": "Filled rounded glyphs, single colour, same optical size across the app bar, tiles and nav.",
+      "derived_from": [
+        "obs-12"
+      ],
+      "confidence": "high",
+      "scope": "global"
+    },
+    {
+      "id": "rule-6",
+      "target": "button.icon",
+      "statement": "Circular 44px white button with 2px peach outline and orange glyph.",
+      "derived_from": [
+        "obs-9"
+      ],
+      "confidence": "high",
+      "scope": "global"
+    },
+    {
+      "id": "rule-7",
+      "target": "nav",
+      "statement": "Bottom nav active state = peach pill + orange icon/label; max 4–5 items.",
+      "derived_from": [
+        "obs-10"
+      ],
+      "confidence": "high",
+      "scope": "global"
+    },
+    {
+      "id": "rule-8",
+      "target": "hud",
+      "statement": "Category tiles may use the secondary tints (blue/mint) — an intentional context exception to rule-1.",
+      "derived_from": [
+        "obs-3"
+      ],
+      "confidence": "high",
+      "scope": "context:home"
+    }
+  ],
+  "conflicts": [],
+  "not_derivable": [
+    "font family names",
+    "motion timing and easing",
+    "hover/press/disabled states",
+    "exact shadow values",
+    "dark mode",
+    "exact contrast ratios",
+    "behaviour of the fixed nav on scroll"
+  ],
+  "palette_observed": [
+    {
+      "hex": "#FFF7ED",
+      "share": 0.42,
+      "role_guess": "background",
+      "ref": "ref-1"
+    },
+    {
+      "hex": "#FFFFFF",
+      "share": 0.28,
+      "role_guess": "surface",
+      "ref": "ref-1"
+    },
+    {
+      "hex": "#F97316",
+      "share": 0.06,
+      "role_guess": "primary",
+      "ref": "ref-1"
+    },
+    {
+      "hex": "#FED7AA",
+      "share": 0.05,
+      "role_guess": "outline",
+      "ref": "ref-1"
+    },
+    {
+      "hex": "#9A3412",
+      "share": 0.05,
+      "role_guess": "text",
+      "ref": "ref-1"
+    },
+    {
+      "hex": "#BFDBFE",
+      "share": 0.02,
+      "role_guess": "secondary",
+      "ref": "ref-1"
+    },
+    {
+      "hex": "#A7F3D0",
+      "share": 0.02,
+      "role_guess": "secondary",
+      "ref": "ref-1"
+    }
+  ]
+}

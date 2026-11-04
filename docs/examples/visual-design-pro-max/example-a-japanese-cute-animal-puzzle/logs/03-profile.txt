@@ -1,0 +1,1 @@
+wrote docs/examples/visual-design-pro-max/example-a-japanese-cute-animal-puzzle/style-profile.json (style japanese-cute-puzzle, kind game, platforms mobile-ios,mobile-android, stack flutter-flame)

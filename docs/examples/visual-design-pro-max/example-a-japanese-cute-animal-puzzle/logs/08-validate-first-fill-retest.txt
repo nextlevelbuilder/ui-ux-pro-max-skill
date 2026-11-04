@@ -1,0 +1,3 @@
+WARNING: pages/rewards.md: intentional exception 'reward-overlay' needs an ISO Expires date or 'never'
+WARNING: pages/shop.md: intentional exception 'shop-offer-card' needs an ISO Expires date or 'never'
+OK — 0 error(s), 2 warning(s)

@@ -1,0 +1,33 @@
+/* FIXTURE: clean token sheet — every literal matches tokens.json. Expected findings: none */
+:root {
+  --color-primary: #3B5BDB;
+  --color-on-primary: #FFFFFF;
+  --color-accent: #FF8A4C;
+  --color-background: #FFF8F0;
+  --color-text: #1A1A2E;
+  --color-text-muted: #6B6B80;
+  --radius-md: 8px;
+  --radius-lg: 16px;
+  --radius-pill: 9999px;
+  --font-body: "Nunito", sans-serif;
+  --font-display: "Fredoka", sans-serif;
+  --duration-base: 200ms;
+  --shadow-card: 0 2px 8px rgba(0, 0, 0, 0.10);
+}
+
+body {
+  background: var(--color-background);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-size: 16px;
+}
+
+.btn-primary {
+  min-width: 44px;
+  min-height: 44px;
+  padding: 12px 24px;
+  border-radius: var(--radius-pill);
+  background: var(--color-primary);
+  color: var(--color-on-primary);
+  transition: transform 200ms ease-out;
+}

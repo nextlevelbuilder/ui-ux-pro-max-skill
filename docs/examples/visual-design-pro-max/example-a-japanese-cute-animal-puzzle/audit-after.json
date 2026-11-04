@@ -1,0 +1,71 @@
+{
+  "schema": "visual-audit/1",
+  "generated_at": "2026-10-16T12:34:28Z",
+  "root": "docs/examples/visual-design-pro-max/example-a-japanese-cute-animal-puzzle/drift-fixture-fixed",
+  "platform": "flutter",
+  "platform_detected": "flutter",
+  "contract": {
+    "tokens": "docs/examples/visual-design-pro-max/example-a-japanese-cute-animal-puzzle/project/design-system/onet-garden/tokens.json",
+    "profile": null
+  },
+  "scanned_files": 4,
+  "skipped_files": 0,
+  "summary": {
+    "critical": 0,
+    "high": 0,
+    "medium": 0,
+    "low": 0,
+    "info": 0
+  },
+  "inventory": {
+    "colors": {
+      "#2E2A32": 1,
+      "#4A3B5C": 1,
+      "#56505E": 1,
+      "#6B6274": 1,
+      "#972743": 1,
+      "#FF8FAB": 1,
+      "#FFC83D": 1,
+      "#FFD23F": 1,
+      "#FFDDAC": 1,
+      "#FFF6E9": 1,
+      "#FFFFFF": 1
+    },
+    "colors_with_alpha": {},
+    "named_colors": {},
+    "radii": {},
+    "font_sizes": {
+      "12": 1,
+      "14": 1,
+      "16": 1,
+      "28": 1
+    },
+    "spacing": {
+      "16": 2,
+      "20": 1,
+      "24": 1
+    },
+    "shadows": 0,
+    "durations": {
+      "120": 1,
+      "200": 1,
+      "350": 1
+    },
+    "icon_libraries": [],
+    "icon_libraries_by_platform": {},
+    "font_families": [
+      "Fredoka",
+      "Nunito"
+    ],
+    "components": {
+      "PrimaryButton": [
+        "lib/widgets/primary_button.dart"
+      ]
+    }
+  },
+  "findings": [],
+  "platforms": {
+    "flutter": 4
+  },
+  "notes": []
+}

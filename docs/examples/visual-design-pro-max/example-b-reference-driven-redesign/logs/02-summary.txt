@@ -1,0 +1,9 @@
+Reference analysis: 1 reference(s), status OK (0 error(s), 3 warning(s))
+  ref-1 Pet-care app home screen (full-page capture) [viewed] roles: color, shapes, buttons, icons, typography, layout
+Unowned roles: characters, hud, popup, motion
+Observations: 15 (observed 7, high 5, assumption 1, not-derivable 2)
+Rules: 8 (observed 0, high 8, assumption 0)
+Conflicts: 0 (0 open)
+  rule-1 palette: One brand orange carries all emphasis (brand mark, key numbers, active state, status dots)
+  rule-2 radius: Radius ladder: cards 20–28px, tiles 12–14px, controls circular/pill
+Not derivable: 7 (font family names; motion timing and easing; hover/press/disabled states ...)

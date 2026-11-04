@@ -1,0 +1,32 @@
+{
+  "status": "OK",
+  "ref": "ref-1",
+  "image": "xiaomaomi-390x844.png",
+  "size_analysed": [
+    76,
+    200
+  ],
+  "colors_requested": 10,
+  "colors_kept": 3,
+  "confidence": "assumption",
+  "palette_observed": [
+    {
+      "hex": "#FFFFFF",
+      "share": 0.7106,
+      "role_guess": "background",
+      "ref": "ref-1"
+    },
+    {
+      "hex": "#FEF5E9",
+      "share": 0.2074,
+      "role_guess": "surface",
+      "ref": "ref-1"
+    },
+    {
+      "hex": "#EACCB4",
+      "share": 0.0819,
+      "role_guess": "unknown",
+      "ref": "ref-1"
+    }
+  ]
+}

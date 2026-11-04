@@ -1,0 +1,14 @@
+# Capture manifest — flutter (flutter)
+Capture instructions, not executed: visual_qa.py never launches the app or takes screenshots. Run the snippets with the project's own test tooling, then compare with `visual_qa.py diff`. Every entry stays NOT RUN until a capture exists; report BLOCKED when the tool is unavailable.
+
+| screen | device | size | dpr | file | tool | status |
+|---|---|---|---|---|---|---|
+| home | phone-s | 375x667 | 2 | home_phone-s.png | integration_test | NOT RUN (manual/automation hint, not executed) |
+| home | phone-m | 390x844 | 3 | home_phone-m.png | integration_test | NOT RUN (manual/automation hint, not executed) |
+| home | phone-l | 430x932 | 3 | home_phone-l.png | integration_test | NOT RUN (manual/automation hint, not executed) |
+| shop | phone-s | 375x667 | 2 | shop_phone-s.png | integration_test | NOT RUN (manual/automation hint, not executed) |
+| shop | phone-m | 390x844 | 3 | shop_phone-m.png | integration_test | NOT RUN (manual/automation hint, not executed) |
+| shop | phone-l | 430x932 | 3 | shop_phone-l.png | integration_test | NOT RUN (manual/automation hint, not executed) |
+| rewards | phone-s | 375x667 | 2 | rewards_phone-s.png | integration_test | NOT RUN (manual/automation hint, not executed) |
+| rewards | phone-m | 390x844 | 3 | rewards_phone-m.png | integration_test | NOT RUN (manual/automation hint, not executed) |
+| rewards | phone-l | 430x932 | 3 | rewards_phone-l.png | integration_test | NOT RUN (manual/automation hint, not executed) |

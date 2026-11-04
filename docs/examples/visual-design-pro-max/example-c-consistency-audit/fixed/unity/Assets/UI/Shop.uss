@@ -1,0 +1,13 @@
+/* FIXTURE: USS with intentional drift (see expected-findings.md) */
+.shop-panel {
+  background-color: rgb(233, 30, 99);  /* color.off-palette #E91E63 (3rd occurrence project-wide -> High) */
+  border-top-left-radius: 13px;        /* radius.off-scale */
+  border-top-right-radius: 13px;       /* radius.off-scale (same value, second occurrence) */
+  padding: 10px;                       /* spacing.off-scale */
+  transition-duration: 337ms;          /* duration.off-scale */
+}
+
+.shop-panel .price {
+  font-size: 15px;                     /* font-size.off-scale */
+  color: rgba(255, 138, 76, 0.9);      /* accent with alpha: in palette, alpha reported in inventory only */
+}
