@@ -1,11 +1,11 @@
 {
   "schemaVersion": 1,
-  "verifiedAt": "2026-11-01",
+  "verifiedAt": "2026-11-04",
   "counts": {
     "styles": {
-      "total": 88,
-      "searchable": 79,
-      "active": 50,
+      "total": 89,
+      "searchable": 80,
+      "active": 51,
       "supplemental": 29,
       "deprecated": 9
     },
