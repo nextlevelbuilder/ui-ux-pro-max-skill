@@ -14,7 +14,7 @@
 <p align="center">
   <a href="https://github.com/nextlevelbuilder/ui-ux-pro-max-skill/releases"><img src="https://img.shields.io/github/v/release/nextlevelbuilder/ui-ux-pro-max-skill?style=for-the-badge&color=blue" alt="GitHub Release"></a>
   <img src="https://img.shields.io/badge/reasoning_rules-192-green?style=for-the-badge" alt="192 Reasoning Rules">
-  <img src="https://img.shields.io/badge/UI_styles-79_searchable-purple?style=for-the-badge" alt="79 searchable UI styles">
+  <img src="https://img.shields.io/badge/UI_styles-80_searchable-purple?style=for-the-badge" alt="80 searchable UI styles">
   <img src="https://img.shields.io/badge/python-3.x-yellow?style=for-the-badge&logo=python&logoColor=white" alt="Python 3.x">
   <a href="https://github.com/nextlevelbuilder/ui-ux-pro-max-skill/blob/main/LICENSE"><img src="https://img.shields.io/github/license/nextlevelbuilder/ui-ux-pro-max-skill?style=for-the-badge&color=green" alt="License"></a>
 </p>
@@ -145,7 +145,7 @@
 ┌─────────────────────────────────────────────────────────────────┐
 │  2. MULTI-DOMAIN SEARCH (5 parallel searches)                   │
 │     • Product type matching (192 categories)                    │
-│     • Style recommendations (79 searchable; 50 active)          │
+│     • Style recommendations (80 searchable; 51 active)          │
 │     • Color palette selection (192 palettes)                    │
 │     • Landing page patterns (34 patterns)                       │
 │     • Typography pairing (74 font combinations)                 │
@@ -222,7 +222,7 @@
 | تکمیلی (Supplemental) | ۲۹ | برای درخواست‌های دقیق یا اشارهٔ صریح به گونه/سیستم برگردانده می‌شوند؛ از طریق فیلتر وضعیت گالری نیز در دسترس‌اند |
 | منسوخ (Deprecated) | ۹ | از رتبه‌بندی معمول کنار گذاشته شده‌اند؛ نام‌های قدیمی به سبک یا الگوی صفحهٔ فرود مرجع هدایت می‌شوند |
 
-مجموعهٔ فعال شامل ۴۳ خانوادهٔ بصری عمومی، ۲ سبک ویژهٔ موبایل، ۳ سیستم رسمی پلتفرم/طراحی، ۱ متریال پلتفرمی و ۱ سبک اصلی تحلیل داده است. سیستم‌های رسمی فعلی شامل Fluent 2، Shopify Polaris و Adobe Spectrum هستند؛ Liquid Glass به‌عنوان متریال پلتفرم اپل در نظر گرفته شده، Material 3 Expressive همچنان یک گونهٔ موبایلی از Material است و Spectrum 2 در گروه سبک‌های تکمیلی قرار دارد. ساختارهای صفحهٔ فرود در مجموعه‌دادهٔ جداگانه‌ای با ۳۴ الگو نگهداری می‌شوند و در رتبه‌بندی BM25 با سبک‌های بصری رقابت نمی‌کنند.
+مجموعهٔ فعال شامل ۴۳ خانوادهٔ بصری عمومی، ۲ سبک ویژهٔ موبایل، ۴ سیستم رسمی پلتفرم/طراحی، ۱ متریال پلتفرمی و ۱ سبک اصلی تحلیل داده است. سیستم‌های رسمی فعلی شامل Fluent 2، Shopify Polaris، Adobe Spectrum و Apple Native Experience هستند؛ Liquid Glass به‌عنوان متریال پلتفرم اپل در نظر گرفته شده، Material 3 Expressive همچنان یک گونهٔ موبایلی از Material است و Spectrum 2 در گروه سبک‌های تکمیلی قرار دارد. ساختارهای صفحهٔ فرود در مجموعه‌دادهٔ جداگانه‌ای با ۳۴ الگو نگهداری می‌شوند و در رتبه‌بندی BM25 با سبک‌های بصری رقابت نمی‌کنند.
 
 برای مشاهدهٔ دسته‌بندی کامل و فراداده‌های دارای اطلاعات منشأ، فایل [`styles.csv`](src/ui-ux-pro-max/data/styles.csv) را ببینید.
 

@@ -14,7 +14,7 @@
 <p align="center">
   <a href="https://github.com/nextlevelbuilder/ui-ux-pro-max-skill/releases"><img src="https://img.shields.io/github/v/release/nextlevelbuilder/ui-ux-pro-max-skill?style=for-the-badge&color=blue" alt="Bản phát hành GitHub"></a>
   <img src="https://img.shields.io/badge/reasoning_rules-192-green?style=for-the-badge" alt="192 quy tắc suy luận">
-  <img src="https://img.shields.io/badge/UI_styles-79_searchable-purple?style=for-the-badge" alt="79 phong cách UI có thể tìm kiếm">
+  <img src="https://img.shields.io/badge/UI_styles-80_searchable-purple?style=for-the-badge" alt="80 phong cách UI có thể tìm kiếm">
   <img src="https://img.shields.io/badge/python-3.x-yellow?style=for-the-badge&logo=python&logoColor=white" alt="Python 3.x">
   <a href="https://github.com/nextlevelbuilder/ui-ux-pro-max-skill/blob/main/LICENSE"><img src="https://img.shields.io/github/license/nextlevelbuilder/ui-ux-pro-max-skill?style=for-the-badge&color=green" alt="Giấy phép"></a>
 </p>
@@ -114,7 +114,7 @@ Tính năng chủ lực của v2.0 là **Trình tạo hệ thống thiết kế*
 ┌─────────────────────────────────────────────────────────────────┐
 │  2. TÌM KIẾM ĐA MIỀN (5 lượt tìm kiếm song song)                │
 │     • Đối sánh loại sản phẩm (192 danh mục)                     │
-│     • Đề xuất phong cách (79 có thể tìm kiếm; 50 đang hoạt động)│
+│     • Đề xuất phong cách (80 có thể tìm kiếm; 51 đang hoạt động)│
 │     • Chọn bảng màu (192 bảng màu)                              │
 │     • Mẫu landing page (34 mẫu)                                 │
 │     • Kết hợp kiểu chữ (74 cặp phông chữ)                       │
@@ -163,7 +163,7 @@ Mỗi quy tắc bao gồm:
 
 ## Tính năng
 
-- **79 phong cách UI có thể tìm kiếm (50 đang hoạt động)** — Glassmorphism, Claymorphism, Minimalism, Brutalism, Neumorphism, Bento Grid, Dark Mode, AI-Native UI và nhiều hơn nữa
+- **80 phong cách UI có thể tìm kiếm (51 đang hoạt động)** — Glassmorphism, Claymorphism, Minimalism, Brutalism, Neumorphism, Bento Grid, Dark Mode, AI-Native UI và nhiều hơn nữa
 - **192 bảng màu** — Bảng màu theo ngành, tương ứng 1:1 với 192 loại sản phẩm
 - **74 cặp phông chữ** — Các tổ hợp kiểu chữ được tuyển chọn, kèm câu lệnh import Google Fonts
 - **25 loại biểu đồ** — Đề xuất cho dashboard và phân tích dữ liệu
@@ -183,15 +183,15 @@ Hướng dẫn hiện bao quát các lỗi thường gặp trong môi trường 
 
 ### Phân loại phong cách
 
-Danh mục chứa **79 phong cách có thể tìm kiếm**, được hỗ trợ bởi ID và bí danh ổn định:
+Danh mục chứa **80 phong cách có thể tìm kiếm**, được hỗ trợ bởi ID và bí danh ổn định:
 
 | Trạng thái | Số lượng | Hành vi tìm kiếm |
 |------------|---------:|------------------|
-| Đang hoạt động | 50 | Có trong các đề xuất thông thường và được hiển thị mặc định trong thư viện |
+| Đang hoạt động | 51 | Có trong các đề xuất thông thường và được hiển thị mặc định trong thư viện |
 | Bổ sung | 29 | Được trả về khi người dùng yêu cầu chính xác hoặc nêu rõ biến thể/hệ thống; có thể xem bằng bộ lọc trạng thái của thư viện |
 | Không còn dùng | 9 | Bị loại khỏi xếp hạng thông thường; tên cũ chuyển hướng đến phong cách chuẩn hoặc mẫu landing page tương ứng |
 
-Nhóm đang hoạt động bao gồm 43 họ phong cách trực quan phổ biến, 2 phong cách riêng cho thiết bị di động, 3 nền tảng/hệ thống thiết kế chính thức, 1 vật liệu nền tảng và 1 phong cách phân tích cốt lõi. Các hệ thống chính thức hiện tại gồm Fluent 2, Shopify Polaris và Adobe Spectrum; Liquid Glass được giới hạn trong phạm vi vật liệu nền tảng Apple, Material 3 Expressive vẫn là một biến thể Material dành cho thiết bị di động, còn Spectrum 2 thuộc nhóm bổ sung. Cấu trúc landing page nằm trong tập dữ liệu riêng gồm 34 mẫu thay vì cạnh tranh với phong cách trực quan trong xếp hạng BM25.
+Nhóm đang hoạt động bao gồm 43 họ phong cách trực quan phổ biến, 2 phong cách riêng cho thiết bị di động, 4 nền tảng/hệ thống thiết kế chính thức, 1 vật liệu nền tảng và 1 phong cách phân tích cốt lõi. Các hệ thống chính thức hiện tại gồm Fluent 2, Shopify Polaris, Adobe Spectrum và Apple Native Experience; Liquid Glass được giới hạn trong phạm vi vật liệu nền tảng Apple, Material 3 Expressive vẫn là một biến thể Material dành cho thiết bị di động, còn Spectrum 2 thuộc nhóm bổ sung. Cấu trúc landing page nằm trong tập dữ liệu riêng gồm 34 mẫu thay vì cạnh tranh với phong cách trực quan trong xếp hạng BM25.
 
 Xem [`styles.csv`](src/ui-ux-pro-max/data/styles.csv) để biết toàn bộ hệ thống phân loại và siêu dữ liệu có thông tin nguồn gốc.
 
@@ -202,7 +202,7 @@ Nhiều người dùng hỏi về sự khác biệt giữa phiên bản mã ngu�
 ### 🟢 Phiên bản Cơ bản (repository này)
 
 - **Hoàn toàn mã nguồn mở:** Phù hợp với lập trình viên cá nhân, người làm dự án sở thích và các dự án thông thường.
-- **Tri thức UI/UX cốt lõi:** Truy cập đầy đủ 79 phong cách UI có thể tìm kiếm (50 đang hoạt động), 192 loại sản phẩm, bảng màu và các cặp phông chữ được tuyển chọn.
+- **Tri thức UI/UX cốt lõi:** Truy cập đầy đủ 80 phong cách UI có thể tìm kiếm (51 đang hoạt động), 192 loại sản phẩm, bảng màu và các cặp phông chữ được tuyển chọn.
 - **Đề xuất thông minh:** Bộ máy tìm kiếm BM25 tích hợp giúp đối sánh thiết kế với độ chính xác cao.
 - **Hỗ trợ đa nền tảng:** Hướng dẫn riêng theo stack, hỗ trợ 22 framework lớn (React, Vue, Tailwind, iOS, Android, v.v.).
 - **Tạo hệ thống thiết kế:** Tạo tức thì các quy tắc UI, mẫu và logic phù hợp thông qua CLI.

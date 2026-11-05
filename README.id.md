@@ -14,7 +14,7 @@
 <p align="center">
   <a href="https://github.com/nextlevelbuilder/ui-ux-pro-max-skill/releases"><img src="https://img.shields.io/github/v/release/nextlevelbuilder/ui-ux-pro-max-skill?style=for-the-badge&color=blue" alt="Rilis GitHub"></a>
   <img src="https://img.shields.io/badge/reasoning_rules-192-green?style=for-the-badge" alt="192 aturan penalaran">
-  <img src="https://img.shields.io/badge/UI_styles-79_searchable-purple?style=for-the-badge" alt="79 gaya UI yang dapat dicari">
+  <img src="https://img.shields.io/badge/UI_styles-80_searchable-purple?style=for-the-badge" alt="80 gaya UI yang dapat dicari">
   <img src="https://img.shields.io/badge/python-3.x-yellow?style=for-the-badge&logo=python&logoColor=white" alt="Python 3.x">
   <a href="https://github.com/nextlevelbuilder/ui-ux-pro-max-skill/blob/main/LICENSE"><img src="https://img.shields.io/github/license/nextlevelbuilder/ui-ux-pro-max-skill?style=for-the-badge&color=green" alt="Lisensi"></a>
 </p>
@@ -114,7 +114,7 @@ Fitur unggulan v2.0 adalah **Design System Generator** — mesin penalaran berba
 ┌─────────────────────────────────────────────────────────────────┐
 │  2. PENCARIAN MULTI-DOMAIN (5 pencarian paralel)                │
 │     • Pencocokan jenis produk (192 kategori)                    │
-│     • Rekomendasi gaya (79 dapat dicari; 50 aktif)              │
+│     • Rekomendasi gaya (80 dapat dicari; 51 aktif)              │
 │     • Pemilihan palet warna (192 palet)                         │
 │     • Pola landing page (34 pola)                               │
 │     • Pasangan tipografi (74 kombinasi font)                    │
@@ -162,7 +162,7 @@ Setiap aturan mencakup:
 
 ## Fitur
 
-- **79 Gaya UI yang Dapat Dicari (50 aktif)** - Glassmorphism, Claymorphism, Minimalism, Brutalism, Neumorphism, Bento Grid, Dark Mode, AI-Native UI, dan lainnya
+- **80 Gaya UI yang Dapat Dicari (51 aktif)** - Glassmorphism, Claymorphism, Minimalism, Brutalism, Neumorphism, Bento Grid, Dark Mode, AI-Native UI, dan lainnya
 - **192 Palet Warna** - Palet khusus industri yang selaras 1:1 dengan 192 jenis produk
 - **74 Pasangan Font** - Kombinasi tipografi pilihan dengan import Google Fonts
 - **25 Jenis Chart** - Rekomendasi untuk dashboard dan analitik
@@ -191,15 +191,15 @@ chip, badge, dan micro-interaction yang terinterupsi:
 
 ### Taksonomi Gaya
 
-Katalog berisi **79 gaya yang dapat dicari** dengan dukungan ID dan alias yang stabil:
+Katalog berisi **80 gaya yang dapat dicari** dengan dukungan ID dan alias yang stabil:
 
 | Status | Jumlah | Perilaku pencarian |
 |--------|-------:|--------------------|
-| Aktif | 50 | Disertakan dalam rekomendasi normal dan ditampilkan secara default di gallery |
+| Aktif | 51 | Disertakan dalam rekomendasi normal dan ditampilkan secara default di gallery |
 | Tambahan | 29 | Dikembalikan untuk intent varian/sistem yang eksplisit atau exact; tersedia melalui filter status gallery |
 | Deprecated | 9 | Dikecualikan dari ranking normal; nama legacy dialihkan ke gaya canonical atau landing pattern |
 
-Set aktif mencakup 43 keluarga visual umum, 2 gaya khusus mobile, 3 platform/design system resmi, 1 material platform, dan 1 gaya analitik inti. Sistem resmi saat ini mencakup Fluent 2, Shopify Polaris, dan Adobe Spectrum; Liquid Glass dikategorikan sebagai material platform Apple, Material 3 Expressive tetap menjadi varian Material mobile, dan Spectrum 2 bersifat tambahan. Struktur landing page berada dalam dataset terpisah yang berisi 34 pola landing, sehingga tidak bersaing dengan gaya visual dalam ranking BM25.
+Set aktif mencakup 43 keluarga visual umum, 2 gaya khusus mobile, 4 platform/design system resmi, 1 material platform, dan 1 gaya analitik inti. Sistem resmi saat ini mencakup Fluent 2, Shopify Polaris, Adobe Spectrum, dan Apple Native Experience; Liquid Glass dikategorikan sebagai material platform Apple, Material 3 Expressive tetap menjadi varian Material mobile, dan Spectrum 2 bersifat tambahan. Struktur landing page berada dalam dataset terpisah yang berisi 34 pola landing, sehingga tidak bersaing dengan gaya visual dalam ranking BM25.
 
 Lihat [`styles.csv`](src/ui-ux-pro-max/data/styles.csv) untuk taksonomi lengkap dan metadata yang menyertakan provenance.
 
@@ -209,7 +209,7 @@ Banyak pengguna bertanya mengenai perbedaan antara versi open-source dan premium
 
 ### 🟢 Versi Basic (Repository Ini)
 * **Sepenuhnya Open Source:** Cocok untuk developer individu, hobbyist, dan proyek standar.
-* **Kecerdasan UI/UX Inti:** Akses penuh ke 79 gaya UI yang dapat dicari (50 aktif), 192 jenis produk, palet warna, dan pasangan font pilihan.
+* **Kecerdasan UI/UX Inti:** Akses penuh ke 80 gaya UI yang dapat dicari (51 aktif), 192 jenis produk, palet warna, dan pasangan font pilihan.
 * **Rekomendasi Cerdas:** Mesin pencarian BM25 bawaan untuk pencocokan desain yang sangat akurat.
 * **Dukungan Cross-Platform:** Panduan khusus stack yang mendukung 22 framework utama (React, Vue, Tailwind, iOS, Android, dll.).
 * **Pembuatan Design System:** Buat aturan UI, pola, dan logika yang disesuaikan secara instan melalui CLI.
