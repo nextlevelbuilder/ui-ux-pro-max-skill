@@ -56,6 +56,7 @@ class RtlDataContractTest(unittest.TestCase):
 
     def test_known_layouts_keep_their_expected_level(self):
         expected_styles = {
+            "apple-native-experience": "full",
             "minimalism-and-swiss-style": "full",
             "data-dense-dashboard": "partial",
             "kinetic-typography": "caveats",

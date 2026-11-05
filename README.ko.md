@@ -14,7 +14,7 @@
 <p align="center">
   <a href="https://github.com/nextlevelbuilder/ui-ux-pro-max-skill/releases"><img src="https://img.shields.io/github/v/release/nextlevelbuilder/ui-ux-pro-max-skill?style=for-the-badge&color=blue" alt="GitHub 릴리스"></a>
   <img src="https://img.shields.io/badge/reasoning_rules-192-green?style=for-the-badge" alt="추론 규칙 192개">
-  <img src="https://img.shields.io/badge/UI_styles-79_searchable-purple?style=for-the-badge" alt="검색 가능한 UI 스타일 79개">
+  <img src="https://img.shields.io/badge/UI_styles-80_searchable-purple?style=for-the-badge" alt="검색 가능한 UI 스타일 80개">
   <img src="https://img.shields.io/badge/python-3.x-yellow?style=for-the-badge&logo=python&logoColor=white" alt="Python 3.x">
   <a href="https://github.com/nextlevelbuilder/ui-ux-pro-max-skill/blob/main/LICENSE"><img src="https://img.shields.io/github/license/nextlevelbuilder/ui-ux-pro-max-skill?style=for-the-badge&color=green" alt="라이선스"></a>
 </p>
@@ -108,7 +108,7 @@ v2.0의 핵심 기능은 **디자인 시스템 생성기**입니다. AI 기반 �
 
 2. 다중 도메인 검색(5개 병렬 검색)
    • 제품 유형 매칭(192개 분야)
-   • 스타일 추천(검색 가능 79개, 활성 50개)
+   • 스타일 추천(검색 가능 80개, 활성 51개)
    • 색상 팔레트 선택(192개 팔레트)
    • 랜딩 페이지 패턴(34개 패턴)
    • 타이포그래피 조합(74개 글꼴 조합)
@@ -153,7 +153,7 @@ v2.0의 핵심 기능은 **디자인 시스템 생성기**입니다. AI 기반 �
 
 ## 기능
 
-- **검색 가능한 UI 스타일 79개(활성 50개)** - 글래스모피즘, 클레이모피즘, 미니멀리즘, 브루탈리즘, 뉴모피즘, 벤토 그리드, 다크 모드, AI 네이티브 UI 등
+- **검색 가능한 UI 스타일 80개(활성 51개)** - 글래스모피즘, 클레이모피즘, 미니멀리즘, 브루탈리즘, 뉴모피즘, 벤토 그리드, 다크 모드, AI 네이티브 UI 등
 - **색상 팔레트 192개** - 192개 제품 유형과 1:1로 정렬된 산업별 팔레트
 - **글꼴 조합 74개** - Google Fonts 가져오기 코드가 포함된 엄선된 타이포그래피 조합
 - **차트 유형 25개** - 대시보드 및 분석 화면을 위한 권장 사항
@@ -173,15 +173,15 @@ v2.0의 핵심 기능은 **디자인 시스템 생성기**입니다. AI 기반 �
 
 ### 스타일 분류 체계
 
-카탈로그에는 안정적인 ID와 별칭으로 뒷받침되는 **검색 가능한 스타일 79개**가 포함됩니다.
+카탈로그에는 안정적인 ID와 별칭으로 뒷받침되는 **검색 가능한 스타일 80개**가 포함됩니다.
 
 | 상태 | 개수 | 검색 동작 |
 |------|-----:|-----------|
-| 활성 | 50 | 일반 추천에 포함되며 갤러리에 기본 표시 |
+| 활성 | 51 | 일반 추천에 포함되며 갤러리에 기본 표시 |
 | 보조 | 29 | 정확하거나 명시적인 변형/시스템 의도일 때 반환되며 갤러리 상태 필터에서 사용 가능 |
 | 사용 중단 | 9 | 일반 순위에서 제외되며 기존 이름은 표준 스타일 또는 랜딩 패턴으로 연결 |
 
-활성 세트는 일반 시각 스타일군 43개, 모바일 전용 스타일 2개, 공식 플랫폼/디자인 시스템 3개, 플랫폼 소재 1개, 핵심 분석 스타일 1개를 포함합니다. 현재 공식 시스템에는 Fluent 2, Shopify Polaris, Adobe Spectrum이 포함됩니다. Liquid Glass는 Apple 플랫폼 소재로 한정되고, Material 3 Expressive는 모바일 Material 변형으로 유지되며, Spectrum 2는 보조 스타일입니다. 랜딩 페이지 구조는 BM25 순위에서 시각 스타일과 경쟁하지 않고 별도의 34개 패턴 랜딩 데이터셋에 포함됩니다.
+활성 세트는 일반 시각 스타일군 43개, 모바일 전용 스타일 2개, 공식 플랫폼/디자인 시스템 4개, 플랫폼 소재 1개, 핵심 분석 스타일 1개를 포함합니다. 현재 공식 시스템에는 Fluent 2, Shopify Polaris, Adobe Spectrum, Apple Native Experience가 포함됩니다. Liquid Glass는 Apple 플랫폼 소재로 한정되고, Material 3 Expressive는 모바일 Material 변형으로 유지되며, Spectrum 2는 보조 스타일입니다. 랜딩 페이지 구조는 BM25 순위에서 시각 스타일과 경쟁하지 않고 별도의 34개 패턴 랜딩 데이터셋에 포함됩니다.
 
 전체 분류 체계와 출처 인식 메타데이터는 [`styles.csv`](src/ui-ux-pro-max/data/styles.csv)를 참고하세요.
 
@@ -191,7 +191,7 @@ v2.0의 핵심 기능은 **디자인 시스템 생성기**입니다. AI 기반 �
 
 ### 🟢 기본 버전(이 저장소)
 * **완전한 오픈 소스:** 개인 개발자, 취미 개발자, 일반 프로젝트에 적합합니다.
-* **핵심 UI/UX 인텔리전스:** 검색 가능한 UI 스타일 79개(활성 50개), 제품 유형 192개, 색상 팔레트, 엄선된 글꼴 조합을 모두 사용할 수 있습니다.
+* **핵심 UI/UX 인텔리전스:** 검색 가능한 UI 스타일 80개(활성 51개), 제품 유형 192개, 색상 팔레트, 엄선된 글꼴 조합을 모두 사용할 수 있습니다.
 * **스마트 추천:** 내장 BM25 검색 엔진으로 정확도 높은 디자인 매칭을 제공합니다.
 * **크로스 플랫폼 지원:** 22개 주요 프레임워크(React, Vue, Tailwind, iOS, Android 등)를 위한 스택별 가이드라인을 제공합니다.
 * **디자인 시스템 생성:** CLI를 통해 맞춤형 UI 규칙, 패턴, 로직을 즉시 생성합니다.

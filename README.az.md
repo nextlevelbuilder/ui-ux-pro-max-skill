@@ -14,7 +14,7 @@
 <p align="center">
   <a href="https://github.com/nextlevelbuilder/ui-ux-pro-max-skill/releases"><img src="https://img.shields.io/github/v/release/nextlevelbuilder/ui-ux-pro-max-skill?style=for-the-badge&color=blue" alt="GitHub Release"></a>
   <img src="https://img.shields.io/badge/reasoning_rules-192-green?style=for-the-badge" alt="192 Reasoning Rules">
-  <img src="https://img.shields.io/badge/UI_styles-79_searchable-purple?style=for-the-badge" alt="79 searchable UI styles">
+  <img src="https://img.shields.io/badge/UI_styles-80_searchable-purple?style=for-the-badge" alt="80 searchable UI styles">
   <img src="https://img.shields.io/badge/python-3.x-yellow?style=for-the-badge&logo=python&logoColor=white" alt="Python 3.x">
   <a href="https://github.com/nextlevelbuilder/ui-ux-pro-max-skill/blob/main/LICENSE"><img src="https://img.shields.io/github/license/nextlevelbuilder/ui-ux-pro-max-skill?style=for-the-badge&color=green" alt="License"></a>
 </p>
@@ -143,7 +143,7 @@ v2.0-ın əsas xüsusiyyəti **Design System Generator**-dur — layihə tələb
 ┌─────────────────────────────────────────────────────────────────┐
 │  2. MULTI-DOMAIN SEARCH (5 parallel searches)                   │
 │     • Product type matching (192 categories)                    │
-│     • Style recommendations (79 searchable; 50 active)          │
+│     • Style recommendations (80 searchable; 51 active)          │
 │     • Color palette selection (192 palettes)                    │
 │     • Landing page patterns (34 patterns)                       │
 │     • Typography pairing (74 font combinations)                 │
@@ -191,7 +191,7 @@ Hər qaydaya bunlar daxildir:
 
 ## Xüsusiyyətlər
 
-- **79 axtarıla bilən UI üslubu (50-si aktiv)** - Glassmorphism, Claymorphism, Minimalism, Brutalism, Neumorphism, Bento Grid, Dark Mode, AI-Native UI və s.
+- **80 axtarıla bilən UI üslubu (51-si aktiv)** - Glassmorphism, Claymorphism, Minimalism, Brutalism, Neumorphism, Bento Grid, Dark Mode, AI-Native UI və s.
 - **192 rəng palitrası** - 192 məhsul növü ilə 1:1 uyğunlaşdırılmış sahəyə xas palitralar
 - **74 şrift cütü** - Google Fonts import-ları ilə seçilmiş tipoqrafiya kombinasiyaları
 - **25 qrafik növü** - Dashboard və analitika üçün tövsiyələr
@@ -211,15 +211,15 @@ Təlimat başlıqlar, uzun tokenlər, chip-lər, badge-lər və yarımçıq qala
 
 ### Üslub taksonomiyası
 
-Kataloq sabit ID və alias-larla dəstəklənən **79 axtarıla bilən üslub** ehtiva edir:
+Kataloq sabit ID və alias-larla dəstəklənən **80 axtarıla bilən üslub** ehtiva edir:
 
 | Status | Say | Axtarış davranışı |
 |--------|----:|-------------------|
-| Active | 50 | Normal tövsiyələrə daxildir və qalereyada standart olaraq göstərilir |
+| Active | 51 | Normal tövsiyələrə daxildir və qalereyada standart olaraq göstərilir |
 | Supplemental | 29 | Dəqiq və ya açıq variant/sistem niyyəti olduqda qaytarılır; qalereyanın status filtri ilə əlçatandır |
 | Deprecated | 9 | Normal sıralamadan çıxarılıb; köhnə adlar kanonik üslub və ya landing pattern-ə yönləndirilir |
 
-Aktiv dəstə 43 ümumi vizual ailə, 2 mobil üslub, 3 rəsmi platforma/dizayn sistemi, 1 platforma materialı və 1 əsas analitika üslubunu əhatə edir. Hazırkı rəsmi sistemlər Fluent 2, Shopify Polaris və Adobe Spectrum-dur; Liquid Glass Apple platforma materialı kimi, Material 3 Expressive mobil Material variantı kimi saxlanılır, Spectrum 2 isə supplemental-dır. Landing page strukturları BM25 sıralamasında vizual üslublarla rəqabət aparmasın deyə ayrıca 34 pattern-lik landing dataset-də yerləşir.
+Aktiv dəstə 43 ümumi vizual ailə, 2 mobil üslub, 4 rəsmi platforma/dizayn sistemi, 1 platforma materialı və 1 əsas analitika üslubunu əhatə edir. Hazırkı rəsmi sistemlər Fluent 2, Shopify Polaris, Adobe Spectrum və Apple Native Experience-dir; Liquid Glass Apple platforma materialı kimi, Material 3 Expressive mobil Material variantı kimi saxlanılır, Spectrum 2 isə supplemental-dır. Landing page strukturları BM25 sıralamasında vizual üslublarla rəqabət aparmasın deyə ayrıca 34 pattern-lik landing dataset-də yerləşir.
 
 Tam taksonomiya və mənşə məlumatlı metadata üçün [`styles.csv`](src/ui-ux-pro-max/data/styles.csv) faylına baxın.
 
@@ -229,7 +229,7 @@ Tam taksonomiya və mənşə məlumatlı metadata üçün [`styles.csv`](src/ui-
 
 ### 🟢 Basic versiya (bu repozitoriya)
 * **Tam açıq mənbə:** Fərdi developer-lər, hobbi layihələri və standart layihələr üçün idealdır.
-* **Əsas UI/UX intellekti:** 79 axtarıla bilən UI üslubuna (50-si aktiv), 192 məhsul növünə, rəng palitralarına və seçilmiş şrift cütlərinə tam çıxış.
+* **Əsas UI/UX intellekti:** 80 axtarıla bilən UI üslubuna (51-si aktiv), 192 məhsul növünə, rəng palitralarına və seçilmiş şrift cütlərinə tam çıxış.
 * **Ağıllı tövsiyələr:** Dəqiq dizayn uyğunluğu üçün daxili BM25 axtarış mühərriki.
 * **Çoxplatformalı dəstək:** 22 əsas framework üçün stack-ə xas təlimatlar (React, Vue, Tailwind, iOS, Android və s.).
 * **Dizayn sisteminin yaradılması:** CLI vasitəsilə uyğunlaşdırılmış UI qaydalarını, pattern-ləri və məntiqi dərhal yaradın.

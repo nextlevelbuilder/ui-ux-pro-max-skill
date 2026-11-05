@@ -33,7 +33,7 @@ class TestStyleTaxonomy(unittest.TestCase):
             for status in ("active", "supplemental", "deprecated")
         }
         self.assertEqual(
-            {"active": 50, "supplemental": 29, "deprecated": 9}, counts
+            {"active": 51, "supplemental": 29, "deprecated": 9}, counts
         )
 
     def test_every_style_name_and_alias_has_a_deterministic_destination(self):

@@ -14,7 +14,7 @@
 <p align="center">
   <a href="https://github.com/nextlevelbuilder/ui-ux-pro-max-skill/releases"><img src="https://img.shields.io/github/v/release/nextlevelbuilder/ui-ux-pro-max-skill?style=for-the-badge&color=blue" alt="GitHub Release"></a>
   <img src="https://img.shields.io/badge/reasoning_rules-192-green?style=for-the-badge" alt="192 条推理规则">
-  <img src="https://img.shields.io/badge/UI_styles-79_searchable-purple?style=for-the-badge" alt="79 种可搜索 UI 风格">
+  <img src="https://img.shields.io/badge/UI_styles-80_searchable-purple?style=for-the-badge" alt="80 种可搜索 UI 风格">
   <img src="https://img.shields.io/badge/python-3.x-yellow?style=for-the-badge&logo=python&logoColor=white" alt="Python 3.x">
   <a href="https://github.com/nextlevelbuilder/ui-ux-pro-max-skill/blob/main/LICENSE"><img src="https://img.shields.io/github/license/nextlevelbuilder/ui-ux-pro-max-skill?style=for-the-badge&color=green" alt="License"></a>
 </p>
@@ -114,7 +114,7 @@ v2.0 的旗舰特性是**设计系统生成器**——一个 AI 驱动的推理�
 ┌─────────────────────────────────────────────────────────────────┐
 │  2. 多域搜索 (5 个并行搜索)                                       │
 │     • 产品类型匹配 (192 个分类)                                  │
-│     • 风格推荐 (79 种可搜索；50 种 active)                    │
+│     • 风格推荐 (80 种可搜索；51 种 active)                    │
 │     • 配色方案选择 (192 套配色)                                   │
 │     • 落地页模式 (34 种模式)                                      │
 │     • 字体配对 (74 种组合)                                        │
@@ -162,7 +162,7 @@ v2.0 的旗舰特性是**设计系统生成器**——一个 AI 驱动的推理�
 
 ## 功能特性
 
-- **79 种可搜索 UI 风格（50 种 active）** - 玻璃拟态、粘土拟态、极简主义、粗野主义、新拟态、便当盒网格、深色模式、AI 原生 UI 等
+- **80 种可搜索 UI 风格（51 种 active）** - 玻璃拟态、粘土拟态、极简主义、粗野主义、新拟态、便当盒网格、深色模式、AI 原生 UI 等
 - **192 套配色方案** - 与 192 种产品类型 1:1 对齐的行业专属调色板
 - **74 种字体配对** - 精选字体组合，含 Google Fonts 导入
 - **25 种图表类型** - 适用于仪表板和分析场景的推荐
@@ -187,15 +187,15 @@ v2.0 的旗舰特性是**设计系统生成器**——一个 AI 驱动的推理�
 
 ### 风格分类
 
-数据库包含 **79 种可搜索风格**，并使用稳定 ID 和别名关联：
+数据库包含 **80 种可搜索风格**，并使用稳定 ID 和别名关联：
 
 | 状态 | 数量 | 搜索行为 |
 |------|-----:|----------|
-| Active | 50 | 参与常规推荐，并默认显示在 Gallery 中 |
+| Active | 51 | 参与常规推荐，并默认显示在 Gallery 中 |
 | Supplemental | 29 | 仅在精确名称或明确的变体/设计系统意图下返回；可通过 Gallery 状态筛选查看 |
 | Deprecated | 9 | 不参与常规排序；旧名称会重定向到规范风格或落地页模式 |
 
-Active 集合包括 43 个通用视觉家族、2 个移动端专用风格、3 个官方平台/设计系统、1 个平台材质，以及 1 个核心分析风格。当前官方系统包括 Fluent 2、Shopify Polaris 和 Adobe Spectrum；Liquid Glass 被限定为 Apple 平台材质，Material 3 Expressive 保留为 Material 移动端变体，Spectrum 2 为 Supplemental。落地页结构位于独立的 34 条模式数据集中，不再与视觉风格竞争 BM25 排名。
+Active 集合包括 43 个通用视觉家族、2 个移动端专用风格、4 个官方平台/设计系统、1 个平台材质，以及 1 个核心分析风格。当前官方系统包括 Fluent 2、Shopify Polaris、Adobe Spectrum 和 Apple Native Experience；Liquid Glass 被限定为 Apple 平台材质，Material 3 Expressive 保留为 Material 移动端变体，Spectrum 2 为 Supplemental。落地页结构位于独立的 34 条模式数据集中，不再与视觉风格竞争 BM25 排名。
 
 完整分类及 provenance 元数据见 [`styles.csv`](src/ui-ux-pro-max/data/styles.csv)。
 
@@ -205,7 +205,7 @@ Active 集合包括 43 个通用视觉家族、2 个移动端专用风格、3 �
 
 ### 🟢 基础版（本仓库）
 * **完全开源：** 适合个人开发者、爱好者及标准项目。
-* **核心 UI/UX 智能：** 完整支持 79 种可搜索 UI 风格（50 种 active）、192 种产品类型、配色方案和精选字体配对。
+* **核心 UI/UX 智能：** 完整支持 80 种可搜索 UI 风格（51 种 active）、192 种产品类型、配色方案和精选字体配对。
 * **智能推荐：** 内置 BM25 搜索引擎，提供高精度的设计匹配。
 * **跨平台支持：** 提供针对 22 个主流技术栈（React、Vue、Tailwind、iOS、Android 等）的专属指南。
 * **设计系统生成：** 通过 CLI 即时生成定制化的 UI 规则、模式与逻辑。

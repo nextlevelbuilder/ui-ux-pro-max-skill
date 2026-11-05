@@ -14,7 +14,7 @@
 <p align="center">
   <a href="https://github.com/nextlevelbuilder/ui-ux-pro-max-skill/releases"><img src="https://img.shields.io/github/v/release/nextlevelbuilder/ui-ux-pro-max-skill?style=for-the-badge&color=blue" alt="GitHub Release"></a>
   <img src="https://img.shields.io/badge/reasoning_rules-192-green?style=for-the-badge" alt="192 Reasoning Rules">
-  <img src="https://img.shields.io/badge/UI_styles-79_searchable-purple?style=for-the-badge" alt="79 searchable UI styles">
+  <img src="https://img.shields.io/badge/UI_styles-80_searchable-purple?style=for-the-badge" alt="80 searchable UI styles">
   <img src="https://img.shields.io/badge/python-3.x-yellow?style=for-the-badge&logo=python&logoColor=white" alt="Python 3.x">
   <a href="https://github.com/nextlevelbuilder/ui-ux-pro-max-skill/blob/main/LICENSE"><img src="https://img.shields.io/github/license/nextlevelbuilder/ui-ux-pro-max-skill?style=for-the-badge&color=green" alt="License"></a>
 </p>
@@ -144,7 +144,7 @@ v2.0 の目玉機能は **Design System Generator** です。プロジェクト�
 ┌─────────────────────────────────────────────────────────────────┐
 │  2. MULTI-DOMAIN SEARCH (5 parallel searches)                   │
 │     • Product type matching (192 categories)                    │
-│     • Style recommendations (79 searchable; 50 active)          │
+│     • Style recommendations (80 searchable; 51 active)          │
 │     • Color palette selection (192 palettes)                    │
 │     • Landing page patterns (34 patterns)                       │
 │     • Typography pairing (74 font combinations)                 │
@@ -192,7 +192,7 @@ v2.0 の目玉機能は **Design System Generator** です。プロジェクト�
 
 ## 機能
 
-- **79 の検索可能な UI スタイル（うち 50 が有効）** - Glassmorphism、Claymorphism、Minimalism、Brutalism、Neumorphism、Bento Grid、Dark Mode、AI-Native UI など
+- **80 の検索可能な UI スタイル（うち 51 が有効）** - Glassmorphism、Claymorphism、Minimalism、Brutalism、Neumorphism、Bento Grid、Dark Mode、AI-Native UI など
 - **192 のカラーパレット** - 192 のプロダクトタイプと 1:1 で対応した業界別のパレット
 - **74 のフォントペアリング** - Google Fonts のインポート付きで厳選したタイポグラフィの組み合わせ
 - **25 のチャートタイプ** - ダッシュボードや分析向けの推奨
@@ -221,15 +221,15 @@ v2.0 の目玉機能は **Design System Generator** です。プロジェクト�
 
 ### スタイルの分類
 
-カタログには、安定した ID とエイリアスに裏付けられた **79 の検索可能なスタイル** が含まれています：
+カタログには、安定した ID とエイリアスに裏付けられた **80 の検索可能なスタイル** が含まれています：
 
 | ステータス | 数 | 検索時の動作 |
 |--------|------:|-----------------|
-| Active | 50 | 通常の推奨に含まれ、ギャラリーでデフォルトで表示されます |
+| Active | 51 | 通常の推奨に含まれ、ギャラリーでデフォルトで表示されます |
 | Supplemental | 29 | 正確な指定や、明示的なバリアント/システムの意図がある場合に返されます。ギャラリーのステータスフィルターから利用できます |
 | Deprecated | 9 | 通常のランキングから除外されます。旧名称は正規のスタイルまたはランディングパターンにリダイレクトされます |
 
-Active のセットには、43 の汎用的なビジュアルファミリー、2 つのモバイル専用スタイル、3 つの公式プラットフォーム/デザインシステム、1 つのプラットフォームマテリアル、1 つのコア分析スタイルが含まれます。現在の公式システムには Fluent 2、Shopify Polaris、Adobe Spectrum があります。Liquid Glass は Apple のプラットフォームマテリアルとして扱われ、Material 3 Expressive はモバイルの Material のバリアントのままで、Spectrum 2 は Supplemental です。ランディングページの構成は、BM25 のランキングでビジュアルスタイルと競合しないよう、34 パターンの別のランディングデータセットに分けられています。
+Active のセットには、43 の汎用的なビジュアルファミリー、2 つのモバイル専用スタイル、4 つの公式プラットフォーム/デザインシステム、1 つのプラットフォームマテリアル、1 つのコア分析スタイルが含まれます。現在の公式システムには Fluent 2、Shopify Polaris、Adobe Spectrum、Apple Native Experience があります。Liquid Glass は Apple のプラットフォームマテリアルとして扱われ、Material 3 Expressive はモバイルの Material のバリアントのままで、Spectrum 2 は Supplemental です。ランディングページの構成は、BM25 のランキングでビジュアルスタイルと競合しないよう、34 パターンの別のランディングデータセットに分けられています。
 
 完全な分類と、出所を考慮したメタデータについては [`styles.csv`](src/ui-ux-pro-max/data/styles.csv) をご覧ください。
 
@@ -239,7 +239,7 @@ Active のセットには、43 の汎用的なビジュアルファミリー、2
 
 ### 🟢 ベーシック版（このリポジトリ）
 * **完全なオープンソース：** 個人の開発者、趣味のプロジェクト、一般的なプロジェクトに最適です。
-* **コアの UI/UX インテリジェンス：** 79 の検索可能な UI スタイル（うち 50 が有効）、192 のプロダクトタイプ、カラーパレット、厳選したフォントペアリングをすべて利用できます。
+* **コアの UI/UX インテリジェンス：** 80 の検索可能な UI スタイル（うち 51 が有効）、192 のプロダクトタイプ、カラーパレット、厳選したフォントペアリングをすべて利用できます。
 * **スマートな推奨：** 内蔵の BM25 検索エンジンにより、非常に精度の高いデザインのマッチングを行います。
 * **クロスプラットフォーム対応：** 22 の主要なフレームワーク（React、Vue、Tailwind、iOS、Android など）に対応したスタック別のガイドライン。
 * **デザインシステム生成：** CLI から、ニーズに合わせた UI のルール、パターン、ロジックをすぐに生成できます。

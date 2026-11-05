@@ -914,6 +914,28 @@
       ]
     },
     {
+      "entityKind": "style",
+      "entityId": "apple-native-experience",
+      "sourceFile": "styles.csv",
+      "sourceKey": {
+        "Style ID": "apple-native-experience"
+      },
+      "status": "active",
+      "verifiedAt": "2026-11-04",
+      "sla": "manual-verified",
+      "appliesTo": [
+        "style-search",
+        "gallery"
+      ],
+      "confidence": 0.94,
+      "sources": [
+        {
+          "type": "official",
+          "ref": "https://developer.apple.com/design/human-interface-guidelines/"
+        }
+      ]
+    },
+    {
       "entityKind": "dataset-contract",
       "entityId": "core-colors-accessibility",
       "sourceFile": "colors.csv",
