@@ -1,0 +1,56 @@
+No,Palette Name,Category,Keywords,Primary Hex,Secondary Hex,Accent Hex,Background Hex,Text Hex,Psychology,Best For,Avoid For
+1,Classic Blue Trust,Professional,"trust, stability, corporate, reliable",#003366,#0055A4,#FFD700,#FFFFFF,#1A1A1A,Trust reliability professionalism,Finance legal healthcare corporate,Entertainment children playful
+2,Tech Gradient,Technology,"modern, innovative, digital, future",#6366F1,#8B5CF6,#06B6D4,#0F172A,#F8FAFC,Innovation technology forward-thinking,Tech startups SaaS AI companies,Traditional heritage artisan
+3,Eco Green,Nature,"sustainable, natural, growth, fresh",#228B22,#2E8B57,#8FBC8F,#F0FFF0,#1A1A1A,Growth sustainability health nature,Organic eco wellness environmental,Luxury tech industrial
+4,Luxury Gold,Premium,"elegance, premium, wealth, sophisticated",#1C1917,#44403C,#D4AF37,#FAFAF9,#0C0A09,Luxury prestige exclusivity wealth,Luxury fashion jewelry hotels,Budget casual children
+5,Vibrant Coral,Energetic,"warm, friendly, approachable, exciting",#FF6B6B,#FFE66D,#4ECDC4,#FFFFFF,#2C3E50,Energy warmth friendliness excitement,Food social media lifestyle,Corporate medical serious
+6,Modern Purple,Creative,"creative, innovative, unique, premium",#7C3AED,#A78BFA,#F472B6,#FAF5FF,#1E1B4B,Creativity innovation imagination premium,Creative tech beauty brands,Traditional conservative
+7,Fresh Mint,Clean,"fresh, clean, calm, modern",#10B981,#34D399,#6EE7B7,#ECFDF5,#064E3B,Freshness calmness cleanliness,Health wellness fintech apps,Industrial heavy traditional
+8,Bold Red,Power,"passion, energy, urgency, bold",#DC2626,#EF4444,#F97316,#FEF2F2,#1F2937,Power passion urgency action,Food sports entertainment sale,Healthcare meditation calm
+9,Navy Professional,Corporate,"professional, serious, trustworthy, established",#0F172A,#1E3A8A,#3B82F6,#F8FAFC,#020617,Authority trust professionalism,Legal finance consulting,Playful children casual
+10,Warm Earth,Organic,"natural, authentic, grounded, warm",#8B4513,#D2691E,#DEB887,#FFF8DC,#2F1810,Authenticity warmth earthiness natural,Coffee craft artisan organic,Tech modern digital
+11,Soft Blush,Feminine,"gentle, feminine, romantic, delicate",#F472B6,#FBCFE8,#FDA4AF,#FDF2F8,#831843,Femininity softness romance elegance,Beauty wedding fashion skincare,Industrial tech masculine
+12,Electric Neon,Nightlife,"vibrant, exciting, youthful, digital",#FF00FF,#00FFFF,#39FF14,#0D0D0D,#FFFFFF,Energy excitement youth nightlife,Gaming entertainment clubs apps,Corporate traditional mature
+13,Sunrise Gradient,Warm,"optimistic, warm, energetic, hopeful",#F97316,#FBBF24,#FCD34D,#FFFBEB,#78350F,Optimism warmth energy hope,Food lifestyle travel,Medical corporate serious
+14,Ocean Deep,Calm,"calm, deep, trustworthy, serene",#0077B6,#00B4D8,#90E0EF,#CAF0F8,#023E8A,Calmness depth trust serenity,Wellness travel spa finance,Energy sports aggressive
+15,Monochrome Gray,Minimal,"sophisticated, modern, neutral, elegant",#18181B,#3F3F46,#71717A,#FAFAFA,#09090B,Sophistication neutrality elegance,Luxury tech minimal design,Children playful vibrant
+16,Forest Natural,Biophilic,"natural, sustainable, outdoors, growth",#14532D,#166534,#22C55E,#F0FDF4,#052E16,Nature growth sustainability,Outdoor eco wellness,Urban industrial digital
+17,Candy Pop,Playful,"fun, youthful, colorful, energetic",#F472B6,#A78BFA,#22D3EE,#FFFFFF,#1E1B4B,Fun playfulness youth energy,Children toys games candy,Serious corporate medical
+18,Vintage Sepia,Retro,"nostalgic, authentic, heritage, classic",#704214,#A0522D,#D2B48C,#FAF0E6,#3D2914,Nostalgia heritage authenticity,Craft heritage artisan vintage,Modern tech digital
+19,Ice Cool,Fresh,"cool, fresh, professional, clean",#0891B2,#22D3EE,#A5F3FC,#ECFEFF,#164E63,Coolness freshness cleanliness,Tech healthcare dental spa,Warm food traditional
+20,Sunset Warm,Inviting,"warm, inviting, comfortable, friendly",#EA580C,#F59E0B,#FACC15,#FFFBEB,#431407,Warmth comfort friendliness welcome,Hospitality food home,Medical tech cold
+21,Royal Purple,Regal,"regal, creative, luxurious, wise",#581C87,#7C3AED,#C084FC,#FAF5FF,#3B0764,Royalty creativity wisdom luxury,Beauty creative luxury,Budget casual everyday
+22,Olive Sage,Calm,"calm, natural, sophisticated, mature",#365314,#4D7C0F,#84CC16,#F7FEE7,#1A2E05,Calm maturity nature sophistication,Wellness food organic beauty,Tech gaming children
+23,Cherry Bold,Passionate,"passionate, bold, exciting, romantic",#9F1239,#E11D48,#FB7185,#FFF1F2,#4C0519,Passion boldness romance excitement,Fashion cosmetics food,Corporate healthcare calm
+24,Steel Industrial,Strong,"strong, industrial, modern, reliable",#374151,#4B5563,#9CA3AF,#F9FAFB,#111827,Strength reliability industrial modern,Industrial tech automotive,Soft feminine playful
+25,Lavender Dream,Soft,"soft, calming, creative, spiritual",#6D28D9,#8B5CF6,#C4B5FD,#F5F3FF,#2E1065,Calm creativity spirituality softness,Wellness beauty spiritual,Industrial sports aggressive
+26,Autumn Harvest,Warm,"warm, cozy, natural, seasonal",#9A3412,#C2410C,#EA580C,#FFF7ED,#431407,Warmth coziness natural seasonal,Food craft seasonal,Modern tech clinical
+27,Arctic Blue,Cool,"cool, professional, clean, modern",#0C4A6E,#0369A1,#0EA5E9,#F0F9FF,#082F49,Cool professional clean trust,Tech healthcare finance,Warm food cozy
+28,Terracotta Earth,Grounded,"grounded, warm, natural, artisan",#7C2D12,#9A3412,#EA580C,#FFF7ED,#431407,Warmth groundedness natural,Home craft pottery,Tech digital modern
+29,Midnight Dark,Sophisticated,"sophisticated, luxurious, mysterious, elegant",#0F0F0F,#1A1A1A,#3D3D3D,#000000,#FFFFFF,Sophistication mystery elegance,Luxury fashion tech nightlife,Children medical friendly
+30,Pastel Rainbow,Gentle,"gentle, playful, approachable, soft",#FED7AA,#D8B4FE,#A5F3FC,#FFFFFF,#374151,Gentleness playfulness approachability,Children wellness creative,Serious corporate traditional
+31,Dark Academia,Moody,"scholarly, vintage, intellectual, mysterious",#0D0D0D,#594636,#4B3E15,#2C3850,#DEB887,Intellectualism mystery heritage sophistication,Education publishing vintage libraries,Children playful bright modern
+32,Tiffany Blue,Luxury,"elegant, feminine, luxurious, iconic",#0ABAB5,#81D8D0,#FFFFFF,#F0FFFF,#0F172A,Elegance luxury femininity sophistication,Jewelry luxury fashion wedding,Industrial budget masculine
+33,Rose Gold,Feminine,"feminine, luxurious, modern, warm",#B76E79,#E8C4C4,#F4E4E4,#FFF5F5,#4A1C1C,Femininity luxury warmth elegance,Beauty jewelry fashion wedding,Industrial tech masculine
+34,Obsidian Dark,Premium,"mysterious, elegant, powerful, sophisticated",#0B1215,#1C2833,#566573,#212F3D,#ECF0F1,Mystery power sophistication elegance,Luxury tech fashion automotive,Children medical friendly
+35,Champagne Pink,Soft,"soft, romantic, elegant, feminine",#FDE4CF,#FFCFD2,#F1C0E8,#FBF8CC,#5C4033,Romance softness elegance femininity,Wedding beauty skincare,Industrial tech aggressive
+36,Lemon Fresh,Bright,"optimistic, cheerful, fresh, energetic",#FBF8CC,#FFE66D,#98F5E1,#FFFFFF,#334155,Optimism cheerfulness freshness energy,Food wellness children lifestyle,Corporate serious formal
+37,Periwinkle Dream,Calm,"calming, creative, dreamy, gentle",#CCCCFF,#B4B4DC,#E6E6FA,#F8F8FF,#2E2E5C,Calmness creativity dreaminess gentleness,Wellness beauty creative spiritual,Industrial aggressive sports
+38,Coffee Brew,Warm,"warm, cozy, artisan, authentic",#3C2415,#6F4E37,#A67B5B,#DEB887,#1A0F09,Warmth coziness authenticity artisan,Coffee bakery craft organic,Tech modern cold
+39,Marine Navy,Nautical,"trustworthy, nautical, classic, strong",#0C2461,#1B4F72,#2E86AB,#EBF5FB,#0A1628,Trust strength reliability nautical,Maritime finance corporate,Playful warm tropical
+40,Mint Chocolate,Fresh,"fresh, indulgent, balanced, appetizing",#98F5E1,#3D2914,#C4A484,#F5FFFA,#1A0F09,Freshness balance indulgence,Food beverage cafe dessert,Corporate serious industrial
+41,Coral Sunset,Warm,"warm, inviting, tropical, energetic",#FF6B6B,#FF8E72,#FFA07A,#FFF5EE,#8B2500,Warmth energy vibrancy invitation,Travel hospitality food lifestyle,Corporate cold clinical
+42,Dusty Rose,Vintage,"vintage, romantic, sophisticated, muted",#DCAE96,#C9A9A6,#E8D5D5,#FAF5F3,#5C4033,Romance sophistication nostalgia vintage,Fashion beauty interior vintage,Tech modern vibrant
+43,Electric Cyan,Modern,"futuristic, energetic, digital, bold",#00FFFF,#00CED1,#20B2AA,#0A1628,#FFFFFF,Energy innovation futurism technology,Tech gaming digital startups,Traditional vintage warm
+44,Sage Green,Natural,"calming, natural, sophisticated, organic",#9CAF88,#B2BDA3,#DCE4D3,#F5F5F0,#3D4F39,Calmness nature sophistication organic,Wellness organic home spa,Industrial aggressive bold
+45,Burgundy Rich,Luxurious,"luxurious, sophisticated, bold, rich",#722F37,#800020,#A52A2A,#FDF5E6,#2C1810,Luxury sophistication richness boldness,Wine luxury fashion restaurants,Children budget casual
+46,Slate Professional,Modern,"professional, modern, neutral, sophisticated",#2F4F4F,#708090,#778899,#F5F5F5,#1C1C1C,Professionalism sophistication neutrality,Corporate tech consulting,Playful children warm
+47,Peachy Keen,Friendly,"friendly, approachable, warm, youthful",#FFCBA4,#FFB347,#FFE5B4,#FFFAF0,#8B4513,Friendliness warmth approachability,Food lifestyle social media,Corporate serious formal
+48,Nordic Frost,Clean,"clean, minimal, sophisticated, calm",#E8F4F8,#B0C4DE,#87CEEB,#FFFFFF,#2C3E50,Cleanliness minimalism calm sophistication,Scandinavian tech wellness,Warm tropical vibrant
+49,Emerald Luxury,Premium,"luxurious, natural, prestigious, rich",#046307,#228B22,#50C878,#F0FFF0,#022002,Luxury nature prestige richness,Luxury eco jewelry finance,Budget casual playful
+50,Mauve Elegant,Sophisticated,"sophisticated, feminine, calm, elegant",#E0B0FF,#DDA0DD,#D8BFD8,#FAF0FA,#4A2040,Sophistication femininity calm elegance,Beauty spa fashion interior,Industrial aggressive bold
+51,Charcoal Minimal,Sophisticated,"sophisticated, modern, bold, minimal",#36454F,#2F4F4F,#696969,#F8F8F8,#1A1A1A,Sophistication minimalism boldness,Luxury tech fashion architecture,Children playful warm
+52,Honey Gold,Warm,"warm, luxurious, natural, inviting",#EB9605,#DAA520,#FFD700,#FFFEF0,#5C4033,Warmth luxury nature invitation,Food luxury organic hospitality,Cold tech clinical
+53,Berry Fresh,Vibrant,"vibrant, fresh, energetic, youthful",#8E4585,#C71585,#DA70D6,#FFF0F5,#4A1040,Vibrancy freshness energy youth,Beauty food lifestyle entertainment,Corporate serious traditional
+54,Ocean Teal,Calming,"calming, trustworthy, fresh, professional",#008080,#20B2AA,#5F9EA0,#E0FFFF,#0F4C5C,Calmness trust freshness professionalism,Healthcare spa finance wellness,Warm food aggressive
+55,Rust Vintage,Warm,"warm, authentic, vintage, earthy",#B7410E,#CD5C5C,#E97451,#FFF8DC,#3C1414,Warmth authenticity vintage earthiness,Craft vintage food artisan,Modern tech cold
