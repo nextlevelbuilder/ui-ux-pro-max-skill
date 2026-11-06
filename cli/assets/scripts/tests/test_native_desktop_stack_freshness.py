@@ -18,6 +18,7 @@ from validate_data import STACK_OFFICIAL_HOSTS  # noqa: E402
 STACKS = {
     "react-native", "flutter", "swiftui", "jetpack-compose", "avalonia",
     "uwp", "winui", "wpf", "uno", "javafx", "threejs", "laravel",
+    "android-views",
 }
 
 
@@ -65,6 +66,18 @@ class TestNativeDesktopStackFreshness(unittest.TestCase):
                     for field in ("Guideline", "Do", "Code Good")
                 ).casefold()
                 self.assertIn(expected, recommended)
+
+    def test_platform_api_version_queries_keep_android_views_rows(self):
+        # Platform API numbers (Android 15 = the flagship documented case) must
+        # not be parsed as a legacy framework request that drops every row.
+        for query in (
+            "Android 15 drawable theme attribute crash",
+            "Android 14 night mode restyle verification",
+            "Android 36 edge to edge insets",
+        ):
+            with self.subTest(query=query):
+                result = search_stack(query, "android-views", max_results=3)
+                self.assertGreater(result["count"], 0)
 
     def test_windows_current_and_maintenance_lanes_are_visible(self):
         current = search_stack("new Windows desktop app Windows App SDK", "winui")

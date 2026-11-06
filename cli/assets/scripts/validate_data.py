@@ -123,6 +123,7 @@ STACK_OFFICIAL_HOSTS = {
     "flutter": {"api.flutter.dev", "docs.flutter.dev"},
     "swiftui": {"developer.apple.com"},
     "jetpack-compose": {"developer.android.com"},
+    "android-views": {"developer.android.com"},
     "avalonia": {"docs.avaloniaui.net"},
     "uwp": {"learn.microsoft.com"},
     "winui": {"learn.microsoft.com"},
