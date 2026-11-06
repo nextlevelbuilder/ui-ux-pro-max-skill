@@ -20,7 +20,7 @@ SCRIPTS_DIR="$REPO_ROOT/src/ui-ux-pro-max/scripts"
 SEARCH="$SCRIPTS_DIR/search.py"
 
 QUERY_OVERRIDE="${1:-}"
-EXPECTED_COUNT="${EXPECTED_STACK_COUNT:-22}"
+EXPECTED_COUNT="${EXPECTED_STACK_COUNT:-23}"
 
 smoke_query() {
   case "$1" in
@@ -37,6 +37,7 @@ smoke_query() {
     html-tailwind) echo "Tailwind z-index utility scale for layered UI" ;;
     shadcn) echo "install shadcn components with the CLI" ;;
     jetpack-compose) echo "pure Jetpack Compose UI composables" ;;
+    android-views) echo "Android drawable theme attribute selector crash" ;;
     threejs) echo "Three.js OrbitControls must be imported separately" ;;
     angular) echo "standalone Angular components for a new project" ;;
     laravel) echo "reusable Laravel Blade UI components" ;;
