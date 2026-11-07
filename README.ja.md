@@ -197,7 +197,7 @@ v2.0 の目玉機能は **Design System Generator** です。プロジェクト�
 - **74 のフォントペアリング** - Google Fonts のインポート付きで厳選したタイポグラフィの組み合わせ
 - **25 のチャートタイプ** - ダッシュボードや分析向けの推奨
 - **22 の技術スタック** - React、Next.js、Astro、Vue、Nuxt.js、Nuxt UI、Svelte、SwiftUI、React Native、Flutter、HTML+Tailwind、shadcn/ui、Jetpack Compose、Angular、Laravel、Three.js、JavaFX、WPF、WinUI 3、UWP、Avalonia、Uno Platform
-- **119 の UX ガイドライン** - ベストプラクティス、アンチパターン、アクセシビリティのルール、崩れにくいテキストレイアウト、コンパクトなラベル、キャンセル可能なインタラクション
+- **120 の UX ガイドライン** - ベストプラクティス、アンチパターン、アクセシビリティのルール、崩れにくいテキストレイアウト、コンパクトなラベル、キャンセル可能なインタラクション
 - **192 の推論ルール** - 業界別のデザインシステム生成（v2.0 の新機能）
 
 ### 崩れにくいテキストとコンパクトな UI
