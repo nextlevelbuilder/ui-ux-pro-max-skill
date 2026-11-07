@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "verifiedAt": "2026-11-04",
+  "verifiedAt": "2026-11-06",
   "counts": {
     "styles": {
       "total": 89,
@@ -19,8 +19,8 @@
     "uxGuidelines": 119,
     "motionPresets": 17,
     "chartTypes": 25,
-    "stacks": 22,
-    "stackGuidelines": 1278
+    "stacks": 23,
+    "stackGuidelines": 1286
   },
   "snapshots": {
     "google-fonts.csv": {
