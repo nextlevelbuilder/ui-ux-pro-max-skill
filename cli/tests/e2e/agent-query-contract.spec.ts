@@ -2,7 +2,7 @@ import { expect, test } from '@playwright/test';
 import { loadAllPlatformConfigs, renderSkillFile } from '../../src/utils/template.js';
 
 const DESCRIPTION =
-  'UI/UX design intelligence for web, mobile, and desktop. This skill should be used when designing, building, reviewing, or fixing interfaces, including pages, components, design systems, accessibility, interaction, responsive layout, typography, color, charts, and stack-specific UI implementation. Searchable local data: 80 searchable styles (51 active), 192 product palettes and reasoning profiles, 74 font pairings, 119 UX guidelines, 105 icons, 17 GSAP presets, 25 chart types, and 22 stacks.';
+  'UI/UX design intelligence for web, mobile, and desktop. This skill should be used when designing, building, reviewing, or fixing interfaces, including pages, components, design systems, accessibility, interaction, responsive layout, typography, color, charts, and stack-specific UI implementation. Searchable local data: 80 searchable styles (51 active), 192 product palettes and reasoning profiles, 74 font pairings, 120 UX guidelines, 105 icons, 17 GSAP presets, 25 chart types, and 22 stacks.';
 
 test('all platform metadata uses one accurate activation description', async () => {
   const configs = await loadAllPlatformConfigs();
@@ -60,6 +60,7 @@ test('quick-reference copy matches whether the section is inlined', async () => 
 
     if (config.sections.quickReference) {
       expect(content, platform).toContain('## Quick Reference');
+      expect(content, platform).toContain('`ime-composition-enter`');
       expect(content, platform).toContain('rely on the Quick Reference sections above');
       expect(content, platform).toContain('Quick Reference checklist above');
       expect(content, platform).toContain('Quick Reference → relevant section');

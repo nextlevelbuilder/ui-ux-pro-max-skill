@@ -158,7 +158,7 @@ v2.0의 핵심 기능은 **디자인 시스템 생성기**입니다. AI 기반 �
 - **글꼴 조합 74개** - Google Fonts 가져오기 코드가 포함된 엄선된 타이포그래피 조합
 - **차트 유형 25개** - 대시보드 및 분석 화면을 위한 권장 사항
 - **기술 스택 22개** - React, Next.js, Astro, Vue, Nuxt.js, Nuxt UI, Svelte, SwiftUI, React Native, Flutter, HTML+Tailwind, shadcn/ui, Jetpack Compose, Angular, Laravel, Three.js, JavaFX, WPF, WinUI 3, UWP, Avalonia, Uno Platform
-- **UX 가이드라인 119개** - 모범 사례, 안티패턴, 접근성 규칙, 유연한 텍스트 레이아웃, 간결한 레이블, 취소 가능한 상호작용
+- **UX 가이드라인 120개** - 모범 사례, 안티패턴, 접근성 규칙, 유연한 텍스트 레이아웃, 간결한 레이블, 취소 가능한 상호작용
 - **추론 규칙 192개** - 산업별 디자인 시스템 생성(v2.0의 새로운 기능)
 
 ### 유연한 텍스트와 컴팩트 UI

@@ -168,7 +168,7 @@ Mỗi quy tắc bao gồm:
 - **74 cặp phông chữ** — Các tổ hợp kiểu chữ được tuyển chọn, kèm câu lệnh import Google Fonts
 - **25 loại biểu đồ** — Đề xuất cho dashboard và phân tích dữ liệu
 - **22 tech stack** — React, Next.js, Astro, Vue, Nuxt.js, Nuxt UI, Svelte, SwiftUI, React Native, Flutter, HTML+Tailwind, shadcn/ui, Jetpack Compose, Angular, Laravel, Three.js, JavaFX, WPF, WinUI 3, UWP, Avalonia, Uno Platform
-- **119 hướng dẫn UX** — Thực hành tốt, anti-pattern, quy tắc khả năng tiếp cận, bố cục văn bản bền vững, nhãn gọn và tương tác có thể hủy
+- **120 hướng dẫn UX** — Thực hành tốt, anti-pattern, quy tắc khả năng tiếp cận, bố cục văn bản bền vững, nhãn gọn và tương tác có thể hủy
 - **192 quy tắc suy luận** — Tạo hệ thống thiết kế dành riêng cho từng ngành (MỚI trong v2.0)
 
 ### Văn bản bền vững và UI nhỏ gọn

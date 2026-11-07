@@ -164,6 +164,7 @@ Load this file when doing a UI review/audit pass, or when you need the full chec
 - `input-labels` - Visible label per input (not placeholder-only)
 - `error-placement` - Show a specific error below the related field and connect it with aria-describedby
 - `submit-feedback` - Loading then success/error state on submit
+- `ime-composition-enter` - For custom web Enter shortcuts, cancel the handled Enter default before the isComposing/229 guard; keep IME confirmation separate from submission, preserve newline/modifier policy, and provide an explicit submit button
 - `required-indicators` - Mark required fields (e.g. asterisk)
 - `empty-states` - Helpful message and action when no content
 - `toast-dismiss` - Auto-dismiss toasts in 3-5s
