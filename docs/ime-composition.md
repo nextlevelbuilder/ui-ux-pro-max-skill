@@ -26,22 +26,30 @@ const form = document.querySelector('#message-form');
 
 textarea.addEventListener('keydown', e => {
   if (e.key !== 'Enter' || e.shiftKey || e.ctrlKey || e.metaKey || e.altKey) return;
-  // Let the IME handle confirmation; do not send or clear the text.
-  if (e.isComposing || e.keyCode === 229) return;
+  // Suppress newline/implicit submit before deciding whether to send.
   e.preventDefault();
+  if (e.isComposing || e.keyCode === 229) return;
   if (!e.repeat) form.requestSubmit();
 });
 ```
 
 `isComposing` is the primary check. The deprecated `keyCode === 229` check is a
-narrow compatibility fallback for IME-handled keys on affected browsers, notably
-older Safari versions that deliver the confirming keydown after compositionend.
+narrow compatibility fallback for IME-handled keys on affected browsers, including
+Safari configurations that deliver the confirming keydown after compositionend.
 It is not a replacement for `event.key` or a general keyboard API recommendation.
-Do not infer that all current Safari versions have that event-ordering issue.
+A WebKit event-ordering fix was subsequently reverted (see issues 311717 and
+317127). Do not assume the issue is confined to older Safari releases or remove
+the fallback based only on the resolved status of issue 165004. Verify the exact
+released browser/OS/input-method combinations you support.
+
+The handled Enter path cancels its default action before checking composition,
+following Chrome's guidance, so returning from the 229 path does not leave a
+newline or implicit form submission behind. Actual IME confirmation behavior
+still needs the manual checks below.
 
 In React, read `isComposing` from `event.nativeEvent` in an
 `onKeyDown` handler. A compositionstart/compositionend flag alone does not cover
-the older Safari ordering described above. Do not submit from compositionend:
+the Safari ordering described above. Do not submit from compositionend:
 finishing text composition is not consent to send it.
 
 The `keyCode` fallback can also be read from that native event; React also exposes
@@ -55,6 +63,10 @@ available so mobile users can submit without a hardware keyboard shortcut.
 An ordinary single-line input inside a form, with no custom Enter handler, should
 keep native form submission. Do not add this handler to every input. For a custom
 single-line search shortcut, adapt the newline policy and apply the same IME guard.
+
+This example requires `HTMLFormElement.requestSubmit()` support. If your target
+browser lacks it, retain native form submission or use a separately tested submit
+button path; do not assume this example supports every legacy Safari version.
 
 ## Verification
 
@@ -80,4 +92,6 @@ OS and input-method combinations and record their versions:
 
 - [W3C UI Events: key events during composition](https://www.w3.org/TR/uievents/#events-composition-key-events)
 - [Chrome for Developers: IME-safe enter-to-submit](https://developer.chrome.com/docs/modern-web-guidance/guides/forms/ime-safe-enter-submit)
-- [WebKit issue 165004: historical event ordering and resolution](https://bugs.webkit.org/show_bug.cgi?id=165004)
+- [WebKit issue 165004: original event-ordering report](https://bugs.webkit.org/show_bug.cgi?id=165004)
+- [WebKit issue 311717: fix and later reversion discussion](https://bugs.webkit.org/show_bug.cgi?id=311717)
+- [WebKit issue 317127: disabling the changed event ordering](https://bugs.webkit.org/show_bug.cgi?id=317127)
