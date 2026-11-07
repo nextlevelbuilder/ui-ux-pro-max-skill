@@ -111,7 +111,7 @@ def load_css_variables() -> Dict[str, str]:
     """Load CSS variables from design-tokens.css."""
     variables = {}
     if TOKENS_CSS_PATH.exists():
-        content = TOKENS_CSS_PATH.read_text()
+        content = TOKENS_CSS_PATH.read_text(encoding="utf-8")
         # Extract --var-name: value patterns
         for match in re.finditer(r'(--[\w-]+):\s*([^;]+);', content):
             variables[match.group(1)] = match.group(2).strip()
@@ -221,7 +221,7 @@ def validate_file(file_path: Path, verbose: bool = False) -> ValidationResult:
         result.add_error("File not found")
         return result
 
-    content = file_path.read_text()
+    content = file_path.read_text(encoding="utf-8")
     return validate_html(content, file_path, verbose)
 
 

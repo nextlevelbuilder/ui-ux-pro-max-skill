@@ -64,7 +64,7 @@ def load_brand_colors():
     Resolves semantic token references to actual hex values.
     """
     try:
-        with open(TOKENS_PATH) as f:
+        with open(TOKENS_PATH, encoding='utf-8') as f:
             tokens = json.load(f)
 
         colors = tokens.get('primitive', {}).get('color', {})
@@ -139,7 +139,7 @@ def load_backgrounds_config():
     """Load background configuration from CSV."""
     config = {}
     try:
-        with open(BACKGROUNDS_CSV, newline='') as f:
+        with open(BACKGROUNDS_CSV, newline='', encoding='utf-8') as f:
             reader = csv.DictReader(f)
             for row in reader:
                 config[row['slide_type']] = row

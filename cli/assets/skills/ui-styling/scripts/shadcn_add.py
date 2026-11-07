@@ -49,7 +49,7 @@ class ShadcnInstaller:
             return []
 
         try:
-            with open(self.components_json) as f:
+            with open(self.components_json, encoding="utf-8") as f:
                 config = json.load(f)
 
             components_dir = self.project_root / config.get("aliases", {}).get(
@@ -69,7 +69,7 @@ class ShadcnInstaller:
         pkg_json = self.project_root / "package.json"
         if pkg_json.exists():
             try:
-                pkg = json.loads(pkg_json.read_text())
+                pkg = json.loads(pkg_json.read_text(encoding="utf-8"))
                 for section in ("dependencies", "devDependencies"):
                     version = pkg.get(section, {}).get("shadcn")
                     if version:
@@ -128,6 +128,8 @@ class ShadcnInstaller:
                 cwd=self.project_root,
                 capture_output=True,
                 text=True,
+                encoding="utf-8",
+                errors="replace",
                 check=True,
             )
 
@@ -174,6 +176,8 @@ class ShadcnInstaller:
                 cwd=self.project_root,
                 capture_output=True,
                 text=True,
+                encoding="utf-8",
+                errors="replace",
                 check=True,
             )
 
