@@ -7,6 +7,32 @@
   },
   "records": [
     {
+      "entityKind": "dataset-contract",
+      "entityId": "ime-composition-enter",
+      "sourceFile": "ux-guidelines.csv",
+      "sourceKey": {
+        "Scope": "No 120; Issue, Platform, Description, Do, Don't, code-example, and Severity fields",
+        "Boundary": "Custom web Enter shortcuts; synthetic handler checks do not establish native OS IME or Safari compatibility. keyCode 229 is a scoped legacy fallback, not a general key detector."
+      },
+      "status": "active",
+      "verifiedAt": "2026-11-07",
+      "sla": "needs-review",
+      "appliesTo": [
+        "search",
+        "design-guidance"
+      ],
+      "sources": [
+        {
+          "type": "official",
+          "ref": "https://www.w3.org/TR/uievents/#events-composition-key-events"
+        },
+        {
+          "type": "official",
+          "ref": "https://github.com/GoogleChrome/modern-web-guidance-src/blob/main/guides/forms/ime-safe-enter-submit/guide.md"
+        }
+      ]
+    },
+    {
       "entityKind": "reasoning",
       "entityId": "academic-journal-scholarly-publishing",
       "sourceFile": "ui-reasoning.csv",
