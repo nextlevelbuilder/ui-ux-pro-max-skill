@@ -60,6 +60,7 @@ test('quick-reference copy matches whether the section is inlined', async () => 
 
     if (config.sections.quickReference) {
       expect(content, platform).toContain('## Quick Reference');
+      expect(content, platform).toContain('`ime-composition-enter`');
       expect(content, platform).toContain('rely on the Quick Reference sections above');
       expect(content, platform).toContain('Quick Reference checklist above');
       expect(content, platform).toContain('Quick Reference → relevant section');
