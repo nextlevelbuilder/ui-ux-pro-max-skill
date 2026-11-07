@@ -15,6 +15,18 @@ from core import search  # noqa: E402
 
 
 class TestImeGuidance(unittest.TestCase):
+    def test_quick_references_include_the_rule(self):
+        repo = next((parent for parent in SCRIPTS.parents
+                     if (parent / "docs/ime-composition.md").is_file()), None)
+        if not repo:
+            self.skipTest("Repository quick references are not installed with scripts")
+        for relative in ("src/ui-ux-pro-max/templates/base/quick-reference.md",
+                         "cli/assets/templates/base/quick-reference.md",
+                         ".claude/skills/ui-ux-pro-max/references/quick-reference.md"):
+            with self.subTest(path=relative):
+                text = (repo / relative).read_text(encoding="utf-8")
+                self.assertIn("`ime-composition-enter`", text)
+
     def test_composition_queries_retrieve_the_rule_first(self):
         for query in ("IME composition Enter", "Korean input Enter submit",
                       "Japanese Chinese composition", "한글 IME Enter"):
@@ -58,14 +70,24 @@ vm.runInNewContext(example, {
 });
 function key(overrides, expectedSent, expectedPrevented) {
   let prevented = false;
-  handler({ key: 'Enter', shiftKey: false, ctrlKey: false, metaKey: false,
+  const event = { key: 'Enter', shiftKey: false, ctrlKey: false, metaKey: false,
     altKey: false, repeat: false, isComposing: false, keyCode: 13,
-    preventDefault() { prevented = true; }, ...overrides });
+    preventDefault() { prevented = true; }, ...overrides };
+  const composing = event.isComposing, code = event.keyCode;
+  Object.defineProperty(event, 'isComposing', { get() {
+    assert.equal(prevented, true, 'Cancel handled Enter before the IME guard');
+    return composing;
+  } });
+  Object.defineProperty(event, 'keyCode', { get() {
+    assert.equal(prevented, true, 'Cancel handled Enter before the 229 guard');
+    return code;
+  } });
+  handler(event);
   assert.equal(sent, expectedSent);
   assert.equal(prevented, expectedPrevented);
 }
-key({isComposing: true}, 0, false);
-key({isComposing: false, keyCode: 229}, 0, false);
+key({isComposing: true}, 0, true);
+key({isComposing: false, keyCode: 229}, 0, true);
 key({key: 'Process', keyCode: 229}, 0, false);
 key({key: 'a', keyCode: 65}, 0, false);
 key({shiftKey: true}, 0, false);
