@@ -3,6 +3,7 @@
 import csv
 import json
 from pathlib import Path
+import re
 import shutil
 import subprocess
 import sys
@@ -30,20 +31,35 @@ class TestImeGuidance(unittest.TestCase):
             row, = [row for row in csv.DictReader(handle)
                     if row["Issue"] == "IME Composition Enter"]
         # Evaluate the published snippet rather than a copied implementation.
+        repo = next((parent for parent in SCRIPTS.parents
+                     if (parent / "docs/ime-composition.md").is_file()), None)
+        examples = {"csv": row["Code Example Good"]}
+        if repo:
+            guide = (repo / "docs/ime-composition.md").read_text(encoding="utf-8")
+            block, = re.findall(r"```js\n(.*?)```", guide, re.S)
+            examples["docs"] = block
+        # Installed CLI/plugin copies do not ship repository-level docs.
         runner = r"""
 const vm = require('node:vm');
 const assert = require('node:assert/strict');
-const example = JSON.parse(require('node:fs').readFileSync(0, 'utf8'));
+const examples = JSON.parse(require('node:fs').readFileSync(0, 'utf8'));
+for (const [name, example] of Object.entries(examples)) {
 let handler, sent = 0;
+const textarea = { addEventListener(type, fn) {
+  assert.equal(type, 'keydown'); handler = fn;
+} };
+const form = { requestSubmit() { sent++; } };
 vm.runInNewContext(example, {
-  textarea: { addEventListener(type, fn) {
-    assert.equal(type, 'keydown'); handler = fn;
-  } },
-  form: { requestSubmit() { sent++; } }
+  textarea, form,
+  document: { querySelector(selector) {
+    if (selector === '#message') return textarea;
+    assert.equal(selector, '#message-form'); return form;
+  } }
 });
 function key(overrides, expectedSent, expectedPrevented) {
   let prevented = false;
-  handler({ key: 'Enter', shiftKey: false, isComposing: false, keyCode: 13,
+  handler({ key: 'Enter', shiftKey: false, ctrlKey: false, metaKey: false,
+    altKey: false, repeat: false, isComposing: false, keyCode: 13,
     preventDefault() { prevented = true; }, ...overrides });
   assert.equal(sent, expectedSent);
   assert.equal(prevented, expectedPrevented);
@@ -53,14 +69,20 @@ key({isComposing: false, keyCode: 229}, 0, false);
 key({key: 'Process', keyCode: 229}, 0, false);
 key({key: 'a', keyCode: 65}, 0, false);
 key({shiftKey: true}, 0, false);
+key({ctrlKey: true}, 0, false);
+key({metaKey: true}, 0, false);
+key({altKey: true}, 0, false);
 key({}, 1, true); // A separate Enter after confirmation submits once.
-console.log('6 IME/keyboard handler cases passed');
+key({repeat: true}, 1, true);
+console.log(`${name}: 10 IME/keyboard handler cases passed`);
+}
 """
         completed = subprocess.run(
-            [node, "-e", runner], input=json.dumps(row["Code Example Good"]),
+            [node, "-e", runner], input=json.dumps(examples),
             text=True, capture_output=True, check=True,
         )
-        self.assertIn("6 IME/keyboard handler cases passed", completed.stdout)
+        for name in examples:
+            self.assertIn(f"{name}: 10 IME/keyboard handler cases passed", completed.stdout)
 
 
 if __name__ == "__main__":
