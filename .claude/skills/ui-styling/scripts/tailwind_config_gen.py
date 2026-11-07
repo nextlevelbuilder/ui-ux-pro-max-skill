@@ -302,7 +302,7 @@ module.exports = {{
 
             config_content = self.generate_config_string()
 
-            self.output_path.write_text(config_content)
+            self.output_path.write_text(config_content, encoding="utf-8")
 
             return True, f"Configuration written to {self.output_path}"
 

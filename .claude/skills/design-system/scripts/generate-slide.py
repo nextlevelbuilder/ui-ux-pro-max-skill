@@ -752,7 +752,7 @@ def main():
         print(f"Demo deck generated: {output_path}")
 
     elif args.json:
-        with open(args.json, 'r') as f:
+        with open(args.json, 'r', encoding='utf-8') as f:
             data = json.load(f)
 
         html = generate_deck(data.get('slides', []), data.get('title', 'Presentation'))
