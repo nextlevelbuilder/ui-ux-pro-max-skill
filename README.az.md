@@ -196,7 +196,7 @@ Hər qaydaya bunlar daxildir:
 - **74 şrift cütü** - Google Fonts import-ları ilə seçilmiş tipoqrafiya kombinasiyaları
 - **25 qrafik növü** - Dashboard və analitika üçün tövsiyələr
 - **22 texnologiya stack-i** - React, Next.js, Astro, Vue, Nuxt.js, Nuxt UI, Svelte, SwiftUI, React Native, Flutter, HTML+Tailwind, shadcn/ui, Jetpack Compose, Angular, Laravel, Three.js, JavaFX, WPF, WinUI 3, UWP, Avalonia, Uno Platform
-- **119 UX qaydası** - Ən yaxşı təcrübələr, anti-pattern-lər, əlçatanlıq qaydaları, davamlı mətn düzülüşü, yığcam etiketlər və ləğv edilə bilən interaksiyalar
+- **120 UX qaydası** - Ən yaxşı təcrübələr, anti-pattern-lər, əlçatanlıq qaydaları, davamlı mətn düzülüşü, yığcam etiketlər və ləğv edilə bilən interaksiyalar
 - **192 əsaslandırma qaydası** - Sahəyə xas dizayn sistemi yaradılması (v2.0-da YENİ)
 
 ### Davamlı mətn və yığcam UI
