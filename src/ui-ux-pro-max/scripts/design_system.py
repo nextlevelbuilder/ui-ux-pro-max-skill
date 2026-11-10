@@ -986,11 +986,12 @@ def generate_design_system(query: str, project_name: str = None, output_format: 
 def safe_slug(name, fallback: str = "default") -> str:
     """Slugify a name into a single safe path segment.
 
-    Only [a-z0-9_-] survives; every other character (including '/', '\\' and
+    Only letters, digits, '_' and '-' survive (Unicode letters included, so
+    non-ASCII names stay distinct); every other character (including '/', '\\' and
     '.') collapses into '-'. This makes path traversal via project/page names
     (e.g. "../../etc") impossible — the slug can never leave its parent dir.
     """
-    slug = re.sub(r'[^a-z0-9_-]+', '-', str(name).lower()).strip('-')
+    slug = re.sub(r'[^\w-]+', '-', str(name).lower()).strip('-')
     return slug or fallback
 
 
