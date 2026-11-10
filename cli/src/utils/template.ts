@@ -424,11 +424,10 @@ export async function planPlatformInstallActions(
 
   const actions: string[] = [];
   const skillFileExists = await exists(skillFilePath);
-  actions.push(
-    skillFileExists && !force
-      ? `Would skip (exists, use --force): ${skillFilePath}`
-      : `Would write: ${skillFilePath}`
-  );
+  if (skillFileExists && !force) {
+    return [`Would skip (exists, use --force): ${skillFilePath}`];
+  }
+  actions.push(`Would write: ${skillFilePath}`);
   actions.push(`Would copy data + scripts: ${dataDir}`);
 
   const subSkills = await listBundledSubSkills();
@@ -438,10 +437,8 @@ export async function planPlatformInstallActions(
     );
   }
 
-  if (!skillFileExists || force) {
-    for (const path of await findLegacyInstallPaths(baseDir, aiType)) {
-      actions.push(`Would remove legacy install: ${join(baseDir, path)}`);
-    }
+  for (const path of await findLegacyInstallPaths(baseDir, aiType)) {
+    actions.push(`Would remove legacy install: ${join(baseDir, path)}`);
   }
 
   return actions;
