@@ -1,10 +1,12 @@
 import { expect, test } from '@playwright/test';
-import { mkdir, mkdtemp, readdir, writeFile } from 'node:fs/promises';
+import { mkdir, mkdtemp, readFile, readdir, writeFile } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import {
   planAllPlatformInstallActions,
   planPlatformInstallActions,
+  generatePlatformFiles,
+  listBundledSubSkills,
 } from '../../src/utils/template.js';
 
 test('dry-run plan lists the install actions for one platform', async () => {
@@ -39,12 +41,17 @@ test('dry-run skips all install actions for an existing skill unless forced', as
 
   const skipped = await planPlatformInstallActions(scratch, 'opencode');
   expect(skipped).toEqual([`Would skip (exists, use --force): ${skillFile}`]);
+  const all = await planAllPlatformInstallActions(scratch);
+  expect(all.get('opencode')).toEqual(skipped);
+  expect(await generatePlatformFiles(scratch, 'opencode')).toEqual([]);
   expect(await readdir(skillDir)).toEqual(['SKILL.md']);
+  expect(await readFile(skillFile, 'utf-8')).toBe('existing skill');
 
   const forced = await planPlatformInstallActions(scratch, 'opencode', false, true);
   expect(forced[0]).toBe(`Would write: ${skillFile}`);
   expect(forced).toContain(`Would copy data + scripts: ${skillDir}`);
-  expect(forced.some(action => action.startsWith('Would copy 6 sub-skills'))).toBe(true);
+  const subSkills = await listBundledSubSkills();
+  expect(forced.some(action => action.startsWith(`Would copy ${subSkills.length} sub-skills`))).toBe(true);
   expect(await readdir(skillDir)).toEqual(['SKILL.md']);
 });
 
