@@ -30,6 +30,15 @@ class TestPersistSlug(unittest.TestCase):
             self.assertEqual(second["status"], "success")
             self.assertNotEqual(first["design_system_dir"], second["design_system_dir"])
 
+    def test_ascii_names_slug_as_before(self):
+        self.assertEqual(safe_slug("My App!"), "my-app")
+        self.assertEqual(safe_slug("E-Commerce_v2"), "e-commerce_v2")
+        self.assertEqual(safe_slug("!!!"), "default")
+
+    def test_combining_marks_keep_names_distinct(self):
+        self.assertEqual(safe_slug("हिन्दी"), "हिन्दी")
+        self.assertNotEqual(safe_slug("कि"), safe_slug("की"))
+
     def test_slug_stays_a_single_safe_segment(self):
         for name in ("../../etc", "a/b\\c", "..", "电商/../平台"):
             slug = safe_slug(name)

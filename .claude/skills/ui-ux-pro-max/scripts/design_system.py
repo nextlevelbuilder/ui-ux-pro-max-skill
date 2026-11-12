@@ -22,6 +22,7 @@ import re
 import sys
 import io
 import tempfile
+import unicodedata
 from datetime import datetime
 from pathlib import Path
 from core import search, DATA_DIR
@@ -986,12 +987,17 @@ def generate_design_system(query: str, project_name: str = None, output_format: 
 def safe_slug(name, fallback: str = "default") -> str:
     """Slugify a name into a single safe path segment.
 
-    Only letters, digits, '_' and '-' survive (Unicode letters included, so
-    non-ASCII names stay distinct); every other character (including '/', '\\' and
-    '.') collapses into '-'. This makes path traversal via project/page names
+    Only letters, digits, combining marks, '_' and '-' survive (Unicode included,
+    so non-ASCII names stay distinct); every other character (including '/', '\\'
+    and '.') collapses into '-'. This makes path traversal via project/page names
     (e.g. "../../etc") impossible — the slug can never leave its parent dir.
     """
-    slug = re.sub(r'[^\w-]+', '-', str(name).lower()).strip('-')
+    name = unicodedata.normalize("NFC", str(name).lower())
+    # \w drops combining marks (Devanagari, Thai, Arabic vowel signs), which would
+    # merge e.g. कि and की; keep them attached to their base letter
+    kept = "".join(c if c.isalnum() or c in "_-" or unicodedata.category(c).startswith("M") else "-"
+                   for c in name)
+    slug = re.sub(r'-+', '-', kept).strip('-')
     return slug or fallback
 
 
