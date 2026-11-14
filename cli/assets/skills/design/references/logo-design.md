@@ -1,13 +1,13 @@
 # Logo Design Reference
 
-AI-powered logo design with 55+ styles, 30 color palettes, 25 industry guides. Gemini Nano Banana is the default provider; Atlas Cloud and MuAPI are also available as explicit opt-in providers.
+AI-powered logo design with 55+ styles, 30 color palettes, 25 industry guides. Gemini Nano Banana is the default provider; Atlas Cloud, MuAPI, and UberLLM are also available as explicit opt-in providers.
 
 ## Scripts
 
 | Script | Purpose |
 |--------|---------|
 | `scripts/logo/search.py` | Search styles, colors, industries; generate design briefs |
-| `scripts/logo/generate.py` | Generate logos with Gemini Nano Banana, Atlas Cloud, or MuAPI |
+| `scripts/logo/generate.py` | Generate logos with Gemini Nano Banana, Atlas Cloud, MuAPI, or UberLLM |
 | `scripts/logo/core.py` | BM25 search engine for logo data |
 
 ## Commands
@@ -41,9 +41,10 @@ python3 scripts/logo/generate.py --prompt "coffee shop vintage badge" --style vi
 python3 scripts/logo/generate.py --brand "TechFlow" --provider atlas
 python3 scripts/logo/generate.py --brand "TechFlow" --provider muapi
 python3 scripts/logo/generate.py --brand "TechFlow" --provider muapi --muapi-model nano-banana-pro
+python3 scripts/logo/generate.py --brand "TechFlow" --provider uberllm
 ```
 
-Options: `--style`, `--industry`, `--prompt`, `--provider`, `--atlas-model`, `--muapi-model`
+Options: `--style`, `--industry`, `--prompt`, `--provider`, `--atlas-model`, `--muapi-model`, `--uberllm-model`
 
 ## Available Styles
 
@@ -98,6 +99,9 @@ export ATLASCLOUD_API_KEY="your-key"
 
 # Optional MuAPI provider (no extra Python package required)
 export MUAPI_API_KEY="your-key"
+
+# Optional UberLLM provider (no extra Python package required)
+export UBERLLM_API_KEY="your-key"  # https://uberllm.dev/signup
 ```
 
 MuAPI uses the asynchronous model endpoint and prediction result API. See the
@@ -108,3 +112,10 @@ for the current model-specific schemas. The logo generator supports both documen
 model slugs and sends their shared required `prompt` plus optional `aspect_ratio`
 fields; the Pro model also accepts an optional `resolution` field that this focused
 logo workflow leaves at the provider default.
+
+UberLLM uses the OpenAI-compatible `POST /v1/images/generations` route with
+`response_format: b64_json`, so the image comes back in the answer and nothing
+else is downloaded. The default model is `google/venice-nano-banana-2-lite`;
+`--uberllm-model` takes any image model id from
+`https://api.uberllm.dev/v1/models?type=image` (`GET /v1/models/<id>` shows the
+aspect ratios each model accepts). Live prices: https://uberllm.dev/models.
