@@ -156,6 +156,20 @@ class TestWebStackFreshness(unittest.TestCase):
         )
         self.assertGreater(result["count"], 0)
 
+    def test_nuxt_docs_urls_do_not_use_dead_or_moved_paths(self):
+        forbidden = {
+            "nuxtjs": (
+                "/guide/directory-structure/", "/api/utils/dollarfetch",
+                "/api/composables/on-mounted", "/api/utils/next-tick",
+            ),
+            "nuxt-ui": ("/docs/getting-started/icons/",),
+        }
+        for stack, tokens in forbidden.items():
+            for row in _rows(stack):
+                for token in tokens:
+                    with self.subTest(stack=stack, row=row["No"], token=token):
+                        self.assertNotIn(token, row["Docs URL"])
+
     def test_stale_apis_are_not_recommended_by_active_rows(self):
         forbidden = {
             "svelte": ("$: ", "export let ", "on:click", "createeventdispatcher"),
