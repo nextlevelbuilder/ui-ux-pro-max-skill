@@ -5,6 +5,7 @@ UI/UX Pro Max Search - BM25 search engine for UI/UX style guides
 Usage: python search.py "<query>" [--domain <domain>] [--stack <stack>] [--max-results 3]
        python search.py "<query>" --design-system [-p "Project Name"]
        python search.py "<query>" --design-system --persist [-p "Project Name"] --output-dir "<project-root>" [--page "dashboard"]
+       python search.py "<query>" --design-system --persist --preview [-p "Project Name"] --output-dir "<project-root>"
        python search.py "<query>" --design-system --variance 8 --motion 9 --density 7
 
 Domains: style, color, chart, landing, product, ux, typography, google-fonts, icons, gsap, react, web
@@ -23,6 +24,9 @@ Persistence (Master + Overrides pattern):
   --page         Also create a page-specific override file in design-system/<project-slug>/pages/
   --force        Overwrite an existing MASTER.md (without this, persistence is skipped
                  if MASTER.md already exists, so prior design decisions aren't lost)
+  --preview      Write preview.html for the generated system (requires --design-system).
+                 With --persist, the file is written next to MASTER.md. Without --persist,
+                 it is written to --output-dir or to a temp file whose path is printed.
 """
 
 import argparse
@@ -122,12 +126,16 @@ if __name__ == "__main__":
     parser.add_argument("--page", type=str, default=None, help="Create page-specific override file in design-system/<project-slug>/pages/")
     parser.add_argument("--output-dir", "-o", type=str, default=None, help="Output directory for persisted files (default: current directory -- pass this explicitly, pointed at the project root)")
     parser.add_argument("--force", action="store_true", help="Overwrite an existing MASTER.md when persisting (default: skip if it already exists)")
+    parser.add_argument("--preview", action="store_true", help="Write a self-contained preview.html of the generated design system (requires --design-system)")
     # Design dials (1-10), only applied with --design-system
     parser.add_argument("--variance", type=int, choices=range(1, 11), metavar="1-10", help="DESIGN_VARIANCE dial: 1=centered/minimal, 10=bold/asymmetric (only with --design-system)")
     parser.add_argument("--motion", type=int, choices=range(1, 11), metavar="1-10", help="MOTION_INTENSITY dial: 1=subtle, 10=complex; pulls a matching GSAP snippet from motion.csv (only with --design-system)")
     parser.add_argument("--density", type=int, choices=range(1, 11), metavar="1-10", help="VISUAL_DENSITY dial: 1=spacious, 10=dense/dashboard; overrides the spacing scale (only with --design-system)")
 
     args = parser.parse_args()
+
+    if args.preview and not args.design_system:
+        parser.error("--preview requires --design-system")
 
     # Design system takes priority
     if args.design_system:
@@ -153,13 +161,17 @@ if __name__ == "__main__":
             motion=args.motion,
             density=args.density,
             force=args.force,
+            preview=args.preview,
         )
 
         if args.json:
-            print(json_module.dumps(
-                {"design_system": result["design_system"], "persistence": result["persistence"]},
-                indent=2, ensure_ascii=False,
-            ))
+            payload = {
+                "design_system": result["design_system"],
+                "persistence": result["persistence"],
+            }
+            if args.preview:
+                payload["preview"] = result["preview"]
+            print(json_module.dumps(payload, indent=2, ensure_ascii=False))
         else:
             print(result["text"])
 
@@ -176,6 +188,15 @@ if __name__ == "__main__":
                     print("")
                     print(f"📖 Usage: When building a page, check {ds_dir}/pages/[page].md first.")
                     print("   If it exists, its rules override MASTER.md. Otherwise, use MASTER.md.")
+                print("=" * 60)
+
+            if args.preview:
+                preview = result["preview"] or {}
+                print("\n" + "=" * 60)
+                if preview.get("status") == "skipped_exists":
+                    print(f"⚠️  {preview.get('message', 'preview.html already exists; not overwritten.')}")
+                else:
+                    print(f"✅ Design system preview: {preview.get('preview_file')}")
                 print("=" * 60)
     # Stack search
     elif args.stack:

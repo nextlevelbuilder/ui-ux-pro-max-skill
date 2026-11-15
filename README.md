@@ -514,7 +514,12 @@ python3 .claude/skills/ui-ux-pro-max/scripts/search.py "SaaS dashboard" --design
 
 # Also create a page-specific override file
 python3 .claude/skills/ui-ux-pro-max/scripts/search.py "SaaS dashboard" --design-system --persist -p "MyApp" --page "dashboard"
+
+# Also write a self-contained preview.html next to MASTER.md
+python3 .claude/skills/ui-ux-pro-max/scripts/search.py "SaaS dashboard" --design-system --persist --preview -p "MyApp"
 ```
+
+`--preview` requires `--design-system`. With `--persist` it writes `preview.html` next to `MASTER.md`. Without `--persist`, pass `--output-dir` to write `preview.html` there, or omit it to get a temp file whose path is printed. Existing files are skipped unless you also pass `--force`.
 
 This creates a `design-system/` folder structure:
 
@@ -522,6 +527,7 @@ This creates a `design-system/` folder structure:
 design-system/
 └── myapp/                  # One folder per project (slug of -p "MyApp")
     ├── MASTER.md           # Global Source of Truth (colors, typography, spacing, components)
+    ├── preview.html        # Static preview of the generated palette, type, and components
     └── pages/
         └── dashboard.md    # Page-specific overrides (only deviations from Master)
 ```

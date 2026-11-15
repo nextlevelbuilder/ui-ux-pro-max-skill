@@ -117,6 +117,14 @@ python3 {{SCRIPT_PATH}} "<query>" --design-system --persist -p "Project Name" --
 This also creates:
 - `design-system/<project-slug>/pages/dashboard.md` — Page-specific deviations from Master
 
+**Preview the generated system as a static page:**
+
+```bash
+python3 {{SCRIPT_PATH}} "<query>" --design-system --persist --preview -p "Project Name" --output-dir "<project-root>"
+```
+
+`--preview` is valid only with `--design-system`. With `--persist` it writes `design-system/<project-slug>/preview.html` next to `MASTER.md`. Without `--persist`, pass `--output-dir` to write `preview.html` there, or omit it to get a temp file whose path is printed. Existing `preview.html` files are skipped unless `--force` is set, same as Master.
+
 If Master already exists, a new page file is created without changing Master. Existing Master and page files are skipped by default. Read an existing `MASTER.md` before deciding whether `--force` is justified; without explicit user authorization, keep existing files unchanged.
 
 **How hierarchical retrieval works:**
