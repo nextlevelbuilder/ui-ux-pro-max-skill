@@ -127,6 +127,24 @@ python3 {{SCRIPT_PATH}} "<query>" --design-system --persist --preview -p "Projec
 
 If Master already exists, a new page file is created without changing Master. Existing Master and page files are skipped by default. Read an existing `MASTER.md` before deciding whether `--force` is justified; without explicit user authorization, keep existing files unchanged.
 
+### Step 2b-tokens: Export Design Tokens
+
+`--tokens` is valid only with `--design-system`. It prints a machine-readable token document so hex values and font names do not have to be copied by hand:
+
+```bash
+python3 {{SCRIPT_PATH}} "<query>" --design-system --tokens dtcg
+python3 {{SCRIPT_PATH}} "<query>" --design-system --tokens css
+```
+
+- `dtcg` prints W3C Design Tokens Community Group JSON (`$value` / `$type`, `color`, `font`, and a `semantic` layer such as `color.primary`, `color.on-primary`, `color.background`, `font.heading`).
+- `css` prints `:root` custom properties using the same names `../design-system/scripts/generate-tokens.cjs` emits (`--color-primary`, `--font-heading`, …).
+- Dark-mode results emit the resolved dark values and record the mode in `$description`.
+- With `--persist`, also write `tokens.json` next to `MASTER.md` (and `tokens.css` when `--tokens css`). Existing files follow the same `--force` / skip-if-exists rules. Token files are master-level only; `--page` overrides do not emit page-specific tokens.
+
+```bash
+python3 {{SCRIPT_PATH}} "<query>" --design-system --persist --tokens dtcg -p "Project Name" --output-dir "<project-root>"
+```
+
 **How hierarchical retrieval works:**
 1. Read `design-system/<project-slug>/MASTER.md`
 2. When building a specific page (e.g., "Checkout"), check `design-system/<project-slug>/pages/checkout.md`
@@ -278,7 +296,7 @@ python3 {{SCRIPT_PATH}} "streaming suspense" --stack nextjs
 
 ## Output Formats
 
-The `--design-system` flag supports two output formats:
+The `--design-system` flag supports ASCII, Markdown, JSON, and token export:
 
 ```bash
 # ASCII box (default) - best for terminal display
@@ -286,6 +304,10 @@ python3 {{SCRIPT_PATH}} "fintech crypto" --design-system
 
 # Markdown - best for documentation
 python3 {{SCRIPT_PATH}} "fintech crypto" --design-system -f markdown
+
+# Design tokens (requires --design-system)
+python3 {{SCRIPT_PATH}} "fintech crypto" --design-system --tokens dtcg
+python3 {{SCRIPT_PATH}} "fintech crypto" --design-system --tokens css
 ```
 
 ---

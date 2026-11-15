@@ -26,7 +26,8 @@ FLAGS = {
     "--domain", "-d", "--stack", "-s", "--max-results", "-n", "--json",
     "--full", "--design-system", "-ds", "--project-name", "-p", "--format",
     "-f", "--persist", "--page", "--output-dir", "-o", "--force", "--preview",
-    "--variance", "--motion", "--density",
+    "--variance", "--motion", "--density", "--tokens",
+
 }
 PLATFORM_COUNT = 25
 GUIDE_REQUIREMENTS = (

@@ -594,7 +594,9 @@ class DesignSystemGenerator:
                 "mood": best_typography.get("Mood/Style Keywords", reasoning.get("typography_mood", "")),
                 "best_for": best_typography.get("Best For", ""),
                 "google_fonts_url": best_typography.get("Google Fonts URL", ""),
-                "css_import": best_typography.get("CSS Import", "")
+                "css_import": best_typography.get("CSS Import", ""),
+                "tailwind_config": best_typography.get("Tailwind Config", ""),
+                "category": best_typography.get("Category", ""),
             },
             "key_effects": combined_effects,
             "anti_patterns": _filter_anti_patterns_for_mode(
@@ -941,11 +943,172 @@ def format_markdown(design_system: dict) -> str:
     return "\n".join(lines)
 
 
+# ============ DESIGN TOKENS (DTCG / CSS) ============
+# Token names follow SEMANTIC_COLOR_ENTRIES CSS variables so --tokens css
+# and cli/assets/skills/design-system/scripts/generate-tokens.cjs agree:
+# semantic.color.primary -> --color-primary.
+TOKEN_SCHEMA = "https://design-tokens.org/schema.json"
+_HEX6 = re.compile(r"^#[0-9A-Fa-f]{6}$")
+_TW_FONT_PAIR = re.compile(r"\['([^']+)',\s*'([^']+)'\]")
+
+
+def _css_font_family(font_name: str, tailwind_config: str = "") -> str:
+    """CSS font-family stack using the pairing's Tailwind Config fallback when present."""
+    name = (font_name or "").strip()
+    if not name:
+        return ""
+    generic = "sans-serif"
+    for listed_name, fallback in _TW_FONT_PAIR.findall(tailwind_config or ""):
+        if listed_name == name and fallback:
+            generic = fallback
+            break
+    quoted = f'"{name}"' if (" " in name or "," in name) else name
+    return f"{quoted}, {generic}"
+
+
+def _token_color_entries(colors: dict):
+    """Yield (kebab-name, hex) for 6-digit palette roles the design system actually has."""
+    for _label, key, _css_var in SEMANTIC_COLOR_ENTRIES:
+        hex_val = (colors or {}).get(key, "")
+        if not hex_val:
+            continue
+        value = str(hex_val).strip()
+        if _HEX6.match(value):
+            yield key.replace("_", "-"), value
+
+
+def _resolve_token_reference(value, tokens):
+    """Resolve DTCG `{group.token}` references the same way generate-tokens.cjs does."""
+    if not isinstance(value, str) or not value.startswith("{") or not value.endswith("}"):
+        return value
+    node = tokens
+    for key in value[1:-1].split("."):
+        if not isinstance(node, dict):
+            return value
+        node = node.get(key)
+    if isinstance(node, dict) and "$value" in node:
+        return _resolve_token_reference(node["$value"], tokens)
+    return value if node is None else node
+
+
+def _flatten_tokens(obj, tokens, prefix=None, result=None):
+    """Flatten a DTCG group into CSS custom properties (generate-tokens.cjs flattenTokens)."""
+    prefix = prefix or []
+    result = {} if result is None else result
+    if not isinstance(obj, dict):
+        return result
+    for key, value in obj.items():
+        if not isinstance(value, dict):
+            continue
+        current = prefix + [key]
+        if "$value" in value:
+            css_var = "--" + "-".join(current).replace(".", "-")
+            result[css_var] = _resolve_token_reference(value["$value"], tokens)
+        else:
+            _flatten_tokens(value, tokens, current, result)
+    return result
+
+
+def _root_block(mapping: dict) -> str:
+    body = "\n".join(f"  {name}: {value};" for name, value in mapping.items())
+    return f":root {{\n{body}\n}}"
+
+
+def build_design_tokens(design_system: dict) -> dict:
+    """W3C DTCG document for a generated design system. Invents nothing beyond CSS generic fallbacks."""
+    colors = design_system.get("colors") or {}
+    typography = design_system.get("typography") or {}
+    mode = design_system.get("color_mode") or "light"
+    derivation = (design_system.get("source_derivations") or {}).get("color_mode")
+    project = design_system.get("project_name") or "PROJECT"
+    description = f"Design tokens for {project} ({mode} mode)."
+    if derivation == "derived-dark":
+        description += " Surface colors were derived for dark mode from the product palette."
+
+    color_group = {}
+    semantic_color = {}
+    for name, hex_val in _token_color_entries(colors):
+        color_group[name] = {"$value": hex_val, "$type": "color"}
+        semantic_color[name] = {"$value": f"{{color.{name}}}", "$type": "color"}
+
+    tailwind_config = typography.get("tailwind_config", "")
+    font_group = {}
+    semantic_font = {}
+    for role in ("heading", "body"):
+        stack = _css_font_family(typography.get(role, ""), tailwind_config)
+        if not stack:
+            continue
+        font_group[role] = {"$value": stack, "$type": "fontFamily"}
+        semantic_font[role] = {"$value": f"{{font.{role}}}", "$type": "fontFamily"}
+
+    tokens = {
+        "$schema": TOKEN_SCHEMA,
+        "$description": description,
+        "color": color_group,
+        "font": font_group,
+        "semantic": {},
+    }
+    if semantic_color:
+        tokens["semantic"]["color"] = semantic_color
+    if semantic_font:
+        tokens["semantic"]["font"] = semantic_font
+
+    spacing_scale = design_system.get("spacing_scale")
+    if spacing_scale:
+        space_group = {}
+        semantic_space = {}
+        for token, px_value in spacing_scale.items():
+            if not px_value:
+                continue
+            space_group[token] = {"$value": px_value, "$type": "dimension"}
+            semantic_space[token] = {"$value": f"{{space.{token}}}", "$type": "dimension"}
+        if space_group:
+            tokens["space"] = space_group
+            tokens["semantic"]["space"] = semantic_space
+
+    return tokens
+
+
+def format_tokens_dtcg(tokens: dict) -> str:
+    """Pretty-print a DTCG document as JSON."""
+    return json.dumps(tokens, indent=2, ensure_ascii=False) + "\n"
+
+
+def format_tokens_css(tokens: dict) -> str:
+    """CSS custom properties matching generate-tokens.cjs generateCSS()."""
+    primitive = _flatten_tokens(tokens.get("primitive") or {}, tokens, ["primitive"])
+    semantic = _flatten_tokens(tokens.get("semantic") or {}, tokens, [])
+    component = _flatten_tokens(tokens.get("component") or {}, tokens, [])
+    dark_semantic = _flatten_tokens(
+        (tokens.get("dark") or {}).get("semantic") or {}, tokens, []
+    )
+    css = (
+        "/* Design Tokens - Auto-generated */\n"
+        "/* Do not edit directly - modify tokens.json instead */\n"
+        "\n"
+        "/* === PRIMITIVES === */\n"
+        f"{_root_block(primitive)}\n"
+        "\n"
+        "/* === SEMANTIC === */\n"
+        f"{_root_block(semantic)}\n"
+        "\n"
+        "/* === COMPONENTS === */\n"
+        f"{_root_block(component)}\n"
+    )
+    if dark_semantic:
+        dark_body = "\n".join(
+            f"  {name}: {value};" for name, value in dark_semantic.items()
+        )
+        css += f"\n/* === DARK MODE === */\n.dark {{\n{dark_body}\n}}\n"
+    return css
+
+
 # ============ MAIN ENTRY POINT ============
 def generate_design_system(query: str, project_name: str = None, output_format: str = "ascii",
                            persist: bool = False, page: str = None, output_dir: str = None,
                            variance: int = None, motion: int = None, density: int = None,
-                           force: bool = False, preview: bool = False) -> dict:
+                           force: bool = False, preview: bool = False,
+                           token_format: str = None) -> dict:
     """
     Main entry point for design system generation.
 
@@ -962,19 +1125,29 @@ def generate_design_system(query: str, project_name: str = None, output_format: 
         force: If True, overwrite an existing MASTER.md; otherwise persistence
                is skipped (with a status message) when one already exists
         preview: If True, write a self-contained preview.html of this system
+        token_format: Optional "dtcg" or "css". When set, "text" is the token
+               document and persist writes tokens.json (and tokens.css for css)
+               next to MASTER.md. Tokens are master-level only; --page does not
+               emit page-specific token files.
 
     Returns:
-        dict with keys: "text" (formatted design system string), "design_system"
-        (raw dict, useful for --json callers), "persistence" (result of
+        dict with keys: "text" (formatted design system or token string),
+        "design_system" (raw dict, useful for --json callers), "tokens"
+        (DTCG dict when token_format is set), "persistence" (result of
         persist_design_system(), or None if persist=False), and "preview"
         (result of write_preview_html(), or None if preview=False)
     """
     generator = DesignSystemGenerator()
     design_system = generator.generate(query, project_name, variance=variance, motion=motion, density=density)
 
+    tokens = build_design_tokens(design_system) if token_format else None
+
     persistence_result = None
     if persist:
-        persistence_result = persist_design_system(design_system, page, output_dir, query, force=force)
+        persistence_result = persist_design_system(
+            design_system, page, output_dir, query, force=force,
+            token_format=token_format, tokens=tokens,
+        )
 
     preview_result = None
     if preview:
@@ -983,13 +1156,21 @@ def generate_design_system(query: str, project_name: str = None, output_format: 
             design_system, persist=persist, output_dir=output_dir, force=force
         )
 
-    text = format_markdown(design_system) if output_format == "markdown" else format_ascii_box(design_system)
+    if token_format == "css":
+        text = format_tokens_css(tokens)
+    elif token_format == "dtcg":
+        text = format_tokens_dtcg(tokens)
+    elif output_format == "markdown":
+        text = format_markdown(design_system)
+    else:
+        text = format_ascii_box(design_system)
 
     return {
         "text": text,
         "design_system": design_system,
         "persistence": persistence_result,
         "preview": preview_result,
+        "tokens": tokens,
     }
 
 
@@ -1029,7 +1210,8 @@ def _write_persisted_file(path: Path, content: str, force: bool) -> None:
 
 
 def persist_design_system(design_system: dict, page: str = None, output_dir: str = None,
-                           page_query: str = None, force: bool = False) -> dict:
+                           page_query: str = None, force: bool = False,
+                           token_format: str = None, tokens: dict = None) -> dict:
     """
     Persist design system to design-system/<project>/ folder using Master + Overrides pattern.
 
@@ -1041,10 +1223,14 @@ def persist_design_system(design_system: dict, page: str = None, output_dir: str
         force: If True, overwrite an existing MASTER.md. If False (default) and
                MASTER.md already exists, persistence is skipped so prior design
                decisions aren't silently discarded.
+        token_format: Optional "dtcg" or "css". When set, also write tokens.json
+               next to MASTER.md (and tokens.css when css). Token files are
+               master-level only; --page does not emit page-specific tokens.
+        tokens: Optional pre-built DTCG dict; built from design_system when omitted.
 
     Returns:
         dict with created file paths and status. status is "skipped_exists" if
-        MASTER.md already existed and force was not set.
+        no files were written because they already existed and force was not set.
     """
     base_dir = Path(output_dir) if output_dir else Path.cwd()
 
@@ -1066,23 +1252,28 @@ def persist_design_system(design_system: dict, page: str = None, output_dir: str
 
     # Exclusive creation makes the default no-overwrite contract safe when
     # multiple agents persist the same project concurrently.
-    master_content = format_master_md(design_system)
+    master_content = format_master_md(design_system, token_format=token_format)
     try:
         _write_persisted_file(master_file, master_content, force)
         created_files.append(str(master_file))
     except FileExistsError:
-        if not page:
-            return {
-                "status": "skipped_exists",
-                "design_system_dir": str(design_system_dir),
-                "master_file": str(master_file),
-                "created_files": [],
-                "message": (
-                    f"{master_file} already exists and was not modified. "
-                    "Read it first to check for prior design decisions, then "
-                    "re-run with force=True / --force to overwrite."
-                ),
-            }
+        pass
+
+    if token_format:
+        token_doc = tokens if tokens is not None else build_design_tokens(design_system)
+        json_path = design_system_dir / "tokens.json"
+        try:
+            _write_persisted_file(json_path, format_tokens_dtcg(token_doc), force)
+            created_files.append(str(json_path))
+        except FileExistsError:
+            pass
+        if token_format == "css":
+            css_path = design_system_dir / "tokens.css"
+            try:
+                _write_persisted_file(css_path, format_tokens_css(token_doc), force)
+                created_files.append(str(css_path))
+            except FileExistsError:
+                pass
 
     # If page is specified, create page override file with intelligent content
     if page:
@@ -1092,14 +1283,21 @@ def persist_design_system(design_system: dict, page: str = None, output_dir: str
             _write_persisted_file(page_file, page_content, force)
             created_files.append(str(page_file))
         except FileExistsError:
-            if not created_files:
-                return {
-                    "status": "skipped_exists",
-                    "design_system_dir": str(design_system_dir),
-                    "master_file": str(master_file),
-                    "created_files": [],
-                    "message": f"{page_file} already exists and was not modified.",
-                }
+            pass
+
+    if not created_files:
+        existing = master_file if master_file.exists() else design_system_dir
+        return {
+            "status": "skipped_exists",
+            "design_system_dir": str(design_system_dir),
+            "master_file": str(master_file),
+            "created_files": [],
+            "message": (
+                f"{existing} already exists and was not modified. "
+                "Read it first to check for prior design decisions, then "
+                "re-run with force=True / --force to overwrite."
+            ),
+        }
 
     return {
         "status": "success",
@@ -1109,7 +1307,7 @@ def persist_design_system(design_system: dict, page: str = None, output_dir: str
     }
 
 
-def format_master_md(design_system: dict) -> str:
+def format_master_md(design_system: dict, token_format: str = None) -> str:
     """Format design system as MASTER.md with hierarchical override logic."""
     project = design_system.get("project_name", "PROJECT")
     pattern = design_system.get("pattern", {})
@@ -1138,6 +1336,11 @@ def format_master_md(design_system: dict) -> str:
     lines.append(f"**Project:** {project}")
     lines.append(f"**Generated:** {timestamp}")
     lines.append(f"**Category:** {design_system.get('category', 'General')}")
+    if token_format:
+        lines.append("**Token files:** `tokens.json` (W3C Design Tokens Community Group JSON).")
+        if token_format == "css":
+            lines.append("**CSS variables:** `tokens.css` (`:root` custom properties).")
+        lines.append("Token files are master-level only; `--page` overrides do not emit tokens.")
     if any(dials.get(k) is not None for k in ("variance", "motion", "density")):
         dial_parts = []
         if dials.get("variance") is not None:

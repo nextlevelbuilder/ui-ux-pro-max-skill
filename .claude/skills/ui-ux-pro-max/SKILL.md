@@ -113,6 +113,24 @@ If `design-system/<project-slug>/MASTER.md` already exists, `--persist` **skips 
 
 Read an existing `MASTER.md` before deciding whether `--force` is justified. Never use `--force` without explicit user authorization.
 
+### Step 2b-tokens: Export Design Tokens
+
+`--tokens` is valid only with `--design-system`. It prints a machine-readable token document so hex values and font names do not have to be copied by hand:
+
+```bash
+python "${CLAUDE_PLUGIN_ROOT}/.claude/skills/ui-ux-pro-max/scripts/search.py" "<query>" --design-system --tokens dtcg
+python "${CLAUDE_PLUGIN_ROOT}/.claude/skills/ui-ux-pro-max/scripts/search.py" "<query>" --design-system --tokens css
+```
+
+- `dtcg` prints W3C Design Tokens Community Group JSON (`$value` / `$type`, `color`, `font`, and a `semantic` layer such as `color.primary`, `color.on-primary`, `color.background`, `font.heading`).
+- `css` prints `:root` custom properties using the same names as the bundled design-system token compiler (`--color-primary`, `--font-heading`, …).
+- Dark-mode results emit the resolved dark values and record the mode in `$description`.
+- With `--persist`, also write `tokens.json` next to `MASTER.md` (and `tokens.css` when `--tokens css`). Existing files follow the same `--force` / skip-if-exists rules. Token files are master-level only; `--page` overrides do not emit page-specific tokens.
+
+```bash
+python "${CLAUDE_PLUGIN_ROOT}/.claude/skills/ui-ux-pro-max/scripts/search.py" "<query>" --design-system --persist --tokens dtcg -p "Project Name" --output-dir "<project-root>"
+```
+
 **Retrieval when building a specific page:**
 1. Read `design-system/<project-slug>/MASTER.md`
 2. Check if `design-system/<project-slug>/pages/<page-name>.md` exists — if so, its rules override Master
@@ -201,7 +219,7 @@ Then synthesize the design system + detailed searches and implement.
 
 ## Output Formats
 
-`--design-system` supports `-f ascii` (default, terminal display), `-f markdown` (documentation), and `--json` (machine-readable, includes the raw design system dict plus persistence status).
+`--design-system` supports `-f ascii` (default, terminal display), `-f markdown` (documentation), `--json` (machine-readable, includes the raw design system dict plus persistence status), and `--tokens dtcg|css` (W3C Design Tokens JSON or CSS variables; requires `--design-system`).
 
 ## Tips for Better Results
 
