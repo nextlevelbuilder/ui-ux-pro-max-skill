@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useId, useRef, useState } from "react";
 import { useTheme } from "next-themes";
 import { StyleData } from "@/lib/types";
 import {
@@ -25,10 +25,46 @@ export function StyleDetailModal({ style, onClose }: StyleDetailModalProps) {
   const [mounted, setMounted] = useState(false);
   useEffect(() => setMounted(true), []);
 
-  // ESC to close
+  const dialogRef = useRef<HTMLDivElement>(null);
+  const closeButtonRef = useRef<HTMLButtonElement>(null);
+  const titleId = useId();
+
+  // Move focus into the dialog on open and give it back on close to whatever
+  // had it before (the card title when opened from the keyboard), so
+  // keyboard users are not left behind the overlay.
+  useEffect(() => {
+    const opener = document.activeElement as HTMLElement | null;
+    closeButtonRef.current?.focus();
+    return () => {
+      if (opener?.isConnected) opener.focus({ preventScroll: true });
+    };
+  }, []);
+
+  // ESC to close; Tab and Shift+Tab wrap inside the dialog
   useEffect(() => {
     function handleKeyDown(e: KeyboardEvent) {
-      if (e.key === "Escape") onClose();
+      if (e.key === "Escape") {
+        onClose();
+        return;
+      }
+      if (e.key !== "Tab" || !dialogRef.current) return;
+      const focusable = Array.from(
+        dialogRef.current.querySelectorAll<HTMLElement>(
+          'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]'
+        )
+      ).filter((el) => el.tabIndex >= 0);
+      if (focusable.length === 0) return;
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      const active = document.activeElement;
+      const outside = !dialogRef.current.contains(active);
+      if (e.shiftKey && (active === first || outside)) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && (active === last || outside)) {
+        e.preventDefault();
+        first.focus();
+      }
     }
     document.addEventListener("keydown", handleKeyDown);
     return () => document.removeEventListener("keydown", handleKeyDown);
@@ -61,12 +97,17 @@ export function StyleDetailModal({ style, onClose }: StyleDetailModalProps) {
 
       {/* Modal container */}
       <div
+        ref={dialogRef}
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby={titleId}
         className="relative z-10 bg-white dark:bg-gray-900 rounded-2xl shadow-2xl w-[95vw] max-w-5xl max-h-[90vh] overflow-hidden flex flex-col"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header */}
         <div className="flex items-center justify-between px-6 py-4 border-b border-gray-200 dark:border-gray-800 shrink-0">
           <button
+            ref={closeButtonRef}
             onClick={onClose}
             className="flex items-center gap-1.5 text-sm text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 transition-colors"
           >
@@ -85,7 +126,10 @@ export function StyleDetailModal({ style, onClose }: StyleDetailModalProps) {
             </svg>
             Close
           </button>
-          <h2 className="text-lg font-semibold text-gray-900 dark:text-gray-100">
+          <h2
+            id={titleId}
+            className="text-lg font-semibold text-gray-900 dark:text-gray-100"
+          >
             {style.styleCategory}
           </h2>
           <div className="w-16" /> {/* Spacer for centering */}
