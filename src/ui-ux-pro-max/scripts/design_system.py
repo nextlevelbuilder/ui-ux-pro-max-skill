@@ -612,6 +612,7 @@ class DesignSystemGenerator:
                 "typography": best_typography.get("Font Pairing Name"),
                 "landing": best_landing.get("Pattern Name"),
             },
+            "color_mode": color_mode,
             "source_derivations": {
                 "color_mode": best_color.get("_mode_derivation"),
             },
@@ -944,7 +945,7 @@ def format_markdown(design_system: dict) -> str:
 def generate_design_system(query: str, project_name: str = None, output_format: str = "ascii",
                            persist: bool = False, page: str = None, output_dir: str = None,
                            variance: int = None, motion: int = None, density: int = None,
-                           force: bool = False) -> dict:
+                           force: bool = False, preview: bool = False) -> dict:
     """
     Main entry point for design system generation.
 
@@ -960,11 +961,13 @@ def generate_design_system(query: str, project_name: str = None, output_format: 
         density: Optional 1-10 VISUAL_DENSITY dial, overrides the spacing scale (1=spacious, 10=dense)
         force: If True, overwrite an existing MASTER.md; otherwise persistence
                is skipped (with a status message) when one already exists
+        preview: If True, write a self-contained preview.html of this system
 
     Returns:
         dict with keys: "text" (formatted design system string), "design_system"
-        (raw dict, useful for --json callers), and "persistence" (result of
-        persist_design_system(), or None if persist=False)
+        (raw dict, useful for --json callers), "persistence" (result of
+        persist_design_system(), or None if persist=False), and "preview"
+        (result of write_preview_html(), or None if preview=False)
     """
     generator = DesignSystemGenerator()
     design_system = generator.generate(query, project_name, variance=variance, motion=motion, density=density)
@@ -973,12 +976,20 @@ def generate_design_system(query: str, project_name: str = None, output_format: 
     if persist:
         persistence_result = persist_design_system(design_system, page, output_dir, query, force=force)
 
+    preview_result = None
+    if preview:
+        from preview import write_preview_html
+        preview_result = write_preview_html(
+            design_system, persist=persist, output_dir=output_dir, force=force
+        )
+
     text = format_markdown(design_system) if output_format == "markdown" else format_ascii_box(design_system)
 
     return {
         "text": text,
         "design_system": design_system,
         "persistence": persistence_result,
+        "preview": preview_result,
     }
 
 

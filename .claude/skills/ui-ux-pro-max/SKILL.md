@@ -101,6 +101,14 @@ This creates:
 
 With a page-specific override, add `--page "dashboard"` to also create `design-system/<project-slug>/pages/dashboard.md`. If Master already exists, a new page file is created without changing Master; an existing page file is skipped unless `--force` is explicitly authorized.
 
+To render the generated system as a static page, add `--preview` (only valid with `--design-system`):
+
+```bash
+python "${CLAUDE_PLUGIN_ROOT}/.claude/skills/ui-ux-pro-max/scripts/search.py" "<query>" --design-system --persist --preview -p "Project Name" --output-dir "<project-root>"
+```
+
+With `--persist`, this writes `design-system/<project-slug>/preview.html` next to Master. Without `--persist`, pass `--output-dir` to write `preview.html` there, or omit it to get a temp file whose path is printed. Existing `preview.html` files are skipped unless `--force` is set.
+
 If `design-system/<project-slug>/MASTER.md` already exists, `--persist` **skips writing and leaves it untouched** unless you also pass `--force` — check whether it exists first (and read it) before regenerating, so you don't silently discard prior decisions the user or a teammate made.
 
 Read an existing `MASTER.md` before deciding whether `--force` is justified. Never use `--force` without explicit user authorization.
