@@ -11,7 +11,7 @@ const cases = [
   ['amazonq', '.amazonq/skills/ui-ux-pro-max/scripts/search.py'],
   ['openclaw', '.agents/skills/ui-ux-pro-max/scripts/search.py'],
 ] as const;
-const SEARCH_COMMAND_COUNT = 18;
+const SEARCH_COMMAND_COUNT = 23;
 
 function extractSearchScriptPaths(content: string): string[] {
   return [...content.matchAll(/^python3\s+(\S*search\.py)\b/gm)].map(match => match[1]);

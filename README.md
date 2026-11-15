@@ -450,6 +450,10 @@ python3 .claude/skills/ui-ux-pro-max/scripts/search.py "beauty spa wellness" --d
 # Generate with Markdown output
 python3 .claude/skills/ui-ux-pro-max/scripts/search.py "fintech banking" --design-system -f markdown
 
+# Export design tokens (requires --design-system)
+python3 .claude/skills/ui-ux-pro-max/scripts/search.py "fintech dashboard" --design-system --tokens dtcg
+python3 .claude/skills/ui-ux-pro-max/scripts/search.py "fintech dashboard" --design-system --tokens css
+
 # Domain-specific search
 python3 .claude/skills/ui-ux-pro-max/scripts/search.py "glassmorphism" --domain style
 python3 .claude/skills/ui-ux-pro-max/scripts/search.py "elegant serif" --domain typography
@@ -517,9 +521,15 @@ python3 .claude/skills/ui-ux-pro-max/scripts/search.py "SaaS dashboard" --design
 
 # Also write a self-contained preview.html next to MASTER.md
 python3 .claude/skills/ui-ux-pro-max/scripts/search.py "SaaS dashboard" --design-system --persist --preview -p "MyApp"
+
+# Persist machine-readable tokens next to MASTER.md (tokens are master-level only)
+python3 .claude/skills/ui-ux-pro-max/scripts/search.py "SaaS dashboard" --design-system --persist --tokens dtcg -p "MyApp"
+python3 .claude/skills/ui-ux-pro-max/scripts/search.py "SaaS dashboard" --design-system --persist --tokens css -p "MyApp"
 ```
 
 `--preview` requires `--design-system`. With `--persist` it writes `preview.html` next to `MASTER.md`. Without `--persist`, pass `--output-dir` to write `preview.html` there, or omit it to get a temp file whose path is printed. Existing files are skipped unless you also pass `--force`.
+
+`--tokens dtcg` prints W3C Design Tokens JSON; `--tokens css` prints `:root` CSS variables named the same way as `cli/assets/skills/design-system/scripts/generate-tokens.cjs`. Both require `--design-system`. With `--persist`, `tokens.json` is written beside `MASTER.md` (and `tokens.css` when `--tokens css`). `--page` overrides do not emit token files.
 
 This creates a `design-system/` folder structure:
 
@@ -528,6 +538,8 @@ design-system/
 └── myapp/                  # One folder per project (slug of -p "MyApp")
     ├── MASTER.md           # Global Source of Truth (colors, typography, spacing, components)
     ├── preview.html        # Static preview of the generated palette, type, and components
+    ├── tokens.json         # W3C Design Tokens (when persisted with --tokens)
+    ├── tokens.css          # CSS variables (when persisted with --tokens css)
     └── pages/
         └── dashboard.md    # Page-specific overrides (only deviations from Master)
 ```
