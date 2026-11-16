@@ -1,15 +1,19 @@
 #!/usr/bin/env python3
-"""Logo generation with Gemini, Atlas Cloud, or MuAPI.
+"""Logo generation with Gemini, Atlas Cloud, MuAPI, or UberLLM.
 
 Gemini remains the default provider. Atlas Cloud is opt-in with
 ``--provider atlas`` and uses its asynchronous image generation API. MuAPI is
 opt-in with ``--provider muapi`` and uses its asynchronous image generation API
-with the selected model's prompt/aspect-ratio contract.
+with the selected model's prompt/aspect-ratio contract. UberLLM is opt-in with
+``--provider uberllm`` and uses its OpenAI-compatible image generation API; the
+image comes back inside the JSON answer, so nothing else is downloaded.
 
 Models:
 - Nano Banana (default): gemini-2.5-flash-image - fast, high-volume, low-latency
 - Nano Banana Pro (--pro): gemini-3-pro-image - professional quality, advanced reasoning
 - MuAPI Nano Banana (--provider muapi): nano-banana - hosted asynchronous image generation
+- UberLLM (--provider uberllm): google/venice-nano-banana-2-lite - any image model id from
+  https://api.uberllm.dev/v1/models?type=image via --uberllm-model
 
 Set GEMINI_FLASH_IMAGE_MODEL or GEMINI_PRO_IMAGE_MODEL to use another Gemini
 model id, for example when Google retires one of these.
@@ -30,12 +34,16 @@ Usage:
     python generate.py --brand "TechFlow" --provider atlas
     python generate.py --brand "TechFlow" --provider muapi
     python generate.py --brand "TechFlow" --provider muapi --muapi-model nano-banana-pro
+    python generate.py --brand "TechFlow" --provider uberllm
+    python generate.py --brand "TechFlow" --provider uberllm --uberllm-model venice/recraft-v4
 
 Batch mode (generates multiple variants):
     python generate.py --brand "Unikorn" --batch 9 --output-dir ./logos --pro
 """
 
 import argparse
+import base64
+import binascii
 import ipaddress
 import json
 import os
@@ -75,6 +83,7 @@ load_env()
 GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY")
 ATLASCLOUD_API_KEY = os.environ.get("ATLASCLOUD_API_KEY")
 MUAPI_API_KEY = os.environ.get("MUAPI_API_KEY")
+UBERLLM_API_KEY = os.environ.get("UBERLLM_API_KEY")
 
 # Gemini "Nano Banana" model configurations for image generation
 GEMINI_FLASH = (
@@ -93,6 +102,8 @@ ATLAS_API_BASE = "https://api.atlascloud.ai/api/v1"
 MUAPI_MODEL = "nano-banana"
 MUAPI_MODELS = ("nano-banana", "nano-banana-pro")
 MUAPI_API_BASE = "https://api.muapi.ai/api/v1"
+UBERLLM_MODEL = "google/venice-nano-banana-2-lite"
+UBERLLM_API_BASE = "https://api.uberllm.dev/v1"
 HTTP_USER_AGENT = "ui-ux-pro-max/2.5 (logo generation)"
 ATLAS_POLL_INTERVAL = 2
 ATLAS_MAX_POLLS = 90
@@ -450,6 +461,62 @@ def _generate_with_muapi(prompt, output_path, aspect_ratio, api_key, model):
     raise RuntimeError("MuAPI prediction timed out while polling")
 
 
+def _image_type_from_bytes(data):
+    """Return the MIME type of PNG, JPEG or WebP bytes, or None."""
+    if data.startswith(b"\x89PNG\r\n\x1a\n"):
+        return "image/png"
+    if data.startswith(b"\xff\xd8\xff"):
+        return "image/jpeg"
+    if data[:4] == b"RIFF" and data[8:12] == b"WEBP":
+        return "image/webp"
+    return None
+
+
+def _generate_with_uberllm(prompt, output_path, aspect_ratio, api_key, model):
+    """Generate with UberLLM and return the path the image was saved to.
+
+    The request asks for ``b64_json``, so the picture comes back in the answer
+    and the API key is only ever sent to api.uberllm.dev.
+    """
+    if not api_key:
+        raise RuntimeError("UBERLLM_API_KEY not set")
+
+    response = _json_request(
+        f"{UBERLLM_API_BASE}/images/generations",
+        api_key,
+        method="POST",
+        payload={
+            "model": model,
+            "prompt": prompt,
+            "n": 1,
+            "aspect_ratio": aspect_ratio,
+            "response_format": "b64_json",
+        },
+    )
+    data = response.get("data") if isinstance(response, dict) else None
+    first = data[0] if isinstance(data, list) and data else None
+    encoded = first.get("b64_json") if isinstance(first, dict) else None
+    if not isinstance(encoded, str) or not encoded:
+        raise RuntimeError("UberLLM did not return an image")
+    try:
+        image_data = base64.b64decode(encoded, validate=True)
+    except (binascii.Error, ValueError) as exc:
+        raise RuntimeError("UberLLM returned invalid image data") from exc
+
+    mime_type = _image_type_from_bytes(image_data)
+    if mime_type is None:
+        raise RuntimeError("UberLLM output is not a PNG, JPEG or WebP image")
+    saved_path = _path_for_image_type(output_path, mime_type)
+    if saved_path != output_path:
+        print(
+            f"UberLLM returned {mime_type}, "
+            f"so saving as {saved_path} instead of {output_path}"
+        )
+    with open(saved_path, "wb") as output_file:
+        output_file.write(image_data)
+    return saved_path
+
+
 def _path_for_image_type(output_path, mime_type):
     """Return output_path with the extension of the returned image type.
 
@@ -534,8 +601,9 @@ def generate_logo(
     provider="gemini",
     atlas_model=ATLAS_MODEL,
     muapi_model=MUAPI_MODEL,
+    uberllm_model=UBERLLM_MODEL,
 ):
-    """Generate a logo using Gemini, Atlas Cloud, or MuAPI image generation.
+    """Generate a logo using Gemini, Atlas Cloud, MuAPI, or UberLLM image generation.
 
     Args:
         aspect_ratio: Image aspect ratio. Options: "1:1", "16:9", "9:16", "4:3", "3:4"
@@ -557,6 +625,8 @@ def generate_logo(
         model_label = f"Atlas Cloud ({atlas_model})"
     elif provider == "muapi":
         model_label = f"MuAPI ({muapi_model})"
+    elif provider == "uberllm":
+        model_label = f"UberLLM ({uberllm_model})"
     else:
         model_label = (
             f"Nano Banana Pro ({GEMINI_PRO})"
@@ -586,6 +656,14 @@ def generate_logo(
                 MUAPI_API_KEY,
                 muapi_model,
             )
+        elif provider == "uberllm":
+            output_path = _generate_with_uberllm(
+                full_prompt,
+                output_path,
+                ratio,
+                UBERLLM_API_KEY,
+                uberllm_model,
+            )
         else:
             output_path = _generate_with_gemini(full_prompt, output_path, ratio, use_pro)
 
@@ -608,6 +686,7 @@ def generate_batch(
     provider="gemini",
     atlas_model=ATLAS_MODEL,
     muapi_model=MUAPI_MODEL,
+    uberllm_model=UBERLLM_MODEL,
 ):
     """Generate multiple logo variants with different styles"""
 
@@ -633,6 +712,8 @@ def generate_batch(
         if provider == "atlas"
         else f"MuAPI ({muapi_model})"
         if provider == "muapi"
+        else f"UberLLM ({uberllm_model})"
+        if provider == "uberllm"
         else f"Nano Banana {'Pro' if use_pro else 'Flash'}"
     )
     ratio = aspect_ratio if aspect_ratio in ASPECT_RATIOS else DEFAULT_ASPECT_RATIO
@@ -670,6 +751,7 @@ def generate_batch(
             provider=provider,
             atlas_model=atlas_model,
             muapi_model=muapi_model,
+            uberllm_model=uberllm_model,
         )
 
         if result:
@@ -691,7 +773,7 @@ def generate_batch(
 
 def main():
     parser = argparse.ArgumentParser(
-        description="Generate logos using Gemini, Atlas Cloud, or MuAPI"
+        description="Generate logos using Gemini, Atlas Cloud, MuAPI, or UberLLM"
     )
     parser.add_argument("--prompt", "-p", type=str, help="Logo description prompt")
     parser.add_argument("--brand", "-b", type=str, help="Brand name")
@@ -718,7 +800,7 @@ def main():
     )
     parser.add_argument(
         "--provider",
-        choices=["gemini", "atlas", "muapi"],
+        choices=["gemini", "atlas", "muapi", "uberllm"],
         default="gemini",
         help="Image provider (default: gemini)",
     )
@@ -732,6 +814,11 @@ def main():
         choices=MUAPI_MODELS,
         default=MUAPI_MODEL,
         help=f"MuAPI image model (default: {MUAPI_MODEL})",
+    )
+    parser.add_argument(
+        "--uberllm-model",
+        default=UBERLLM_MODEL,
+        help=f"UberLLM image model (default: {UBERLLM_MODEL})",
     )
     parser.add_argument(
         "--aspect-ratio",
@@ -788,6 +875,7 @@ def main():
             provider=args.provider,
             atlas_model=args.atlas_model,
             muapi_model=args.muapi_model,
+            uberllm_model=args.uberllm_model,
         )
         if not results:
             sys.exit(1)
@@ -803,6 +891,7 @@ def main():
             provider=args.provider,
             atlas_model=args.atlas_model,
             muapi_model=args.muapi_model,
+            uberllm_model=args.uberllm_model,
         )
         if saved_path is None:
             sys.exit(1)

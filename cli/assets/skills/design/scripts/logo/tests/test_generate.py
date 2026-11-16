@@ -1,3 +1,4 @@
+import base64
 import importlib.util
 import io
 import os
@@ -315,6 +316,74 @@ class MuapiGenerationTests(unittest.TestCase):
             )
 
         json_request.assert_called_once()
+
+
+class UberllmGenerationTests(unittest.TestCase):
+    def setUp(self):
+        temp_dir = tempfile.TemporaryDirectory()
+        self.addCleanup(temp_dir.cleanup)
+        self.dir = Path(temp_dir.name)
+
+    @staticmethod
+    def _answer(data):
+        return {"data": [{"b64_json": base64.b64encode(data).decode("ascii")}]}
+
+    @patch.object(logo_generate, "_json_request")
+    def test_uberllm_posts_once_and_saves_the_returned_image(self, json_request):
+        json_request.return_value = self._answer(PNG)
+        output = str(self.dir / "logo.png")
+
+        saved = logo_generate._generate_with_uberllm(
+            "logo prompt", output, "1:1", "uberllm-key", "vendor/model"
+        )
+
+        json_request.assert_called_once_with(
+            f"{logo_generate.UBERLLM_API_BASE}/images/generations",
+            "uberllm-key",
+            method="POST",
+            payload={
+                "model": "vendor/model",
+                "prompt": "logo prompt",
+                "n": 1,
+                "aspect_ratio": "1:1",
+                "response_format": "b64_json",
+            },
+        )
+        self.assertEqual(saved, output)
+        self.assertEqual(Path(saved).read_bytes(), PNG)
+
+    @patch.object(logo_generate, "_json_request")
+    def test_uberllm_uses_the_extension_of_the_returned_type(self, json_request):
+        json_request.return_value = self._answer(JPEG)
+
+        with patch("sys.stdout", new_callable=io.StringIO):
+            saved = logo_generate._generate_with_uberllm(
+                "logo prompt", str(self.dir / "logo.png"), "1:1", "k", "m"
+            )
+
+        self.assertEqual(saved, str(self.dir / "logo.jpg"))
+        self.assertFalse((self.dir / "logo.png").exists())
+
+    @patch.object(logo_generate, "_json_request")
+    def test_uberllm_rejects_missing_or_non_image_data(self, json_request):
+        for answer, message in (
+            ({"data": []}, "did not return an image"),
+            ({"data": [{"b64_json": "not base64!"}]}, "invalid image data"),
+            (self._answer(b"<html>"), "not a PNG, JPEG or WebP"),
+        ):
+            with self.subTest(message=message):
+                json_request.return_value = answer
+                with self.assertRaisesRegex(RuntimeError, message):
+                    logo_generate._generate_with_uberllm(
+                        "logo prompt", str(self.dir / "logo.png"), "1:1", "k", "m"
+                    )
+        self.assertEqual(list(self.dir.iterdir()), [])
+
+    def test_uberllm_requires_api_key(self):
+        with self.assertRaisesRegex(RuntimeError, "UBERLLM_API_KEY not set"):
+            logo_generate._generate_with_uberllm(
+                "logo prompt", "logo.png", "1:1", None, "vendor/model"
+            )
 
 
 class GeminiImageTypeTests(unittest.TestCase):

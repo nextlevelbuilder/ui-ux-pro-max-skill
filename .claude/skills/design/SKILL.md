@@ -1,6 +1,6 @@
 ---
 name: design
-description: "Comprehensive design skill: brand identity, design tokens, UI styling, logo generation (55 styles, Gemini, Atlas Cloud, or MuAPI AI), corporate identity program (50 deliverables, CIP mockups), HTML presentations (Chart.js), banner design (22 styles, social/ads/web/print), icon design (15 styles, SVG, Gemini 3.1 Pro), social photos (HTML→screenshot, multi-platform). Actions: design logo, create CIP, generate mockups, build slides, design banner, generate icon, create social photos, social media images, brand identity, design system. Platforms: Facebook, Twitter, LinkedIn, YouTube, Instagram, Pinterest, TikTok, Threads, Google Ads."
+description: "Comprehensive design skill: brand identity, design tokens, UI styling, logo generation (55 styles, Gemini, Atlas Cloud, MuAPI, or UberLLM AI), corporate identity program (50 deliverables, CIP mockups), HTML presentations (Chart.js), banner design (22 styles, social/ads/web/print), icon design (15 styles, SVG, Gemini 3.1 Pro), social photos (HTML→screenshot, multi-platform). Actions: design logo, create CIP, generate mockups, build slides, design banner, generate icon, create social photos, social media images, brand identity, design system. Platforms: Facebook, Twitter, LinkedIn, YouTube, Instagram, Pinterest, TikTok, Threads, Google Ads."
 argument-hint: "[design-type] [context]"
 license: MIT
 metadata:
@@ -44,7 +44,7 @@ Script paths in this skill and its `references/` are relative to the directory t
 ## Logo Design (Built-in)
 
 55+ styles, 30 color palettes, 25 industry guides. Gemini Nano Banana, Atlas
-Cloud, and MuAPI image generation.
+Cloud, MuAPI, and UberLLM image generation.
 
 ### Logo: Generate Design Brief
 
@@ -70,6 +70,7 @@ python3 scripts/logo/generate.py --prompt "coffee shop vintage badge" --style vi
 python3 scripts/logo/generate.py --brand "TechFlow" --provider atlas
 python3 scripts/logo/generate.py --brand "TechFlow" --provider muapi
 python3 scripts/logo/generate.py --brand "TechFlow" --provider muapi --muapi-model nano-banana-pro
+python3 scripts/logo/generate.py --brand "TechFlow" --provider uberllm
 ```
 
 **IMPORTANT:** When scripts fail, try to fix them directly.
@@ -314,6 +315,9 @@ pip install google-genai pillow
 
 # Optional MuAPI provider (no extra Python package required)
 export MUAPI_API_KEY="your-key"
+
+# Optional UberLLM provider (no extra Python package required)
+export UBERLLM_API_KEY="your-key"  # https://uberllm.dev/signup
 ```
 
 MuAPI uses the asynchronous model endpoint and prediction result API. See the
@@ -324,6 +328,13 @@ for the current model-specific schemas. The logo generator supports both documen
 model slugs and sends their shared required `prompt` plus optional `aspect_ratio`
 fields; the Pro model also accepts an optional `resolution` field that this focused
 logo workflow leaves at the provider default.
+
+UberLLM uses the OpenAI-compatible `POST /v1/images/generations` route with
+`response_format: b64_json`, so the image comes back in the answer and nothing
+else is downloaded. The default model is `google/venice-nano-banana-2-lite`;
+`--uberllm-model` takes any image model id from
+`https://api.uberllm.dev/v1/models?type=image` (`GET /v1/models/<id>` shows the
+aspect ratios each model accepts). Live prices: https://uberllm.dev/models.
 
 > **Note for Windows:** Use `python` instead of `pip` where needed (e.g., `python -m pip install ...`).
 
