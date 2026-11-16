@@ -1,6 +1,8 @@
 "use client";
 
 import { StyleData } from "@/lib/types";
+import { hasTextSelectionIn, isNestedControlClick } from "@/lib/nestedControl";
+import { StyleCardTitle } from "./StyleCardTitle";
 import { StylePreview } from "./StylePreview";
 import { ColorPalette } from "./ColorPalette";
 import { MetadataBadges } from "./MetadataBadges";
@@ -17,14 +19,19 @@ export function StyleCard({ style, onSelect }: StyleCardProps) {
   return (
     <div
       className="bg-white dark:bg-gray-900 rounded-xl border border-gray-200 dark:border-gray-800 overflow-hidden hover:shadow-lg dark:hover:shadow-gray-900/50 transition-shadow cursor-pointer"
-      onClick={() => onSelect?.(style)}
+      onClick={(e) => {
+        if (isNestedControlClick(e.target, e.currentTarget)) return;
+        if (hasTextSelectionIn(window.getSelection(), e.currentTarget)) return;
+        onSelect?.(style);
+      }}
     >
       {/* Header */}
       <div className="px-4 pt-4 pb-2">
         <div className="flex items-start justify-between gap-2">
-          <h3 className="text-sm font-semibold text-gray-900 dark:text-gray-100 leading-tight">
-            {style.styleCategory}
-          </h3>
+          <StyleCardTitle
+            name={style.styleCategory}
+            onOpen={onSelect ? () => onSelect(style) : undefined}
+          />
           <div className="flex items-center gap-1.5 shrink-0">
             <span className="text-[10px] px-2 py-0.5 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-500 dark:text-gray-400">
               {style.type}

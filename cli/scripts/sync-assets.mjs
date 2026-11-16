@@ -3,10 +3,12 @@
 import { createHash } from 'node:crypto';
 import {
   access,
+  lstat,
   mkdir,
   readdir,
   readFile,
   rm,
+  unlink,
   writeFile,
 } from 'node:fs/promises';
 import { dirname, join, relative, resolve } from 'node:path';
@@ -36,6 +38,10 @@ const subSkills = ['banner-design', 'brand', 'design', 'design-system', 'slides'
 // are mirrored -- never templates/ or SKILL.md itself.
 const orchestratorSkillTargetRoot = join(skillsSourceRoot, 'ui-ux-pro-max');
 const orchestratorDirsToSync = ['data', 'scripts'];
+
+const stylesSourcePath = join(sourceRoot, 'data', 'styles.csv');
+const galleryStylesAsset = 'gallery/data/styles.csv';
+const galleryStylesPath = join(repoRoot, galleryStylesAsset);
 
 // ponytail: only text is bundled. Excludes (a) heavy binary assets — the
 // canvas fonts are ~5.8MB and a skill registers from its SKILL.md, not its
@@ -87,6 +93,15 @@ async function listFiles(root) {
 async function fileHash(path) {
   const content = toLF(await readFile(path, 'utf8'));
   return createHash('sha256').update(content).digest('hex');
+}
+
+async function galleryStylesStat() {
+  try {
+    return await lstat(galleryStylesPath);
+  } catch (error) {
+    if (error.code !== 'ENOENT') throw error;
+    return undefined;
+  }
 }
 
 // Compares one source dir against one target dir; pushes human-readable
@@ -162,6 +177,17 @@ async function checkAssets() {
     );
   }
 
+  const galleryStat = await galleryStylesStat();
+  if (!(await exists(stylesSourcePath))) {
+    drift.push('missing source file: src/ui-ux-pro-max/data/styles.csv');
+  } else if (!galleryStat) {
+    drift.push(`missing asset file: ${galleryStylesAsset}`);
+  } else if (!galleryStat.isFile()) {
+    drift.push(`expected a regular asset file: ${galleryStylesAsset}`);
+  } else if ((await fileHash(stylesSourcePath)) !== (await fileHash(galleryStylesPath))) {
+    drift.push(`stale asset file: ${galleryStylesAsset}`);
+  }
+
   if (drift.length > 0) {
     console.error('Assets are out of sync with src/ui-ux-pro-max:');
     for (const item of drift) {
@@ -175,6 +201,7 @@ async function checkAssets() {
 }
 
 async function syncAssets() {
+  const galleryStyles = toLF(await readFile(stylesSourcePath, 'utf8'));
   assertInsideRepo(assetRoot);
   await mkdir(assetRoot, { recursive: true });
 
@@ -197,7 +224,15 @@ async function syncAssets() {
     await syncDir(join(sourceRoot, dir), join(orchestratorSkillTargetRoot, dir));
   }
 
-  console.log('Synced CLI assets + .claude/skills/ui-ux-pro-max data/scripts from src/ui-ux-pro-max, and 6 sub-skills (normalized to LF).');
+  const galleryTarget = assertInsideRepo(galleryStylesPath);
+  await mkdir(dirname(galleryTarget), { recursive: true });
+  // Replace the old symlink without writing through it into the source tree.
+  if ((await galleryStylesStat())?.isSymbolicLink()) {
+    await unlink(galleryTarget);
+  }
+  await writeFile(galleryTarget, galleryStyles);
+
+  console.log('Synced CLI assets, .claude/skills/ui-ux-pro-max data/scripts, and gallery styles from src/ui-ux-pro-max, plus 6 sub-skills (normalized to LF).');
 }
 
 if (checkOnly) {

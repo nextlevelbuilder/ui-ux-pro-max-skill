@@ -55,6 +55,59 @@ test('dry-run skips all install actions for an existing skill unless forced', as
   expect(await readdir(skillDir)).toEqual(['SKILL.md']);
 });
 
+for (const force of [false, true]) {
+  test(`dry-run matches the sub-skills copied ${force ? 'with --force' : 'without --force'}`, async ({}, testInfo) => {
+    const scratch = testInfo.outputPath('project');
+    const skillsDir = join(scratch, '.opencode', 'skills');
+    const brandDir = join(skillsDir, 'brand');
+    const brandFile = join(brandDir, 'SKILL.md');
+    const existingBrand = 'existing brand skill';
+    await mkdir(brandDir, { recursive: true });
+    await writeFile(brandFile, existingBrand);
+
+    const bundledSkills = await listBundledSubSkills();
+    const copiedSkills = force ? bundledSkills : bundledSkills.filter(name => name !== 'brand');
+    const actions = await planPlatformInstallActions(scratch, 'opencode', false, force);
+    expect(actions).toContain(
+      `Would copy ${copiedSkills.length} sub-skills (${copiedSkills.join(', ')}): ${skillsDir}`
+    );
+    expect(await readdir(skillsDir)).toEqual(['brand']);
+    expect(await readFile(brandFile, 'utf-8')).toBe(existingBrand);
+
+    await generatePlatformFiles(scratch, 'opencode', false, force);
+    for (const name of copiedSkills) {
+      const bundledFile = new URL(`../../assets/skills/${name}/SKILL.md`, import.meta.url);
+      const installedFile = join(skillsDir, name, 'SKILL.md');
+      expect(await readFile(installedFile, 'utf-8')).toBe(await readFile(bundledFile, 'utf-8'));
+    }
+    if (!force) {
+      expect(await readFile(brandFile, 'utf-8')).toBe(existingBrand);
+    }
+  });
+}
+
+test('dry-run omits the sub-skill copy action when all target directories exist', async ({}, testInfo) => {
+  const scratch = testInfo.outputPath('project');
+  const skillsDir = join(scratch, '.opencode', 'skills');
+  const bundledSkills = await listBundledSubSkills();
+  for (const name of bundledSkills) {
+    await mkdir(join(skillsDir, name), { recursive: true });
+  }
+
+  const actions = await planPlatformInstallActions(scratch, 'opencode');
+  const orchestratorDir = join(skillsDir, 'ui-ux-pro-max');
+  expect(actions).toEqual([
+    `Would write: ${join(orchestratorDir, 'SKILL.md')}`,
+    `Would copy data + scripts: ${orchestratorDir}`,
+  ]);
+  expect((await readdir(skillsDir)).sort()).toEqual(bundledSkills);
+
+  await generatePlatformFiles(scratch, 'opencode');
+  for (const name of bundledSkills) {
+    expect(await readdir(join(skillsDir, name))).toEqual([]);
+  }
+});
+
 test('dry-run plan supports the zcode platform layout', async () => {
   const scratch = await mkdtemp(join(tmpdir(), 'uipro-dry-run-zcode-'));
 

@@ -30,6 +30,7 @@ python3 src/ui-ux-pro-max/scripts/search.py "<query>" --domain <domain> [-n <max
 ```bash
 python3 src/ui-ux-pro-max/scripts/search.py "<query>" --design-system --variance <1-10> --motion <1-10> --density <1-10>
 ```
+`--preview` (only with `--design-system`) writes a self-contained `preview.html` of the generated system. With `--persist` it lands next to `MASTER.md`; without `--persist` it writes to `--output-dir` or a temp file.
 `--variance` biases style selection (centered/minimal → bold/asymmetric), `--motion` attaches a matching GSAP snippet from `motion.csv`, `--density` overrides the spacing-scale tokens (spacious → dense/dashboard). Any dial left unset behaves exactly as before.
 
 **RTL filter (optional, `style` and `product` only):**

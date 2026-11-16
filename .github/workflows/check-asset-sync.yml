@@ -6,6 +6,7 @@ on:
       - "src/ui-ux-pro-max/**"
       - "cli/assets/**"
       - ".claude/skills/**"
+      - "gallery/data/styles.csv"
       - "cli/scripts/sync-assets.mjs"
       - "cli/package.json"
       - "scripts/evaluate-relevance.py"
@@ -18,6 +19,7 @@ on:
       - "cli/assets/**"
       - "cli/package.json"
       - ".claude/skills/**"
+      - "gallery/data/styles.csv"
       - "cli/scripts/sync-assets.mjs"
       - ".github/workflows/check-asset-sync.yml"
 
@@ -32,10 +34,8 @@ jobs:
           node-version: 20
       # check:assets runs `node scripts/sync-assets.mjs --check`, which uses only
       # node builtins (no npm install needed) and normalizes CRLF/LF before
-      # hashing, so it compares content rather than line endings. It checks
-      # both cli/assets/ AND .claude/skills/ui-ux-pro-max/{data,scripts} --
-      # the latter is what Claude Code actually loads when this repo is
-      # installed as a plugin, and previously had no sync check at all.
+      # hashing. It checks cli/assets/, the plugin's data/scripts mirror,
+      # and gallery/data/styles.csv against their source files.
       - name: Check assets are in sync with source of truth
         run: npm --prefix cli run check:assets
       # Path contract (#474): skill instructions and scripts reach their scripts

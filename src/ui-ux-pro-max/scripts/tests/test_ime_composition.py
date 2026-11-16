@@ -20,9 +20,11 @@ class TestImeGuidance(unittest.TestCase):
                      if (parent / "docs/ime-composition.md").is_file()), None)
         if not repo:
             self.skipTest("Repository quick references are not installed with scripts")
-        for relative in ("src/ui-ux-pro-max/templates/base/quick-reference.md",
-                         "cli/assets/templates/base/quick-reference.md",
-                         ".claude/skills/ui-ux-pro-max/references/quick-reference.md"):
+        for relative in (
+            Path("src/ui-ux-pro-max/templates/base/quick-reference.md"),
+            Path("cli/assets/templates/base/quick-reference.md"),
+            Path(".claude", "skills", "ui-ux-pro-max", "references", "quick-reference.md"),
+        ):
             with self.subTest(path=relative):
                 text = (repo / relative).read_text(encoding="utf-8")
                 self.assertIn("`ime-composition-enter`", text)

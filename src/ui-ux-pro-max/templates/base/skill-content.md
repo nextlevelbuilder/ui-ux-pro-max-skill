@@ -117,7 +117,33 @@ python3 {{SCRIPT_PATH}} "<query>" --design-system --persist -p "Project Name" --
 This also creates:
 - `design-system/<project-slug>/pages/dashboard.md` — Page-specific deviations from Master
 
+**Preview the generated system as a static page:**
+
+```bash
+python3 {{SCRIPT_PATH}} "<query>" --design-system --persist --preview -p "Project Name" --output-dir "<project-root>"
+```
+
+`--preview` is valid only with `--design-system`. With `--persist` it writes `design-system/<project-slug>/preview.html` next to `MASTER.md`. Without `--persist`, pass `--output-dir` to write `preview.html` there, or omit it to get a temp file whose path is printed. Existing `preview.html` files are skipped unless `--force` is set, same as Master.
+
 If Master already exists, a new page file is created without changing Master. Existing Master and page files are skipped by default. Read an existing `MASTER.md` before deciding whether `--force` is justified; without explicit user authorization, keep existing files unchanged.
+
+### Step 2b-tokens: Export Design Tokens
+
+`--tokens` is valid only with `--design-system`. It prints a machine-readable token document so hex values and font names do not have to be copied by hand:
+
+```bash
+python3 {{SCRIPT_PATH}} "<query>" --design-system --tokens dtcg
+python3 {{SCRIPT_PATH}} "<query>" --design-system --tokens css
+```
+
+- `dtcg` prints W3C Design Tokens Community Group JSON (`$value` / `$type`, `color`, `font`, and a `semantic` layer such as `color.primary`, `color.on-primary`, `color.background`, `font.heading`).
+- `css` prints `:root` custom properties using the same names `../design-system/scripts/generate-tokens.cjs` emits (`--color-primary`, `--font-heading`, …).
+- Dark-mode results emit the resolved dark values and record the mode in `$description`.
+- With `--persist`, also write `tokens.json` next to `MASTER.md` (and `tokens.css` when `--tokens css`). Existing files follow the same `--force` / skip-if-exists rules. Token files are master-level only; `--page` overrides do not emit page-specific tokens.
+
+```bash
+python3 {{SCRIPT_PATH}} "<query>" --design-system --persist --tokens dtcg -p "Project Name" --output-dir "<project-root>"
+```
 
 **How hierarchical retrieval works:**
 1. Read `design-system/<project-slug>/MASTER.md`
@@ -270,7 +296,7 @@ python3 {{SCRIPT_PATH}} "streaming suspense" --stack nextjs
 
 ## Output Formats
 
-The `--design-system` flag supports two output formats:
+The `--design-system` flag supports ASCII, Markdown, JSON, and token export:
 
 ```bash
 # ASCII box (default) - best for terminal display
@@ -278,6 +304,10 @@ python3 {{SCRIPT_PATH}} "fintech crypto" --design-system
 
 # Markdown - best for documentation
 python3 {{SCRIPT_PATH}} "fintech crypto" --design-system -f markdown
+
+# Design tokens (requires --design-system)
+python3 {{SCRIPT_PATH}} "fintech crypto" --design-system --tokens dtcg
+python3 {{SCRIPT_PATH}} "fintech crypto" --design-system --tokens css
 ```
 
 ---
