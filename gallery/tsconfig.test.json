@@ -20,8 +20,11 @@
     "lib/parseStyles.ts",
     "lib/filterStyles.ts",
     "lib/parseStyles.test.ts",
+    "lib/nestedControl.ts",
     "components/MetadataBadges.tsx",
     "components/FilterBar.tsx",
-    "components/metadata-badges.test.tsx"
+    "components/StyleCardTitle.tsx",
+    "components/metadata-badges.test.tsx",
+    "components/style-card.test.tsx"
   ]
 }
