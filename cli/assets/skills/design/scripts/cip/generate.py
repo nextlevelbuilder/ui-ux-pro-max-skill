@@ -33,6 +33,14 @@ from datetime import datetime
 sys.path.insert(0, str(Path(__file__).parent))
 from core import search, get_cip_brief
 
+# These scripts print emoji, which raises UnicodeEncodeError when stdout/stderr is
+# a cp1252 pipe or file (Windows without PYTHONUTF8). Same intent as the guard in
+# ui-ux-pro-max/scripts/search.py.
+for _stream in (sys.stdout, sys.stderr):
+    _encoding = getattr(_stream, "encoding", None)
+    if _encoding and _encoding.lower().replace("-", "") != "utf8" and hasattr(_stream, "reconfigure"):
+        _stream.reconfigure(encoding="utf-8", errors=_stream.errors)
+
 
 def load_logo_image(logo_path):
     """Load logo image using PIL for Gemini image editing"""
