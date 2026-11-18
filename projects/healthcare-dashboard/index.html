@@ -4,34 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>HealthView - Analytics Dashboard</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link rel="stylesheet" href="styles.css">
+  <script src="vendor/chart.umd.min.js"></script><!-- Chart.js 4.6.1, MIT -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&family=Fira+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            primary: '#3B82F6',
-            secondary: '#60A5FA',
-            accent: '#F97316',
-            surface: '#F8FAFC',
-            text: '#1E293B',
-            success: '#10B981',
-            warning: '#F59E0B',
-            danger: '#EF4444',
-          },
-          fontFamily: {
-            heading: ['Fira Sans', 'sans-serif'],
-            body: ['Fira Sans', 'sans-serif'],
-            mono: ['Fira Code', 'monospace'],
-          }
-        }
-      }
-    }
-  </script>
   <style>
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after {
