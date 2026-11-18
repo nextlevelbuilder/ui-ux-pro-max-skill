@@ -1,0 +1,20 @@
+{
+  "name": "ui-ux-pro-max-skill",
+  "interface": {
+    "displayName": "UI UX Pro Max"
+  },
+  "plugins": [
+    {
+      "name": "ui-ux-pro-max",
+      "source": {
+        "source": "local",
+        "path": "./"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "design"
+    }
+  ]
+}
