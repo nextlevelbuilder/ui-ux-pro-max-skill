@@ -14,7 +14,7 @@
 
 <p align="center">
   <a href="https://github.com/nextlevelbuilder/ui-ux-pro-max-skill/releases"><img src="https://img.shields.io/github/v/release/nextlevelbuilder/ui-ux-pro-max-skill?style=for-the-badge&color=blue" alt="Version GitHub"></a>
-  <img src="https://img.shields.io/badge/reasoning_rules-192-green?style=for-the-badge" alt="192 règles de raisonnement">
+  <img src="https://img.shields.io/badge/reasoning_rules-194-green?style=for-the-badge" alt="194 règles de raisonnement">
   <img src="https://img.shields.io/badge/UI_styles-80_searchable-purple?style=for-the-badge" alt="80 styles d'interface consultables">
   <img src="https://img.shields.io/badge/python-3.x-yellow?style=for-the-badge&logo=python&logoColor=white" alt="Python 3.x">
   <a href="https://github.com/nextlevelbuilder/ui-ux-pro-max-skill/blob/main/LICENSE"><img src="https://img.shields.io/github/license/nextlevelbuilder/ui-ux-pro-max-skill?style=for-the-badge&color=green" alt="Licence"></a>
@@ -143,9 +143,9 @@ La fonctionnalité phare de la v2.0 est le **Générateur de design system** : u
                               ▼
 ┌─────────────────────────────────────────────────────────────────┐
 │  2. RECHERCHE MULTI-DOMAINES (5 recherches en parallèle)        │
-│     • Correspondance du type de produit (192 catégories)        │
+│     • Correspondance du type de produit (194 catégories)        │
 │     • Recommandations de style (80 consultables ; 51 actifs)    │
-│     • Sélection de palette de couleurs (192 palettes)           │
+│     • Sélection de palette de couleurs (194 palettes)           │
 │     • Patterns de landing page (34 patterns)                    │
 │     • Associations typographiques (74 combinaisons de polices)  │
 └─────────────────────────────────────────────────────────────────┘
@@ -167,7 +167,7 @@ La fonctionnalité phare de la v2.0 est le **Générateur de design system** : u
 └─────────────────────────────────────────────────────────────────┘
 ```
 
-### 192 règles de raisonnement spécifiques à chaque secteur
+### 194 règles de raisonnement spécifiques à chaque secteur
 
 Le moteur de raisonnement comprend des règles spécialisées pour :
 
@@ -193,12 +193,12 @@ Chaque règle comprend :
 ## Fonctionnalités
 
 - **80 styles d'interface consultables (51 actifs)** - Glassmorphism, Claymorphism, Minimalisme, Brutalisme, Neumorphism, Bento Grid, mode sombre, AI-Native UI, et bien d'autres
-- **192 palettes de couleurs** - Palettes sectorielles alignées 1:1 sur les 192 types de produits
+- **194 palettes de couleurs** - Palettes sectorielles alignées 1:1 sur les 194 types de produits
 - **74 associations de polices** - Combinaisons typographiques sélectionnées, avec imports Google Fonts
 - **25 types de graphiques** - Recommandations pour tableaux de bord et analytique
 - **22 stacks techniques** - React, Next.js, Astro, Vue, Nuxt.js, Nuxt UI, Svelte, SwiftUI, React Native, Flutter, HTML+Tailwind, shadcn/ui, Jetpack Compose, Angular, Laravel, Three.js, JavaFX, WPF, WinUI 3, UWP, Avalonia, Uno Platform
 - **130 recommandations UX** - Bonnes pratiques, anti-patterns, règles d'accessibilité, mise en page de texte robuste, libellés compacts et interactions annulables. Voir [Raccourcis Entrée compatibles IME](docs/ime-composition.md).
-- **192 règles de raisonnement** - Génération de design system spécifique à chaque secteur (NOUVEAU en v2.0)
+- **194 règles de raisonnement** - Génération de design system spécifique à chaque secteur (NOUVEAU en v2.0)
 
 ### Texte robuste et interface compacte
 
@@ -230,7 +230,7 @@ De nombreux utilisateurs nous interrogent sur les différences entre la version 
 
 ### 🟢 Version Basic (ce dépôt)
 * **Entièrement open source :** Idéale pour les développeurs indépendants, les amateurs et les projets classiques.
-* **Intelligence UI/UX de base :** Accès complet aux 80 styles d'interface consultables (51 actifs), aux 192 types de produits, aux palettes de couleurs et aux associations de polices sélectionnées.
+* **Intelligence UI/UX de base :** Accès complet aux 80 styles d'interface consultables (51 actifs), aux 194 types de produits, aux palettes de couleurs et aux associations de polices sélectionnées.
 * **Recommandations intelligentes :** Moteur de recherche BM25 intégré pour des correspondances de design très précises.
 * **Prise en charge multiplateforme :** Recommandations spécifiques à 22 frameworks majeurs (React, Vue, Tailwind, iOS, Android, etc.).
 * **Génération de design system :** Générez instantanément des règles d'interface, des patterns et une logique sur mesure via la CLI.

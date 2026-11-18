@@ -89,14 +89,14 @@ class TestReasoningContract(unittest.TestCase):
         product_rows = read_rows("products.csv")
         color_rows = read_rows("colors.csv")
         reasoning_rows = read_rows("ui-reasoning.csv")
-        self.assertEqual([192, 192, 192], [
+        self.assertEqual([194, 194, 194], [
             len(product_rows), len(color_rows), len(reasoning_rows)])
         products = {row["Product Type"] for row in product_rows}
         colors = {row["Product Type"] for row in color_rows}
         reasoning = {row["UI_Category"] for row in reasoning_rows}
         self.assertEqual(products, colors)
         self.assertEqual(products, reasoning)
-        self.assertEqual(len(products), 192)
+        self.assertEqual(len(products), 194)
 
     def test_decision_rules_use_closed_array_grammar(self):
         for row in read_rows("ui-reasoning.csv"):
@@ -145,7 +145,7 @@ class TestReasoningContract(unittest.TestCase):
             patterns.add(row["Pattern Name"])
             patterns.update(alias for alias in row["Aliases"].split("|") if alias)
         reasoning = read_rows("ui-reasoning.csv")
-        self.assertEqual(192, len(reasoning))
+        self.assertEqual(194, len(reasoning))
         for row in reasoning:
             with self.subTest(category=row["UI_Category"]):
                 self.assertIn(row["Recommended_Pattern"], patterns)
