@@ -60,7 +60,7 @@ export function GalleryGrid({ styles }: GalleryGridProps) {
             Style Gallery
           </h1>
           <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">
-            Browse {activeCount} active UI styles from Antigravity Kit
+            Browse {activeCount} active UI styles from UI/UX Pro Max
           </p>
         </div>
         <DarkModeToggle />
