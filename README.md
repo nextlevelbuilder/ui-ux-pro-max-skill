@@ -263,6 +263,8 @@ Install directly in Claude Code with two commands:
 /plugin install ui-ux-pro-max@ui-ux-pro-max-skill
 ```
 
+Agent-agnostic clients can use the same repo via `.agents/plugins/marketplace.json` (same `ui-ux-pro-max` plugin and source as the Claude marketplace).
+
 ### Using CLI (Recommended)
 
 ```bash

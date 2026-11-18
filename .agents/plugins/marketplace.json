@@ -1,0 +1,37 @@
+{
+  "name": "ui-ux-pro-max-skill",
+  "interface": {
+    "displayName": "UI UX Pro Max"
+  },
+  "plugins": [
+    {
+      "name": "ui-ux-pro-max",
+      "source": {
+        "source": "local",
+        "path": "./"
+      },
+      "description": "Professional UI/UX design intelligence for AI coding assistants. Includes searchable databases of styles, colors, typography, charts, and UX guidelines for React, Next.js, Astro, Vue, Nuxt.js, Nuxt UI, Svelte, SwiftUI, React Native, Flutter, Tailwind, shadcn/ui, Jetpack Compose, Angular, Laravel, JavaFX, and Three.js.",
+      "version": "2.15.0",
+      "author": {
+        "name": "nextlevelbuilder"
+      },
+      "keywords": [
+        "ui",
+        "ux",
+        "design",
+        "styles",
+        "typography",
+        "color-palette",
+        "accessibility",
+        "charts",
+        "components"
+      ],
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "design",
+      "strict": false
+    }
+  ]
+}
