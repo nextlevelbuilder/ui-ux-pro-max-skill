@@ -4,7 +4,7 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: "Style Gallery — UI/UX Pro Max",
-  description: "Browse and explore 67 UI styles with live previews, color palettes, and implementation details.",
+  description: "Browse and explore UI styles with live previews, color palettes, and implementation details.",
 };
 
 export default function RootLayout({
