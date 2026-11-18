@@ -14,7 +14,7 @@
 
 <p align="center">
   <a href="https://github.com/nextlevelbuilder/ui-ux-pro-max-skill/releases"><img src="https://img.shields.io/github/v/release/nextlevelbuilder/ui-ux-pro-max-skill?style=for-the-badge&color=blue" alt="GitHub Release"></a>
-  <img src="https://img.shields.io/badge/reasoning_rules-192-green?style=for-the-badge" alt="192 Reasoning Rules">
+  <img src="https://img.shields.io/badge/reasoning_rules-194-green?style=for-the-badge" alt="194 Reasoning Rules">
   <img src="https://img.shields.io/badge/UI_styles-80_searchable-purple?style=for-the-badge" alt="80 searchable UI styles">
   <img src="https://img.shields.io/badge/python-3.x-yellow?style=for-the-badge&logo=python&logoColor=white" alt="Python 3.x">
   <a href="https://github.com/nextlevelbuilder/ui-ux-pro-max-skill/blob/main/LICENSE"><img src="https://img.shields.io/github/license/nextlevelbuilder/ui-ux-pro-max-skill?style=for-the-badge&color=green" alt="License"></a>
@@ -143,9 +143,9 @@ v2.0-ın əsas xüsusiyyəti **Design System Generator**-dur — layihə tələb
                               ▼
 ┌─────────────────────────────────────────────────────────────────┐
 │  2. MULTI-DOMAIN SEARCH (5 parallel searches)                   │
-│     • Product type matching (192 categories)                    │
+│     • Product type matching (194 categories)                    │
 │     • Style recommendations (80 searchable; 51 active)          │
-│     • Color palette selection (192 palettes)                    │
+│     • Color palette selection (194 palettes)                    │
 │     • Landing page patterns (34 patterns)                       │
 │     • Typography pairing (74 font combinations)                 │
 └─────────────────────────────────────────────────────────────────┘
@@ -167,7 +167,7 @@ v2.0-ın əsas xüsusiyyəti **Design System Generator**-dur — layihə tələb
 └─────────────────────────────────────────────────────────────────┘
 ```
 
-### 192 sahəyə xas əsaslandırma qaydası
+### 194 sahəyə xas əsaslandırma qaydası
 
 Əsaslandırma mühərriki aşağıdakı sahələr üçün ixtisaslaşmış qaydaları ehtiva edir:
 
@@ -193,12 +193,12 @@ Hər qaydaya bunlar daxildir:
 ## Xüsusiyyətlər
 
 - **80 axtarıla bilən UI üslubu (51-si aktiv)** - Glassmorphism, Claymorphism, Minimalism, Brutalism, Neumorphism, Bento Grid, Dark Mode, AI-Native UI və s.
-- **192 rəng palitrası** - 192 məhsul növü ilə 1:1 uyğunlaşdırılmış sahəyə xas palitralar
+- **194 rəng palitrası** - 194 məhsul növü ilə 1:1 uyğunlaşdırılmış sahəyə xas palitralar
 - **74 şrift cütü** - Google Fonts import-ları ilə seçilmiş tipoqrafiya kombinasiyaları
 - **25 qrafik növü** - Dashboard və analitika üçün tövsiyələr
 - **22 texnologiya stack-i** - React, Next.js, Astro, Vue, Nuxt.js, Nuxt UI, Svelte, SwiftUI, React Native, Flutter, HTML+Tailwind, shadcn/ui, Jetpack Compose, Angular, Laravel, Three.js, JavaFX, WPF, WinUI 3, UWP, Avalonia, Uno Platform
 - **130 UX qaydası** - Ən yaxşı təcrübələr, anti-pattern-lər, əlçatanlıq qaydaları, davamlı mətn düzülüşü, yığcam etiketlər və ləğv edilə bilən interaksiyalar
-- **192 əsaslandırma qaydası** - Sahəyə xas dizayn sistemi yaradılması (v2.0-da YENİ)
+- **194 əsaslandırma qaydası** - Sahəyə xas dizayn sistemi yaradılması (v2.0-da YENİ)
 
 ### Davamlı mətn və yığcam UI
 
@@ -230,7 +230,7 @@ Tam taksonomiya və mənşə məlumatlı metadata üçün [`styles.csv`](src/ui-
 
 ### 🟢 Basic versiya (bu repozitoriya)
 * **Tam açıq mənbə:** Fərdi developer-lər, hobbi layihələri və standart layihələr üçün idealdır.
-* **Əsas UI/UX intellekti:** 80 axtarıla bilən UI üslubuna (51-si aktiv), 192 məhsul növünə, rəng palitralarına və seçilmiş şrift cütlərinə tam çıxış.
+* **Əsas UI/UX intellekti:** 80 axtarıla bilən UI üslubuna (51-si aktiv), 194 məhsul növünə, rəng palitralarına və seçilmiş şrift cütlərinə tam çıxış.
 * **Ağıllı tövsiyələr:** Dəqiq dizayn uyğunluğu üçün daxili BM25 axtarış mühərriki.
 * **Çoxplatformalı dəstək:** 22 əsas framework üçün stack-ə xas təlimatlar (React, Vue, Tailwind, iOS, Android və s.).
 * **Dizayn sisteminin yaradılması:** CLI vasitəsilə uyğunlaşdırılmış UI qaydalarını, pattern-ləri və məntiqi dərhal yaradın.

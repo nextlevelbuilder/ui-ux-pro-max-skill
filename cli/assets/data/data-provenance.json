@@ -928,6 +928,76 @@
       ]
     },
     {
+      "entityKind": "reasoning",
+      "entityId": "gis-web-map-dashboard",
+      "sourceFile": "ui-reasoning.csv",
+      "sourceKey": {
+        "UI_Category": "GIS / Web Map Dashboard"
+      },
+      "status": "active",
+      "verifiedAt": "2026-11-18",
+      "sla": "needs-review",
+      "appliesTo": [
+        "design-system"
+      ],
+      "confidence": 0.88,
+      "sources": [
+        {
+          "type": "derived",
+          "ref": "products.csv#Product Type=GIS / Web Map Dashboard"
+        },
+        {
+          "type": "derived",
+          "ref": "colors.csv#Product Type=GIS / Web Map Dashboard"
+        },
+        {
+          "type": "derived",
+          "ref": "ux-guidelines.csv#Category=Maps"
+        },
+        {
+          "type": "official",
+          "ref": "https://osmfoundation.org/wiki/Licence/Attribution_Guidelines"
+        },
+        {
+          "type": "official",
+          "ref": "https://www.w3.org/WAI/WCAG22/Understanding/use-of-color.html"
+        }
+      ]
+    },
+    {
+      "entityKind": "reasoning",
+      "entityId": "earth-observation-imagery-viewer",
+      "sourceFile": "ui-reasoning.csv",
+      "sourceKey": {
+        "UI_Category": "Earth Observation / Satellite Imagery Viewer"
+      },
+      "status": "active",
+      "verifiedAt": "2026-11-18",
+      "sla": "needs-review",
+      "appliesTo": [
+        "design-system"
+      ],
+      "confidence": 0.86,
+      "sources": [
+        {
+          "type": "derived",
+          "ref": "products.csv#Product Type=Earth Observation / Satellite Imagery Viewer"
+        },
+        {
+          "type": "derived",
+          "ref": "colors.csv#Product Type=Earth Observation / Satellite Imagery Viewer"
+        },
+        {
+          "type": "derived",
+          "ref": "ux-guidelines.csv#Category=Maps"
+        },
+        {
+          "type": "official",
+          "ref": "https://earthobservatory.nasa.gov/blogs/elegantfigures/2013/08/12/subtleties-of-color-part-3-of-6/"
+        }
+      ]
+    },
+    {
       "entityKind": "style",
       "entityId": "liquid-glass",
       "sourceFile": "styles.csv",

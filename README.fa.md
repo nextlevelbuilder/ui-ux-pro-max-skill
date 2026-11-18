@@ -14,7 +14,7 @@
 
 <p align="center">
   <a href="https://github.com/nextlevelbuilder/ui-ux-pro-max-skill/releases"><img src="https://img.shields.io/github/v/release/nextlevelbuilder/ui-ux-pro-max-skill?style=for-the-badge&color=blue" alt="GitHub Release"></a>
-  <img src="https://img.shields.io/badge/reasoning_rules-192-green?style=for-the-badge" alt="192 Reasoning Rules">
+  <img src="https://img.shields.io/badge/reasoning_rules-194-green?style=for-the-badge" alt="194 Reasoning Rules">
   <img src="https://img.shields.io/badge/UI_styles-80_searchable-purple?style=for-the-badge" alt="80 searchable UI styles">
   <img src="https://img.shields.io/badge/python-3.x-yellow?style=for-the-badge&logo=python&logoColor=white" alt="Python 3.x">
   <a href="https://github.com/nextlevelbuilder/ui-ux-pro-max-skill/blob/main/LICENSE"><img src="https://img.shields.io/github/license/nextlevelbuilder/ui-ux-pro-max-skill?style=for-the-badge&color=green" alt="License"></a>
@@ -145,9 +145,9 @@
                               ▼
 ┌─────────────────────────────────────────────────────────────────┐
 │  2. MULTI-DOMAIN SEARCH (5 parallel searches)                   │
-│     • Product type matching (192 categories)                    │
+│     • Product type matching (194 categories)                    │
 │     • Style recommendations (80 searchable; 51 active)          │
-│     • Color palette selection (192 palettes)                    │
+│     • Color palette selection (194 palettes)                    │
 │     • Landing page patterns (34 patterns)                       │
 │     • Typography pairing (74 font combinations)                 │
 └─────────────────────────────────────────────────────────────────┘
@@ -169,7 +169,7 @@
 └─────────────────────────────────────────────────────────────────┘
 ```
 
-### ۱۹۲ قانون استدلال متناسب با صنایع مختلف
+### ۱۹۴ قانون استدلال متناسب با صنایع مختلف
 
 موتور استدلال شامل قوانین تخصصی برای حوزه‌های زیر است:
 
@@ -196,12 +196,12 @@
 ## قابلیت‌ها
 
 - **۷۹ سبک رابط کاربری قابل جست‌وجو (۵۰ سبک فعال):** از جمله Glassmorphism، Claymorphism، Minimalism، Brutalism، Neumorphism، Bento Grid، Dark Mode، AI-Native UI و موارد دیگر
-- **۱۹۲ پالت رنگ:** پالت‌های اختصاصی هر صنعت که به‌صورت یک‌به‌یک با ۱۹۲ نوع محصول هماهنگ شده‌اند
+- **۱۹۴ پالت رنگ:** پالت‌های اختصاصی هر صنعت که به‌صورت یک‌به‌یک با ۱۹۴ نوع محصول هماهنگ شده‌اند
 - **۷۴ ترکیب فونت:** ترکیب‌های گزینش‌شدهٔ تایپوگرافی همراه با امکان واردکردن فونت از Google Fonts
 - **۲۵ نوع نمودار:** پیشنهادهایی برای داشبوردها و تحلیل داده
 - **۲۲ پشتهٔ فناوری:** React، Next.js، Astro، Vue، Nuxt.js، Nuxt UI، Svelte، SwiftUI، React Native، Flutter، HTML+Tailwind، shadcn/ui، Jetpack Compose، Angular، Laravel، Three.js، JavaFX، WPF، WinUI 3، UWP، Avalonia و Uno Platform
 - **۱۱۹ راهنمای UX:** بهترین روش‌ها، الگوهای نامناسب، قواعد دسترس‌پذیری، چیدمان مقاوم متن، برچسب‌های فشرده و تعامل‌های قابل لغو
-- **۱۹۲ قانون استدلال:** تولید سیستم طراحی متناسب با صنعت (قابلیت جدید در نسخهٔ 2.0)
+- **۱۹۴ قانون استدلال:** تولید سیستم طراحی متناسب با صنعت (قابلیت جدید در نسخهٔ 2.0)
 
 ### متن انعطاف‌پذیر و رابط کاربری فشرده
 
@@ -234,7 +234,7 @@
 ### 🟢 نسخهٔ پایه (همین مخزن)
 
 - **کاملاً متن‌باز:** مناسب توسعه‌دهندگان مستقل، علاقه‌مندان و پروژه‌های معمول
-- **هوشمندی اصلی UI/UX:** دسترسی کامل به ۷۹ سبک قابل جست‌وجو (۵۰ سبک فعال)، ۱۹۲ نوع محصول، پالت‌های رنگ و ترکیب‌های گزینش‌شدهٔ فونت
+- **هوشمندی اصلی UI/UX:** دسترسی کامل به ۷۹ سبک قابل جست‌وجو (۵۰ سبک فعال)، ۱۹۴ نوع محصول، پالت‌های رنگ و ترکیب‌های گزینش‌شدهٔ فونت
 - **پیشنهادهای هوشمند:** موتور جست‌وجوی داخلی BM25 برای تطبیق دقیق طراحی
 - **پشتیبانی چندپلتفرمی:** راهنماهای اختصاصی برای ۲۲ فریم‌ورک و فناوری اصلی (React، Vue، Tailwind، iOS، Android و غیره)
 - **تولید سیستم طراحی:** تولید فوری قوانین، الگوها و منطق UI متناسب با پروژه از طریق CLI

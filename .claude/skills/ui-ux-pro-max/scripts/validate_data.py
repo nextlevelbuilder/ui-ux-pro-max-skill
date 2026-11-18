@@ -344,8 +344,8 @@ def _check_reasoning_contract(products, colors, reasoning, style_ids, patterns, 
             value = row.get(key, "")
             counts[value] = counts.get(value, 0) + 1
         duplicates = sorted(value for value, count in counts.items() if count > 1)
-        if len(rows) != 192:
-            problems.append(f"[reasoning] {label} must contain exactly 192 rows; got {len(rows)}")
+        if len(rows) != 194:
+            problems.append(f"[reasoning] {label} must contain exactly 194 rows; got {len(rows)}")
         if duplicates:
             problems.append(
                 f"[reasoning] duplicate {label} labels: {', '.join(duplicates)}"

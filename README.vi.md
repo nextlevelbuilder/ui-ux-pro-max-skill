@@ -14,7 +14,7 @@
 
 <p align="center">
   <a href="https://github.com/nextlevelbuilder/ui-ux-pro-max-skill/releases"><img src="https://img.shields.io/github/v/release/nextlevelbuilder/ui-ux-pro-max-skill?style=for-the-badge&color=blue" alt="Bản phát hành GitHub"></a>
-  <img src="https://img.shields.io/badge/reasoning_rules-192-green?style=for-the-badge" alt="192 quy tắc suy luận">
+  <img src="https://img.shields.io/badge/reasoning_rules-194-green?style=for-the-badge" alt="194 quy tắc suy luận">
   <img src="https://img.shields.io/badge/UI_styles-80_searchable-purple?style=for-the-badge" alt="80 phong cách UI có thể tìm kiếm">
   <img src="https://img.shields.io/badge/python-3.x-yellow?style=for-the-badge&logo=python&logoColor=white" alt="Python 3.x">
   <a href="https://github.com/nextlevelbuilder/ui-ux-pro-max-skill/blob/main/LICENSE"><img src="https://img.shields.io/github/license/nextlevelbuilder/ui-ux-pro-max-skill?style=for-the-badge&color=green" alt="Giấy phép"></a>
@@ -114,9 +114,9 @@ Tính năng chủ lực của v2.0 là **Trình tạo hệ thống thiết kế*
                               ▼
 ┌─────────────────────────────────────────────────────────────────┐
 │  2. TÌM KIẾM ĐA MIỀN (5 lượt tìm kiếm song song)                │
-│     • Đối sánh loại sản phẩm (192 danh mục)                     │
+│     • Đối sánh loại sản phẩm (194 danh mục)                     │
 │     • Đề xuất phong cách (80 có thể tìm kiếm; 51 đang hoạt động)│
-│     • Chọn bảng màu (192 bảng màu)                              │
+│     • Chọn bảng màu (194 bảng màu)                              │
 │     • Mẫu landing page (34 mẫu)                                 │
 │     • Kết hợp kiểu chữ (74 cặp phông chữ)                       │
 └─────────────────────────────────────────────────────────────────┘
@@ -138,7 +138,7 @@ Tính năng chủ lực của v2.0 là **Trình tạo hệ thống thiết kế*
 └─────────────────────────────────────────────────────────────────┘
 ```
 
-### 192 quy tắc suy luận dành riêng cho từng ngành
+### 194 quy tắc suy luận dành riêng cho từng ngành
 
 Bộ máy suy luận có các quy tắc chuyên biệt cho:
 
@@ -165,12 +165,12 @@ Mỗi quy tắc bao gồm:
 ## Tính năng
 
 - **80 phong cách UI có thể tìm kiếm (51 đang hoạt động)** — Glassmorphism, Claymorphism, Minimalism, Brutalism, Neumorphism, Bento Grid, Dark Mode, AI-Native UI và nhiều hơn nữa
-- **192 bảng màu** — Bảng màu theo ngành, tương ứng 1:1 với 192 loại sản phẩm
+- **194 bảng màu** — Bảng màu theo ngành, tương ứng 1:1 với 194 loại sản phẩm
 - **74 cặp phông chữ** — Các tổ hợp kiểu chữ được tuyển chọn, kèm câu lệnh import Google Fonts
 - **25 loại biểu đồ** — Đề xuất cho dashboard và phân tích dữ liệu
 - **22 tech stack** — React, Next.js, Astro, Vue, Nuxt.js, Nuxt UI, Svelte, SwiftUI, React Native, Flutter, HTML+Tailwind, shadcn/ui, Jetpack Compose, Angular, Laravel, Three.js, JavaFX, WPF, WinUI 3, UWP, Avalonia, Uno Platform
 - **130 hướng dẫn UX** — Thực hành tốt, anti-pattern, quy tắc khả năng tiếp cận, bố cục văn bản bền vững, nhãn gọn và tương tác có thể hủy
-- **192 quy tắc suy luận** — Tạo hệ thống thiết kế dành riêng cho từng ngành (MỚI trong v2.0)
+- **194 quy tắc suy luận** — Tạo hệ thống thiết kế dành riêng cho từng ngành (MỚI trong v2.0)
 
 ### Văn bản bền vững và UI nhỏ gọn
 
@@ -203,7 +203,7 @@ Nhiều người dùng hỏi về sự khác biệt giữa phiên bản mã ngu�
 ### 🟢 Phiên bản Cơ bản (repository này)
 
 - **Hoàn toàn mã nguồn mở:** Phù hợp với lập trình viên cá nhân, người làm dự án sở thích và các dự án thông thường.
-- **Tri thức UI/UX cốt lõi:** Truy cập đầy đủ 80 phong cách UI có thể tìm kiếm (51 đang hoạt động), 192 loại sản phẩm, bảng màu và các cặp phông chữ được tuyển chọn.
+- **Tri thức UI/UX cốt lõi:** Truy cập đầy đủ 80 phong cách UI có thể tìm kiếm (51 đang hoạt động), 194 loại sản phẩm, bảng màu và các cặp phông chữ được tuyển chọn.
 - **Đề xuất thông minh:** Bộ máy tìm kiếm BM25 tích hợp giúp đối sánh thiết kế với độ chính xác cao.
 - **Hỗ trợ đa nền tảng:** Hướng dẫn riêng theo stack, hỗ trợ 22 framework lớn (React, Vue, Tailwind, iOS, Android, v.v.).
 - **Tạo hệ thống thiết kế:** Tạo tức thì các quy tắc UI, mẫu và logic phù hợp thông qua CLI.

@@ -14,7 +14,7 @@
 
 <p align="center">
   <a href="https://github.com/nextlevelbuilder/ui-ux-pro-max-skill/releases"><img src="https://img.shields.io/github/v/release/nextlevelbuilder/ui-ux-pro-max-skill?style=for-the-badge&color=blue" alt="GitHub Release"></a>
-  <img src="https://img.shields.io/badge/reasoning_rules-192-green?style=for-the-badge" alt="192 Reasoning Rules">
+  <img src="https://img.shields.io/badge/reasoning_rules-194-green?style=for-the-badge" alt="194 Reasoning Rules">
   <img src="https://img.shields.io/badge/UI_styles-80_searchable-purple?style=for-the-badge" alt="80 searchable UI styles">
   <img src="https://img.shields.io/badge/python-3.x-yellow?style=for-the-badge&logo=python&logoColor=white" alt="Python 3.x">
   <a href="https://github.com/nextlevelbuilder/ui-ux-pro-max-skill/blob/main/LICENSE"><img src="https://img.shields.io/github/license/nextlevelbuilder/ui-ux-pro-max-skill?style=for-the-badge&color=green" alt="License"></a>
@@ -144,9 +144,9 @@ v2.0 の目玉機能は **Design System Generator** です。プロジェクト�
                               ▼
 ┌─────────────────────────────────────────────────────────────────┐
 │  2. MULTI-DOMAIN SEARCH (5 parallel searches)                   │
-│     • Product type matching (192 categories)                    │
+│     • Product type matching (194 categories)                    │
 │     • Style recommendations (80 searchable; 51 active)          │
-│     • Color palette selection (192 palettes)                    │
+│     • Color palette selection (194 palettes)                    │
 │     • Landing page patterns (34 patterns)                       │
 │     • Typography pairing (74 font combinations)                 │
 └─────────────────────────────────────────────────────────────────┘
@@ -168,7 +168,7 @@ v2.0 の目玉機能は **Design System Generator** です。プロジェクト�
 └─────────────────────────────────────────────────────────────────┘
 ```
 
-### 192 の業界別推論ルール
+### 194 の業界別推論ルール
 
 推論エンジンには、次の分野向けの専用ルールが含まれています：
 
@@ -194,12 +194,12 @@ v2.0 の目玉機能は **Design System Generator** です。プロジェクト�
 ## 機能
 
 - **80 の検索可能な UI スタイル（うち 51 が有効）** - Glassmorphism、Claymorphism、Minimalism、Brutalism、Neumorphism、Bento Grid、Dark Mode、AI-Native UI など
-- **192 のカラーパレット** - 192 のプロダクトタイプと 1:1 で対応した業界別のパレット
+- **194 のカラーパレット** - 194 のプロダクトタイプと 1:1 で対応した業界別のパレット
 - **74 のフォントペアリング** - Google Fonts のインポート付きで厳選したタイポグラフィの組み合わせ
 - **25 のチャートタイプ** - ダッシュボードや分析向けの推奨
 - **22 の技術スタック** - React、Next.js、Astro、Vue、Nuxt.js、Nuxt UI、Svelte、SwiftUI、React Native、Flutter、HTML+Tailwind、shadcn/ui、Jetpack Compose、Angular、Laravel、Three.js、JavaFX、WPF、WinUI 3、UWP、Avalonia、Uno Platform
 - **130 の UX ガイドライン** - ベストプラクティス、アンチパターン、アクセシビリティのルール、崩れにくいテキストレイアウト、コンパクトなラベル、キャンセル可能なインタラクション
-- **192 の推論ルール** - 業界別のデザインシステム生成（v2.0 の新機能）
+- **194 の推論ルール** - 業界別のデザインシステム生成（v2.0 の新機能）
 
 ### 崩れにくいテキストとコンパクトな UI
 
@@ -240,7 +240,7 @@ Active のセットには、43 の汎用的なビジュアルファミリー、2
 
 ### 🟢 ベーシック版（このリポジトリ）
 * **完全なオープンソース：** 個人の開発者、趣味のプロジェクト、一般的なプロジェクトに最適です。
-* **コアの UI/UX インテリジェンス：** 80 の検索可能な UI スタイル（うち 51 が有効）、192 のプロダクトタイプ、カラーパレット、厳選したフォントペアリングをすべて利用できます。
+* **コアの UI/UX インテリジェンス：** 80 の検索可能な UI スタイル（うち 51 が有効）、194 のプロダクトタイプ、カラーパレット、厳選したフォントペアリングをすべて利用できます。
 * **スマートな推奨：** 内蔵の BM25 検索エンジンにより、非常に精度の高いデザインのマッチングを行います。
 * **クロスプラットフォーム対応：** 22 の主要なフレームワーク（React、Vue、Tailwind、iOS、Android など）に対応したスタック別のガイドライン。
 * **デザインシステム生成：** CLI から、ニーズに合わせた UI のルール、パターン、ロジックをすぐに生成できます。

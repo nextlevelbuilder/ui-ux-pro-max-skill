@@ -14,7 +14,7 @@
 
 <p align="center">
   <a href="https://github.com/nextlevelbuilder/ui-ux-pro-max-skill/releases"><img src="https://img.shields.io/github/v/release/nextlevelbuilder/ui-ux-pro-max-skill?style=for-the-badge&color=blue" alt="GitHub Release"></a>
-  <img src="https://img.shields.io/badge/reasoning_rules-192-green?style=for-the-badge" alt="192 条推理规则">
+  <img src="https://img.shields.io/badge/reasoning_rules-194-green?style=for-the-badge" alt="194 条推理规则">
   <img src="https://img.shields.io/badge/UI_styles-80_searchable-purple?style=for-the-badge" alt="80 种可搜索 UI 风格">
   <img src="https://img.shields.io/badge/python-3.x-yellow?style=for-the-badge&logo=python&logoColor=white" alt="Python 3.x">
   <a href="https://github.com/nextlevelbuilder/ui-ux-pro-max-skill/blob/main/LICENSE"><img src="https://img.shields.io/github/license/nextlevelbuilder/ui-ux-pro-max-skill?style=for-the-badge&color=green" alt="License"></a>
@@ -114,9 +114,9 @@ v2.0 的旗舰特性是**设计系统生成器**——一个 AI 驱动的推理�
                               ▼
 ┌─────────────────────────────────────────────────────────────────┐
 │  2. 多域搜索 (5 个并行搜索)                                       │
-│     • 产品类型匹配 (192 个分类)                                  │
+│     • 产品类型匹配 (194 个分类)                                  │
 │     • 风格推荐 (80 种可搜索；51 种 active)                    │
-│     • 配色方案选择 (192 套配色)                                   │
+│     • 配色方案选择 (194 套配色)                                   │
 │     • 落地页模式 (34 种模式)                                      │
 │     • 字体配对 (74 种组合)                                        │
 └─────────────────────────────────────────────────────────────────┘
@@ -138,7 +138,7 @@ v2.0 的旗舰特性是**设计系统生成器**——一个 AI 驱动的推理�
 └─────────────────────────────────────────────────────────────────┘
 ```
 
-### 192 条行业特定推理规则
+### 194 条行业特定推理规则
 
 推理引擎包含针对以下领域的专门规则：
 
@@ -164,12 +164,12 @@ v2.0 的旗舰特性是**设计系统生成器**——一个 AI 驱动的推理�
 ## 功能特性
 
 - **80 种可搜索 UI 风格（51 种 active）** - 玻璃拟态、粘土拟态、极简主义、粗野主义、新拟态、便当盒网格、深色模式、AI 原生 UI 等
-- **192 套配色方案** - 与 192 种产品类型 1:1 对齐的行业专属调色板
+- **194 套配色方案** - 与 194 种产品类型 1:1 对齐的行业专属调色板
 - **74 种字体配对** - 精选字体组合，含 Google Fonts 导入
 - **25 种图表类型** - 适用于仪表板和分析场景的推荐
 - **22 种技术栈** - React、Next.js、Astro、Vue、Nuxt.js、Nuxt UI、Svelte、SwiftUI、React Native、Flutter、HTML+Tailwind、shadcn/ui、Jetpack Compose、Angular、Laravel、Three.js、JavaFX、WPF、WinUI 3、UWP、Avalonia、Uno Platform
 - **130 条 UX 指南** - 最佳实践、反模式、无障碍规则、弹性文字布局、紧凑标签与可取消交互
-- **192 条推理规则** - 行业特定的设计系统生成（v2.0 新增）
+- **194 条推理规则** - 行业特定的设计系统生成（v2.0 新增）
 
 ### 弹性文字与紧凑型 UI
 
@@ -206,7 +206,7 @@ Active 集合包括 43 个通用视觉家族、2 个移动端专用风格、4 �
 
 ### 🟢 基础版（本仓库）
 * **完全开源：** 适合个人开发者、爱好者及标准项目。
-* **核心 UI/UX 智能：** 完整支持 80 种可搜索 UI 风格（51 种 active）、192 种产品类型、配色方案和精选字体配对。
+* **核心 UI/UX 智能：** 完整支持 80 种可搜索 UI 风格（51 种 active）、194 种产品类型、配色方案和精选字体配对。
 * **智能推荐：** 内置 BM25 搜索引擎，提供高精度的设计匹配。
 * **跨平台支持：** 提供针对 22 个主流技术栈（React、Vue、Tailwind、iOS、Android 等）的专属指南。
 * **设计系统生成：** 通过 CLI 即时生成定制化的 UI 规则、模式与逻辑。
