@@ -8,6 +8,126 @@
   "records": [
     {
       "entityKind": "dataset-contract",
+      "entityId": "map-ux-guidelines",
+      "sourceFile": "ux-guidelines.csv",
+      "sourceKey": {
+        "Scope": "No 121-130; Category, Issue, Platform, Description, Do, Don't, code-example, and Severity fields",
+        "Boundary": "Web maps drawn with MapLibre GL JS, Mapbox GL JS, Leaflet or OpenLayers. Attribution rows restate published provider requirements and are not legal advice; check the terms of the tiles actually used. Color and normalization rows apply to thematic data layers, not basemap styling. Code examples use the MapLibre GL JS API."
+      },
+      "status": "active",
+      "verifiedAt": "2026-11-18",
+      "sla": "needs-review",
+      "appliesTo": [
+        "search",
+        "design-guidance"
+      ],
+      "sources": [
+        {
+          "type": "official",
+          "ref": "https://osmfoundation.org/wiki/Licence/Attribution_Guidelines"
+        },
+        {
+          "type": "official",
+          "ref": "https://docs.mapbox.com/help/dive-deeper/attribution/"
+        },
+        {
+          "type": "official",
+          "ref": "https://maplibre.org/maplibre-gl-js/docs/API/classes/AttributionControl/"
+        },
+        {
+          "type": "official",
+          "ref": "https://www.w3.org/WAI/WCAG22/Understanding/non-text-content.html"
+        },
+        {
+          "type": "official",
+          "ref": "https://www.w3.org/WAI/WCAG22/Understanding/keyboard.html"
+        },
+        {
+          "type": "official",
+          "ref": "https://www.w3.org/WAI/WCAG22/Understanding/dragging-movements.html"
+        },
+        {
+          "type": "official",
+          "ref": "https://leafletjs.com/examples/accessibility/"
+        },
+        {
+          "type": "official",
+          "ref": "https://www.w3.org/WAI/WCAG22/Understanding/use-of-color.html"
+        },
+        {
+          "type": "official",
+          "ref": "https://github.com/axismaps/colorbrewer"
+        },
+        {
+          "type": "official",
+          "ref": "https://pro.arcgis.com/en/pro-app/latest/help/mapping/layer-properties/graduated-colors.htm"
+        },
+        {
+          "type": "official",
+          "ref": "https://earthobservatory.nasa.gov/blogs/elegantfigures/2013/08/12/subtleties-of-color-part-3-of-6/"
+        },
+        {
+          "type": "official",
+          "ref": "https://maplibre.org/maplibre-gl-js/docs/API/classes/Popup/"
+        },
+        {
+          "type": "official",
+          "ref": "https://cheatsheetseries.owasp.org/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.html"
+        },
+        {
+          "type": "official",
+          "ref": "https://docs.mapbox.com/help/troubleshooting/working-with-large-geojson-data/"
+        },
+        {
+          "type": "official",
+          "ref": "https://maplibre.org/maplibre-gl-js/docs/examples/create-and-style-clusters/"
+        },
+        {
+          "type": "official",
+          "ref": "https://maplibre.org/maplibre-gl-js/docs/API/type-aliases/AnimationOptions/"
+        },
+        {
+          "type": "official",
+          "ref": "https://www.w3.org/WAI/WCAG22/Techniques/css/C39"
+        }
+      ]
+    },
+    {
+      "entityKind": "dataset-contract",
+      "entityId": "map-geographic-chart-guidance",
+      "sourceFile": "charts.csv",
+      "sourceKey": {
+        "Scope": "No 6; When NOT to Use and Color Guidance fields",
+        "Boundary": "Choropleth normalization, ramp choice and attribution notes for the Geographic Data row; detailed map rules live in ux-guidelines.csv rows 121-130."
+      },
+      "status": "active",
+      "verifiedAt": "2026-11-18",
+      "sla": "needs-review",
+      "appliesTo": [
+        "search",
+        "design-guidance"
+      ],
+      "sources": [
+        {
+          "type": "official",
+          "ref": "https://pro.arcgis.com/en/pro-app/latest/help/mapping/layer-properties/graduated-colors.htm"
+        },
+        {
+          "type": "official",
+          "ref": "https://github.com/axismaps/colorbrewer"
+        },
+        {
+          "type": "official",
+          "ref": "https://earthobservatory.nasa.gov/blogs/elegantfigures/2013/08/12/subtleties-of-color-part-3-of-6/"
+        },
+        {
+          "type": "official",
+          "ref": "https://osmfoundation.org/wiki/Licence/Attribution_Guidelines"
+        }
+      ]
+    },
+    {
+      "entityKind": "dataset-contract",
       "entityId": "ime-composition-enter",
       "sourceFile": "ux-guidelines.csv",
       "sourceKey": {
