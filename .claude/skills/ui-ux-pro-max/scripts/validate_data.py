@@ -107,6 +107,10 @@ OFFICIAL_SOURCE_HOSTS = {
     "greensock.com", "gsap.com", "m3.material.io", "opensource.adobe.com",
     "react.dev", "s2.spectrum.adobe.com", "shopify.dev",
     "design-system.service.gov.uk", "tailwindcss.com", "www.w3.org",
+    # Map and GIS publishers cited by the Maps guidelines.
+    "cheatsheetseries.owasp.org", "docs.mapbox.com",
+    "earthobservatory.nasa.gov", "leafletjs.com", "maplibre.org",
+    "osmfoundation.org", "pro.arcgis.com",
 }
 STACK_OFFICIAL_HOSTS = {
     "react": {"react.dev"},

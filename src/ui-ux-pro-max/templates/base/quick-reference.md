@@ -306,6 +306,15 @@
 - `export-option` - For data-heavy products, offer CSV/image export of chart data
 - `drill-down-consistency` - Drill-down interactions must maintain a clear back-path and hierarchy breadcrumb
 - `time-scale-clarity` - Time series charts must clearly label time granularity (day/week/month) and allow switching
+- `map-attribution` - Keep the web map's tile and data attribution (and the Mapbox logo with Mapbox tiles) visible on load; never hide it with CSS (OSMF, Mapbox)
+- `map-text-alternative` - Name the map region and add a text summary plus a feature list or table that follows the filters (WCAG)
+- `map-keyboard-no-drag` - Arrow keys pan, +/- zoom, markers focusable, zoom buttons and search or coordinate input so no drag is required (WCAG)
+- `map-not-color-alone` - Map status and categories need an icon, shape, pattern or label as well as hue; use colorblind-safe schemes (WCAG)
+- `normalized-choropleth` - Choropleth fills show rates or densities, never raw counts; show totals with proportional symbols
+- `map-color-ramps` - Sequential or perceptually uniform ramps, no rainbow; lightness follows the basemap; muted basemap, strongest data
+- `map-popup-text` - Render feature attributes in popups as text (setDOMContent/setText), not interpolated HTML (XSS)
+- `map-clustering` - Cluster dense points at low zoom with counts; serve large geodata as vector tiles instead of huge GeoJSON
+- `map-reduced-motion` - Keep camera flights non-essential and skip custom map animation loops under prefers-reduced-motion
 
 ## How to Use
 
