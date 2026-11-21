@@ -168,7 +168,7 @@ Setiap aturan mencakup:
 - **74 Pasangan Font** - Kombinasi tipografi pilihan dengan import Google Fonts
 - **25 Jenis Chart** - Rekomendasi untuk dashboard dan analitik
 - **22 Tech Stack** - React, Next.js, Astro, Vue, Nuxt.js, Nuxt UI, Svelte, SwiftUI, React Native, Flutter, HTML+Tailwind, shadcn/ui, Jetpack Compose, Angular, Laravel, Three.js, JavaFX, WPF, WinUI 3, UWP, Avalonia, Uno Platform
-- **130 Panduan UX** - Best practice, anti-pattern, aturan aksesibilitas, layout teks yang tangguh, label ringkas, dan interaksi yang dapat dibatalkan
+- **141 Panduan UX** - Best practice, anti-pattern, aturan aksesibilitas, layout teks yang tangguh, label ringkas, dan interaksi yang dapat dibatalkan
 - **194 Aturan Penalaran** - Pembuatan design system khusus industri (BARU di v2.0)
 
 ### Teks Tangguh dan UI Ringkas

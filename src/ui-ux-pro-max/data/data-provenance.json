@@ -8,6 +8,84 @@
   "records": [
     {
       "entityKind": "dataset-contract",
+      "entityId": "form-error-handling-behavior",
+      "sourceFile": "ux-guidelines.csv",
+      "sourceKey": {
+        "Scope": "No 35 and 131-141; Category, Issue, Platform, Description, Do, Don't, code-example, and Severity fields",
+        "Boundary": "Sources disagree on validation timing: Baymard re-checks a field that already shows an error while the user types, the Ontario Design System re-validates on blur, and GOV.UK validates on submit. Rows 131-132 only require that an error never appears before the user has entered data and never outlives its cause. Row 138 restates a WCAG 3 working-draft supplemental requirement (status developing) and the WCAG 2.2 Understanding note on timed messages; it is not a WCAG 2.2 success criterion. Row 133 leaves secret fields such as passwords to the product's security policy. Row 141 follows the WAI-ARIA APG modal dialog pattern and does not assert native dialog behavior. Row 35 changes only its good code example."
+      },
+      "status": "active",
+      "verifiedAt": "2026-11-21",
+      "sla": "needs-review",
+      "appliesTo": [
+        "search",
+        "design-guidance"
+      ],
+      "sources": [
+        {
+          "type": "official",
+          "ref": "https://baymard.com/blog/inline-form-validation"
+        },
+        {
+          "type": "official",
+          "ref": "https://designsystem.ontario.ca/components/detail/live-validation.html"
+        },
+        {
+          "type": "official",
+          "ref": "https://design-system.service.gov.uk/patterns/validation/"
+        },
+        {
+          "type": "official",
+          "ref": "https://design-system.service.gov.uk/components/error-message/"
+        },
+        {
+          "type": "official",
+          "ref": "https://design-system.service.gov.uk/components/button/"
+        },
+        {
+          "type": "official",
+          "ref": "https://www.nngroup.com/articles/error-message-guidelines/"
+        },
+        {
+          "type": "official",
+          "ref": "https://www.nngroup.com/articles/ten-usability-heuristics/"
+        },
+        {
+          "type": "official",
+          "ref": "https://www.nngroup.com/articles/confirmation-dialog/"
+        },
+        {
+          "type": "official",
+          "ref": "https://github.com/vercel-labs/web-interface-guidelines"
+        },
+        {
+          "type": "official",
+          "ref": "https://github.com/w3c/wcag3/blob/main/guidelines/groups/error-handling/correct-errors/error-messages-persistent.md"
+        },
+        {
+          "type": "official",
+          "ref": "https://www.w3.org/WAI/WCAG22/Understanding/timing-adjustable.html"
+        },
+        {
+          "type": "official",
+          "ref": "https://www.w3.org/WAI/WCAG22/Understanding/error-identification.html"
+        },
+        {
+          "type": "official",
+          "ref": "https://www.w3.org/WAI/WCAG22/Understanding/error-suggestion.html"
+        },
+        {
+          "type": "official",
+          "ref": "https://www.w3.org/WAI/WCAG22/Understanding/error-prevention-legal-financial-data.html"
+        },
+        {
+          "type": "official",
+          "ref": "https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal/"
+        }
+      ]
+    },
+    {
+      "entityKind": "dataset-contract",
       "entityId": "map-ux-guidelines",
       "sourceFile": "ux-guidelines.csv",
       "sourceKey": {

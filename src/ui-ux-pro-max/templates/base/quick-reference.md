@@ -244,6 +244,15 @@
 - `aria-live-errors` - Form errors use aria-live region or role="alert" to notify screen readers (WCAG)
 - `contrast-feedback` - Error and success state colors must meet 4.5:1 contrast ratio (WCAG, MD)
 - `timeout-feedback` - Request timeout must show clear feedback with retry option (MD)
+- `error-clears-on-fix` - Remove a field's error message, error styling and aria-invalid as soon as the value is valid; once a field shows an error re-check it on input, and drop stale summary items on resubmit (Baymard, WCAG 3 draft)
+- `no-premature-validation` - Do not flag a field before the user has entered something and left it; report empty required fields on submit (Baymard, NN/g, GOV.UK)
+- `keep-input-on-error` - A failed submit shows the form again with every entered value, passing and failing; never reset or clear it (GOV.UK, NN/g)
+- `submit-not-pre-disabled` - Keep submit enabled and show what to fix on click; disable it only while the request is in flight, with an idempotency key (Vercel, GOV.UK)
+- `unsaved-changes-guard` - Ask before leaving, closing or cancelling with unsaved edits, and never when nothing changed (Vercel)
+- `forgiving-formats` - Trim whitespace, ignore spaces, hyphens and brackets in numbers and codes, and accept accents and apostrophes in names (GOV.UK, Vercel)
+- `allow-paste` - Never block paste, including password, confirmation and one-time-code fields (Vercel)
+- `persistent-errors` - Errors stay until fixed or dismissed; auto-dismissing toasts are only for non-critical confirmations (WCAG)
+- `dialog-focus` - Move focus into a modal on open, keep Tab inside, close on Escape and return focus to the opener on close (WAI-ARIA APG)
 
 ### 9. Navigation Patterns (HIGH)
 
