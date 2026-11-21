@@ -111,6 +111,9 @@ OFFICIAL_SOURCE_HOSTS = {
     "cheatsheetseries.owasp.org", "docs.mapbox.com",
     "earthobservatory.nasa.gov", "leafletjs.com", "maplibre.org",
     "osmfoundation.org", "pro.arcgis.com",
+    # UX research publishers and a government design system cited by the
+    # form error-handling guidelines.
+    "baymard.com", "designsystem.ontario.ca", "www.nngroup.com",
 }
 STACK_OFFICIAL_HOSTS = {
     "react": {"react.dev"},
