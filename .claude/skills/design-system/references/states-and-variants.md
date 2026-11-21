@@ -1,6 +1,6 @@
-# States and Variants
+# States and Variants — Andritz Precision
 
-Component state definitions and variant patterns.
+Andritz industrial design system state definitions. Tonal shifts (not opacity) for hover, scale-[0.98] active press, bottom-border-only input focus, ghost borders.
 
 ## Interactive States
 
@@ -8,16 +8,14 @@ Component state definitions and variant patterns.
 
 | State | Trigger | Visual Change |
 |-------|---------|---------------|
-| default | None | Base appearance |
-| hover | Mouse over | Slight color shift |
-| focus | Tab/click | Focus ring |
-| active | Mouse down | Darkest color |
-| disabled | disabled attr | Reduced opacity |
-| loading | Async action | Spinner + opacity |
+| default | None | Base appearance — tonal surface |
+| hover | Mouse over | Tonal shift to next surface tier |
+| focus | Tab/click | Ghost border OR bottom-border (inputs) |
+| active | Mouse down | scale(0.98) press + tonal shift |
+| disabled | disabled attr | Muted surface tier, reduced opacity |
+| loading | Async action | Spinner + reduced opacity |
 
-### State Priority
-
-When multiple states apply, priority (highest to lowest):
+### State Priority (highest to lowest)
 
 1. disabled
 2. loading
@@ -26,79 +24,139 @@ When multiple states apply, priority (highest to lowest):
 5. hover
 6. default
 
-### State Transitions
+### State Transitions (Industrial Precision)
 
 ```css
-/* Standard transition for interactive elements */
 .interactive {
-  transition-property: color, background-color, border-color, box-shadow;
-  transition-duration: var(--duration-fast);
+  transition-property: color, background-color, border-color, transform;
+  transition-duration: var(--duration-fast);  /* 150ms */
   transition-timing-function: ease-in-out;
 }
 ```
 
 | Transition | Duration | Easing |
 |------------|----------|--------|
-| Color changes | 150ms | ease-in-out |
-| Background | 150ms | ease-in-out |
-| Transform | 200ms | ease-out |
+| Color/background | 150ms | ease-in-out |
+| Transform (scale) | 150ms | ease-out |
+| Border-bottom | 150ms | ease-in-out |
 | Opacity | 150ms | ease |
 | Shadow | 200ms | ease-out |
 
 ## Focus States
 
-### Focus Ring Spec
+### Input Focus (Bottom-Border Only — "Technical Ledger")
 
 ```css
-/* Standard focus ring */
-.focusable:focus-visible {
+/* Andritz input focus — bottom border only, NO ring */
+.input:focus {
   outline: none;
-  box-shadow: 0 0 0 var(--ring-offset) var(--color-background),
-              0 0 0 calc(var(--ring-offset) + var(--ring-width)) var(--ring-color);
+  border-bottom: 2px solid var(--color-primary);  /* #005c97 light / #9bcaff dark */
+  box-shadow: none;
 }
 ```
 
-| Property | Value |
-|----------|-------|
-| Ring width | 2px |
-| Ring offset | 2px |
-| Ring color | primary (blue-500) |
-| Offset color | background |
+### General Focus (Ghost Border)
+
+```css
+/* Non-input focus — ghost border appears */
+.focusable:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 1px var(--color-outline-variant);  /* ghost border */
+}
+```
+
+| Element | Focus Style |
+|---------|-------------|
+| Input/textarea | 2px primary bottom-border only |
+| Button | Ghost border (outline-variant at 15%/20%) |
+| Card (interactive) | Ambient shadow appears |
+| Link | 2px primary bottom underline |
 
 ### Focus Within
 
 ```css
-/* Container focus when child is focused */
 .container:focus-within {
-  border-color: var(--color-ring);
+  border-bottom-color: var(--color-primary);
 }
 ```
 
+## Hover States
+
+### Tonal Shift Pattern
+
+Hover uses surface tier shifts, not opacity changes:
+
+```css
+/* Button hover — tonal shift */
+.button-secondary:hover {
+  background: var(--color-surface-container-highest);
+  /* shifts from surface-container-high to surface-container-highest */
+}
+
+/* Row hover — tonal shift */
+.table-row:hover {
+  background: var(--color-surface-container-low);
+}
+
+/* Tertiary button hover — bottom underline appears */
+.button-tertiary:hover {
+  text-decoration: none;
+  border-bottom: 2px solid var(--color-primary);
+}
+```
+
+## Active States
+
+### Press Animation
+
+```css
+/* Primary button active — industrial press */
+.button-primary:active {
+  transform: scale(0.98);
+  transition: transform var(--duration-fast) ease-out;
+}
+
+/* Card active (interactive) — subtle press */
+.card-interactive:active {
+  transform: scale(0.995);
+}
+```
+
+| Component | Active Effect |
+|-----------|---------------|
+| Button (primary) | scale(0.98) + darker gradient |
+| Button (secondary) | scale(0.98) + tonal shift |
+| Card (interactive) | scale(0.995) |
+| Nav item | Background shifts to surface-container-high |
+
 ## Disabled States
 
-### Visual Treatment
+### Visual Treatment (Tonal, not just opacity)
 
 ```css
 .disabled {
-  opacity: var(--opacity-disabled); /* 0.5 */
+  opacity: 0.5;
   pointer-events: none;
   cursor: not-allowed;
+  background: var(--color-surface-container);  /* muted surface tier */
+  color: var(--color-on-surface-variant);
 }
 ```
 
 | Property | Disabled Value |
 |----------|----------------|
 | Opacity | 50% |
+| Background | surface-container (muted tier) |
+| Color | on-surface-variant |
 | Pointer events | none |
 | Cursor | not-allowed |
-| Background | muted |
-| Color | muted-foreground |
+| Border | none (maintains No-Line Rule) |
 
 ### Accessibility
 
 - Use `aria-disabled="true"` for semantic disabled
 - Use `disabled` attribute for form elements
-- Maintain sufficient contrast (3:1 minimum)
+- Maintain 3:1 minimum contrast
 
 ## Loading States
 
@@ -106,10 +164,10 @@ When multiple states apply, priority (highest to lowest):
 
 | Component | Spinner Position |
 |-----------|------------------|
-| Button | Replace icon or center |
+| Button | Center, replaces label |
 | Input | Trailing position |
-| Card | Center overlay |
-| Page | Center of viewport |
+| Card | Center overlay with surface backdrop |
+| Page | Center of viewport on surface |
 
 ### Loading Treatment
 
@@ -121,7 +179,11 @@ When multiple states apply, priority (highest to lowest):
 
 .loading::after {
   content: '';
-  /* spinner styles */
+  /* Spinner using primary color */
+  border: 2px solid var(--color-surface-container-high);
+  border-top: 2px solid var(--color-primary);
+  border-radius: var(--radius-full);  /* only exception to 0px rule */
+  animation: spin 0.8s linear infinite;
 }
 
 .loading > * {
@@ -131,78 +193,103 @@ When multiple states apply, priority (highest to lowest):
 
 ## Error States
 
-### Visual Indicators
+### Visual Treatment
 
 ```css
 .error {
-  border-color: var(--color-error);
-  color: var(--color-error);
+  background: var(--color-error-container);  /* #ffdad6 */
+  color: var(--color-on-error-container);     /* #ba1a1a */
+  border-bottom: 2px solid var(--color-error);
 }
 
-.error:focus-visible {
-  box-shadow: 0 0 0 2px var(--color-background),
-              0 0 0 4px var(--color-error);
+.error:focus {
+  border-bottom: 2px solid var(--color-error);
+  box-shadow: none;
 }
 ```
 
 | Element | Error Treatment |
 |---------|-----------------|
-| Input border | red-500 |
-| Input focus ring | red/20% |
-| Helper text | red-600 |
-| Icon | red-500 |
+| Input bg | error-container (#ffdad6) |
+| Input bottom-border | 2px solid error (#ba1a1a) |
+| Helper text | error color, body-sm |
+| Icon | error color (functional, not decorative) |
 
-### Error Messages
+## Dark Theme Specific States
 
-- Position below input
-- Use error color
-- Include icon for accessibility
-- Clear on valid input
+### Pulse Line Glow (Data Visualization)
+
+```css
+.dark .chart-line {
+  stroke: var(--color-primary-text);  /* #9bcaff */
+  filter: drop-shadow(0px 0px 8px var(--color-primary-text));
+}
+```
+
+### Caution/Warning State
+
+```css
+.dark .status-warning {
+  color: var(--color-tertiary);  /* #ffb781 — "caution tape" effect */
+  /* High contrast against navy base for immediate visibility */
+}
+```
+
+### Ghost Border (Dark — 20% opacity)
+
+```css
+.dark .ghost-border {
+  border: 1px solid rgba(64, 71, 81, 0.20);  /* outline-variant at 20% */
+}
+```
 
 ## Variant Patterns
 
 ### Color Variants
 
 ```css
-/* Pattern for color variants */
 .component {
   --component-bg: var(--color-primary);
-  --component-fg: var(--color-primary-foreground);
+  --component-fg: var(--color-on-primary);
   background: var(--component-bg);
   color: var(--component-fg);
 }
 
 .component.secondary {
-  --component-bg: var(--color-secondary);
-  --component-fg: var(--color-secondary-foreground);
+  --component-bg: var(--color-surface-container-high);
+  --component-fg: var(--color-primary-text);
 }
 
 .component.destructive {
-  --component-bg: var(--color-destructive);
-  --component-fg: var(--color-destructive-foreground);
+  --component-bg: var(--color-error);
+  --component-fg: var(--color-on-error);
+}
+
+.component.warning {
+  --component-bg: rgba(255, 183, 129, 0.15);
+  --component-fg: var(--color-tertiary);
 }
 ```
 
 ### Size Variants
 
 ```css
-/* Pattern for size variants */
 .component {
   --component-height: 40px;
-  --component-padding: var(--space-4);
-  --component-font: var(--font-size-sm);
+  --component-padding: var(--space-6);  /* 24px — industrial weight */
+  --component-font: var(--font-size-label-md);
 }
 
 .component.sm {
   --component-height: 32px;
-  --component-padding: var(--space-3);
-  --component-font: var(--font-size-xs);
+  --component-padding: var(--space-4);
+  --component-font: var(--font-size-label-sm);
 }
 
 .component.lg {
   --component-height: 48px;
-  --component-padding: var(--space-6);
-  --component-font: var(--font-size-base);
+  --component-padding: var(--space-8);
+  --component-font: var(--font-size-body-md);
 }
 ```
 
@@ -212,30 +299,32 @@ When multiple states apply, priority (highest to lowest):
 
 | Element | Minimum Ratio |
 |---------|---------------|
-| Normal text | 4.5:1 |
-| Large text (18px+) | 3:1 |
+| Primary text (on-surface) | 4.5:1 |
+| Large text (display/headline) | 3:1 |
 | UI components | 3:1 |
-| Focus indicator | 3:1 |
+| Focus indicator (ghost border) | 3:1 |
 
 ### State Indicators
 
-- Never rely on color alone
-- Use icons, text, or patterns
-- Ensure focus is visible
-- Provide loading announcements
+- Never rely on color alone — use icons (functional) + text
+- Ghost borders must be "felt, not seen" but meet 3:1 contrast
+- Focus must be visible in both light and dark themes
+- Loading states: provide aria-busy announcements
 
 ### ARIA States
 
 ```html
 <!-- Disabled -->
-<button disabled aria-disabled="true">Submit</button>
+<button disabled aria-disabled="true">SUBMIT</button>
 
 <!-- Loading -->
 <button aria-busy="true" aria-describedby="loading-text">
   <span id="loading-text" class="sr-only">Loading...</span>
 </button>
 
-<!-- Error -->
-<input aria-invalid="true" aria-describedby="error-msg">
+<!-- Error input -->
+<input aria-invalid="true" aria-describedby="error-msg"
+       style="background: var(--color-error-container);
+              border-bottom: 2px solid var(--color-error);">
 <span id="error-msg" role="alert">Error message</span>
 ```
