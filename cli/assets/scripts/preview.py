@@ -109,7 +109,12 @@ def _role_contrast(colors: dict, key: str):
 def format_preview_html(design_system: dict) -> str:
     """Render a dependency-free HTML page for the generated design system."""
     project = design_system.get("project_name") or "Design system"
-    is_arabic = bool(design_system.get("rtl_ready") or re.search(r"[\u0600-\u06FF]", str(project)))
+    # Detect RTL preview via explicit direction/lang metadata or Arabic script in project_name.
+    is_arabic = bool(
+        design_system.get("direction") == "rtl"
+        or design_system.get("lang") == "ar"
+        or re.search(r"[\u0600-\u06FF]", str(project))
+    )
     html_lang = "ar" if is_arabic else "en"
     html_dir = ' dir="rtl"' if is_arabic else ""
     eyebrow_spacing = "0" if is_arabic else "0.08em"
@@ -261,8 +266,10 @@ def format_preview_html(design_system: dict) -> str:
     h1, h2, h3, .specimen-heading {{
       font-family: var(--font-heading);
       line-height: 1.2;
-      letter-spacing: 0;
       margin: 0 0 0.5rem;
+    }}
+    html[dir="rtl"] h1, html[dir="rtl"] h2, html[dir="rtl"] h3, html[dir="rtl"] .specimen-heading {{
+      letter-spacing: 0;
     }}
     h1 {{ font-size: 2.25rem; }}
     h2 {{ font-size: 1.5rem; }}

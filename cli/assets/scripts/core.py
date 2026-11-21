@@ -302,6 +302,7 @@ _SYNONYMS = {
     "بسيط": "minimalism clean",
 }
 
+# Arabic-scoped diacritics (harakat/tashkeel) and tatweel; no-op on non-Arabic text.
 _ARABIC_DIACRITICS_RE = re.compile(r"[\u0617-\u061A\u064B-\u0652\u0640]")
 
 _SYNONYM_PATTERNS = [
