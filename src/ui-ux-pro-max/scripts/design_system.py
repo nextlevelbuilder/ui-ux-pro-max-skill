@@ -22,6 +22,7 @@ import re
 import sys
 import io
 import tempfile
+import unicodedata
 from datetime import datetime
 from pathlib import Path
 from core import search, DATA_DIR
@@ -36,6 +37,30 @@ if sys.stderr.encoding and sys.stderr.encoding.lower() != 'utf-8':
 
 # ============ CONFIGURATION ============
 REASONING_FILE = "ui-reasoning.csv"
+
+_RTL_LANGUAGES = {"ar", "fa", "he", "ps", "ur", "yi"}
+
+
+def resolve_preview_locale(text: str, lang: str = None, direction: str = None) -> tuple:
+    """Resolve preview language and direction; only letters count for inference."""
+    if lang:
+        default_direction = "rtl" if lang.split("-")[0].lower() in _RTL_LANGUAGES else "ltr"
+        return lang, direction or default_direction
+
+    for character in text:
+        if not character.isalpha() or unicodedata.bidirectional(character) not in {"R", "AL"}:
+            continue
+        name = unicodedata.name(character, "")
+        if name.startswith("ARABIC "):
+            inferred_lang = "ar"
+        elif name.startswith("HEBREW "):
+            inferred_lang = "he"
+        else:
+            inferred_lang = "und"
+        return inferred_lang, direction or "rtl"
+
+    return "en", direction or "ltr"
+
 
 SEARCH_CONFIG = {
     "product": {"max_results": 1},
@@ -472,7 +497,8 @@ class DesignSystemGenerator:
         return search_result.get("results", [])
 
     def generate(self, query: str, project_name: str = None,
-                 variance: int = None, motion: int = None, density: int = None) -> dict:
+                 variance: int = None, motion: int = None, density: int = None,
+                 lang: str = None, direction: str = None) -> dict:
         """Generate complete design system recommendation.
 
         variance/motion/density are optional 1-10 dials (see DIAL_TIERS) that bias
@@ -543,8 +569,14 @@ class DesignSystemGenerator:
         reasoning_effects = reasoning.get("key_effects", "")
         combined_effects = style_effects if style_effects else reasoning_effects
 
+        preview_lang, preview_direction = resolve_preview_locale(query, lang=lang)
+        if not lang and preview_direction == "ltr" and project_name:
+            preview_lang, preview_direction = resolve_preview_locale(project_name)
+
         return {
             "project_name": project_name or query.upper(),
+            "lang": preview_lang,
+            "direction": direction or preview_direction,
             "category": category,
             "pattern": {
                 "name": best_landing.get("Pattern Name", reasoning.get("pattern", "Hero + Features + CTA")),
@@ -1108,7 +1140,8 @@ def generate_design_system(query: str, project_name: str = None, output_format: 
                            persist: bool = False, page: str = None, output_dir: str = None,
                            variance: int = None, motion: int = None, density: int = None,
                            force: bool = False, preview: bool = False,
-                           token_format: str = None) -> dict:
+                           token_format: str = None, lang: str = None,
+                           direction: str = None) -> dict:
     """
     Main entry point for design system generation.
 
@@ -1125,6 +1158,8 @@ def generate_design_system(query: str, project_name: str = None, output_format: 
         force: If True, overwrite an existing MASTER.md; otherwise persistence
                is skipped (with a status message) when one already exists
         preview: If True, write a self-contained preview.html of this system
+        lang: Optional preview language tag (for example, "ar" or "he")
+        direction: Optional preview text direction ("ltr" or "rtl")
         token_format: Optional "dtcg" or "css". When set, "text" is the token
                document and persist writes tokens.json (and tokens.css for css)
                next to MASTER.md. Tokens are master-level only; --page does not
@@ -1138,7 +1173,10 @@ def generate_design_system(query: str, project_name: str = None, output_format: 
         (result of write_preview_html(), or None if preview=False)
     """
     generator = DesignSystemGenerator()
-    design_system = generator.generate(query, project_name, variance=variance, motion=motion, density=density)
+    design_system = generator.generate(
+        query, project_name, variance=variance, motion=motion, density=density,
+        lang=lang, direction=direction,
+    )
 
     tokens = build_design_tokens(design_system) if token_format else None
 

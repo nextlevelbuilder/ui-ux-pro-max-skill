@@ -34,6 +34,8 @@ Persistence (Master + Overrides pattern):
   --preview      Write preview.html for the generated system (requires --design-system).
                  With --persist, the file is written next to MASTER.md. Without --persist,
                  it is written to --output-dir or to a temp file whose path is printed.
+  --lang         Set the preview language tag (e.g. ar, he)
+  --direction    Set the preview text direction (ltr or rtl)
 """
 
 import argparse
@@ -134,6 +136,8 @@ if __name__ == "__main__":
     parser.add_argument("--output-dir", "-o", type=str, default=None, help="Output directory for persisted files (default: current directory -- pass this explicitly, pointed at the project root)")
     parser.add_argument("--force", action="store_true", help="Overwrite an existing MASTER.md when persisting (default: skip if it already exists)")
     parser.add_argument("--preview", action="store_true", help="Write a self-contained preview.html of the generated design system (requires --design-system)")
+    parser.add_argument("--lang", help="Set the preview language tag, e.g. ar or he (requires --design-system)")
+    parser.add_argument("--direction", choices=["ltr", "rtl"], help="Set the preview text direction (requires --design-system)")
     parser.add_argument("--tokens", choices=["dtcg", "css"], default=None,
                         help="Export design tokens as W3C DTCG JSON or CSS variables (requires --design-system)")
     # Design dials (1-10), only applied with --design-system
@@ -145,6 +149,8 @@ if __name__ == "__main__":
 
     if args.preview and not args.design_system:
         parser.error("--preview requires --design-system")
+    if (args.lang is not None or args.direction is not None) and not args.design_system:
+        parser.error("--lang and --direction require --design-system")
     if args.tokens and not args.design_system:
         parser.error("--tokens requires --design-system")
 
@@ -174,6 +180,8 @@ if __name__ == "__main__":
             force=args.force,
             preview=args.preview,
             token_format=args.tokens,
+            lang=args.lang,
+            direction=args.direction,
         )
 
         if args.json:

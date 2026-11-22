@@ -19,6 +19,7 @@ from design_system import (
     _contrast_ratio,
     _palette_is_dark,
     _write_persisted_file,
+    resolve_preview_locale,
     safe_slug,
 )
 
@@ -109,17 +110,14 @@ def _role_contrast(colors: dict, key: str):
 def format_preview_html(design_system: dict) -> str:
     """Render a dependency-free HTML page for the generated design system."""
     project = design_system.get("project_name") or "Design system"
-    # Detect RTL preview via explicit direction/lang metadata or Arabic script in project_name.
-    is_arabic = bool(
-        design_system.get("direction") == "rtl"
-        or design_system.get("lang") == "ar"
-        or re.search(r"[\u0600-\u06FF]", str(project))
+    html_lang, direction = resolve_preview_locale(
+        str(project), lang=design_system.get("lang"), direction=design_system.get("direction"),
     )
-    html_lang = "ar" if is_arabic else "en"
-    html_dir = ' dir="rtl"' if is_arabic else ""
-    eyebrow_spacing = "0" if is_arabic else "0.08em"
-    eyebrow_transform = "none" if is_arabic else "uppercase"
-    badge_spacing = "0" if is_arabic else "0.04em"
+    is_rtl = direction == "rtl"
+    html_dir = ' dir="rtl"' if is_rtl else ""
+    eyebrow_spacing = "0" if is_rtl else "0.08em"
+    eyebrow_transform = "none" if is_rtl else "uppercase"
+    badge_spacing = "0" if is_rtl else "0.04em"
     category = design_system.get("category") or ""
     style = design_system.get("style") or {}
     colors = design_system.get("colors") or {}
@@ -220,7 +218,7 @@ def format_preview_html(design_system: dict) -> str:
     anti_html = "".join(anti_items)
 
     return f"""<!DOCTYPE html>
-<html lang="{html_lang}"{html_dir}>
+<html lang="{escape(html_lang)}"{html_dir}>
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
