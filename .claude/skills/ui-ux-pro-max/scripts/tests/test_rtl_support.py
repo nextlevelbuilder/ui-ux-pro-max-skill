@@ -162,5 +162,40 @@ class RtlCliTest(unittest.TestCase):
         self.assertIn("product", completed.stderr)
 
 
+class ArabicSynonymsAndRtlPreviewTest(unittest.TestCase):
+    def test_arabic_diacritics_and_tatweel_stripped_in_normalize(self):
+        from core import _normalize
+        norm = _normalize("مَـتْـجَـر ذَكَاء اصْطِنَاعِي دَاكِن")
+        self.assertIn("ecommerce", norm)
+        self.assertIn("artificial intelligence", norm)
+        self.assertIn("dark mode", norm)
+
+    def test_arabic_query_resolves_domain_and_style(self):
+        res_product = search("عيادة طبية", "product", 3)
+        self.assertGreater(res_product["count"], 0)
+        res_style = search("زجاجي داكن", "style", 3)
+        self.assertGreater(res_style["count"], 0)
+
+    def test_preview_html_arabic_rtl_and_ltr_scoping(self):
+        from preview import format_preview_html
+        ar_html = format_preview_html({
+            "project_name": "منصة التداول الذكي",
+            "category": "Fintech",
+            "colors": {"primary": "#1E40AF", "on_primary": "#FFFFFF"},
+        })
+        self.assertIn('<html lang="ar" dir="rtl">', ar_html)
+        self.assertIn('html[dir="rtl"] h1, html[dir="rtl"] h2', ar_html)
+        self.assertIn('letter-spacing: 0;', ar_html)
+        self.assertIn('<code dir="ltr" style="unicode-bidi:isolate">#1E40AF</code>', ar_html)
+
+        en_html = format_preview_html({
+            "project_name": "Acme Dashboard",
+            "category": "SaaS",
+            "colors": {"primary": "#1E40AF", "on_primary": "#FFFFFF"},
+        })
+        self.assertIn('<html lang="en">', en_html)
+        self.assertNotIn('dir="rtl">', en_html)
+
+
 if __name__ == "__main__":
     unittest.main()

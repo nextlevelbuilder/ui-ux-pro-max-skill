@@ -271,7 +271,39 @@ _SYNONYMS = {
     "organisation": "organization",
     "behaviour": "behavior",
     "ux/ui": "ux ui",
+    # Arabic & MENA bilingual domain/style/product synonyms
+    "تداول": "trading crypto fintech",
+    "مالية": "fintech finance banking",
+    "مالي": "fintech finance banking",
+    "بنك": "banking fintech finance",
+    "مصرف": "banking fintech finance",
+    "ذكاء اصطناعي": "ai artificial intelligence",
+    "عيادة": "healthcare medical clinic",
+    "طبي": "healthcare medical clinic",
+    "طبية": "healthcare medical clinic",
+    "مستشفى": "healthcare hospital medical",
+    "متجر": "ecommerce store shopping",
+    "تجارة إلكترونية": "ecommerce shopping retail",
+    "لوحة تحكم": "dashboard analytics saas",
+    "تحليلات": "analytics dashboard data",
+    "عقارات": "real estate property",
+    "تعليم": "education learning course",
+    "أكاديمية": "education learning academy",
+    "تدريب": "education learning training",
+    "فندق": "hotel hospitality booking",
+    "سياحة": "travel hospitality booking",
+    "مطعم": "restaurant food delivery",
+    "أمن سيبراني": "cybersecurity security",
+    "ألعاب": "gaming game",
+    "معرض أعمال": "portfolio agency creative",
+    "داكن": "dark mode",
+    "مظلم": "dark mode",
+    "زجاجي": "glassmorphism glass",
+    "بسيط": "minimalism clean",
 }
+
+# Arabic-scoped diacritics (harakat/tashkeel) and tatweel; no-op on non-Arabic text.
+_ARABIC_DIACRITICS_RE = re.compile(r"[\u0617-\u061A\u064B-\u0652\u0640]")
 
 _SYNONYM_PATTERNS = [
     (re.compile(r"(?<!\w)" + re.escape(variant) + r"(?!\w)", re.IGNORECASE), canonical)
@@ -280,8 +312,8 @@ _SYNONYM_PATTERNS = [
 
 
 def _normalize(text):
-    """Apply longest-first synonym substitution at token boundaries."""
-    normalized = str(text)
+    """Apply Arabic diacritic stripping and longest-first synonym substitution at token boundaries."""
+    normalized = _ARABIC_DIACRITICS_RE.sub("", str(text))
     for pattern, canonical in _SYNONYM_PATTERNS:
         normalized = pattern.sub(canonical, normalized)
     return normalized
