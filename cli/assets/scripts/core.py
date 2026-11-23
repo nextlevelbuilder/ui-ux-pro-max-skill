@@ -310,10 +310,17 @@ _SYNONYM_PATTERNS = [
     for variant, canonical in sorted(_SYNONYMS.items(), key=lambda item: len(item[0]), reverse=True)
 ]
 
+_SYNONYM_CANDIDATE_RE = re.compile(
+    r"(?<!\w)(?:" + "|".join(map(re.escape, _SYNONYMS)) + r")(?!\w)",
+    re.IGNORECASE,
+)
+
 
 def _normalize(text):
     """Apply Arabic diacritic stripping and longest-first synonym substitution at token boundaries."""
     normalized = _ARABIC_DIACRITICS_RE.sub("", str(text))
+    if not _SYNONYM_CANDIDATE_RE.search(normalized):
+        return normalized
     for pattern, canonical in _SYNONYM_PATTERNS:
         normalized = pattern.sub(canonical, normalized)
     return normalized
