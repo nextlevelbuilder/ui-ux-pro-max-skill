@@ -15,6 +15,7 @@ import csv
 import json
 import subprocess
 import sys
+import tempfile
 import unittest
 from pathlib import Path
 
@@ -195,6 +196,65 @@ class ArabicSynonymsAndRtlPreviewTest(unittest.TestCase):
         })
         self.assertIn('<html lang="en">', en_html)
         self.assertNotIn('dir="rtl">', en_html)
+
+    def test_generated_preview_uses_query_direction_with_an_english_brand(self):
+        from design_system import DesignSystemGenerator
+        from preview import format_preview_html
+
+        design_system = DesignSystemGenerator().generate("عيادة طبية", "Clinic")
+        self.assertIn('<html lang="ar" dir="rtl">', format_preview_html(design_system))
+
+        design_system = DesignSystemGenerator().generate("clinic", "عيادة طبية")
+        self.assertIn('<html lang="ar" dir="rtl">', format_preview_html(design_system))
+
+    def test_arabic_indic_digits_do_not_make_an_english_brand_rtl(self):
+        from preview import format_preview_html
+
+        self.assertIn('<html lang="en">', format_preview_html({"project_name": "Clinic ٢٠٢٦"}))
+
+    def test_rtl_query_can_start_with_a_latin_acronym(self):
+        from design_system import DesignSystemGenerator
+        from preview import format_preview_html
+
+        generator = DesignSystemGenerator()
+        design_system = generator.generate("SaaS لوحة تحكم", "Acme")
+        self.assertEqual(format_preview_html(design_system).splitlines()[1],
+                         '<html lang="ar" dir="rtl">')
+
+        design_system = generator.generate("SaaS لوحة تحكم", "Acme", direction="ltr")
+        self.assertEqual(format_preview_html(design_system).splitlines()[1], '<html lang="ar">')
+
+    def test_rtl_project_name_can_start_with_a_latin_brand(self):
+        from design_system import DesignSystemGenerator
+        from preview import format_preview_html
+
+        for project_name, lang in (("Clinic — عيادة", "ar"), ("Clinic — מרפאה", "he")):
+            with self.subTest(project_name=project_name):
+                expected = f'<html lang="{lang}" dir="rtl">'
+                design_system = DesignSystemGenerator().generate("clinic", project_name)
+                self.assertEqual(format_preview_html(design_system).splitlines()[1], expected)
+                self.assertEqual(format_preview_html({"project_name": project_name}).splitlines()[1],
+                                 expected)
+
+    def test_design_system_cli_can_set_language_and_direction_independently(self):
+        with tempfile.TemporaryDirectory() as output_dir:
+            command = [sys.executable, str(SCRIPTS_DIR / "search.py"), "clinic",
+                       "--design-system", "--preview", "--json", "--output-dir", output_dir]
+            for options, html_tag, direction in (
+                (["--lang", "he"], '<html lang="he" dir="rtl">', "rtl"),
+                (["--lang", "fa"], '<html lang="fa" dir="rtl">', "rtl"),
+                (["--lang", "ur"], '<html lang="ur" dir="rtl">', "rtl"),
+                (["--lang", "he", "--direction", "ltr"], '<html lang="he">', "ltr"),
+                (["--direction", "rtl"], '<html lang="en" dir="rtl">', "rtl"),
+            ):
+                with self.subTest(options=options):
+                    result = subprocess.run(command + ["--force", *options],
+                                            capture_output=True, text=True, encoding="utf-8")
+                    self.assertEqual(result.returncode, 0, result.stderr)
+                    payload = json.loads(result.stdout)
+                    self.assertEqual(payload["design_system"]["direction"], direction)
+                    preview_path = Path(payload["preview"]["preview_file"])
+                    self.assertEqual(preview_path.read_text(encoding="utf-8").splitlines()[1], html_tag)
 
 
 if __name__ == "__main__":
