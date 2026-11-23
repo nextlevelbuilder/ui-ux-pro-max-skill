@@ -56,6 +56,15 @@ from urllib.parse import urlparse
 from urllib.request import HTTPRedirectHandler, Request, build_opener
 
 
+# Batch mode prints ✓/✗, which raises UnicodeEncodeError when stdout/stderr is
+# a cp1252 pipe or file (Windows without PYTHONUTF8). Same guard as the one in
+# cip/generate.py.
+for _stream in (sys.stdout, sys.stderr):
+    _encoding = getattr(_stream, "encoding", None)
+    if _encoding and _encoding.lower().replace("-", "") != "utf8" and hasattr(_stream, "reconfigure"):
+        _stream.reconfigure(encoding="utf-8", errors=_stream.errors)
+
+
 # Load environment variables
 def load_env():
     """Load .env files in priority order"""
