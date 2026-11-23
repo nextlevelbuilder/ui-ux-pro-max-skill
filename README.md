@@ -265,6 +265,14 @@ Install directly in Claude Code with two commands:
 
 Agent-agnostic clients can use the same repo via `.agents/plugins/marketplace.json` (same `ui-ux-pro-max` plugin and source as the Claude marketplace).
 
+### Using GitHub CLI
+
+Install the skill with the [GitHub CLI](https://cli.github.com/):
+
+```bash
+gh skill install nextlevelbuilder/ui-ux-pro-max-skill .claude/skills/ui-ux-pro-max
+```
+
 ### Using CLI (Recommended)
 
 ```bash
