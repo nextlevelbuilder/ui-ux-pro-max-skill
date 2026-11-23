@@ -242,6 +242,8 @@ class ArabicSynonymsAndRtlPreviewTest(unittest.TestCase):
                        "--design-system", "--preview", "--json", "--output-dir", output_dir]
             for options, html_tag, direction in (
                 (["--lang", "he"], '<html lang="he" dir="rtl">', "rtl"),
+                (["--lang", "fa"], '<html lang="fa" dir="rtl">', "rtl"),
+                (["--lang", "ur"], '<html lang="ur" dir="rtl">', "rtl"),
                 (["--lang", "he", "--direction", "ltr"], '<html lang="he">', "ltr"),
                 (["--direction", "rtl"], '<html lang="en" dir="rtl">', "rtl"),
             ):

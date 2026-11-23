@@ -535,7 +535,9 @@ The preview uses RTL layout when it finds an RTL letter in the query or, if
 the query has none, in the project name. A leading Latin brand or acronym does
 not prevent RTL inference, and digits alone do not trigger it. Use `--lang` to
 set the HTML language tag and `--direction rtl` or `--direction ltr` to set
-the layout direction explicitly.
+the layout direction explicitly. Arabic-script text defaults to `ar`. For
+Persian or Urdu previews, pass `--lang fa` or `--lang ur` to set the language
+while keeping the RTL layout.
 
 ```bash
 python3 .claude/skills/ui-ux-pro-max/scripts/search.py "clinic" --design-system --preview -p "Clinic" --lang ar --direction rtl
