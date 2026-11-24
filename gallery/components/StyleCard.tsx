@@ -3,6 +3,7 @@
 import { StyleData } from "@/lib/types";
 import { hasTextSelectionIn, isNestedControlClick } from "@/lib/nestedControl";
 import { StyleCardTitle } from "./StyleCardTitle";
+import { StyleStatusBadge } from "./StyleStatusBadge";
 import { StylePreview } from "./StylePreview";
 import { ColorPalette } from "./ColorPalette";
 import { MetadataBadges } from "./MetadataBadges";
@@ -33,6 +34,7 @@ export function StyleCard({ style, onSelect }: StyleCardProps) {
             onOpen={onSelect ? () => onSelect(style) : undefined}
           />
           <div className="flex items-center gap-1.5 shrink-0">
+            <StyleStatusBadge status={style.status} />
             <span className="text-[10px] px-2 py-0.5 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-500 dark:text-gray-400">
               {style.type}
             </span>

@@ -70,8 +70,8 @@ export function StylePreview({ style }: StylePreviewProps) {
       </div>
 
       {/* Style name overlay */}
-      <div className="absolute bottom-0 left-0 right-0 px-3 py-1.5 bg-gradient-to-t from-black/40 to-transparent">
-        <span className="text-[10px] font-medium text-white/80">
+      <div className="absolute bottom-0 left-0 right-0 px-3 py-1.5 bg-gradient-to-t from-black/60 to-transparent">
+        <span className="text-[10px] font-semibold text-white/95">
           Preview
         </span>
       </div>
