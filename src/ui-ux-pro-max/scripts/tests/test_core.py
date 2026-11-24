@@ -13,6 +13,7 @@ or directly:
 
 import os
 import json
+import shutil
 import subprocess
 import sys
 import tempfile
@@ -111,6 +112,32 @@ class TestBm25CoreBehavior(unittest.TestCase):
 
 
 class TestSearchDomains(unittest.TestCase):
+    def test_exact_hex_search_matches_palette_roles(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            scripts = root / "scripts"
+            shutil.copytree(
+                SCRIPTS_DIR, scripts, ignore=shutil.ignore_patterns("tests", "__pycache__")
+            )
+            data = root / "data"
+            data.mkdir()
+            (data / "colors.csv").write_text(
+                "Product Type,Primary,Accent,Notes\n"
+                "Notes only,#FFFFFF,#FFFFFF,#A1B2C3\n"
+                "Matching palette,#a1b2c3,#A1B2C3,\n",
+                encoding="utf-8",
+            )
+            output = subprocess.check_output(
+                [sys.executable, "-B", str(scripts / "search.py"),
+                 "#A1b2C3", "--domain", "color", "--json"],
+                cwd=root,
+            )
+
+        result = json.loads(output)
+        self.assertEqual(
+            [row["Product Type"] for row in result["results"]], ["Matching palette"]
+        )
+
     def test_read_failure_is_not_reported_as_a_search_result(self):
         failure = UnicodeDecodeError("utf-8", b"\xff", 0, 1, "invalid")
         with patch("core._load_csv_snapshot", side_effect=failure):
