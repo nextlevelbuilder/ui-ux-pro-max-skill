@@ -24,6 +24,7 @@
     "components/MetadataBadges.tsx",
     "components/FilterBar.tsx",
     "components/StyleCardTitle.tsx",
+    "components/StyleStatusBadge.tsx",
     "components/metadata-badges.test.tsx",
     "components/style-card.test.tsx"
   ]

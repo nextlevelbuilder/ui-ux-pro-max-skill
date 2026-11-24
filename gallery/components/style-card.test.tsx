@@ -4,6 +4,7 @@ import { renderToStaticMarkup } from "react-dom/server";
 
 import { hasTextSelectionIn, isNestedControlClick } from "../lib/nestedControl";
 import { StyleCardTitle } from "./StyleCardTitle";
+import { StyleStatusBadge } from "./StyleStatusBadge";
 
 // Stands in for a DOM element: closest() returns a marker node when the
 // element itself, or one of the ancestors listed in `path`, matches one of the
@@ -69,4 +70,21 @@ test("a click that ends a text selection does not open the detail dialog", () =>
   assert.equal(hasTextSelectionIn({ isCollapsed: true, anchorNode: inside }, card), false);
   assert.equal(hasTextSelectionIn({ isCollapsed: false, anchorNode: elsewhere }, card), false);
   assert.equal(hasTextSelectionIn(null, card), false);
+});
+
+test("style status badge renders corresponding semantic colors for status types", () => {
+  const activeMarkup = renderToStaticMarkup(<StyleStatusBadge status="active" />);
+  assert.match(activeMarkup, /bg-green-100/);
+  assert.match(activeMarkup, />active<\/span>/);
+
+  const supplementalMarkup = renderToStaticMarkup(<StyleStatusBadge status="supplemental" />);
+  assert.match(supplementalMarkup, /bg-blue-100/);
+  assert.match(supplementalMarkup, />supplemental<\/span>/);
+
+  const deprecatedMarkup = renderToStaticMarkup(<StyleStatusBadge status="deprecated" />);
+  assert.match(deprecatedMarkup, /bg-red-100/);
+  assert.match(deprecatedMarkup, />deprecated<\/span>/);
+
+  const emptyMarkup = renderToStaticMarkup(<StyleStatusBadge status="" />);
+  assert.equal(emptyMarkup, "");
 });
