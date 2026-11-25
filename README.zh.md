@@ -167,7 +167,7 @@ v2.0 的旗舰特性是**设计系统生成器**——一个 AI 驱动的推理�
 - **194 套配色方案** - 与 194 种产品类型 1:1 对齐的行业专属调色板
 - **74 种字体配对** - 精选字体组合，含 Google Fonts 导入
 - **25 种图表类型** - 适用于仪表板和分析场景的推荐
-- **22 种技术栈** - React、Next.js、Astro、Vue、Nuxt.js、Nuxt UI、Svelte、SwiftUI、React Native、Flutter、HTML+Tailwind、shadcn/ui、Jetpack Compose、Angular、Laravel、Three.js、JavaFX、WPF、WinUI 3、UWP、Avalonia、Uno Platform
+- **23 种技术栈** - React、Next.js、Astro、Vue、Nuxt.js、Nuxt UI、Svelte、SwiftUI、React Native、Flutter、HTML+Tailwind、shadcn/ui、Jetpack Compose、Angular、Laravel、Three.js、JavaFX、WPF、WinUI 3、UWP、Avalonia、Uno Platform、PySide6/Qt
 - **141 条 UX 指南** - 最佳实践、反模式、无障碍规则、弹性文字布局、紧凑标签与可取消交互
 - **194 条推理规则** - 行业特定的设计系统生成（v2.0 新增）
 
@@ -208,7 +208,7 @@ Active 集合包括 43 个通用视觉家族、2 个移动端专用风格、4 �
 * **完全开源：** 适合个人开发者、爱好者及标准项目。
 * **核心 UI/UX 智能：** 完整支持 80 种可搜索 UI 风格（51 种 active）、194 种产品类型、配色方案和精选字体配对。
 * **智能推荐：** 内置 BM25 搜索引擎，提供高精度的设计匹配。
-* **跨平台支持：** 提供针对 22 个主流技术栈（React、Vue、Tailwind、iOS、Android 等）的专属指南。
+* **跨平台支持：** 提供针对 23 个主流技术栈（React、Vue、Tailwind、iOS、Android 等）的专属指南。
 * **设计系统生成：** 通过 CLI 即时生成定制化的 UI 规则、模式与逻辑。
 
 ### 🟡 高级版
