@@ -626,6 +626,13 @@ npm run check:assets
 npm run verify:data
 npm run typecheck
 
+# 4b. Run the remaining CI gates before opening a PR
+# verify:data does not include the rendered-guide contract tests, so a change
+# to the activation description or the stack list still needs this.
+cd .. && python3 -m pytest .claude/skills -q
+cd cli && npx playwright test   # needs: npm ci && npx playwright install chromium
+cd ../gallery && npm test
+
 # 5. Build and test CLI
 # `npm run build` uses Bun when available and falls back to TypeScript compiler output after `npm ci`.
 npm run build

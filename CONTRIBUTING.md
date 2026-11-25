@@ -111,9 +111,35 @@ node /path/to/cli/dist/index.js init --ai claude --offline
 cd /path/to/repo
 python3 src/ui-ux-pro-max/scripts/search.py "your query" --design-system
 
-# 6. Push your branch
+# 6. Run the same gates CI runs
+# Run these before opening a PR. Each maps to a CI workflow step, so a green
+# local run means CI will be green too.
+npm --prefix cli run verify:data        # data gate: CSV + semantic + agent guide
+                                        # + catalog summary + Python tests
+                                        # + relevance + domain/stack smoke + asset sync
+python3 -m pytest .claude/skills -q     # skill regression tests
+cd cli && npx playwright test           # rendered-guide contract tests
+                                        # (needs: npm ci && npx playwright install chromium)
+cd gallery && npm test                  # gallery tests
+
+# 7. Push your branch
 git push -u origin feat/your-feature-name
 ```
+
+### Which gate catches what
+
+`verify:data` does not cover the rendered-guide contract tests, so a change to
+the canonical activation description (the `description` field in
+`src/ui-ux-pro-max/templates/platforms/*.json`, the stack list in
+`CLAUDE.md`, or the skill body) can pass `verify:data` and still fail the
+Playwright suite. `cli/tests/e2e/agent-query-contract.spec.ts` pins that
+description as a constant — when the description changes, update the constant
+in the same commit.
+
+The same applies to the stack registry: adding or removing a stack changes the
+stack count that appears in the activation description, in
+`data/catalog-summary.json`, and in the relevance fixtures. The
+`docs/journals/` entries are historical records and should not be edited.
 
 ---
 
