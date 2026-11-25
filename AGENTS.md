@@ -28,7 +28,7 @@ When addressing UI/UX requests, route to the relevant skill domain before genera
 
 | Skill | Primary Focus | Triggers / Use Cases |
 | :--- | :--- | :--- |
-| **`ui-ux-pro-max`** | Core UI/UX intelligence & strategy | Full interface design, product styling, style recommendations (51 active styles), 194 product palettes, 74 font pairings, 141 UX guidelines, 22 technology stacks |
+| **`ui-ux-pro-max`** | Core UI/UX intelligence & strategy | Full interface design, product styling, style recommendations (51 active styles), 194 product palettes, 74 font pairings, 141 UX guidelines, 23 technology stacks |
 | **`ui-styling`** | Component styling & tokens | shadcn/ui component integration, Tailwind CSS customization, responsive layout rules, dark mode theming, and micro-interactions |
 | **`design-system`** | Systematic design tokens & specs | Design tokens (primitive, semantic, component), CSS variables, token architecture, and design token validation |
 | **`brand`** | Visual brand identity & consistency | Brand guideline creation, brand color palettes, typography specifications, logo rules, and tone/voice frameworks |

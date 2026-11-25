@@ -196,7 +196,7 @@ Chaque règle comprend :
 - **194 palettes de couleurs** - Palettes sectorielles alignées 1:1 sur les 194 types de produits
 - **74 associations de polices** - Combinaisons typographiques sélectionnées, avec imports Google Fonts
 - **25 types de graphiques** - Recommandations pour tableaux de bord et analytique
-- **22 stacks techniques** - React, Next.js, Astro, Vue, Nuxt.js, Nuxt UI, Svelte, SwiftUI, React Native, Flutter, HTML+Tailwind, shadcn/ui, Jetpack Compose, Angular, Laravel, Three.js, JavaFX, WPF, WinUI 3, UWP, Avalonia, Uno Platform
+- **23 stacks techniques** - React, Next.js, Astro, Vue, Nuxt.js, Nuxt UI, Svelte, SwiftUI, React Native, Flutter, HTML+Tailwind, shadcn/ui, Jetpack Compose, Angular, Laravel, Three.js, JavaFX, WPF, WinUI 3, UWP, Avalonia, Uno Platform, PySide6/Qt
 - **141 recommandations UX** - Bonnes pratiques, anti-patterns, règles d'accessibilité, mise en page de texte robuste, libellés compacts et interactions annulables. Voir [Raccourcis Entrée compatibles IME](docs/ime-composition.md).
 - **194 règles de raisonnement** - Génération de design system spécifique à chaque secteur (NOUVEAU en v2.0)
 

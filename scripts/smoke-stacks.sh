@@ -5,7 +5,7 @@
 # by a botched merge).
 #
 # Usage:  scripts/smoke-stacks.sh [query]
-# Env:    EXPECTED_STACK_COUNT — default 22. Bump deliberately when adding
+# Env:    EXPECTED_STACK_COUNT — default 23. Bump deliberately when adding
 #         or removing a stack so accidental drift still fails loudly.
 #
 # Exit codes:
@@ -20,7 +20,7 @@ SCRIPTS_DIR="$REPO_ROOT/src/ui-ux-pro-max/scripts"
 SEARCH="$SCRIPTS_DIR/search.py"
 
 QUERY_OVERRIDE="${1:-}"
-EXPECTED_COUNT="${EXPECTED_STACK_COUNT:-22}"
+EXPECTED_COUNT="${EXPECTED_STACK_COUNT:-23}"
 
 smoke_query() {
   case "$1" in
@@ -46,6 +46,7 @@ smoke_query() {
     avalonia) echo "Avalonia XAML namespace declaration" ;;
     uno) echo "Uno Platform WinUI XAML API surface" ;;
     uwp) echo "UWP compiled x:Bind data binding" ;;
+    pyside6-qss) echo "PySide6 qfluentwidgets QSS theme" ;;
     *) return 1 ;;
   esac
 }
