@@ -1396,7 +1396,7 @@
       "entityId": "core-motion-accessibility",
       "sourceFile": "motion.csv",
       "sourceKey": {
-        "Scope": "No 1-17; GSAP API identifiers in GSAP Snippet/Framework Notes and reduced-motion handling in Framework Notes",
+        "Scope": "No 1-20; GSAP API identifiers in GSAP Snippet/Framework Notes and reduced-motion handling in Framework Notes",
         "Boundary": "Does not verify product-specific duration, count, or performance recommendations"
       },
       "status": "active",
