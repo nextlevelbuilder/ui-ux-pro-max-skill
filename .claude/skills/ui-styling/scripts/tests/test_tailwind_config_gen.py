@@ -345,6 +345,26 @@ class TestTailwindConfigGenerator:
         assert existing_path.read_text() == existing
         assert not output_path.exists()
 
+    @pytest.mark.parametrize("name", ["tailwind.config.cts", "tailwind.config.mts"])
+    def test_cli_refuses_ts_beside_cts_or_mts_config(self, tmp_path, name):
+        """Tailwind loads tailwind.config.ts before .cts/.mts, so a new .ts would win."""
+        existing_path = tmp_path / name
+        existing = "// existing TypeScript project config\nexport default {}\n"
+        existing_path.write_text(existing)
+        script = Path(__file__).parent.parent / "tailwind_config_gen.py"
+
+        result = subprocess.run(
+            [sys.executable, str(script), "--colors", "brand:#3b82f6"],
+            cwd=tmp_path,
+            capture_output=True,
+            text=True,
+        )
+
+        assert result.returncode == 1
+        assert name in result.stderr
+        assert existing_path.read_text() == existing
+        assert not (tmp_path / "tailwind.config.ts").exists()
+
     def test_cli_force_allows_target_beside_sibling_config(self, tmp_path):
         """The explicit force opt-in also overrides cross-extension detection."""
         existing_path = tmp_path / "tailwind.config.js"
