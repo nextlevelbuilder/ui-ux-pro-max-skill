@@ -91,6 +91,13 @@ class TestModeResolution(unittest.TestCase):
         self.assertFalse(_query_wants_dark("healthcare clinic booking app"))
         self.assertFalse(_query_wants_dark(""))
 
+    def test_query_keywords_match_at_word_starts(self):
+        self.assertFalse(_query_wants_dark("homeschooled learning app for kids"))
+        self.assertFalse(_query_wants_dark("water-cooled gaming PC builder"))
+        self.assertFalse(_query_wants_dark("pooled savings app"))
+        self.assertTrue(_query_wants_dark("OLED-friendly gaming app"))
+        self.assertTrue(_query_wants_dark("saas with dark themes"))
+
     def test_either_signal_resolves_dark(self):
         self.assertEqual(_resolve_color_mode("saas dark mode", DUAL_MODE_STYLE), "dark")
         self.assertEqual(_resolve_color_mode("saas", DARK_PRIMARY_STYLE), "dark")
