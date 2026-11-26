@@ -13,6 +13,14 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).parent))
 from core import search, search_all, get_cip_brief, CSV_CONFIG
 
+# --cip-brief prints emoji, which raises UnicodeEncodeError when stdout/stderr is
+# a cp1252 pipe or file (Windows without PYTHONUTF8). Same intent as the guard in
+# ui-ux-pro-max/scripts/search.py.
+for _stream in (sys.stdout, sys.stderr):
+    _encoding = getattr(_stream, "encoding", None)
+    if _encoding and _encoding.lower().replace("-", "") != "utf8" and hasattr(_stream, "reconfigure"):
+        _stream.reconfigure(encoding="utf-8", errors=_stream.errors)
+
 
 def format_results(results, domain):
     """Format search results for display"""

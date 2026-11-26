@@ -64,3 +64,12 @@ def test_generate_logo_warning_survives_non_utf8_stdout(tmp_path):
     assert "UnicodeEncodeError" not in result.stderr, result.stderr
     assert "No logo image provided" in result.stdout
     assert result.returncode == 1
+
+
+def test_search_brief_survives_non_utf8_stdout(tmp_path):
+    # search.py --cip-brief prints emoji section headers; it only reads the bundled CSVs.
+    result = _run([CIP / "search.py", "tech startup", "--cip-brief", "--brand", "Cafe"], tmp_path)
+
+    assert "UnicodeEncodeError" not in result.stderr, result.stderr
+    assert result.returncode == 0, result.stderr
+    assert "INDUSTRY" in result.stdout
