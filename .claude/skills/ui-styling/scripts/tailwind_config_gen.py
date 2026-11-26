@@ -22,6 +22,8 @@ _TAILWIND_CONFIG_NAMES = (
     "tailwind.config.cjs",
     "tailwind.config.mjs",
     "tailwind.config.ts",
+    "tailwind.config.cts",
+    "tailwind.config.mts",
 )
 
 
