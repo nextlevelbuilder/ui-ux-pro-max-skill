@@ -42,8 +42,37 @@
 
 <p align="center">
   <i>其他项目</i><br>
-  <a href="https://nextlevelbuilder.io">NextLevelBuilder.io</a> | <a href="https://goclaw.sh">GoClaw.sh</a> | <a href="https://claudekit.cc">ClaudeKit.cc</a> | <a href="https://tose.sh">TOSE.sh</a>
+  <a href="https://nextlevelbuilder.io">NextLevelBuilder.io</a> | <a href="https://goclaw.sh">GoClaw.sh</a> | <a href="https://agentkit.best">AgentKit.best</a> | <a href="https://tose.sh">TOSE.sh</a>
 </p>
+
+---
+
+<p align="center">
+  <span>了解我们的新技能：</span>
+  <br/>
+  <a href="https://github.com/viettranx/3dviz-pro-max" target="_blank">
+    <picture>
+      <source media="(prefers-color-scheme: dark)" srcset="https://cdn.nextlevelbuilder.io/skills/3dviz/wordmark-dark.svg">
+      <img src="https://cdn.nextlevelbuilder.io/skills/3dviz/wordmark.svg" alt="3Dviz Pro Max" height="56">
+    </picture>
+  </a>
+</p>
+
+<p align="center"><b>将想法转化为值得探索的 3D 场景。</b></p>
+
+<p align="center">
+  <img src="https://cdn.nextlevelbuilder.io/skills/3dviz/harness-village.gif" width="800" alt="Harness Village: a fantasy village with camera navigation and animated creatures">
+</p>
+
+<p align="center">
+  <sub><b>仅作视觉灵感参考，并非基准测试。</b> 这是作者在<i>本技能诞生之前</i>录制的项目，界面包含越南语。属于历史影像，并非英文演示或本技能的运行时测试 — 详见 <a href="https://github.com/viettranx/3dviz-pro-max/blob/main/docs/demos/README.md">media provenance</a>。</sub>
+</p>
+
+<p align="center">
+  🤌 官网：<a href="https://3dviz.dev/" target="_blank">https://3dviz.dev/</a>
+</p>
+
+---
 
 ## v2.0 新特性
 
@@ -67,7 +96,7 @@ v2.0 的旗舰特性是**设计系统生成器**——一个 AI 驱动的推理�
 |       5. 联系我们                                                                        |
 |                                                                                        |
 |  风格：柔和 UI 进化版 (Soft UI Evolution)                                              |
-|     关键词：柔和阴影、微妙深度、 calming、高级质感、有机形状                             |
+|     关键词：柔和阴影、微妙深度、舒缓、高级质感、有机形状                                  |
 |     适用：健康、美容、生活方式品牌、高端服务                                             |
 |     性能：cost:low | 无障碍：risk:conditional；需验证具体要求                            |
 |                                                                                        |
@@ -77,10 +106,10 @@ v2.0 的旗舰特性是**设计系统生成器**——一个 AI 驱动的推理�
 |     CTA：     #D4AF37 (金色)                                                           |
 |     背景：    #FFF5F5 (暖白)                                                           |
 |     文字：    #2D3436 (炭灰)                                                           |
-|     备注： calming 配色，金色点缀增添奢华感                                            |
+|     备注：舒缓配色，金色点缀增添奢华感                                                  |
 |                                                                                        |
 |  字体：Cormorant Garamond / Montserrat                                                 |
-|     调性：优雅、 calming、精致                                                          |
+|     调性：优雅、舒缓、精致                                                              |
 |     适用：奢侈品牌、健康、美容、编辑类                                                  |
 |     Google Fonts: https://fonts.google.com/share?selection.family=...                   |
 |                                                                                        |
@@ -88,7 +117,7 @@ v2.0 的旗舰特性是**设计系统生成器**——一个 AI 驱动的推理�
 |     柔和阴影 + 符合平台与组件语境的过渡 + 细腻悬停状态                                  |
 |                                                                                        |
 |  避免 (反模式)：                                                                       |
-|     亮霓虹色 + 生硬动画 + 深色模式 + AI 紫/粉渐变 (银行业)                              |
+|     亮霓虹色 + 生硬动画 + 深色模式 + AI 紫/粉渐变                                       |
 |                                                                                        |
 |  交付前检查清单：                                                                      |
 |     [ ] 不使用表情符号作为图标 (使用 SVG: Heroicons/Lucide)                            |
@@ -168,7 +197,7 @@ v2.0 的旗舰特性是**设计系统生成器**——一个 AI 驱动的推理�
 - **74 种字体配对** - 精选字体组合，含 Google Fonts 导入
 - **25 种图表类型** - 适用于仪表板和分析场景的推荐
 - **23 种技术栈** - React、Next.js、Astro、Vue、Nuxt.js、Nuxt UI、Svelte、SwiftUI、React Native、Flutter、HTML+Tailwind、shadcn/ui、Jetpack Compose、Angular、Laravel、Three.js、JavaFX、WPF、WinUI 3、UWP、Avalonia、Uno Platform、PySide6/Qt
-- **141 条 UX 指南** - 最佳实践、反模式、无障碍规则、弹性文字布局、紧凑标签与可取消交互
+- **141 条 UX 指南** - 最佳实践、反模式、无障碍规则、弹性文字布局、紧凑标签、可取消交互、网页地图（署名、地图无障碍、分级统计图、弹窗、聚合点）以及表单错误处理（清除已修复错误、保留输入内容、未保存更改提示、撤销、弹窗焦点管理）。参见 [IME 安全的 Enter 快捷键指南](docs/ime-composition.md)。
 - **194 条推理规则** - 行业特定的设计系统生成（v2.0 新增）
 
 ### 弹性文字与紧凑型 UI
@@ -230,6 +259,16 @@ Active 集合包括 43 个通用视觉家族、2 个移动端专用风格、4 �
 /plugin install ui-ux-pro-max@ui-ux-pro-max-skill
 ```
 
+通用 Agent 客户端也可通过 `.agents/plugins/marketplace.json` 使用同一仓库（与 Claude Marketplace 相同的 `ui-ux-pro-max` 插件与源）。
+
+### 使用 GitHub CLI
+
+使用 [GitHub CLI](https://cli.github.com/) 安装技能：
+
+```bash
+gh skill install nextlevelbuilder/ui-ux-pro-max-skill .claude/skills/ui-ux-pro-max
+```
+
 ### 使用 CLI (推荐)
 
 ```bash
@@ -259,6 +298,11 @@ uipro init --ai kilocode    # KiloCode
 uipro init --ai warp        # Warp
 uipro init --ai augment     # Augment
 uipro init --ai codewhale   # CodeWhale
+uipro init --ai zcode       # ZCode
+uipro init --ai kimi        # Kimi Code
+uipro init --ai amazonq     # Amazon Q Developer
+uipro init --ai openclaw    # OpenClaw (.agents/skills/)
+uipro init --ai autoclaw    # AutoClaw (skills/ 或 ~/.openclaw-autoclaw/skills)
 uipro init --ai universal   # Universal / Agent Standard (.agents/skills/)
 uipro init --ai all         # 所有助手
 ```
@@ -270,6 +314,10 @@ npm 包名为 `ui-ux-pro-max-cli`；它仍然安装 `uipro` 命令。旧版 `uip
 ```bash
 uipro init --ai claude --global   # 安装到 ~/.claude/skills/
 uipro init --ai cursor --global   # 安装到 ~/.cursor/skills/
+uipro init --ai copilot --global  # 安装到 ~/.copilot/skills/
+uipro init --ai antigravity --global # 安装到 ~/.agents/skills/
+uipro init --ai zcode --global    # 安装到 ~/.zcode/skills/
+uipro init --ai kimi --global     # 安装到 ~/.kimi-code/skills/
 uipro init --ai universal --global # 安装到 ~/.agents/skills/
 ```
 
@@ -280,6 +328,7 @@ uipro versions              # 列出可用版本
 uipro update                # 从已安装的 CLI 包刷新技能文件
 uipro update --global       # 从已安装的 CLI 包刷新全局技能文件
 uipro init --offline        # 兼容性标志；安装捆绑模板
+uipro init --dry-run        # 预览安装操作，不实际写入文件
 uipro uninstall             # 移除技能（自动检测平台）
 uipro uninstall --ai claude # 移除特定平台
 uipro uninstall --global    # 移除全局安装
@@ -300,7 +349,7 @@ python3 --version
 
 ### 技能模式 (自动激活)
 
-**支持：** Claude Code、Cursor、Windsurf、Antigravity、Codex CLI、Continue、Gemini CLI、OpenCode、Qoder、CodeBuddy、Droid (Factory)、KiloCode、Warp、Augment、CodeWhale、GitHub Copilot
+**支持：** Claude Code、Cursor、Windsurf、Antigravity、Codex CLI、Continue、Gemini CLI、OpenCode、Qoder、CodeBuddy、Droid (Factory)、KiloCode、Warp、Augment、CodeWhale、ZCode、Kimi Code、Amazon Q Developer、OpenClaw、GitHub Copilot
 
 当你请求 UI/UX 工作时，技能会自动激活。只需自然地聊天：
 
@@ -309,6 +358,8 @@ python3 --version
 ```
 
 > **Trae**：先切换到 **SOLO** 模式。技能会在 UI/UX 请求时激活。
+> **GitHub Copilot**：从 `.github/skills/*/SKILL.md`（或全局 `~/.copilot/skills/`）自动发现 Agent Skills。工作区级指导由 `.github/copilot-instructions.md` 提供。
+> **Antigravity**：从 `.agents/skills/*/SKILL.md`（或全局 `~/.agents/skills/`）自动发现 Agent Skills。工作区级指导由 `AGENTS.md` 提供。
 
 ### 工作流模式 (斜杠命令)
 
@@ -334,6 +385,32 @@ python3 --version
 搭建一个带深色主题的金融科技银行应用
 ```
 
+### 为现有应用套用主题
+
+[安装技能](#安装)后，在你的 AI 助手中打开项目并使用类似下面的提示词。在工作流模式下，在前面加上 `/ui-ux-pro-max`。
+
+```text
+Use the ui-ux-pro-max skill to retheme my existing React app.
+Target style: Minimalism & Swiss Style.
+First inspect the framework and styling-library versions, routes, components,
+styles, and existing theme tokens. Keep the current component structure,
+behavior, and business logic.
+Reuse and update the existing semantic tokens for colors, typography, spacing,
+radii, shadows, and interaction states; add missing tokens rather than creating
+a parallel theme system. Replace hard-coded styles one component at a time.
+Verify contrast, keyboard focus, responsive layouts, and all supported light/dark
+modes. Summarize changed files and any remaining hard-coded styles.
+```
+
+将 `Minimalism & Swiss Style` 替换为你偏好的[目录风格](src/ui-ux-pro-max/data/styles.csv)或视觉方向。搜索结果仅提供设计指导，不会自动改写你的应用。
+
+**主题迁移检查清单：**
+
+- **审计（Audit）：** 找出样式表、内联样式及工具类中的主题相关硬编码值（如 `bg-blue-600` 或 `text-[#1e293b]`）。
+- **映射（Map）：** 在应用现有的样式系统中复用语义角色（如 `background`、`surface`、`foreground`、`primary`、`border`、`ring`），并按当前已安装库版本的约定补充缺失角色。
+- **迁移（Migrate）：** 按小批次组件逐步将硬编码值替换为令牌引用。只修改令牌本身并不会影响未使用它们的样式。
+- **验证（Verify）：** 每完成一批迁移后，检查文本/UI 对比度、hover/focus/disabled 状态、响应式布局以及每个已支持的主题模式。
+
 ### 工作原理
 
 1. **你提出请求** - 请求任何 UI/UX 任务（构建、设计、创建、实现、审查、修复、改进）
@@ -354,18 +431,26 @@ python3 --version
 | **Angular** | Angular |
 | **PHP** | Laravel (Blade、Livewire、Inertia.js) |
 | **其他 Web** | Svelte、Astro、Three.js |
-| **桌面端** | JavaFX、WPF、WinUI 3、Avalonia、Uno Platform、UWP |
+| **桌面端** | JavaFX、WPF、WinUI 3、Avalonia、Uno Platform、UWP、PySide6/Qt |
 | **iOS** | SwiftUI |
 | **Android** | Jetpack Compose |
 | **跨平台** | React Native、Flutter |
 
 只需在提示词中提到你偏好的技术栈，或让它默认使用 HTML + Tailwind。
 
+## 示例
+
+### 改造前后对比：运维仪表板
+
+一个朴素的运维仪表板（[改造前](https://skill-fixture-before.theroost.dev)）仅使用 UI UX Pro Max 为其生成的设计系统进行重新设计后的效果（[改造后](https://ui-ux-pro-max-after.theroost.dev)），生成命令为 `search.py "internal operations dashboard" --design-system --density 8 --motion 3 --variance 4`。
+
+*社区贡献的示意图例；并非官方演示、基准测试或技能运行时测试。*
+
 ## 设计系统命令 (高级)
 
 如需直接访问设计系统生成器：
 
-> 注意：如果你通过 Continue 安装，将下面命令中的 `.claude/skills/` 替换为 `.continue/skills/`。对于 Droid (Factory)，使用 `.factory/skills/`。
+> 注意：如果你通过 Continue 安装，将下面命令中的 `.claude/skills/` 替换为 `.continue/skills/`。对于 Droid (Factory)，使用 `.factory/skills/`。对于 ZCode，使用 `.zcode/skills/`。对于 Amazon Q Developer，使用 `.amazonq/skills/`（Amazon Q 仅自动加载 `.amazonq/rules/ui-ux-pro-max.md` 中的规则；`.amazonq/skills/` 下的数据和脚本由该规则指向）。
 
 ```bash
 # 生成带 ASCII 输出的设计系统
@@ -373,6 +458,10 @@ python3 .claude/skills/ui-ux-pro-max/scripts/search.py "beauty spa wellness" --d
 
 # 生成带 Markdown 输出
 python3 .claude/skills/ui-ux-pro-max/scripts/search.py "fintech banking" --design-system -f markdown
+
+# 导出设计令牌 (需要 --design-system)
+python3 .claude/skills/ui-ux-pro-max/scripts/search.py "fintech dashboard" --design-system --tokens dtcg
+python3 .claude/skills/ui-ux-pro-max/scripts/search.py "fintech dashboard" --design-system --tokens css
 
 # 特定领域搜索
 python3 .claude/skills/ui-ux-pro-max/scripts/search.py "glassmorphism" --domain style
@@ -384,6 +473,10 @@ python3 .claude/skills/ui-ux-pro-max/scripts/search.py "icon button accessible l
 python3 .claude/skills/ui-ux-pro-max/scripts/search.py "orphan heading line balance" --domain ux
 python3 .claude/skills/ui-ux-pro-max/scripts/search.py "badge chip label wraps to second line" --domain ux
 python3 .claude/skills/ui-ux-pro-max/scripts/search.py "rapid chip animation interrupted" --domain ux
+
+# RTL / 阿拉伯语、希伯来语、波斯语界面 (style 和 product 领域)
+python3 .claude/skills/ui-ux-pro-max/scripts/search.py "dashboard" --domain style --rtl=full
+python3 .claude/skills/ui-ux-pro-max/scripts/search.py "fintech" --domain product --rtl=partial
 
 # 特定技术栈指南
 python3 .claude/skills/ui-ux-pro-max/scripts/search.py "form validation" --stack react
@@ -399,6 +492,26 @@ legacy 关键词或旧主版本（例如 `Svelte 4`、`Next.js 15`）时，只�
 legacy 条目，并通过 `Status` 和 `Applies To` 标识。若没有对应的 legacy 指南，
 搜索会返回空结果，不会混合不同框架世代的内容。
 
+### RTL 兼容性（`--rtl`）
+
+每条 style 和 product 记录都带有用于从右向左（RTL）界面的 `rtl_level`（阿拉伯语、希伯来语、波斯语、乌尔都语）：
+
+| 等级 | 含义 |
+|------|------|
+| `full` | 方向无关：布局在镜像翻转后可直接保持完整可用。 |
+| `partial` | 整体可干净镜像，但部分组件与动效需要针对性调整。 |
+| `caveats` | 该风格或产品本身蕴含阅读方向（动态排版、LTR 时间轴、代码/终端界面、地图与座位顺序）。 |
+
+```bash
+# 仅返回无需额外适配即可镜像的风格
+python3 .claude/skills/ui-ux-pro-max/scripts/search.py "dashboard" --domain style --rtl=full
+
+# 返回全部等级，筛选结果仍保留 rtl_level 标签
+python3 .claude/skills/ui-ux-pro-max/scripts/search.py "mobile" --domain style --rtl
+```
+
+`--rtl` 需要显式指定 `--domain style` 或 `--domain product`。该过滤在排序之后、`-n/--max-results` 截断之前执行，因此较小的结果数限制不会隐藏匹配项。不可与 `--design-system` 或 `--stack` 同时使用。
+
 ### 持久化设计系统 (主配置 + 覆盖模式)
 
 将设计系统保存到文件，实现**跨会话的层级检索**：
@@ -409,7 +522,24 @@ python3 .claude/skills/ui-ux-pro-max/scripts/search.py "SaaS dashboard" --design
 
 # 同时创建页面特定的覆盖文件
 python3 .claude/skills/ui-ux-pro-max/scripts/search.py "SaaS dashboard" --design-system --persist -p "MyApp" --page "dashboard"
+
+# 同时在 MASTER.md 同级生成独立静态预览页 preview.html
+python3 .claude/skills/ui-ux-pro-max/scripts/search.py "SaaS dashboard" --design-system --persist --preview -p "MyApp"
+
+# 在 MASTER.md 同级持久化机器可读令牌（令牌仅生成在主配置层级）
+python3 .claude/skills/ui-ux-pro-max/scripts/search.py "SaaS dashboard" --design-system --persist --tokens dtcg -p "MyApp"
+python3 .claude/skills/ui-ux-pro-max/scripts/search.py "SaaS dashboard" --design-system --persist --tokens css -p "MyApp"
 ```
+
+`--preview` 需搭配 `--design-system` 使用。配合 `--persist` 时会在 `MASTER.md` 同级写入 `preview.html`；未配合 `--persist` 时可通过 `--output-dir` 指定输出目录，或省略该参数写入临时文件并打印路径。若目标文件已存在则会跳过写入，除非同时传入 `--force`。
+
+当预览从查询词中检测到 RTL 字符时（若查询词不含，则回退检查项目名称），会自动采用 RTL 布局。开头的拉丁品牌名或缩写不会阻止 RTL 推断，单纯的数字也不会误触发该推断。可使用 `--lang` 设置 HTML 语言标签，并使用 `--direction rtl` 或 `--direction ltr` 显式指定布局方向。阿拉伯字母文本默认使用 `ar`；如需生成波斯语或乌尔都语预览，请传入 `--lang fa` 或 `--lang ur` 以设置对应语言并保留 RTL 布局。
+
+```bash
+python3 .claude/skills/ui-ux-pro-max/scripts/search.py "clinic" --design-system --preview -p "Clinic" --lang ar --direction rtl
+```
+
+`--tokens dtcg` 输出 W3C Design Tokens JSON；`--tokens css` 输出与 `cli/assets/skills/design-system/scripts/generate-tokens.cjs` 命名一致的 `:root` CSS 变量。两者均需搭配 `--design-system` 使用。配合 `--persist` 时会在 `MASTER.md` 同级生成 `tokens.json`（当使用 `--tokens css` 时生成 `tokens.css`）；`--page` 覆盖模式不会生成令牌文件。
 
 这会创建 `design-system/` 文件夹结构：
 
@@ -417,6 +547,9 @@ python3 .claude/skills/ui-ux-pro-max/scripts/search.py "SaaS dashboard" --design
 design-system/
 └── myapp/                  # 每个项目一个文件夹 (-p "MyApp" 的 slug)
     ├── MASTER.md           # 全局唯一真相源 (颜色、字体、间距、组件)
+    ├── preview.html        # 生成的配色、排版与组件静态预览页
+    ├── tokens.json         # W3C Design Tokens (配合 --tokens 持久化时生成)
+    ├── tokens.css          # CSS 变量 (配合 --tokens css 持久化时生成)
     └── pages/
         └── dashboard.md    # 页面特定覆盖 (仅与主配置的偏差)
 ```
@@ -477,9 +610,17 @@ npm run check:assets
 npm run verify:data
 npm run typecheck
 
+# 4b. 发起 PR 前运行其余 CI 门禁
+# verify:data 不包含渲染后指南的契约测试，因此修改激活描述或技术栈列表时仍需执行以下步骤。
+cd .. && python3 -m pytest .claude/skills -q
+cd cli && npx playwright test   # 需要先运行：npm ci && npx playwright install chromium
+cd ../gallery && npm test
+
 # 5. 构建并测试 CLI
-bun run build
+# 当存在 Bun 时，`npm run build` 会使用 Bun 构建；执行 `npm ci` 后也可回退使用 TypeScript 编译器输出。
+npm run build
 node dist/index.js init --ai claude --offline  # 在临时文件夹中测试
+node dist/index.js init --ai claude --dry-run  # 预览安装操作 (不写入文件)
 
 # 6. 创建 PR (永远不要直接推送到 main)
 git checkout -b feat/your-feature
@@ -568,6 +709,26 @@ licenses、relevance metrics 和 offline gate，之后才能手动把 candidate 
 
 ## 故障排查
 
+### Claude Code 报错 `response exceeded the ... output token maximum`
+
+这是 Claude Code 单次响应的输出上限限制，并非 UI/UX Pro Max 安装器或搜索脚本的错误。首先，请让 Claude 将任务拆分为更小的步骤，并把大段结果增量写入文件。
+
+如果你确实需要更大的单次响应且当前模型支持，可在启动新会话前设置 Claude Code 的输出 token 上限，例如：
+
+```bash
+# macOS、Linux 或 WSL
+export CLAUDE_CODE_MAX_OUTPUT_TOKENS="64000"
+claude
+```
+
+```powershell
+# Windows PowerShell
+$env:CLAUDE_CODE_MAX_OUTPUT_TOKENS = "64000"
+claude
+```
+
+Shell 环境变量仅对该终端新启动的程序生效，因此设置后请重启 Claude Code。Claude Code 会将超出当前模型输出上限的值自动钳位；不同模型和提供方的上限有所差异。调高该值也可能增加延迟与用量，并减少触发自动压缩（auto-compaction）前可用的有效上下文。详见官方 [Claude Code 环境变量参考](https://code.claude.com/docs/en/env-vars#variables)。
+
 ### `uipro: unknown command 'uninstall'` 或 `unknown command 'update'`
 
 你安装的 `ui-ux-pro-max-cli` 版本已过时。请更新后重试：
@@ -594,6 +755,8 @@ rm -rf .claude/skills/ui-ux-pro-max   # Claude Code
 rm -rf .cursor/skills/ui-ux-pro-max   # Cursor
 rm -rf .windsurf/skills/ui-ux-pro-max # Windsurf
 rm -rf .agents/skills/ui-ux-pro-max   # Antigravity / Codex
+rm -rf .github/skills/ui-ux-pro-max   # GitHub Copilot (项目级)
+rm -rf ~/.copilot/skills/ui-ux-pro-max # GitHub Copilot (全局)
 ```
 
 ### Claude.ai 的“上传技能”对话框提示 "Zip contains too many files (maximum 200)"
