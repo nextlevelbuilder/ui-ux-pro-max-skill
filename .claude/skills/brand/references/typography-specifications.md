@@ -205,7 +205,7 @@ theme: {
 
 ### Contrast Requirements
 - Text on background: 4.5:1 minimum (AA)
-- Large text (18px+): 3:1 minimum
+- Large text (24px+, or 18.66px+ bold): 3:1 minimum
 
 ### Best Practices
 - Don't use all caps for long text

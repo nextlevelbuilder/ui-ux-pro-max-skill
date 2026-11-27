@@ -213,7 +213,7 @@ When multiple states apply, priority (highest to lowest):
 | Element | Minimum Ratio |
 |---------|---------------|
 | Normal text | 4.5:1 |
-| Large text (18px+) | 3:1 |
+| Large text (24px+, or 18.66px+ bold) | 3:1 |
 | UI components | 3:1 |
 | Focus indicator | 3:1 |
 
