@@ -51,9 +51,12 @@
 
 ### Accessibility
 
-- Text on white background: 7.2:1 contrast ratio (AAA)
-- Primary on white: 4.6:1 contrast ratio (AA)
-- All interactive elements meet WCAG 2.1 AA standards
+Contrast on white (#FFFFFF), WCAG 2.1 relative luminance:
+
+- Text Primary #111827: 17.74:1 (AAA). Primary Blue #2563EB: 5.17:1 (AA). Text Secondary #6B7280: 4.83:1 (AA)
+- Secondary Purple #8B5CF6 (4.23:1), Error #EF4444 (3.76:1), Info #3B82F6 (3.68:1): meet 3:1 for large text and UI components, not 4.5:1 for body text
+- Accent Green #10B981 (2.54:1), Success #22C55E (2.28:1), Warning #F59E0B (2.15:1): below 3:1; add an icon or label, and use a darker shade for text
+- Check every text and UI colour pair against WCAG 2.1 AA (4.5:1 normal text, 3:1 large text and UI components) before use
 
 ---
 

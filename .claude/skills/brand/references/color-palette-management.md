@@ -76,7 +76,9 @@ colors: {
 | Level | Normal Text | Large Text | UI Components |
 |-------|-------------|------------|---------------|
 | AA | 4.5:1 | 3:1 | 3:1 |
-| AAA | 7:1 | 4.5:1 | 4.5:1 |
+| AAA | 7:1 | 4.5:1 | n/a |
+
+Large text is 24px+ (18pt), or 18.66px+ (14pt) bold. Non-text contrast (WCAG 1.4.11) is an AA criterion only; there is no AAA level for UI components.
 
 ### Checking Contrast
 ```javascript
